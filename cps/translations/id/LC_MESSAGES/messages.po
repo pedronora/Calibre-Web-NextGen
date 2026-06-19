@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web NextGen\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-06-17 18:07+0000\n"
+"POT-Creation-Date: 2026-06-19 18:07+0000\n"
 "PO-Revision-Date: 2023-01-21 10:00+0700\n"
 "Last-Translator: Arief Hidayat<arihid95@gmail.com>\n"
 "Language-Team: Arief Hidayat <arihid95@gmail.com>\n"
@@ -2309,57 +2309,57 @@ msgid "Error opening shelf. Shelf does not exist or is not accessible"
 msgstr ""
 "Terjadi kesalahan saat membuka rak. Rak tidak ada atau tidak dapat diakses"
 
-#: cps/shelf.py:972
+#: cps/shelf.py:995
 #, python-format
 msgid "Invalid order mode: %(mode)s"
 msgstr ""
 
-#: cps/shelf.py:976
+#: cps/shelf.py:999
 msgid "Invalid payload: 'order' must be a list"
 msgstr ""
 
-#: cps/shelf.py:1000
+#: cps/shelf.py:1023
 msgid "Could not save order"
 msgstr ""
 
-#: cps/shelf.py:1008 cps/templates/layout.html:422
+#: cps/shelf.py:1031 cps/templates/layout.html:422
 #, fuzzy
 msgid "Reorder Shelves"
 msgstr "Kecualikan Rak"
 
-#: cps/shelf.py:1013
+#: cps/shelf.py:1036
 msgid "Name (A → Z)"
 msgstr ""
 
-#: cps/shelf.py:1014
+#: cps/shelf.py:1037
 msgid "Name (Z → A)"
 msgstr ""
 
-#: cps/shelf.py:1015
+#: cps/shelf.py:1038
 msgid "Book count (most → fewest)"
 msgstr ""
 
-#: cps/shelf.py:1016
+#: cps/shelf.py:1039
 msgid "Book count (fewest → most)"
 msgstr ""
 
-#: cps/shelf.py:1017
+#: cps/shelf.py:1040
 msgid "Created (newest → oldest)"
 msgstr ""
 
-#: cps/shelf.py:1018
+#: cps/shelf.py:1041
 msgid "Created (oldest → newest)"
 msgstr ""
 
-#: cps/shelf.py:1019
+#: cps/shelf.py:1042
 msgid "Modified (recent → oldest)"
 msgstr ""
 
-#: cps/shelf.py:1020
+#: cps/shelf.py:1043
 msgid "Modified (oldest → recent)"
 msgstr ""
 
-#: cps/shelf.py:1021
+#: cps/shelf.py:1044
 msgid "Manual (drag below)"
 msgstr ""
 

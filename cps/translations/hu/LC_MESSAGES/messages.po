@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-06-17 18:07+0000\n"
+"POT-Creation-Date: 2026-06-19 18:07+0000\n"
 "PO-Revision-Date: 2026-05-12 00:06+0200\n"
 "Last-Translator: Gabor L. <nom@il.thx>\n"
 "Language-Team: \n"
@@ -2337,56 +2337,56 @@ msgstr "Polc: '%(name)s'"
 msgid "Error opening shelf. Shelf does not exist or is not accessible"
 msgstr "Hiba a polc megnyitásakor. A polc nem létezik vagy nem elérhető"
 
-#: cps/shelf.py:972
+#: cps/shelf.py:995
 #, python-format
 msgid "Invalid order mode: %(mode)s"
 msgstr "Érvénytelen rendezési mód: %(mode)s"
 
-#: cps/shelf.py:976
+#: cps/shelf.py:999
 msgid "Invalid payload: 'order' must be a list"
 msgstr ""
 
-#: cps/shelf.py:1000
+#: cps/shelf.py:1023
 msgid "Could not save order"
 msgstr "Nem sikerült menteni a sorrendet"
 
-#: cps/shelf.py:1008 cps/templates/layout.html:422
+#: cps/shelf.py:1031 cps/templates/layout.html:422
 msgid "Reorder Shelves"
 msgstr "Polcok átrendezése"
 
-#: cps/shelf.py:1013
+#: cps/shelf.py:1036
 msgid "Name (A → Z)"
 msgstr "Név (A → Z)"
 
-#: cps/shelf.py:1014
+#: cps/shelf.py:1037
 msgid "Name (Z → A)"
 msgstr "Név (Z → A)"
 
-#: cps/shelf.py:1015
+#: cps/shelf.py:1038
 msgid "Book count (most → fewest)"
 msgstr "Könyvek száma (legtöbb → legkevesebb)"
 
-#: cps/shelf.py:1016
+#: cps/shelf.py:1039
 msgid "Book count (fewest → most)"
 msgstr "Könyvek száma (legkevesebb → legtöbb)"
 
-#: cps/shelf.py:1017
+#: cps/shelf.py:1040
 msgid "Created (newest → oldest)"
 msgstr "Létrehozva (legújabb → legrégebbi)"
 
-#: cps/shelf.py:1018
+#: cps/shelf.py:1041
 msgid "Created (oldest → newest)"
 msgstr "Létrehozva (legrégebbi → legújabb)"
 
-#: cps/shelf.py:1019
+#: cps/shelf.py:1042
 msgid "Modified (recent → oldest)"
 msgstr "Módosítva (legutóbbi → legrégebbi)"
 
-#: cps/shelf.py:1020
+#: cps/shelf.py:1043
 msgid "Modified (oldest → recent)"
 msgstr "Módosítva (legrégebbi → legutóbbi)"
 
-#: cps/shelf.py:1021
+#: cps/shelf.py:1044
 msgid "Manual (drag below)"
 msgstr "Kézi (húzd át alább)"
 

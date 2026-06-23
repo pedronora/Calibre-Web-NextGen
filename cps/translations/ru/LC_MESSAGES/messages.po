@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web NextGen\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-06-23 04:18+0000\n"
+"POT-Creation-Date: 2026-06-23 12:07+0000\n"
 "PO-Revision-Date: 2020-04-29 01:20+0400\n"
 "Last-Translator: ZIZA\n"
 "Language-Team: \n"
@@ -3153,7 +3153,7 @@ msgstr "Пометить как непрочитанное"
 #: cps/templates/book_edit.html:59 cps/templates/book_table.html:66
 #: cps/templates/book_table.html:145 cps/templates/book_table.html:194
 #: cps/templates/duplicates.html:718 cps/templates/modal_dialogs.html:63
-#: cps/templates/modal_dialogs.html:116 cps/templates/read.html:175
+#: cps/templates/modal_dialogs.html:116 cps/templates/read.html:179
 #: cps/templates/user_edit.html:333 cps/templates/user_table.html:150
 msgid "Delete"
 msgstr "Удалить"
@@ -3600,7 +3600,7 @@ msgstr "OK"
 #: cps/templates/duplicates.html:746 cps/templates/layout.html:614
 #: cps/templates/layout.html:769 cps/templates/modal_dialogs.html:64
 #: cps/templates/modal_dialogs.html:99 cps/templates/modal_dialogs.html:117
-#: cps/templates/modal_dialogs.html:135 cps/templates/read.html:174
+#: cps/templates/modal_dialogs.html:135 cps/templates/read.html:178
 #: cps/templates/schedule_edit.html:46 cps/templates/shelf.html:125
 #: cps/templates/shelf_edit.html:34 cps/templates/tasks.html:94
 #: cps/templates/tasks.html:166 cps/templates/tasks.html:173
@@ -3715,7 +3715,7 @@ msgstr ""
 msgid "Source: %(s)s"
 msgstr "Серия: %(serie)s"
 
-#: cps/templates/annotations_view.html:45 cps/templates/read.html:179
+#: cps/templates/annotations_view.html:45 cps/templates/read.html:183
 msgid "No annotations on this book yet."
 msgstr ""
 
@@ -3921,7 +3921,7 @@ msgstr "Получить метаданные"
 
 #: cps/templates/book_edit.html:313 cps/templates/config_db.html:111
 #: cps/templates/config_edit.html:664 cps/templates/config_view_edit.html:237
-#: cps/templates/email_edit.html:71 cps/templates/read.html:173
+#: cps/templates/email_edit.html:71 cps/templates/read.html:177
 #: cps/templates/schedule_edit.html:47 cps/templates/shelf_edit.html:36
 #: cps/templates/shelf_reorder.html:38 cps/templates/user_edit.html:585
 msgid "Save"
@@ -7253,7 +7253,7 @@ msgstr "Учетная запись"
 msgid "Logout"
 msgstr "Выйти"
 
-#: cps/templates/layout.html:218 cps/templates/read.html:99
+#: cps/templates/layout.html:218 cps/templates/read.html:103
 #: cps/templates/readcbr.html:71 cps/templates/readcbr.html:97
 #, fuzzy
 msgid "Settings"
@@ -7617,109 +7617,109 @@ msgstr "Действия"
 msgid "Open annotations page"
 msgstr ""
 
-#: cps/templates/read.html:102 cps/templates/readcbr.html:102
+#: cps/templates/read.html:106 cps/templates/readcbr.html:102
 #: cps/templates/user_edit.html:279
 msgid "Theme"
 msgstr "Тема"
 
-#: cps/templates/read.html:104 cps/templates/readcbr.html:105
+#: cps/templates/read.html:108 cps/templates/readcbr.html:105
 msgid "Light"
 msgstr "Светлая"
 
-#: cps/templates/read.html:105 cps/templates/readcbr.html:106
+#: cps/templates/read.html:109 cps/templates/readcbr.html:106
 msgid "Dark"
 msgstr "Тёмная"
 
-#: cps/templates/read.html:106
+#: cps/templates/read.html:110
 msgid "Sepia"
 msgstr "Сепия"
 
-#: cps/templates/read.html:107
+#: cps/templates/read.html:111
 #, fuzzy
 msgid "Black"
 msgstr "Чёрная"
 
-#: cps/templates/read.html:112
+#: cps/templates/read.html:116
 msgid "Font Sizes"
 msgstr "Размеры шрифта"
 
-#: cps/templates/read.html:120
+#: cps/templates/read.html:124
 #, fuzzy
 msgid "Text margin"
 msgstr "Следующая страница"
 
-#: cps/templates/read.html:128
+#: cps/templates/read.html:132
 msgid "Font"
 msgstr "Шрифт"
 
-#: cps/templates/read.html:130
+#: cps/templates/read.html:134
 #, fuzzy
 msgid "Default"
 msgstr "По умолчанию"
 
-#: cps/templates/read.html:131
+#: cps/templates/read.html:135
 msgid "Yahei"
 msgstr "Yahei"
 
-#: cps/templates/read.html:132
+#: cps/templates/read.html:136
 msgid "SimSun"
 msgstr "SimSun"
 
-#: cps/templates/read.html:133
+#: cps/templates/read.html:137
 #, fuzzy
 msgid "KaiTi"
 msgstr "KaiTi"
 
-#: cps/templates/read.html:134
+#: cps/templates/read.html:138
 #, fuzzy
 msgid "Arial"
 msgstr "Arial"
 
-#: cps/templates/read.html:139
+#: cps/templates/read.html:143
 #, fuzzy
 msgid "Spread"
 msgstr "Разворот"
 
-#: cps/templates/read.html:141
+#: cps/templates/read.html:145
 msgid "Two columns"
 msgstr "Две колонки"
 
-#: cps/templates/read.html:142
+#: cps/templates/read.html:146
 msgid "One column"
 msgstr "Одна колонка"
 
-#: cps/templates/read.html:149
+#: cps/templates/read.html:153
 msgid "Reflow text when sidebars are open."
 msgstr "Переформатировать текст при открытых боковых панелях."
 
-#: cps/templates/read.html:176
+#: cps/templates/read.html:180
 msgid "Note"
 msgstr ""
 
-#: cps/templates/read.html:177
+#: cps/templates/read.html:181
 msgid "Add a note (optional)"
 msgstr ""
 
-#: cps/templates/read.html:178
+#: cps/templates/read.html:182
 msgid "Select within a paragraph to highlight."
 msgstr ""
 
-#: cps/templates/read.html:181
+#: cps/templates/read.html:185
 #, fuzzy
 msgid "Yellow"
 msgstr "Разрешить"
 
-#: cps/templates/read.html:182
+#: cps/templates/read.html:186
 #, fuzzy
 msgid "Red"
 msgstr "Прочитано"
 
-#: cps/templates/read.html:183
+#: cps/templates/read.html:187
 #, fuzzy
 msgid "Green"
 msgstr "Греческий"
 
-#: cps/templates/read.html:184
+#: cps/templates/read.html:188
 msgid "Blue"
 msgstr ""
 

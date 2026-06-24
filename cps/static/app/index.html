@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calibre-Web NextGen</title>
+  <style>
+    body{font-family:system-ui,Segoe UI,Roboto,sans-serif;background:#161f27;color:#e6e6e6;margin:0;padding:24px}
+    .accent{color:#cc7b19}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:14px;margin-top:16px}
+    .card{background:#1d2731;border-radius:8px;padding:8px}
+    .card img{width:100%;border-radius:4px;display:block;margin-bottom:6px}
+    .card strong{font-size:13px}.card small{color:#9fb0bd}
+  </style>
+</head>
+<body>
+  <h1>Calibre-Web <span class="accent">NextGen</span></h1>
+  <p id="me">checking session…</p>
+  <div class="grid" id="grid"></div>
+  <script>
+    fetch('/api/v1/auth/me', {credentials: 'same-origin'})
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (u) {
+        document.getElementById('me').textContent = u ? ('Signed in as ' + u.name) : 'Not signed in';
+      });
+    fetch('/api/v1/books?per_page=24', {credentials: 'same-origin'})
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        var g = document.getElementById('grid');
+        (d.items || []).forEach(function (b) {
+          var c = document.createElement('div');
+          c.className = 'card';
+          c.innerHTML =
+            (b.cover_url ? '<img src="' + b.cover_url + '" alt="">' : '') +
+            '<strong>' + b.title + '</strong><br><small>' + (b.authors || []).join(', ') + '</small>';
+          g.appendChild(c);
+        });
+      });
+  </script>
+</body>
+</html>

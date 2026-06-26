@@ -21,13 +21,13 @@ def _make_book(**kwargs):
         title="Dune",
         series_index="1.0",
         has_cover=1,
-        authors=[SimpleNamespace(name="Frank Herbert")],
-        series=[SimpleNamespace(name="Dune Chronicles")],
+        authors=[SimpleNamespace(id=7, name="Frank Herbert")],
+        series=[SimpleNamespace(id=3, name="Dune Chronicles")],
         data=[SimpleNamespace(format="EPUB", uncompressed_size=500_000, name="dune")],
         comments=[SimpleNamespace(text="<p>A spice epic.</p>")],
-        tags=[SimpleNamespace(name="sci-fi")],
+        tags=[SimpleNamespace(id=11, name="sci-fi")],
         languages=[SimpleNamespace(lang_code="eng", language_name="English")],
-        publishers=[SimpleNamespace(name="Chilton Books")],
+        publishers=[SimpleNamespace(id=5, name="Chilton Books")],
         identifiers=[SimpleNamespace(type="isbn", val="9780441013593")],
         pubdate=datetime.datetime(1965, 8, 1),
     )
@@ -47,15 +47,15 @@ def test_serialize_book_detail_full():
 
     assert out["id"] == 42
     assert out["title"] == "Dune"
-    assert out["authors"] == ["Frank Herbert"]
-    assert out["series"] == "Dune Chronicles"
+    assert out["authors"] == [{"id": 7, "name": "Frank Herbert"}]
+    assert out["series"] == {"id": 3, "name": "Dune Chronicles"}
     assert out["series_index"] == "1.0"
     assert out["cover_url"] == "/cover/42/og"
     assert out["pubdate"] == "1965-08-01"
     assert out["description_html"] == "<p>A spice epic.</p>"
-    assert out["tags"] == ["sci-fi"]
-    assert out["languages"] == ["English"]
-    assert out["publishers"] == ["Chilton Books"]
+    assert out["tags"] == [{"id": 11, "name": "sci-fi"}]
+    assert out["languages"] == [{"id": "eng", "name": "English"}]
+    assert out["publishers"] == [{"id": 5, "name": "Chilton Books"}]
     assert out["identifiers"] == [{"type": "isbn", "val": "9780441013593"}]
     assert len(out["formats"]) == 1
     fmt = out["formats"][0]
@@ -115,7 +115,7 @@ def test_serialize_book_detail_language_fallback_to_lang_code():
     lang = SimpleNamespace(lang_code="fra")  # no language_name attr
     book = _make_book(languages=[lang])
     out = serialize_book_detail(book)
-    assert out["languages"] == ["fra"]
+    assert out["languages"] == [{"id": "fra", "name": "fra"}]
 
 
 @pytest.mark.unit

@@ -27,18 +27,25 @@ export interface BookFormat {
   read_url: string;
 }
 
+/** A linked entity (author, series, tag, publisher, language). id is numeric
+ *  for most entities and a string lang_code for languages. */
+export interface EntityRef {
+  id: number | string;
+  name: string;
+}
+
 export interface BookDetail {
   id: number;
   title: string;
-  authors: string[];
-  series: string | null;
+  authors: EntityRef[];
+  series: EntityRef | null;
   series_index: string;
   cover_url: string | null;
   pubdate: string | null;
   description_html: string | null;
-  tags: string[];
-  languages: string[];
-  publishers: string[];
+  tags: EntityRef[];
+  languages: EntityRef[];
+  publishers: EntityRef[];
   identifiers: { type: string; val: string }[];
   formats: BookFormat[];
   read: boolean;
@@ -50,6 +57,15 @@ export interface BooksPage {
   page: number;
   per_page: number;
   total: number;
+}
+
+/** One row in an entity-browse list, with how many books reference it. */
+export interface EntityListItem extends EntityRef {
+  count: number;
+}
+
+export interface EntityList {
+  items: EntityListItem[];
 }
 
 export class ApiError extends Error {

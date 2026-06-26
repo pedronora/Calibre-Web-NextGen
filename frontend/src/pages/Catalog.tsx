@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
-import { Search } from 'lucide-react';
+import { Link } from 'wouter';
+import { Search, ChevronLeft } from 'lucide-react';
 import { BookCard } from '../components/BookCard';
 import { Button } from '../components/Button';
 import { Spinner, SpinnerCentered } from '../components/Spinner';
 import { EmptyState } from '../components/EmptyState';
-import { useBooks } from '../lib/queries';
+import { useBooks, useEntityList, ENTITY_PLURAL } from '../lib/queries';
+import type { EntityKind, ReadFilter } from '../lib/queries';
 import type { Book } from '../lib/api';
 import styles from './Catalog.module.css';
 
@@ -19,89 +21,157 @@ const SORT_OPTIONS = [
   { label: 'Oldest published', value: 'pubold' },
 ];
 
-export function Catalog() {
+const READ_FILTERS: { label: string; value: ReadFilter }[] = [
+  { label: 'All', value: 'all' },
+  { label: 'Unread', value: 'unread' },
+  { label: 'Read', value: 'read' },
+];
+
+const KIND_LABEL: Record<EntityKind, string> = {
+  author: 'Author',
+  series: 'Series',
+  tag: 'Tag',
+  publisher: 'Publisher',
+  language: 'Language',
+};
+
+interface CatalogProps {
+  /** When set, the catalog is scoped to books linked to this entity. */
+  entityKind?: EntityKind;
+  entityId?: string | number;
+}
+
+function dedupAppend(prev: Book[], next: Book[]): Book[] {
+  const seen = new Set(prev.map((b) => b.id));
+  const fresh = next.filter((b) => !seen.has(b.id));
+  return fresh.length ? [...prev, ...fresh] : prev;
+}
+
+export function Catalog({ entityKind, entityId }: CatalogProps) {
+  const filtered = !!entityKind;
+
   const [page, setPage] = useState(1);
   const [allBooks, setAllBooks] = useState<Book[]>([]);
   const [searchInput, setSearchInput] = useState('');
   const [search, setSearch] = useState('');
   const [sort, setSort] = useState('new');
-  // Track what key the accumulated allBooks belongs to so we can reset on change
-  const accKeyRef = useRef<string>('1||new');
+  const [readFilter, setReadFilter] = useState<ReadFilter>('all');
+
+  const accKeyRef = useRef<string>('');
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Debounce search input 300ms; reset page + books on change
+  // Resolve the entity's display name (for the heading) from its browse list —
+  // cached when the user arrives from the browse page, a cheap fetch otherwise.
+  const entityListQuery = useEntityList(filtered ? ENTITY_PLURAL[entityKind!] : '');
+  const entityName = filtered
+    ? entityListQuery.data?.items.find((e) => String(e.id) === String(entityId))?.name
+    : undefined;
+
+  // Debounce the search box (library view only).
   useEffect(() => {
+    if (filtered) return;
     if (debounceRef.current) clearTimeout(debounceRef.current);
-    debounceRef.current = setTimeout(() => {
-      setSearch(searchInput);
-      setPage(1);
-    }, 300);
+    debounceRef.current = setTimeout(() => setSearch(searchInput), 300);
     return () => {
       if (debounceRef.current) clearTimeout(debounceRef.current);
     };
-  }, [searchInput]);
+  }, [searchInput, filtered]);
 
-  const { data, isLoading, isFetching, error } = useBooks(page, search, sort);
+  const resetKey = [search, sort, readFilter, entityKind ?? '', entityId ?? ''].join('|');
 
-  // Accumulate pages, resetting when search/sort changes (page resets to 1)
+  // Any filter change resets paging to the first page.
   useEffect(() => {
-    if (!data) return;
-    const key = `${page}|${search}|${sort}`;
-    if (page === 1 || accKeyRef.current.split('|').slice(1).join('|') !== `${search}|${sort}`) {
-      // New search/sort — replace entirely
+    setPage(1);
+  }, [resetKey]);
+
+  const { data, isLoading, isFetching, isPlaceholderData, error } = useBooks({
+    page,
+    search,
+    sort,
+    readFilter,
+    entityKind,
+    entityId,
+  });
+
+  // Accumulate pages; replace the accumulator whenever the filter set changes.
+  // Skip placeholder data: on a filter change react-query briefly returns the
+  // PREVIOUS result (placeholderData) under the new resetKey — acting on it
+  // would mark the key seen and push the real filtered data onto the append
+  // path, leaving stale cards behind a corrected count.
+  useEffect(() => {
+    if (!data || isPlaceholderData) return;
+    if (resetKey !== accKeyRef.current) {
       setAllBooks(data.items);
-      accKeyRef.current = key;
+      accKeyRef.current = resetKey;
     } else {
-      // Same search/sort, higher page — append deduped
-      setAllBooks((prev) => {
-        const existing = new Set(prev.map((b) => b.id));
-        const newBooks = data.items.filter((b) => !existing.has(b.id));
-        return newBooks.length > 0 ? [...prev, ...newBooks] : prev;
-      });
-      accKeyRef.current = key;
+      setAllBooks((prev) => dedupAppend(prev, data.items));
     }
-  }, [data, page, search, sort]);
+  }, [data, isPlaceholderData, resetKey]);
 
   const total = data?.total ?? 0;
-  const loadedCount = allBooks.length;
-  const hasMore = loadedCount < total;
+  const hasMore = allBooks.length < total;
   const isFirstLoad = isLoading && allBooks.length === 0;
 
-  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSort(e.target.value);
-    setPage(1);
-  };
+  const heading = filtered ? (entityName ?? '…') : 'Your Library';
+  const countLabel =
+    total > 0
+      ? search && !filtered
+        ? `${total} result${total !== 1 ? 's' : ''} for "${search}"`
+        : `${total} book${total !== 1 ? 's' : ''}`
+      : '';
 
   return (
     <main className={styles.container}>
+      {filtered && (
+        <Link href={`/${ENTITY_PLURAL[entityKind!]}`} className={styles.back}>
+          <ChevronLeft size={16} />
+          All {ENTITY_PLURAL[entityKind!]}
+        </Link>
+      )}
+
       <div className={styles.header}>
-        <h1 className={styles.title}>Your Library</h1>
-        {total > 0 && (
-          <span className={styles.count}>
-            {search
-              ? `${total} result${total !== 1 ? 's' : ''} for "${search}"`
-              : `${total} book${total !== 1 ? 's' : ''}`}
-          </span>
-        )}
+        {filtered && <span className={styles.kindLabel}>{KIND_LABEL[entityKind!]}</span>}
+        <h1 className={styles.title}>{heading}</h1>
+        {countLabel && <span className={styles.count}>{countLabel}</span>}
       </div>
 
       {/* Toolbar */}
       <div className={styles.toolbar}>
-        <div className={styles.searchWrap}>
-          <Search size={15} className={styles.searchIcon} />
-          <input
-            type="search"
-            className={styles.searchInput}
-            placeholder="Search title, author…"
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
-            aria-label="Search books"
-          />
+        {!filtered && (
+          <div className={styles.searchWrap}>
+            <Search size={15} className={styles.searchIcon} />
+            <input
+              type="search"
+              className={styles.searchInput}
+              placeholder="Search title, author…"
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+              aria-label="Search books"
+            />
+          </div>
+        )}
+
+        {/* Read-status segmented control (disabled while a text search is active,
+            which the API resolves on a separate code path). */}
+        <div className={styles.segmented} role="group" aria-label="Read status filter">
+          {READ_FILTERS.map((rf) => (
+            <button
+              key={rf.value}
+              type="button"
+              className={readFilter === rf.value ? styles.segActive : styles.seg}
+              aria-pressed={readFilter === rf.value}
+              disabled={!!search && !filtered}
+              onClick={() => setReadFilter(rf.value)}
+            >
+              {rf.label}
+            </button>
+          ))}
         </div>
+
         <select
           className={styles.sortSelect}
           value={sort}
-          onChange={handleSortChange}
+          onChange={(e) => setSort(e.target.value)}
           aria-label="Sort order"
         >
           {SORT_OPTIONS.map((opt) => (
@@ -117,7 +187,15 @@ export function Catalog() {
       ) : error ? (
         <EmptyState message={error instanceof Error ? error.message : 'Failed to load books.'} />
       ) : allBooks.length === 0 && !isFetching ? (
-        <EmptyState message={search ? `No results for "${search}".` : 'No books yet.'} />
+        <EmptyState
+          message={
+            search && !filtered
+              ? `No results for "${search}".`
+              : readFilter !== 'all'
+                ? `No ${readFilter} books here.`
+                : 'No books here.'
+          }
+        />
       ) : (
         <>
           <div className={styles.grid}>
@@ -132,11 +210,7 @@ export function Catalog() {
 
           {hasMore && (
             <div className={styles.loadMore}>
-              <Button
-                variant="ghost"
-                onClick={() => setPage((p) => p + 1)}
-                disabled={isFetching}
-              >
+              <Button variant="ghost" onClick={() => setPage((p) => p + 1)} disabled={isFetching}>
                 {isFetching ? (
                   <>
                     <Spinner size={16} />

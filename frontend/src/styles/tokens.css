@@ -84,4 +84,7 @@
   /* ---- Z ---- */
   --z-bar: 50;
   --z-overlay: 100;
+
+  /* ---- Layout ---- */
+  --topbar-h: 56px;
 }

@@ -2,13 +2,41 @@
   position: sticky;
   top: 0;
   z-index: var(--z-bar);
+  height: var(--topbar-h);
+  box-sizing: border-box;
   background: var(--surface-1);
   border-bottom: 1px solid var(--border);
   box-shadow: var(--elev-1);
-  padding: var(--sp-3) var(--sp-5);
+  padding: 0 var(--sp-5);
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.menuBtn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  padding: var(--sp-1);
+  border-radius: var(--r-sm);
+  transition: color var(--dur-fast) var(--ease);
+}
+
+.menuBtn:hover {
+  color: var(--text);
+}
+
+@media (max-width: 767px) {
+  .menuBtn {
+    display: inline-flex;
+  }
 }
 
 .brand {

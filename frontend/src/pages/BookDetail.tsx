@@ -52,8 +52,6 @@ export function BookDetail() {
   const readableFormats = book.formats.filter((f) => readableFormat(f) !== null);
   const primaryReadable = readableFormats[0] ?? null;
 
-  const authorStr = book.authors.join(', ');
-
   return (
     <main className={styles.container}>
       <Link href="/" className={styles.back}>← Library</Link>
@@ -78,10 +76,23 @@ export function BookDetail() {
         <div className={styles.infoCol}>
           <div>
             <h1 className={styles.title}>{book.title}</h1>
-            {authorStr && <p className={styles.authors}>{authorStr}</p>}
+            {book.authors.length > 0 && (
+              <p className={styles.authors}>
+                {book.authors.map((a, i) => (
+                  <span key={a.id}>
+                    {i > 0 && ', '}
+                    <Link href={`/authors/${a.id}`} className={styles.metaLink}>{a.name}</Link>
+                  </span>
+                ))}
+              </p>
+            )}
             {book.series && (
               <p className={styles.series}>
-                {book.series} · Book {book.series_index}
+                <Link href={`/series/${book.series.id}`} className={styles.metaLink}>
+                  {book.series.name}
+                </Link>
+                {' · Book '}
+                {book.series_index}
               </p>
             )}
           </div>
@@ -123,7 +134,9 @@ export function BookDetail() {
           {book.tags.length > 0 && (
             <div className={styles.tags}>
               {book.tags.map((tag) => (
-                <Pill key={tag}>{tag}</Pill>
+                <Link key={tag.id} href={`/tags/${tag.id}`} className={styles.tagLink}>
+                  <Pill>{tag.name}</Pill>
+                </Link>
               ))}
             </div>
           )}
@@ -139,13 +152,27 @@ export function BookDetail() {
             {book.languages.length > 0 && (
               <>
                 <dt className={styles.metaLabel}>{book.languages.length === 1 ? 'Language' : 'Languages'}</dt>
-                <dd className={styles.metaValue}>{book.languages.join(', ')}</dd>
+                <dd className={styles.metaValue}>
+                  {book.languages.map((l, i) => (
+                    <span key={l.id}>
+                      {i > 0 && ', '}
+                      <Link href={`/languages/${l.id}`} className={styles.metaLink}>{l.name}</Link>
+                    </span>
+                  ))}
+                </dd>
               </>
             )}
             {book.publishers.length > 0 && (
               <>
                 <dt className={styles.metaLabel}>{book.publishers.length === 1 ? 'Publisher' : 'Publishers'}</dt>
-                <dd className={styles.metaValue}>{book.publishers.join(', ')}</dd>
+                <dd className={styles.metaValue}>
+                  {book.publishers.map((p, i) => (
+                    <span key={p.id}>
+                      {i > 0 && ', '}
+                      <Link href={`/publishers/${p.id}`} className={styles.metaLink}>{p.name}</Link>
+                    </span>
+                  ))}
+                </dd>
               </>
             )}
             {book.identifiers.map((id) => (

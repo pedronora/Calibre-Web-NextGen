@@ -49,9 +49,10 @@ def serialize_book_detail(book, read=False, archived=False):
     """
     bid = book.id
 
-    # Series (first entry only)
+    # Series (first entry only) — {id, name} so the UI can link to the series view
     series_list = getattr(book, "series", None) or []
-    series_name = series_list[0].name if series_list else None
+    series = ({"id": series_list[0].id, "name": series_list[0].name}
+              if series_list else None)
 
     # Cover
     cover_url = f"/cover/{bid}/og" if getattr(book, "has_cover", 0) else None
@@ -71,17 +72,18 @@ def serialize_book_detail(book, read=False, archived=False):
     comments = getattr(book, "comments", None) or []
     description_html = clean_string(comments[0].text, bid) if comments else None
 
-    # Tags
-    tags = [t.name for t in (getattr(book, "tags", None) or [])]
+    # Tags — {id, name} for linking
+    tags = [{"id": t.id, "name": t.name} for t in (getattr(book, "tags", None) or [])]
 
-    # Languages — display name enriched by caller, fallback to lang_code
+    # Languages — {id (lang_code), name (display)}; name enriched by caller,
+    # falls back to lang_code so the serializer stays pure/testable
     languages = [
-        getattr(l, "language_name", None) or l.lang_code
+        {"id": l.lang_code, "name": getattr(l, "language_name", None) or l.lang_code}
         for l in (getattr(book, "languages", None) or [])
     ]
 
-    # Publishers
-    publishers = [p.name for p in (getattr(book, "publishers", None) or [])]
+    # Publishers — {id, name} for linking
+    publishers = [{"id": p.id, "name": p.name} for p in (getattr(book, "publishers", None) or [])]
 
     # Identifiers
     identifiers = [
@@ -103,8 +105,9 @@ def serialize_book_detail(book, read=False, archived=False):
     return {
         "id": bid,
         "title": book.title,
-        "authors": [a.name for a in (getattr(book, "authors", None) or [])],
-        "series": series_name,
+        "authors": [{"id": a.id, "name": a.name}
+                    for a in (getattr(book, "authors", None) or [])],
+        "series": series,
         "series_index": book.series_index,
         "cover_url": cover_url,
         "pubdate": pubdate_str,

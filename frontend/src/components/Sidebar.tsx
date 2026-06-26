@@ -1,5 +1,7 @@
 import { Link, useLocation } from 'wouter';
-import { Library, Users, Layers, Tag, Building2, Languages, BookCopy, UploadCloud } from 'lucide-react';
+import {
+  Library, Users, Layers, Tag, Building2, Languages, BookCopy, UploadCloud, Shield,
+} from 'lucide-react';
 import { useShelves, useMe } from '../lib/queries';
 import styles from './Sidebar.module.css';
 
@@ -29,6 +31,7 @@ export function Sidebar({ open, onNavigate }: SidebarProps) {
   const shelves = shelvesData?.items ?? [];
   const me = useMe().data;
   const canUpload = !!me?.role?.upload;
+  const isAdmin = !!me?.role?.admin;
 
   return (
     <>
@@ -53,19 +56,34 @@ export function Sidebar({ open, onNavigate }: SidebarProps) {
           })}
         </ul>
 
-        {canUpload && (
+        {(canUpload || isAdmin) && (
           <ul className={styles.list}>
-            <li>
-              <Link
-                href="/upload"
-                className={isActive(location, '/upload', true) ? styles.itemActive : styles.item}
-                aria-current={isActive(location, '/upload', true) ? 'page' : undefined}
-                onClick={onNavigate}
-              >
-                <UploadCloud size={18} className={styles.icon} />
-                <span>Upload</span>
-              </Link>
-            </li>
+            {canUpload && (
+              <li>
+                <Link
+                  href="/upload"
+                  className={isActive(location, '/upload', true) ? styles.itemActive : styles.item}
+                  aria-current={isActive(location, '/upload', true) ? 'page' : undefined}
+                  onClick={onNavigate}
+                >
+                  <UploadCloud size={18} className={styles.icon} />
+                  <span>Upload</span>
+                </Link>
+              </li>
+            )}
+            {isAdmin && (
+              <li>
+                <Link
+                  href="/admin"
+                  className={isActive(location, '/admin', true) ? styles.itemActive : styles.item}
+                  aria-current={isActive(location, '/admin', true) ? 'page' : undefined}
+                  onClick={onNavigate}
+                >
+                  <Shield size={18} className={styles.icon} />
+                  <span>Admin</span>
+                </Link>
+              </li>
+            )}
           </ul>
         )}
 

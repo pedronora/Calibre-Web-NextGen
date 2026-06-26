@@ -3,7 +3,7 @@ import { apiGet, apiPost, apiUpload, ApiError } from './api';
 import type {
   Me, BooksPage, BookDetail, EntityList, Shelf, ShelfDetail,
   SearchOptions, AdvancedSearchParams, AdvSearchResult, Account, ProfileUpdate,
-  BookMetadata, MetadataUpdate, UploadResult,
+  BookMetadata, MetadataUpdate, UploadResult, AdminUser,
 } from './api';
 
 /** Entity kinds the catalog can be filtered by. Singular here; the browse-list
@@ -170,6 +170,34 @@ export function useDeleteShelf() {
   return useMutation({
     mutationFn: (id: number) => apiPost(`/api/v1/shelves/${id}/delete`),
     onSuccess: () => void qc.invalidateQueries({ queryKey: ['shelves'] }),
+  });
+}
+
+// ── Admin (user management) ──────────────────────────────────────────────────
+
+export function useAdminUsers() {
+  return useQuery<{ items: AdminUser[] }>({
+    queryKey: ['admin-users'],
+    queryFn: () => apiGet<{ items: AdminUser[] }>('/api/v1/admin/users'),
+  });
+}
+
+export function useUpdateAdminUser() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (v: { id: number; roles?: Record<string, boolean>; email?: string }) => {
+      const { id, ...body } = v;
+      return apiPost<AdminUser>(`/api/v1/admin/users/${id}`, body);
+    },
+    onSuccess: () => void qc.invalidateQueries({ queryKey: ['admin-users'] }),
+  });
+}
+
+export function useDeleteAdminUser() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (id: number) => apiPost(`/api/v1/admin/users/${id}/delete`),
+    onSuccess: () => void qc.invalidateQueries({ queryKey: ['admin-users'] }),
   });
 }
 

@@ -161,6 +161,17 @@ export interface UploadResult {
   errors: { filename: string; error: string }[];
 }
 
+export interface AdminUser {
+  id: number;
+  name: string;
+  email: string;
+  kindle_mail: string;
+  locale: string;
+  default_language: string;
+  is_guest: boolean;
+  roles: Record<string, boolean>;
+}
+
 export class ApiError extends Error {
   status: number;
   constructor(status: number, message: string) {

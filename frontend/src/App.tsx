@@ -11,6 +11,7 @@ import { AdvancedSearch } from './pages/AdvancedSearch';
 import { Account } from './pages/Account';
 import { EditBook } from './pages/EditBook';
 import { Upload } from './pages/Upload';
+import { Admin } from './pages/Admin';
 import { AppShell } from './components/AppShell';
 import { SpinnerCentered } from './components/Spinner';
 
@@ -87,6 +88,9 @@ export function App() {
 
           {/* Upload */}
           <Route path="/upload">{() => <Upload />}</Route>
+
+          {/* Admin */}
+          <Route path="/admin">{() => <Admin />}</Route>
 
           <Route path="/">{() => <Catalog />}</Route>
             </Switch>

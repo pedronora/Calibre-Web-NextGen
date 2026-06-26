@@ -4,6 +4,8 @@ import { Login } from './pages/Login';
 import { Catalog } from './pages/Catalog';
 import { BookDetail } from './pages/BookDetail';
 import { BrowseList } from './pages/BrowseList';
+import { Shelves } from './pages/Shelves';
+import { Shelf } from './pages/Shelf';
 import { AppShell } from './components/AppShell';
 import { SpinnerCentered } from './components/Spinner';
 
@@ -50,6 +52,10 @@ export function App() {
           <Route path="/languages/:id">
             {(p) => <Catalog entityKind="language" entityId={decodeURIComponent(p.id)} />}
           </Route>
+
+          {/* Shelves */}
+          <Route path="/shelves">{() => <Shelves />}</Route>
+          <Route path="/shelf/:id">{(p) => <Shelf id={p.id} />}</Route>
 
           <Route path="/">{() => <Catalog />}</Route>
         </Switch>

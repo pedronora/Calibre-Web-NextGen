@@ -68,6 +68,23 @@ export interface EntityList {
   items: EntityListItem[];
 }
 
+export interface Shelf {
+  id: number;
+  name: string;
+  is_public: boolean;
+  is_owner: boolean;
+  kobo_sync: boolean;
+  count: number;
+}
+
+export interface ShelfDetail extends Shelf {
+  items: Book[];
+  page: number;
+  per_page: number;
+  total: number;
+  can_edit: boolean;
+}
+
 export class ApiError extends Error {
   status: number;
   constructor(status: number, message: string) {

@@ -24,6 +24,20 @@ def serialize_user(user):
     }
 
 
+def serialize_shelf(shelf, count, is_owner):
+    """Serialize a Shelf for the list/detail API. ``count`` (archive-aware book
+    count) and ``is_owner`` are computed by the caller — the serializer stays
+    pure of DB/Flask so it's trivially testable."""
+    return {
+        "id": shelf.id,
+        "name": shelf.name,
+        "is_public": bool(shelf.is_public),
+        "is_owner": bool(is_owner),
+        "kobo_sync": bool(getattr(shelf, "kobo_sync", False)),
+        "count": count,
+    }
+
+
 def serialize_book_list_item(book, read=False, archived=False):
     series = book.series[0].name if getattr(book, "series", None) else None
     return {

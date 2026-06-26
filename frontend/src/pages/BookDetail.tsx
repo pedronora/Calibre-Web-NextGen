@@ -2,6 +2,7 @@ import { Link, useParams } from 'wouter';
 import { Download } from 'lucide-react';
 import { useBook, useToggleRead } from '../lib/queries';
 import { Pill } from '../components/Pill';
+import { AddToShelf } from '../components/AddToShelf';
 import { SpinnerCentered } from '../components/Spinner';
 import { EmptyState } from '../components/EmptyState';
 import type { BookFormat } from '../lib/api';
@@ -116,6 +117,8 @@ export function BookDetail() {
             >
               {book.read ? 'Read ✓' : 'Mark as read'}
             </button>
+
+            <AddToShelf bookId={book.id} />
 
             {book.formats.map((fmt) => (
               <a

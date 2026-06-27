@@ -5,9 +5,15 @@ import {
   ChevronLeft, ChevronRight, X, List, Type, Sun, Moon, Coffee, Loader2,
 } from 'lucide-react';
 import { useBook, useBookmark, useSaveBookmark } from '../lib/queries';
+import { apiPost } from '../lib/api';
 import { EmptyState } from '../components/EmptyState';
 import { useT } from '../lib/i18n';
 import styles from './Reader.module.css';
+
+// Highlight colors (match the legacy/Kobo set). Rendered semi-transparent.
+const HILITE_FILL: Record<string, string> = {
+  yellow: '#e6c34a', red: '#d9534f', green: '#5cb85c', blue: '#5b9bd5',
+};
 
 type ReaderTheme = 'light' | 'sepia' | 'dark';
 
@@ -63,8 +69,36 @@ export function Reader({ id }: { id: string }) {
   const [theme, setTheme] = useState<ReaderTheme>(loadTheme);
   const [fontPct, setFontPct] = useState(loadFont);
   const [progress, setProgress] = useState(0);
+  // Pending text selection awaiting a highlight-color choice.
+  const [pendingSel, setPendingSel] = useState<{ cfiRange: string; text: string } | null>(null);
 
   const epubFormat = book?.formats.find((f) => f.format.toLowerCase() === 'epub');
+
+  // Paint a highlight onto the live rendition (epub.js annotations API).
+  const paintHighlight = useCallback((cfiRange: string, color: string) => {
+    try {
+      renditionRef.current?.annotations?.highlight(
+        cfiRange, {}, undefined, '',
+        { fill: HILITE_FILL[color] || HILITE_FILL.yellow, 'fill-opacity': '0.35' },
+      );
+    } catch { /* epub.js throws on a stale/foreign CFI — ignore */ }
+  }, []);
+
+  // Create a highlight from the pending selection, persist it, paint it.
+  const createHighlight = useCallback(async (color: string) => {
+    const sel = pendingSel;
+    if (!sel) return;
+    setPendingSel(null);
+    try {
+      await apiPost(`/annotations/${id}`, {
+        cfi_range: sel.cfiRange, highlighted_text: sel.text, highlight_color: color,
+      });
+      paintHighlight(sel.cfiRange, color);
+    } catch { /* surfaced as no-op; user can retry */ }
+    try {
+      (renditionRef.current?.getContents?.() || []).forEach((c: any) => c.window?.getSelection?.().removeAllRanges());
+    } catch { /* noop */ }
+  }, [pendingSel, id, paintHighlight]);
 
   useEffect(() => {
     savedCfiRef.current = savedBookmark?.bookmark ?? savedCfiRef.current;
@@ -165,6 +199,29 @@ export function Reader({ id }: { id: string }) {
           if (epubBook.locations.length()) {
             setProgress(Math.round(epubBook.locations.percentageFromCfi(cfi) * 100));
           }
+        });
+
+        // Render existing highlights (the CFI-anchored ones we can place).
+        fetch(`/annotations/${id}/data.json`, { credentials: 'include' })
+          .then((r) => (r.ok ? r.json() : null))
+          .then((d) => {
+            if (cancelled || !d) return;
+            (d.annotations || []).forEach((a: any) => {
+              if (a.cfi_range) {
+                try {
+                  rendition.annotations.highlight(a.cfi_range, {}, undefined, '',
+                    { fill: HILITE_FILL[a.highlight_color] || HILITE_FILL.yellow, 'fill-opacity': '0.35' });
+                } catch { /* skip un-placeable CFI */ }
+              }
+            });
+          })
+          .catch(() => { /* highlights are best-effort */ });
+
+        // Capture a text selection → offer a highlight-color popover.
+        rendition.on('selected', (cfiRange: string, contents: any) => {
+          let text = '';
+          try { text = (contents?.window?.getSelection?.().toString() || '').trim(); } catch { /* noop */ }
+          if (cfiRange) setPendingSel({ cfiRange, text });
         });
       } catch (e) {
         if (!cancelled) setRenderError(e instanceof Error ? e.message : 'Failed to open the book.');
@@ -328,6 +385,20 @@ export function Reader({ id }: { id: string }) {
           </div>
         )}
       </div>
+
+      {/* Highlight color popover for the current selection */}
+      {pendingSel && (
+        <div className={styles.hilitePop} role="dialog" aria-label={t('Highlight')}>
+          <span className={styles.hiliteLabel}>{t('Highlight')}</span>
+          {(['yellow', 'green', 'blue', 'red'] as const).map((c) => (
+            <button key={c} className={styles.hiliteSwatch} style={{ background: HILITE_FILL[c] }}
+              onClick={() => createHighlight(c)} aria-label={c} title={c} />
+          ))}
+          <button className={styles.hiliteCancel} onClick={() => setPendingSel(null)} aria-label={t('Cancel')}>
+            <X size={16} />
+          </button>
+        </div>
+      )}
 
       {/* Progress */}
       <div className={styles.progressBar} aria-hidden="true">

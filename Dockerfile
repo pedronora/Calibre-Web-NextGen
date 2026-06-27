@@ -18,6 +18,27 @@
 # --tag crocodilestick/calibre-web-automated:latest .
 
 # ==========================================================================
+# STAGE 0: Frontend - Build the React SPA bundle (Vite).
+# Build-time only: Node/npm never enter the runtime image. The compiled
+# bundle (cps/static/app) is copied into the final stage below. The source
+# tree's cps/static/app is .dockerignore'd, so this stage is the ONLY source
+# of the shipped bundle — CI/production builds the SPA reproducibly instead of
+# silently baking in a developer's local artifact. See
+# notes/FRONTEND-REBUILD-DESIGN.md (§5 build topology).
+# ==========================================================================
+FROM node:22-slim AS frontend-build
+
+WORKDIR /build/frontend
+
+# Install deps first so this layer caches unless package*.json changes.
+COPY frontend/package.json frontend/package-lock.json ./
+RUN --mount=type=cache,target=/root/.npm npm ci
+
+# Then build. vite.config.ts outDir is ../cps/static/app => /build/cps/static/app.
+COPY frontend/ ./
+RUN npm run build
+
+# ==========================================================================
 # STAGE 1: Dependencies - Install system packages and Python dependencies
 # ==========================================================================
 ARG CALIBRE_RELEASE=9.1.0
@@ -251,6 +272,12 @@ RUN \
 # STEP 6 - Copy application files
 # Copy the rest of the application code (changes most frequently)
 COPY --chown=abc:abc . /app/calibre-web-automated/
+
+# STEP 6.1 - Copy the Vite-built SPA bundle from the frontend-build stage.
+# The source tree's cps/static/app is .dockerignore'd, so this COPY is the
+# only bundle that ships — guaranteeing the SPA is built in-image rather than
+# inherited from a developer's local build context.
+COPY --from=frontend-build --chown=abc:abc /build/cps/static/app /app/calibre-web-automated/cps/static/app
 
 # STEP 7 - Configure application
 RUN \

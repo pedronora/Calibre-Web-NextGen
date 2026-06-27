@@ -24,6 +24,8 @@ import { I18nProvider } from './lib/i18n';
 // The reader pulls in epub.js (large) — load it only when a book is opened so it
 // stays out of the initial bundle.
 const Reader = lazy(() => import('./pages/Reader').then((m) => ({ default: m.Reader })));
+// Native multi-format reader (PDF/audio/text) — also lazy, full-screen.
+const NativeReader = lazy(() => import('./pages/NativeReader').then((m) => ({ default: m.NativeReader })));
 
 export function App() {
   const { data: me, isLoading } = useMe();
@@ -46,6 +48,15 @@ export function App() {
           {(p) => (
             <Suspense fallback={<SpinnerCentered size={40} />}>
               <Reader id={p.id} />
+            </Suspense>
+          )}
+        </Route>
+
+        {/* Native non-EPUB reader (PDF / audio / text) — full screen */}
+        <Route path="/view/:id/:format">
+          {(p) => (
+            <Suspense fallback={<SpinnerCentered size={40} />}>
+              <NativeReader id={p.id} format={p.format} />
             </Suspense>
           )}
         </Route>

@@ -180,10 +180,11 @@ export function BookDetail() {
                 {t('Read')}
               </Link>
             ) : primaryReadable ? (
-              // Other readable formats (PDF, …) use the classic full-page reader.
-              <a href={primaryReadable.read_url} className={styles.actionPrimary}>
+              // PDF/audio/text open in the native multi-format reader; comics/
+              // DjVu fall through there to the server reader for image extraction.
+              <Link href={`/view/${book.id}/${primaryReadable.format.toLowerCase()}`} className={styles.actionPrimary}>
                 {t('Read')}
-              </a>
+              </Link>
             ) : null}
 
             <button

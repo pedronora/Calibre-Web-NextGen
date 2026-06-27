@@ -90,3 +90,4 @@ from . import upload   # noqa: E402,F401
 from . import admin    # noqa: E402,F401
 from . import info     # noqa: E402,F401
 from . import duplicates  # noqa: E402,F401
+from . import magicshelves  # noqa: E402,F401

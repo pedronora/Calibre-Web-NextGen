@@ -595,6 +595,40 @@ export function useCreateMagicShelf() {
   });
 }
 
+export interface MagicShelfItem { id: number; name: string; icon: string; is_public: boolean; is_owner: boolean }
+
+export function useMagicShelves() {
+  return useQuery<{ items: MagicShelfItem[] }>({
+    queryKey: ['magicshelves'],
+    queryFn: () => apiGet<{ items: MagicShelfItem[] }>('/api/v1/magicshelves'),
+    staleTime: 30000,
+  });
+}
+
+export function useMagicShelfBooks(id: string | number, page = 1) {
+  return useQuery<{ id: number; name: string; icon: string; is_owner: boolean } & BooksPage>({
+    queryKey: ['magicshelf', String(id), page],
+    queryFn: () => apiGet(`/api/v1/magicshelf/${id}?page=${page}`),
+    placeholderData: (prev) => prev,
+  });
+}
+
+export function useDeleteMagicShelf() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (id: number) => apiPost(`/magicshelf/${id}/delete`),
+    onSuccess: () => void qc.invalidateQueries({ queryKey: ['magicshelves'] }),
+  });
+}
+
+export function useDuplicateMagicShelf() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (id: number) => apiPost(`/magicshelf/${id}/duplicate`),
+    onSuccess: () => void qc.invalidateQueries({ queryKey: ['magicshelves'] }),
+  });
+}
+
 // ── Duplicates ───────────────────────────────────────────────────────────────
 
 export interface DuplicateBook {

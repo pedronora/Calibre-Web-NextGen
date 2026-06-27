@@ -3,7 +3,7 @@ import {
   Library, Users, Layers, Tag, Building2, Languages, BookCopy, UploadCloud, Shield,
   Flame, Shuffle, Star, Archive, Info, ListChecks, Table2, Wand2, Files,
 } from 'lucide-react';
-import { useShelves, useMe } from '../lib/queries';
+import { useShelves, useMe, useMagicShelves } from '../lib/queries';
 import { useT } from '../lib/i18n';
 import styles from './Sidebar.module.css';
 
@@ -48,6 +48,7 @@ export function Sidebar({ open, onNavigate }: SidebarProps) {
   const t = useT();
   const { data: shelvesData } = useShelves();
   const shelves = shelvesData?.items ?? [];
+  const magicShelves = useMagicShelves().data?.items ?? [];
   const me = useMe().data;
   const canUpload = !!me?.role?.upload;
   const isAdmin = !!me?.role?.admin;
@@ -181,6 +182,23 @@ export function Sidebar({ open, onNavigate }: SidebarProps) {
               <span>{t('Smart shelves')}</span>
             </Link>
           </li>
+          {magicShelves.map((ms) => {
+            const href = `/magic/${ms.id}`;
+            const active = location === href;
+            return (
+              <li key={`ms-${ms.id}`}>
+                <Link
+                  href={href}
+                  className={active ? styles.shelfItemActive : styles.shelfItem}
+                  aria-current={active ? 'page' : undefined}
+                  onClick={onNavigate}
+                  title={ms.name}
+                >
+                  <span className={styles.shelfName}>{ms.icon} {ms.name}</span>
+                </Link>
+              </li>
+            );
+          })}
           {(canUpload || isAdmin) && (
             <li>
               <Link

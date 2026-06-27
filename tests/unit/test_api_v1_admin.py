@@ -151,3 +151,147 @@ def test_delete_user_last_admin_guard_surfaces_as_400():
             resp = inspect.unwrap(mod.admin_delete_user)(2)
     assert resp[1] == 400
     assert "admin" in json.loads(resp[0].get_data())["error"]["message"].lower()
+
+
+# ── user creation ─────────────────────────────────────────────────────────────
+
+def _create_config():
+    """A config double carrying the defaults _handle_new_user reads."""
+    return SimpleNamespace(
+        config_default_role=constants.ROLE_DOWNLOAD,
+        config_default_locale="en",
+        config_default_language="all",
+        config_default_show=0,
+        config_allowed_tags="", config_denied_tags="",
+        config_allowed_column_value="", config_denied_column_value="",
+    )
+
+
+@pytest.mark.unit
+def test_create_user_requires_admin():
+    from cps.api import admin as mod
+    with _ctx("/api/v1/admin/users", body={"name": "x", "password": "y"}):
+        with patch.object(mod, "current_user", _admin(is_admin=False)):
+            resp = inspect.unwrap(mod.admin_create_user)()
+    assert resp[1] == 403
+
+
+@pytest.mark.unit
+def test_create_user_anonymous_401():
+    from cps.api import admin as mod
+    with _ctx("/api/v1/admin/users", body={"name": "x", "password": "y"}):
+        with patch.object(mod, "current_user", _admin(anon=True)):
+            resp = inspect.unwrap(mod.admin_create_user)()
+    assert resp[1] == 401
+
+
+@pytest.mark.unit
+def test_create_user_missing_fields_400():
+    from cps.api import admin as mod
+    with _ctx("/api/v1/admin/users", body={"name": "onlyname"}):
+        with patch.object(mod, "current_user", _admin()):
+            resp = inspect.unwrap(mod.admin_create_user)()
+    assert resp[1] == 400
+    assert "required" in json.loads(resp[0].get_data())["error"]["message"].lower()
+
+
+@pytest.mark.unit
+def test_create_user_valid_sets_roles_and_commits():
+    from cps.api import admin as mod
+    mock_ub = MagicMock()
+    created = {}
+
+    class _U:
+        # Defaults for the columns _serialize_user reads but the body may omit.
+        id = 6
+        email = None
+        kindle_mail = None
+
+        def __init__(self):
+            created["obj"] = self
+    mock_ub.User = _U
+
+    with _ctx("/api/v1/admin/users",
+              body={"name": "maggie", "password": "S3cret!pw",
+                    "roles": {"upload": True, "download": True}}):
+        with patch.object(mod, "current_user", _admin()), \
+             patch.object(mod, "ub", mock_ub), \
+             patch.object(mod, "config", _create_config()), \
+             patch.object(mod, "check_username", side_effect=lambda n: n), \
+             patch.object(mod, "valid_password", side_effect=lambda p: p), \
+             patch.object(mod, "generate_password_hash", side_effect=lambda p: "HASH:" + p):
+            resp = inspect.unwrap(mod.admin_create_user)()
+
+    # 201 + the new user committed with the requested role bits.
+    assert resp[1] == 201
+    mock_ub.session.add.assert_called_once()
+    mock_ub.session.commit.assert_called_once()
+    obj = created["obj"]
+    assert obj.name == "maggie"
+    assert obj.password == "HASH:S3cret!pw"
+    assert obj.role & constants.ROLE_UPLOAD
+    assert obj.role & constants.ROLE_DOWNLOAD
+    assert not (obj.role & constants.ROLE_ADMIN)
+    assert obj.theme == 1  # dark default like legacy
+
+
+@pytest.mark.unit
+def test_create_user_defaults_role_when_unspecified():
+    from cps.api import admin as mod
+    mock_ub = MagicMock()
+    created = {}
+
+    class _U:
+        # Defaults for the columns _serialize_user reads but the body may omit.
+        id = 6
+        email = None
+        kindle_mail = None
+
+        def __init__(self):
+            created["obj"] = self
+    mock_ub.User = _U
+
+    with _ctx("/api/v1/admin/users", body={"name": "bob", "password": "S3cret!pw"}):
+        with patch.object(mod, "current_user", _admin()), \
+             patch.object(mod, "ub", mock_ub), \
+             patch.object(mod, "config", _create_config()), \
+             patch.object(mod, "check_username", side_effect=lambda n: n), \
+             patch.object(mod, "valid_password", side_effect=lambda p: p), \
+             patch.object(mod, "generate_password_hash", side_effect=lambda p: p):
+            resp = inspect.unwrap(mod.admin_create_user)()
+    assert resp[1] == 201
+    assert created["obj"].role == constants.ROLE_DOWNLOAD  # the configured default
+
+
+@pytest.mark.unit
+def test_create_user_duplicate_name_surfaces_400():
+    from cps.api import admin as mod
+    mock_ub = MagicMock()
+    mock_ub.User = SimpleNamespace
+    with _ctx("/api/v1/admin/users", body={"name": "dupe", "password": "S3cret!pw"}):
+        with patch.object(mod, "current_user", _admin()), \
+             patch.object(mod, "ub", mock_ub), \
+             patch.object(mod, "config", _create_config()), \
+             patch.object(mod, "check_username", side_effect=Exception("This username is already taken")), \
+             patch.object(mod, "valid_password", side_effect=lambda p: p), \
+             patch.object(mod, "generate_password_hash", side_effect=lambda p: p):
+            resp = inspect.unwrap(mod.admin_create_user)()
+    assert resp[1] == 400
+    assert "taken" in json.loads(resp[0].get_data())["error"]["message"].lower()
+
+
+@pytest.mark.unit
+def test_create_user_password_policy_surfaces_400():
+    from cps.api import admin as mod
+    mock_ub = MagicMock()
+    mock_ub.User = SimpleNamespace
+    with _ctx("/api/v1/admin/users", body={"name": "weak", "password": "abc"}):
+        with patch.object(mod, "current_user", _admin()), \
+             patch.object(mod, "ub", mock_ub), \
+             patch.object(mod, "config", _create_config()), \
+             patch.object(mod, "check_username", side_effect=lambda n: n), \
+             patch.object(mod, "valid_password", side_effect=Exception("Password doesn't comply with password validation rules")), \
+             patch.object(mod, "generate_password_hash", side_effect=lambda p: p):
+            resp = inspect.unwrap(mod.admin_create_user)()
+    assert resp[1] == 400
+    assert "password" in json.loads(resp[0].get_data())["error"]["message"].lower()

@@ -3,16 +3,19 @@
 """Admin user-management endpoints for /api/v1 (admin-only).
 
 Reuses cps/admin.py's _delete_user (last-admin + Guest guards + the D4 per-user
-data purge) for deletion. Role changes guard against demoting the last admin so
-an admin can't lock everyone out. User creation is deferred to a follow-up.
+data purge) for deletion, and the canonical helper validators
+(check_username / valid_password / check_email) for creation, so the SPA and the
+legacy admin page enforce identical rules. Role changes guard against demoting
+the last admin so an admin can't lock everyone out.
 """
 from flask import jsonify, request
+from sqlalchemy.exc import IntegrityError
 
 from . import api_v1
-from .. import ub, constants
+from .. import ub, constants, config
 from ..cw_login import current_user
 from ..usermanagement import login_required_if_no_ano
-from ..helper import valid_email, check_email
+from ..helper import valid_email, check_email, check_username, valid_password, generate_password_hash
 from ..admin import _delete_user
 
 # SPA role key -> the User.role bitmask bit. ROLE_ANONYMOUS is intentionally
@@ -73,6 +76,69 @@ def admin_list_users():
     items = [_serialize_user(u) for u in users
              if (u.role & constants.ROLE_ANONYMOUS) != constants.ROLE_ANONYMOUS]
     return jsonify({"items": items})
+
+
+@api_v1.route("/admin/users", methods=["POST"])
+@login_required_if_no_ano
+def admin_create_user():
+    """Create a household/library user. Mirrors cps/admin.py _handle_new_user:
+    same validators, same config-derived defaults (role, locale, language,
+    content restrictions, dark theme), so a user created here is indistinguishable
+    from one created via the legacy admin page."""
+    guard = _require_admin()
+    if guard:
+        return guard
+
+    data = request.get_json(silent=True) or {}
+    name = (data.get("name") or "").strip()
+    password = data.get("password") or ""
+    if not name or not password:
+        return _err("invalid_request", "Username and password are required", 400)
+
+    new_user = ub.User()
+    try:
+        new_user.name = check_username(name)                       # raises if taken/invalid
+        new_user.password = generate_password_hash(valid_password(password))  # enforces policy
+        email = (data.get("email") or "").strip()
+        if email:
+            new_user.email = check_email(valid_email(email))       # raises if taken/invalid
+        if data.get("kindle_mail"):
+            new_user.kindle_mail = valid_email(data["kindle_mail"])
+    except Exception as ex:  # validators raise generic Exception carrying a message
+        return _err("invalid_request", str(ex), 400)
+
+    # Roles: explicit set from the request, else the configured default role.
+    roles = data.get("roles")
+    if isinstance(roles, dict):
+        role = 0
+        for key, bit in ROLE_BITS.items():
+            if roles.get(key):
+                role |= bit
+        new_user.role = role
+    else:
+        new_user.role = config.config_default_role
+
+    new_user.locale = data.get("locale") or config.config_default_locale or "en"
+    new_user.default_language = data.get("default_language") or config.config_default_language or "all"
+    # Inherit the instance's content-visibility defaults + sidebar, like legacy.
+    new_user.allowed_tags = config.config_allowed_tags
+    new_user.denied_tags = config.config_denied_tags
+    new_user.allowed_column_value = config.config_allowed_column_value
+    new_user.denied_column_value = config.config_denied_column_value
+    new_user.sidebar_view = config.config_default_show
+    new_user.theme = 1  # caliBlur dark, matching _handle_new_user
+
+    try:
+        ub.session.add(new_user)
+        ub.session.commit()
+    except IntegrityError:
+        ub.session.rollback()
+        return _err("conflict", "An account already exists for this email or name", 409)
+    except Exception as ex:
+        ub.session.rollback()
+        return _err("db_error", "Could not create user: %s" % ex, 500)
+
+    return jsonify(_serialize_user(new_user)), 201
 
 
 @api_v1.route("/admin/users/<int:user_id>", methods=["POST"])

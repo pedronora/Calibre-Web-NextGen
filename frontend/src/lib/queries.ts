@@ -182,6 +182,24 @@ export function useAdminUsers() {
   });
 }
 
+export interface NewUser {
+  name: string;
+  password: string;
+  email?: string;
+  kindle_mail?: string;
+  roles?: Record<string, boolean>;
+  locale?: string;
+  default_language?: string;
+}
+
+export function useCreateAdminUser() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (v: NewUser) => apiPost<AdminUser>('/api/v1/admin/users', v),
+    onSuccess: () => void qc.invalidateQueries({ queryKey: ['admin-users'] }),
+  });
+}
+
 export function useUpdateAdminUser() {
   const qc = useQueryClient();
   return useMutation({

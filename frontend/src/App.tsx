@@ -12,6 +12,8 @@ import { Account } from './pages/Account';
 import { EditBook } from './pages/EditBook';
 import { Upload } from './pages/Upload';
 import { Admin } from './pages/Admin';
+import { About } from './pages/About';
+import { Tasks } from './pages/Tasks';
 import { AppShell } from './components/AppShell';
 import { SpinnerCentered } from './components/Spinner';
 import { I18nProvider } from './lib/i18n';
@@ -100,6 +102,10 @@ export function App() {
 
           {/* Admin */}
           <Route path="/admin">{() => <Admin />}</Route>
+
+          {/* Info pages */}
+          <Route path="/about">{() => <About />}</Route>
+          <Route path="/tasks">{() => <Tasks />}</Route>
 
           <Route path="/">{() => <Catalog />}</Route>
             </Switch>

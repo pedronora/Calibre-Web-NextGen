@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'wouter';
 import {
   Library, Users, Layers, Tag, Building2, Languages, BookCopy, UploadCloud, Shield,
-  Flame, Shuffle, Star, Archive,
+  Flame, Shuffle, Star, Archive, Info, ListChecks,
 } from 'lucide-react';
 import { useShelves, useMe } from '../lib/queries';
 import { useT } from '../lib/i18n';
@@ -24,6 +24,12 @@ const DISCOVER = [
   { href: '/discover', label: 'Discover', icon: Shuffle },
   { href: '/rated', label: 'Top Rated', icon: Star },
   { href: '/archived', label: 'Archived', icon: Archive },
+];
+
+// Lower-frequency info pages.
+const SYSTEM = [
+  { href: '/tasks', label: 'Tasks', icon: ListChecks },
+  { href: '/about', label: 'About', icon: Info },
 ];
 
 function isActive(location: string, href: string, exact?: boolean): boolean {
@@ -130,6 +136,25 @@ export function Sidebar({ open, onNavigate }: SidebarProps) {
             <span>{t('Shelves')}</span>
           </Link>
         </div>
+
+        <ul className={styles.list}>
+          {SYSTEM.map(({ href, label, icon: Icon }) => {
+            const active = isActive(location, href, true);
+            return (
+              <li key={href}>
+                <Link
+                  href={href}
+                  className={active ? styles.itemActive : styles.item}
+                  aria-current={active ? 'page' : undefined}
+                  onClick={onNavigate}
+                >
+                  <Icon size={18} className={styles.icon} />
+                  <span>{t(label)}</span>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
 
         {shelves.length > 0 && (
           <ul className={styles.shelfList}>

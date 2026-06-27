@@ -197,6 +197,23 @@ export interface AdminUser {
   roles: Record<string, boolean>;
 }
 
+export interface AboutInfo {
+  counts: { books: number; authors: number; categories: number; series: number };
+  versions: Record<string, string>;
+}
+
+export interface TaskItem {
+  task_id: number | string;
+  taskMessage: string;
+  status?: string;
+  progress: string;
+  starttime?: string;
+  runtime?: string;
+  user: string;
+  is_cancellable: boolean;
+  stat: number;
+}
+
 export class ApiError extends Error {
   status: number;
   constructor(status: number, message: string) {

@@ -3,7 +3,7 @@ import { apiGet, apiPost, apiUpload, ApiError } from './api';
 import type {
   Me, BooksPage, BookDetail, EntityList, Shelf, ShelfDetail,
   SearchOptions, AdvancedSearchParams, AdvSearchResult, Account, ProfileUpdate,
-  BookMetadata, MetadataUpdate, UploadResult, AdminUser,
+  BookMetadata, MetadataUpdate, UploadResult, AdminUser, AboutInfo, TaskItem,
 } from './api';
 
 /** Entity kinds the catalog can be filtered by. Singular here; the browse-list
@@ -465,4 +465,31 @@ export function useShelfMembership() {
     onSuccess: (_d, v) => invalidate(v.shelfId, v.bookId),
   });
   return { add, remove };
+}
+
+// ── Info: About / Tasks ──────────────────────────────────────────────────────
+
+export function useAbout() {
+  return useQuery<AboutInfo>({
+    queryKey: ['about'],
+    queryFn: () => apiGet<AboutInfo>('/api/v1/about'),
+    staleTime: 60000,
+  });
+}
+
+export function useTasks() {
+  return useQuery<{ items: TaskItem[] }>({
+    queryKey: ['tasks'],
+    queryFn: () => apiGet<{ items: TaskItem[] }>('/api/v1/tasks'),
+    refetchInterval: 4000, // live queue
+  });
+}
+
+export function useCancelTask() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (taskId: number | string) =>
+      apiPost(`/api/v1/tasks/${encodeURIComponent(String(taskId))}/cancel`),
+    onSuccess: () => void qc.invalidateQueries({ queryKey: ['tasks'] }),
+  });
 }

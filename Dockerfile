@@ -1,17 +1,25 @@
 # syntax=docker/dockerfile:1
 
-# ── Global Python pin (single source of truth) ──────────────────────────────
-# Declared before any FROM so it's a TRUE global ARG (usable in FROM lines). It
-# pins the interpreter AND addresses our GHCR tarball mirror. To bump Python,
-# change ONLY these two lines — the mirror stage below and the CI mirror-build
-# both derive from them. See notes/PYTHON-BUILD-MIRROR.md.
+# ── Global build version pins (single source of truth) ──────────────────────
+# Declared before any FROM so they are TRUE global ARGs: usable in FROM lines
+# AND inheritable by every later stage via a bare re-declare. PYTHON_* pin the
+# interpreter and address our GHCR tarball mirror; CALIBRE_RELEASE and
+# KEPUBIFY_RELEASE pin the binaries the dependencies stage downloads. A
+# stage-local ARG (declared after a FROM) only reaches that one stage, so a
+# bare re-declare elsewhere would inherit an empty string and build a malformed
+# download URL. To bump any pin, change ONLY the line here.
+# See notes/PYTHON-BUILD-MIRROR.md.
 ARG PYTHON_VERSION=3.13.14
 ARG PYTHON_BUILD_STANDALONE_RELEASE=20260623
+ARG CALIBRE_RELEASE=9.1.0
+ARG KEPUBIFY_RELEASE=v4.0.4
 
-# PBS tarball mirror stage: our GHCR image holding /python.tar.gz for the build
-# platform. We COPY from this in STEP 1.5 instead of curling the GitHub release
-# CDN, which intermittently 404s the Actions egress and broke every build.
+# Mirror stages: our GHCR images holding build deps that otherwise come from the
+# GitHub release CDN, which intermittently 404s the Actions egress and broke every
+# build. We COPY from these instead of curling at build time. The CI ensure-mirror
+# job (scripts/ensure-python-mirror.sh) builds them from the pins above.
 FROM ghcr.io/new-usemame/pbs-cache:cpython-${PYTHON_VERSION}-${PYTHON_BUILD_STANDALONE_RELEASE} AS pbs_mirror
+FROM ghcr.io/new-usemame/pbs-cache:kepubify-${KEPUBIFY_RELEASE} AS kepubify_mirror
 
 # Simple Example Build Command:
 # docker build \
@@ -54,10 +62,9 @@ RUN npm run build
 # ==========================================================================
 # STAGE 1: Dependencies - Install system packages and Python dependencies
 # ==========================================================================
-ARG CALIBRE_RELEASE=9.1.0
-ARG KEPUBIFY_RELEASE=v4.0.4
-# (PYTHON_VERSION / PYTHON_BUILD_STANDALONE_RELEASE are declared as global ARGs
-# at the top of this file; the dependencies stage re-declares them below.)
+# CALIBRE_RELEASE / KEPUBIFY_RELEASE / PYTHON_VERSION / PYTHON_BUILD_STANDALONE_RELEASE
+# are declared as global ARGs at the top of this file; the dependencies stage
+# re-declares them bare below so they inherit those global default values.
 
 FROM ghcr.io/linuxserver/baseimage-ubuntu:noble AS dependencies
 
@@ -163,23 +170,9 @@ RUN \
   /lsiopy/bin/pip install -U --no-cache-dir --find-links https://wheel-index.linuxserver.io/ubuntu/ -r \
   /app/calibre-web-automated/requirements.txt -r /app/calibre-web-automated/optional-requirements.txt
 
-# STEP 4 - Install kepubify
-RUN \
-  echo "**** install kepubify ****" && \
-  if [[ $KEPUBIFY_RELEASE == 'newest' ]]; then \
-  KEPUBIFY_RELEASE=$(curl -sX GET "https://api.github.com/repos/pgaskin/kepubify/releases/latest" \
-  | awk '/tag_name/{print $4;exit}' FS='[""]'); \
-  fi && \
-  if [ "$(uname -m)" == "x86_64" ]; then \
-  curl -fL --retry 30 --retry-delay 15 --retry-all-errors -o \
-  /usr/bin/kepubify \
-  https://github.com/pgaskin/kepubify/releases/download/${KEPUBIFY_RELEASE}/kepubify-linux-64bit; \
-  elif [ "$(uname -m)" == "aarch64" ]; then \
-  curl -fL --retry 30 --retry-delay 15 --retry-all-errors -o \
-  /usr/bin/kepubify \
-  https://github.com/pgaskin/kepubify/releases/download/${KEPUBIFY_RELEASE}/kepubify-linux-arm64; \
-  fi && \
-  chmod +x /usr/bin/kepubify
+# STEP 4 - Install kepubify from our GHCR mirror (not the GitHub release CDN).
+# The mirror image ships /kepubify already mode 0755 for the build platform.
+COPY --from=kepubify_mirror /kepubify /usr/bin/kepubify
 
 # STEP 5 - Install Calibre
 RUN \

@@ -242,6 +242,41 @@
         .cwng-newui-banner { flex-wrap: wrap; gap: 8px; font-size: 13px; padding: 10px 14px; }
         .cwng-newui-banner .cwng-newui-text { flex-basis: 100%; }
       }
+      /* The banner is fixed to the bottom, so without reserving its height it
+         overlaps anything else anchored there — notably caliBlur's fixed-bottom
+         toast/alert stack (the "Duplicate scanning…" notice was being clipped) —
+         and hides the last rows of the scrolling content. The banner script
+         measures its real height into --cwng-banner-h (wrap/locale-safe) and adds
+         the .cwng-has-newui-banner class to <body>; everything below is scoped to
+         that class, so dismissers are unaffected. env(safe-area-inset-bottom)
+         keeps it clear of mobile home indicators; the 56px fallback covers the
+         no-JS case. */
+      .cwng-newui-banner { padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px)); }
+      body.cwng-has-newui-banner {
+        /* --cwng-banner-h is measured from offsetHeight, which ALREADY includes the
+           banner's own safe-area padding above — so do NOT add the inset again here
+           (it would be counted twice on home-indicator phones). Only the no-JS
+           fallback adds it, since there's no measured height to include it. */
+        --cwng-banner-gap: var(--cwng-banner-h, calc(56px + env(safe-area-inset-bottom, 0px)));
+      }
+      /* 1. Lift the fixed-bottom toasts/alerts above the banner so they're never
+            clipped. caliBlur turns every .alert into a fixed bottom:20px toast and
+            stacks the persistent ones in .cwa-toast-stack (bottom:20px). DESKTOP
+            ONLY: on mobile (<=767px) mobile-alert-toast-position.css relocates
+            toasts to the TOP, so there's no overlap there and a bottom offset would
+            fight that rule. */
+      @media (min-width: 768px) {
+        body.cwng-has-newui-banner .cwa-toast-stack { bottom: calc(20px + var(--cwng-banner-gap)) !important; }
+        body.cwng-has-newui-banner .alert { bottom: calc(20px + var(--cwng-banner-gap)) !important; }
+        /* 2. Reserve scroll space so the last content rows / sidebar items clear the
+              banner. caliBlur (body.blur) scrolls the content column (.col-sm-10) and
+              the sidebar list (#scnd-nav, inside .col-sm-2) as separate panes —
+              #main-nav is the top navbar, not the sidebar, so pad #scnd-nav. */
+        body.cwng-has-newui-banner.blur > div.container-fluid > div.row-fluid > div.col-sm-10 { padding-bottom: var(--cwng-banner-gap) !important; }
+        body.cwng-has-newui-banner.blur #scnd-nav { padding-bottom: var(--cwng-banner-gap) !important; }
+      }
+      /* Standard (non-caliBlur) theme scrolls <body>; reserve there at all widths. */
+      body.cwng-has-newui-banner:not(.blur) { padding-bottom: var(--cwng-banner-gap); }
     </style>
     {% endif %}
     <!-- Static navbar -->
@@ -362,10 +397,20 @@
         if (!b) return;
         var key = 'cwng_newui_banner_dismissed_' + (b.getAttribute('data-version') || '');
         try { if (window.localStorage && localStorage.getItem(key) === '1') return; } catch (e) {}
+        var root = document.documentElement;
+        // Publish the banner's real height so the CSS offsets above can reserve
+        // exactly its space (it wraps to two lines on narrow/long-locale layouts).
+        function syncHeight() { root.style.setProperty('--cwng-banner-h', b.offsetHeight + 'px'); }
         b.hidden = false;
+        document.body.classList.add('cwng-has-newui-banner');
+        syncHeight();
+        if (window.ResizeObserver) { new ResizeObserver(syncHeight).observe(b); }
+        else { window.addEventListener('resize', syncHeight); }
         var x = b.querySelector('.cwng-newui-dismiss');
         if (x) x.addEventListener('click', function () {
           b.hidden = true;
+          document.body.classList.remove('cwng-has-newui-banner');
+          root.style.removeProperty('--cwng-banner-h');
           try { localStorage.setItem(key, '1'); } catch (e) {}
         });
       })();

@@ -17,6 +17,14 @@ is for things you can see or feel when running the app.
 ## [Unreleased]
 
 ### Added
+- **Quick-edit shortcuts are back in the new UI.** Two things the old interface
+  had returned: hovering a book in your library or search results now shows a
+  small pencil that drops you straight into that book's edit page — no need to
+  open the book first. And on a book's page you can now add or remove individual
+  tags right there (each tag has an × to remove it, plus an "Add tag" box) rather
+  than opening the full editor and hand-editing a long comma-separated list. Both
+  only appear if you have edit permission. Larger batch-editing improvements are
+  still on the way. Reported by @magdalar.
 - **The new UI's sidebar now respects which sections you've turned off.** Just
   like the classic UI, if an admin (or a per-user setting) has hidden sections
   such as Hot, Top Rated, Discover, Categories, Series, Authors, Publishers,

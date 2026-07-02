@@ -16,6 +16,16 @@ is for things you can see or feel when running the app.
 
 ## [Unreleased]
 
+### Added
+- **The new UI's sidebar now respects which sections you've turned off.** Just
+  like the classic UI, if an admin (or a per-user setting) has hidden sections
+  such as Hot, Top Rated, Discover, Categories, Series, Authors, Publishers,
+  Languages, Ratings, Formats, Archived, Favorites, Table view, or Duplicates,
+  those entries no longer appear in the new-UI sidebar — it follows your
+  configured Visibility settings instead of always showing everything. Nothing
+  changes if you never hid anything. Reordering sidebar entries is still on the
+  list for a later update. Requested by @Glennza1962.
+
 ### Fixed
 - **The new UI can now sort a series by its reading order, and shows each book's
   position.** Opening a series in the new UI listed its books newest-first with

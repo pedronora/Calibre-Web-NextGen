@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web NextGen\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-02 16:41+0000\n"
+"POT-Creation-Date: 2026-07-02 16:46+0000\n"
 "PO-Revision-Date: 2026-04-06 17:03+0000\n"
 "Last-Translator: Manuel Drescher\n"
 "Language-Team: German\n"
@@ -2505,6 +2505,24 @@ msgstr "Regal nicht gefunden"
 #, fuzzy
 msgid "Series order (reverse)"
 msgstr "Serie: %(serie)s"
+
+#: cps/spa_strings.py:38 cps/templates/detail.html:966
+#: cps/templates/detail.html:967 cps/templates/detail.html:1532
+msgid "Add tag"
+msgstr "Tag hinzufügen"
+
+#: cps/spa_strings.py:39
+msgid "New tag"
+msgstr ""
+
+#: cps/spa_strings.py:40 cps/templates/detail.html:958
+msgid "Remove tag"
+msgstr "Tag entfernen"
+
+#: cps/spa_strings.py:41
+#, fuzzy, python-format
+msgid "Remove tag %(name)s"
+msgstr "Tag entfernen"
 
 #: cps/tasks_status.py:37 cps/templates/layout.html:369
 #: cps/templates/tasks.html:7
@@ -6942,15 +6960,6 @@ msgstr "Zuletzt geändert"
 #: cps/templates/detail.html:914
 msgid "File sizes"
 msgstr "Dateigrößen"
-
-#: cps/templates/detail.html:958
-msgid "Remove tag"
-msgstr "Tag entfernen"
-
-#: cps/templates/detail.html:966 cps/templates/detail.html:967
-#: cps/templates/detail.html:1532
-msgid "Add tag"
-msgstr "Tag hinzufügen"
 
 #: cps/templates/detail.html:1012 cps/templates/listenmp3.html:111
 msgid "Published"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web NextGen\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-02 16:41+0000\n"
+"POT-Creation-Date: 2026-07-02 16:46+0000\n"
 "PO-Revision-Date: 2025-08-11 07:03+0000\n"
 "Last-Translator: Andrej Kralj\n"
 "Language-Team: Slovenian\n"
@@ -2506,6 +2506,25 @@ msgstr "Ne najdem uporabnika"
 #, fuzzy
 msgid "Series order (reverse)"
 msgstr "Serija: %(serie)s"
+
+#: cps/spa_strings.py:38 cps/templates/detail.html:966
+#: cps/templates/detail.html:967 cps/templates/detail.html:1532
+msgid "Add tag"
+msgstr "Dodaj oznako"
+
+#: cps/spa_strings.py:39
+msgid "New tag"
+msgstr ""
+
+#: cps/spa_strings.py:40 cps/templates/detail.html:958
+#, fuzzy
+msgid "Remove tag"
+msgstr "Odstrani"
+
+#: cps/spa_strings.py:41
+#, fuzzy, python-format
+msgid "Remove tag %(name)s"
+msgstr "Odstrani"
 
 #: cps/tasks_status.py:37 cps/templates/layout.html:369
 #: cps/templates/tasks.html:7
@@ -6969,16 +6988,6 @@ msgstr "Zadnjič spremenjeno"
 #, fuzzy
 msgid "File sizes"
 msgstr "Velikosti pisave"
-
-#: cps/templates/detail.html:958
-#, fuzzy
-msgid "Remove tag"
-msgstr "Odstrani"
-
-#: cps/templates/detail.html:966 cps/templates/detail.html:967
-#: cps/templates/detail.html:1532
-msgid "Add tag"
-msgstr "Dodaj oznako"
 
 #: cps/templates/detail.html:1012 cps/templates/listenmp3.html:111
 msgid "Published"

@@ -16,6 +16,8 @@ is for things you can see or feel when running the app.
 
 ## [Unreleased]
 
+## [v4.1.4] - 2026-07-02
+
 ### Added
 - **Quick-edit shortcuts are back in the new UI.** Two things the old interface
   had returned: hovering a book in your library or search results now shows a

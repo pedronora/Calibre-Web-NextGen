@@ -8,6 +8,10 @@ on:
     # on the same SHA, which doubles the surface for the xdist worker-IPC
     # hang documented in notes/xdist-worker-ipc-hang-followup-2026-05-21.md.
     branches: [main, dev]
+    # Version tags run the SPA e2e release gate (the e2e-tests job pulls the
+    # tag's GHCR image once it publishes). Without this, the job's tag
+    # condition is dead code — `branches:` alone filters out tag events.
+    tags: ['v*']
   pull_request:
     branches: [main, dev]  # Run Job 1 on PRs to main/dev
   workflow_dispatch:  # Manual trigger button in Actions tab
@@ -287,113 +291,167 @@ jobs:
   # NOTE: Tests run AFTER tag creation. Check results before publishing release!
   # ============================================================================
   e2e-tests:
-    name: E2E Tests (Full Stack)
+    name: E2E Tests (SPA)
     runs-on: ubuntu-latest
-    # Run on any version tag OR manual dispatch
+    # Release gate + manual dispatch. The SPA e2e matrix (Layer 2 of the
+    # verification system, frontend/e2e/) is the "earn the release" gate;
+    # /CWNG_verify runs the same harness on-demand in dev. Tag runs test the
+    # tag's own GHCR image (requires `on.push.tags` above — a `branches:`-only
+    # push trigger never delivers tag events). The dev-branch condition is
+    # forward wiring: no dev branch exists today, so per-merge canary coverage
+    # is a follow-up (workflow_run after the :dev image build).
+    # ADVISORY: a failure warns in test-summary + alerts Discord on tag runs,
+    # but does not block. Promote to a hard gate once several tag runs are green.
     if: |
       startsWith(github.ref, 'refs/tags/v') ||
+      github.ref == 'refs/heads/dev' ||
       (github.event_name == 'workflow_dispatch' && inputs.run_e2e)
-    
+    # Tag runs may wait up to ~40 min for the GHCR release build to publish
+    # the image (see the pull loop below) before the ~15 min harness run.
+    timeout-minutes: 75
+    permissions:
+      contents: read
+      packages: read   # pull the private pbs-cache mirror images the Dockerfile COPYs from
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
-      
-      - name: Set up Python 3.13
-        uses: actions/setup-python@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          python-version: '3.13'
-          cache: 'pip'
-      
-      - name: Set up Docker Compose
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Log in to GHCR (to pull the app image)
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Resolve image to test
+        id: img
         run: |
-          docker compose version
-      
-      - name: Install system dependencies
+          # Test the image users actually get (Class 2/4: verify the shipped
+          # artifact, not a locally-rebuilt one). Version tag → that tag's image;
+          # otherwise → the :dev canary. Avoids the from-source build, which
+          # cold-pulls the private pbs-cache mirror and is fragile in CI.
+          if [[ "${GITHUB_REF}" == refs/tags/v* ]]; then
+            echo "image=ghcr.io/new-usemame/calibre-web-nextgen:${GITHUB_REF_NAME}" >> "$GITHUB_OUTPUT"
+          else
+            echo "image=ghcr.io/new-usemame/calibre-web-nextgen:dev" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Start container (SPA enabled)
+        env:
+          IMAGE: ${{ steps.img.outputs.image }}
         run: |
-          sudo apt-get update
-          sudo apt-get install -y libldap2-dev libsasl2-dev libssl-dev
-      
-      - name: Install dependencies
+          echo "Testing image: $IMAGE"
+          # On tag pushes this job races the GHCR release build, which publishes
+          # the tag's image 15–35 min after the tag lands (v4.0.169 lesson) —
+          # poll instead of failing on the first pull. :dev / dispatch runs hit
+          # an already-published image and pull on the first attempt.
+          for i in $(seq 1 80); do
+            docker pull "$IMAGE" && break
+            echo "image not pullable yet (attempt $i/80); retrying in 30s..."
+            sleep 30
+          done
+          if ! docker image inspect "$IMAGE" >/dev/null 2>&1; then
+            echo "::error::$IMAGE never became pullable — check the GHCR build for this ref"
+            exit 1
+          fi
+          mkdir -p /tmp/cwn/config /tmp/cwn/ingest
+          docker run -d --name cwn-e2e \
+            -e PUID=1000 -e PGID=1000 -e TZ=UTC -e CWNG_SPA=1 \
+            -p 8083:8083 \
+            -v /tmp/cwn/config:/config \
+            -v /tmp/cwn/ingest:/cwa-book-ingest \
+            "$IMAGE"
+          echo "Waiting for the app to answer..."
+          timeout 240 bash -c 'until curl -fsS http://localhost:8083/ -o /dev/null; do sleep 5; done'
+
+      - name: Seed a book and wait for ingest
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install -r requirements-dev.txt
-          # E2E dependencies (when implemented)
-          # pip install playwright pytest-playwright
-          # playwright install chromium firefox
-      
-      - name: Start Docker Compose stack
+          # Drop a public-domain EPUB into the ingest folder; auto-ingest imports it.
+          # The container's init chowns the bind-mounted /cwa-book-ingest to uid
+          # 1000, so the runner can't write to it from the host. Use `docker cp`
+          # (root inside the container) and hand the file to uid 1000, which the
+          # ingest service needs to process and then remove it.
+          docker cp tests/fixtures/sample_books/alice_in_wonderland.epub \
+            cwn-e2e:/cwa-book-ingest/alice_in_wonderland.epub
+          docker exec -u 0 cwn-e2e chown 1000:1000 /cwa-book-ingest/alice_in_wonderland.epub
+          echo "Polling for the imported book via the API..."
+          jar=$(mktemp); total=0
+          for i in $(seq 1 60); do
+            csrf=$(curl -s -c "$jar" http://localhost:8083/api/v1/auth/csrf | python3 -c 'import sys,json;print(json.load(sys.stdin)["csrf_token"])' 2>/dev/null || true)
+            [ -n "$csrf" ] && curl -s -b "$jar" -c "$jar" -X POST http://localhost:8083/api/v1/auth/login \
+              -H 'Content-Type: application/json' -H "X-CSRFToken: $csrf" \
+              -d '{"username":"admin","password":"admin123"}' -o /dev/null || true
+            total=$(curl -s -b "$jar" 'http://localhost:8083/api/v1/books?limit=1' | python3 -c 'import sys,json;print(json.load(sys.stdin).get("total",0))' 2>/dev/null || echo 0)
+            echo "  attempt $i: books total=$total"
+            [ "${total:-0}" -gt 0 ] && break
+            sleep 5
+          done
+          if [ "${total:-0}" -eq 0 ]; then
+            echo "::error::ingest never imported the seed book (books total=0) — dumping ingest logs"
+            docker logs cwn-e2e 2>&1 | grep -iE 'ingest|convert|import|error|watch' | tail -40 || true
+            exit 1
+          fi
+
+      - name: Install Playwright
+        working-directory: frontend
         run: |
-          docker compose -f docker-compose.yml up -d
-          echo "Waiting for services to be healthy..."
-          timeout 180 bash -c 'until curl -f http://localhost:8083/health 2>/dev/null; do sleep 5; done'
-      
-      - name: Run E2E tests
-        run: |
-          # When tests/e2e/ exists:
-          # pytest tests/e2e/ \
-          #   -v \
-          #   --headed \
-          #   --video=on-failure \
-          #   --screenshot=on-failure \
-          #   --junitxml=e2e-results.xml
-          
-          # For now, just verify stack is healthy
-          curl -f http://localhost:8083/health
-          echo "E2E test placeholder - implement tests/e2e/ directory"
-        timeout-minutes: 60
-      
-      - name: Upload E2E artifacts
+          npm ci
+          npx playwright install --with-deps chromium
+
+      - name: Run SPA e2e harness
+        working-directory: frontend
+        env:
+          CI: 'true'
+          E2E_BASE_URL: http://localhost:8083
+        run: npm run test:e2e
+
+      - name: Upload Playwright report
         uses: actions/upload-artifact@v7
         if: always()
         with:
-          name: e2e-test-artifacts
+          name: playwright-report
           path: |
-            e2e-results.xml
-            test-results/
-            videos/
-            screenshots/
-          retention-days: 14  # Keep longer for release debugging
-      
+            frontend/e2e/.report
+            frontend/e2e/.results
+          retention-days: 14
+
       - name: Dump container logs
         if: always()
-        run: |
-          docker compose logs > docker-compose-logs.txt
-          docker compose ps
-      
+        run: docker logs cwn-e2e > cwn-e2e-logs.txt 2>&1 || true
+
       - name: Upload container logs
         uses: actions/upload-artifact@v7
         if: always()
         with:
-          name: docker-compose-logs
-          path: docker-compose-logs.txt
+          name: cwn-e2e-logs
+          path: cwn-e2e-logs.txt
           retention-days: 14
-      
+
       - name: Notify on failure
         uses: sarisia/actions-status-discord@v1
-        if: failure() && env.DISCORD_WEBHOOK != ''
+        if: failure() && startsWith(github.ref, 'refs/tags/v') && env.DISCORD_WEBHOOK != ''
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          title: "⛔ E2E tests failed for ${{ github.ref_name }}"
+          title: "⛔ SPA e2e failed for ${{ github.ref_name }}"
           description: |
             **DO NOT RELEASE** until fixed!
-            
-            **Tag**: ${{ github.ref_name }}
-            **Commit**: ${{ github.sha }}
-            **Author**: ${{ github.actor }}
-            
-            Review artifacts and browser recordings.
+            **Tag**: ${{ github.ref_name }} · **Commit**: ${{ github.sha }}
             [View logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
           color: 0xFF0000
           username: GitHub Actions
-      
+
       - name: Cleanup
         if: always()
-        run: |
-          docker compose down -v
-          docker system prune -f
+        run: docker rm -f cwn-e2e || true
 
   # ============================================================================
   # Summary Job (Optional)

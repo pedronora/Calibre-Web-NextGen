@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-01 20:03+0000\n"
+"POT-Creation-Date: 2026-07-02 04:09+0000\n"
 "PO-Revision-Date: 2026-05-12 00:06+0200\n"
 "Last-Translator: Gabor L. <nom@il.thx>\n"
 "Language-Team: \n"
@@ -2913,7 +2913,7 @@ msgstr "A(z) '%(label)s' alkalmazásjelszó visszavonva."
 msgid "Invalid book ID."
 msgstr "Érvénytelen könyv azonosító."
 
-#: cps/progress_syncing/protocols/kosync.py:562
+#: cps/progress_syncing/protocols/kosync.py:571
 msgid "KOReader Sync Plugin"
 msgstr "KOReader szinkronizáció plugin"
 

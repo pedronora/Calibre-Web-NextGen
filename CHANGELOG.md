@@ -17,6 +17,11 @@ is for things you can see or feel when running the app.
 ## [Unreleased]
 
 ### Fixed
+- **The new UI now shows your site's name.** If you set a custom title under
+  Admin → Basic Configuration, the new UI ignored it — the top bar, the login
+  screen, and the browser tab always said "Calibre-Web NextGen". All three now
+  follow your configured title; installs that never changed the title look
+  exactly the same as before. Reported by @Glennza1962, confirmed by @iroQuai.
 - **French (and 16 other languages) no longer offer "mark as unread" on a book
   you haven't read.** The new UI's read toggle said "Marquer comme non lu"
   (mark as unread) on unread books because the translation for "Mark as read"

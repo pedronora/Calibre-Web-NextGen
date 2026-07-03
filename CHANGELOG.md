@@ -16,6 +16,8 @@ is for things you can see or feel when running the app.
 
 ## [Unreleased]
 
+## [v4.1.5] - 2026-07-03
+
 ### Fixed
 - **"Currently Reading" now shows the right books for libraries that use a
   Calibre "Read" column.** If your admin settings link read status to a

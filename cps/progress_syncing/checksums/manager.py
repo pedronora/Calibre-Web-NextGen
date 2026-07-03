@@ -26,7 +26,12 @@ from datetime import datetime, timezone
 from typing import Optional, List, Tuple
 
 from ... import logger
-from .koreader import calculate_koreader_partial_md5, CHECKSUM_VERSION
+from .koreader import (
+    calculate_koreader_partial_md5,
+    calculate_koreader_filename_md5,
+    CHECKSUM_VERSION,
+    FILENAME_CHECKSUM_VERSION,
+)
 
 log = logger.create()
 
@@ -171,6 +176,20 @@ def calculate_and_store_checksum(
         db_connection=db_connection
     )
 
+    # Also register the filename-matching digest of the served basename so
+    # clients in 'filename' document-matching mode (kosync plugin option,
+    # Crossink/x4) resolve this book too. Fork #525 / #627. Failure here
+    # must not disturb the binary-channel result.
+    filename_digest = calculate_koreader_filename_md5(os.path.basename(file_path))
+    if filename_digest:
+        store_checksum(
+            book_id=book_id,
+            book_format=book_format,
+            checksum=filename_digest,
+            version=FILENAME_CHECKSUM_VERSION,
+            db_connection=db_connection
+        )
+
     if success:
         return checksum
     else:
@@ -179,7 +198,8 @@ def calculate_and_store_checksum(
 
 def get_latest_checksum(
     book_id: int,
-    book_format: str
+    book_format: str,
+    version: str = CHECKSUM_VERSION
 ) -> Optional[str]:
     """
     Get the most recent checksum for a book/format (by created timestamp).
@@ -187,6 +207,9 @@ def get_latest_checksum(
     Args:
         book_id: Calibre book ID
         book_format: File format (EPUB, AZW3, etc.)
+        version: Algorithm channel to read (default: the binary
+            partial-MD5). Without this filter a newer filename-digest row
+            (version 'koreader_filename') would shadow the binary checksum.
 
     Returns:
         The most recent checksum string, or None if not found
@@ -200,11 +223,13 @@ def get_latest_checksum(
                 SELECT checksum FROM book_format_checksums
                 WHERE book = :book_id
                 AND format = :format
+                AND version = :version
                 ORDER BY created DESC
                 LIMIT 1
             '''), {
                 'book_id': book_id,
-                'format': book_format.upper()
+                'format': book_format.upper(),
+                'version': version
             }).fetchone()
 
             return result[0] if result else None

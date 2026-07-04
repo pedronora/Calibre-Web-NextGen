@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web Automated v4.0.6\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-04 14:57+0000\n"
+"POT-Creation-Date: 2026-07-04 15:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -143,7 +143,7 @@ msgstr ""
 msgid "{} users deleted successfully"
 msgstr ""
 
-#: cps/admin.py:801 cps/api/account.py:56
+#: cps/admin.py:801 cps/api/account.py:58
 #: cps/templates/config_view_edit.html:186 cps/templates/user_edit.html:270
 #: cps/templates/user_edit.html:292 cps/templates/user_table.html:81
 msgid "Show All"
@@ -2743,7 +2743,8 @@ msgstr ""
 msgid "Saved."
 msgstr ""
 
-#: cps/spa_strings.py:143 cps/templates/shelf_order.html:33
+#: cps/spa_strings.py:143 cps/spa_strings.py:224
+#: cps/templates/shelf_order.html:33
 msgid "Saving…"
 msgstr ""
 
@@ -3016,6 +3017,66 @@ msgstr ""
 
 #: cps/spa_strings.py:217 cps/templates/book_edit.html:462
 msgid "Source"
+msgstr ""
+
+#: cps/spa_strings.py:220
+msgid "Customize sidebar"
+msgstr ""
+
+#: cps/spa_strings.py:221
+msgid ""
+"Show or hide sections and drag to reorder them. Use the arrow keys on a "
+"handle to move an entry."
+msgstr ""
+
+#: cps/spa_strings.py:222
+msgid "Reset to default"
+msgstr ""
+
+#: cps/spa_strings.py:223
+msgid "Always shown"
+msgstr ""
+
+#: cps/spa_strings.py:225
+msgid "Sidebar saved."
+msgstr ""
+
+#: cps/spa_strings.py:226
+msgid "Sidebar reset to default."
+msgstr ""
+
+#: cps/spa_strings.py:227
+#, python-brace-format
+msgid "{label} moved to position {pos} of {total}"
+msgstr ""
+
+#: cps/spa_strings.py:228
+#, python-brace-format
+msgid "Reorder {label} (position {pos} of {total}). Use arrow keys to move."
+msgstr ""
+
+#: cps/spa_strings.py:229
+#, python-brace-format
+msgid "Move {label} up"
+msgstr ""
+
+#: cps/spa_strings.py:230
+#, python-brace-format
+msgid "Move {label} down"
+msgstr ""
+
+#: cps/spa_strings.py:231
+#, python-brace-format
+msgid "Hide {label}"
+msgstr ""
+
+#: cps/spa_strings.py:232
+#, python-brace-format
+msgid "Show {label}"
+msgstr ""
+
+#: cps/spa_strings.py:233
+msgid "Could not save sidebar. Please try again."
 msgstr ""
 
 #: cps/tasks_status.py:37 cps/templates/layout.html:369

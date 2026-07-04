@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web NextGen\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-04 14:57+0000\n"
+"POT-Creation-Date: 2026-07-04 15:58+0000\n"
 "PO-Revision-Date: 2022-08-11 16:46+0200\n"
 "Last-Translator: pollitor <pollitor@gmx.com>\n"
 "Language-Team: gl\n"
@@ -147,7 +147,7 @@ msgstr "Usuario non atopado"
 msgid "{} users deleted successfully"
 msgstr "{} usuarios borrados con éxito"
 
-#: cps/admin.py:801 cps/api/account.py:56
+#: cps/admin.py:801 cps/api/account.py:58
 #: cps/templates/config_view_edit.html:186 cps/templates/user_edit.html:270
 #: cps/templates/user_edit.html:292 cps/templates/user_table.html:81
 msgid "Show All"
@@ -2925,7 +2925,8 @@ msgstr "Perfil de %(name)s"
 msgid "Saved."
 msgstr "Gardar"
 
-#: cps/spa_strings.py:143 cps/templates/shelf_order.html:33
+#: cps/spa_strings.py:143 cps/spa_strings.py:224
+#: cps/templates/shelf_order.html:33
 #, fuzzy
 msgid "Saving…"
 msgstr "Buscar"
@@ -3234,6 +3235,70 @@ msgstr "Cargar formato"
 #: cps/spa_strings.py:217 cps/templates/book_edit.html:462
 msgid "Source"
 msgstr "Orixe"
+
+#: cps/spa_strings.py:220
+#, fuzzy
+msgid "Customize sidebar"
+msgstr "Filtro personalizado"
+
+#: cps/spa_strings.py:221
+msgid ""
+"Show or hide sections and drag to reorder them. Use the arrow keys on a "
+"handle to move an entry."
+msgstr ""
+
+#: cps/spa_strings.py:222
+#, fuzzy
+msgid "Reset to default"
+msgstr "Voltar ao inicio"
+
+#: cps/spa_strings.py:223
+msgid "Always shown"
+msgstr ""
+
+#: cps/spa_strings.py:225
+#, fuzzy
+msgid "Sidebar saved."
+msgstr "O ficheiro %(file)s subiuse"
+
+#: cps/spa_strings.py:226
+msgid "Sidebar reset to default."
+msgstr ""
+
+#: cps/spa_strings.py:227
+#, python-brace-format
+msgid "{label} moved to position {pos} of {total}"
+msgstr ""
+
+#: cps/spa_strings.py:228
+#, python-brace-format
+msgid "Reorder {label} (position {pos} of {total}). Use arrow keys to move."
+msgstr ""
+
+#: cps/spa_strings.py:229
+#, fuzzy, python-brace-format
+msgid "Move {label} up"
+msgstr "Revogar"
+
+#: cps/spa_strings.py:230
+#, fuzzy, python-brace-format
+msgid "Move {label} down"
+msgstr "Revogar"
+
+#: cps/spa_strings.py:231
+#, fuzzy, python-brace-format
+msgid "Hide {label}"
+msgstr "Revogar"
+
+#: cps/spa_strings.py:232
+#, fuzzy, python-brace-format
+msgid "Show {label}"
+msgstr "Mostrar Todo"
+
+#: cps/spa_strings.py:233
+#, fuzzy
+msgid "Could not save sidebar. Please try again."
+msgstr "Sucedeu un erro descoñecido. Por favor volva a intentalo máis tarde."
 
 #: cps/tasks_status.py:37 cps/templates/layout.html:369
 #: cps/templates/tasks.html:7

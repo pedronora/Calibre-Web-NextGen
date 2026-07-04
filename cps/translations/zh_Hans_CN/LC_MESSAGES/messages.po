@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web NextGen\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-04 15:58+0000\n"
+"POT-Creation-Date: 2026-07-04 21:38+0000\n"
 "PO-Revision-Date: 2020-09-27 22:18+0800\n"
 "Last-Translator: xlivevil <xlivevil@aliyun.com>\n"
 "Language-Team: zh_Hans_CN <LL@li.org>\n"
@@ -2869,8 +2869,7 @@ msgstr "%(name)s 的用户配置"
 msgid "Saved."
 msgstr "保存"
 
-#: cps/spa_strings.py:143 cps/spa_strings.py:224
-#: cps/templates/shelf_order.html:33
+#: cps/spa_strings.py:143 cps/templates/shelf_order.html:33
 #, fuzzy
 msgid "Saving…"
 msgstr "搜索"
@@ -3180,64 +3179,80 @@ msgstr "源"
 
 #: cps/spa_strings.py:220
 #, fuzzy
-msgid "Customize sidebar"
+msgid "Customize"
 msgstr "自定义过滤器"
 
 #: cps/spa_strings.py:221
-msgid ""
-"Show or hide sections and drag to reorder them. Use the arrow keys on a "
-"handle to move an entry."
+#, fuzzy
+msgid "Customize sidebar"
+msgstr "自定义过滤器"
+
+#: cps/spa_strings.py:222 cps/templates/_book_organizer.html:164
+msgid "Done"
 msgstr ""
 
-#: cps/spa_strings.py:222
+#: cps/spa_strings.py:223
 #, fuzzy
 msgid "Reset to default"
 msgstr "回到首页"
 
-#: cps/spa_strings.py:223
+#: cps/spa_strings.py:224
 msgid "Always shown"
 msgstr ""
 
 #: cps/spa_strings.py:225
+msgid "Editing sidebar. Reorder or hide sections, then tap Done."
+msgstr ""
+
+#: cps/spa_strings.py:226
+msgid "Editing cancelled."
+msgstr ""
+
+#: cps/spa_strings.py:227
+msgid ""
+"Drag to reorder. Tap ✕ to hide a section. Arrow keys move the focused handle."
+msgstr ""
+
+#: cps/spa_strings.py:228
 #, fuzzy
 msgid "Sidebar saved."
 msgstr "文件 %(file)s 已上传"
 
-#: cps/spa_strings.py:226
+#: cps/spa_strings.py:229
 msgid "Sidebar reset to default."
 msgstr ""
 
-#: cps/spa_strings.py:227
+#: cps/spa_strings.py:230
 #, python-brace-format
 msgid "{label} moved to position {pos} of {total}"
 msgstr ""
 
-#: cps/spa_strings.py:228
+#: cps/spa_strings.py:231
 #, python-brace-format
 msgid "Reorder {label} (position {pos} of {total}). Use arrow keys to move."
 msgstr ""
 
-#: cps/spa_strings.py:229
-#, fuzzy, python-brace-format
-msgid "Move {label} up"
-msgstr "撤回"
-
-#: cps/spa_strings.py:230
-#, fuzzy, python-brace-format
-msgid "Move {label} down"
-msgstr "撤回"
-
-#: cps/spa_strings.py:231
-#, fuzzy, python-brace-format
-msgid "Hide {label}"
-msgstr "撤回"
-
 #: cps/spa_strings.py:232
 #, fuzzy, python-brace-format
-msgid "Show {label}"
-msgstr "显示全部"
+msgid "Delete {label}"
+msgstr "撤回"
 
 #: cps/spa_strings.py:233
+#, fuzzy, python-brace-format
+msgid "Restore {label}"
+msgstr "撤回"
+
+#: cps/spa_strings.py:234
+#, fuzzy, python-brace-format
+msgid "{label} hidden"
+msgstr "撤回"
+
+#: cps/spa_strings.py:235
+#, fuzzy, python-brace-format
+msgid "{label} restored"
+msgstr "删除书籍"
+
+#: cps/spa_strings.py:236
 #, fuzzy
 msgid "Could not save sidebar. Please try again."
 msgstr "链接 OAuth 帐户失败。请重试。"
@@ -3936,10 +3951,6 @@ msgstr "标为已读"
 #, fuzzy
 msgid "Mark as unread"
 msgstr "标为未读"
-
-#: cps/templates/_book_organizer.html:164
-msgid "Done"
-msgstr ""
 
 #: cps/templates/_book_organizer.html:180
 #, fuzzy
@@ -9658,6 +9669,18 @@ msgstr "同步所选书架到 Kobo"
 #: cps/templates/user_table.html:158
 msgid "Show Read/Unread Section"
 msgstr "显示已读、未读栏目"
+
+#, fuzzy, python-brace-format
+#~ msgid "Move {label} up"
+#~ msgstr "撤回"
+
+#, fuzzy, python-brace-format
+#~ msgid "Hide {label}"
+#~ msgstr "撤回"
+
+#, fuzzy, python-brace-format
+#~ msgid "Show {label}"
+#~ msgstr "显示全部"
 
 #~ msgid "Drag to Rearrange Order"
 #~ msgstr "拖拽以重新排序"

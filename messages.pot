@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web Automated v4.0.6\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-04 15:58+0000\n"
+"POT-Creation-Date: 2026-07-04 21:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2743,8 +2743,7 @@ msgstr ""
 msgid "Saved."
 msgstr ""
 
-#: cps/spa_strings.py:143 cps/spa_strings.py:224
-#: cps/templates/shelf_order.html:33
+#: cps/spa_strings.py:143 cps/templates/shelf_order.html:33
 msgid "Saving…"
 msgstr ""
 
@@ -3020,62 +3019,78 @@ msgid "Source"
 msgstr ""
 
 #: cps/spa_strings.py:220
-msgid "Customize sidebar"
+msgid "Customize"
 msgstr ""
 
 #: cps/spa_strings.py:221
-msgid ""
-"Show or hide sections and drag to reorder them. Use the arrow keys on a "
-"handle to move an entry."
+msgid "Customize sidebar"
 msgstr ""
 
-#: cps/spa_strings.py:222
-msgid "Reset to default"
+#: cps/spa_strings.py:222 cps/templates/_book_organizer.html:164
+msgid "Done"
 msgstr ""
 
 #: cps/spa_strings.py:223
+msgid "Reset to default"
+msgstr ""
+
+#: cps/spa_strings.py:224
 msgid "Always shown"
 msgstr ""
 
 #: cps/spa_strings.py:225
-msgid "Sidebar saved."
+msgid "Editing sidebar. Reorder or hide sections, then tap Done."
 msgstr ""
 
 #: cps/spa_strings.py:226
-msgid "Sidebar reset to default."
+msgid "Editing cancelled."
 msgstr ""
 
 #: cps/spa_strings.py:227
-#, python-brace-format
-msgid "{label} moved to position {pos} of {total}"
+msgid ""
+"Drag to reorder. Tap ✕ to hide a section. Arrow keys move the focused "
+"handle."
 msgstr ""
 
 #: cps/spa_strings.py:228
-#, python-brace-format
-msgid "Reorder {label} (position {pos} of {total}). Use arrow keys to move."
+msgid "Sidebar saved."
 msgstr ""
 
 #: cps/spa_strings.py:229
-#, python-brace-format
-msgid "Move {label} up"
+msgid "Sidebar reset to default."
 msgstr ""
 
 #: cps/spa_strings.py:230
 #, python-brace-format
-msgid "Move {label} down"
+msgid "{label} moved to position {pos} of {total}"
 msgstr ""
 
 #: cps/spa_strings.py:231
 #, python-brace-format
-msgid "Hide {label}"
+msgid "Reorder {label} (position {pos} of {total}). Use arrow keys to move."
 msgstr ""
 
 #: cps/spa_strings.py:232
 #, python-brace-format
-msgid "Show {label}"
+msgid "Delete {label}"
 msgstr ""
 
 #: cps/spa_strings.py:233
+#, python-brace-format
+msgid "Restore {label}"
+msgstr ""
+
+#: cps/spa_strings.py:234
+#, python-brace-format
+msgid "{label} hidden"
+msgstr ""
+
+#: cps/spa_strings.py:235
+#, python-brace-format
+msgid "{label} restored"
+msgstr ""
+
+#: cps/spa_strings.py:236
 msgid "Could not save sidebar. Please try again."
 msgstr ""
 
@@ -3729,10 +3744,6 @@ msgstr ""
 #: cps/templates/_book_organizer.html:145 cps/templates/book_table.html:63
 #: cps/templates/book_table.html:274
 msgid "Mark as unread"
-msgstr ""
-
-#: cps/templates/_book_organizer.html:164
-msgid "Done"
 msgstr ""
 
 #: cps/templates/_book_organizer.html:180

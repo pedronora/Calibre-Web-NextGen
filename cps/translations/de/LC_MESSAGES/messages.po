@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web NextGen\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-04 15:58+0000\n"
+"POT-Creation-Date: 2026-07-04 21:38+0000\n"
 "PO-Revision-Date: 2026-04-06 17:03+0000\n"
 "Last-Translator: Manuel Drescher\n"
 "Language-Team: German\n"
@@ -2963,8 +2963,7 @@ msgstr ""
 msgid "Saved."
 msgstr "Speichern"
 
-#: cps/spa_strings.py:143 cps/spa_strings.py:224
-#: cps/templates/shelf_order.html:33
+#: cps/spa_strings.py:143 cps/templates/shelf_order.html:33
 #, fuzzy
 msgid "Saving…"
 msgstr "Suchen"
@@ -3275,64 +3274,80 @@ msgstr "Quelle"
 
 #: cps/spa_strings.py:220
 #, fuzzy
-msgid "Customize sidebar"
+msgid "Customize"
 msgstr "Benutzerdefinierter Filter"
 
 #: cps/spa_strings.py:221
-msgid ""
-"Show or hide sections and drag to reorder them. Use the arrow keys on a "
-"handle to move an entry."
+#, fuzzy
+msgid "Customize sidebar"
+msgstr "Benutzerdefinierter Filter"
+
+#: cps/spa_strings.py:222 cps/templates/_book_organizer.html:164
+msgid "Done"
 msgstr ""
 
-#: cps/spa_strings.py:222
+#: cps/spa_strings.py:223
 #, fuzzy
 msgid "Reset to default"
 msgstr "Auf Anfang zurücksetzen"
 
-#: cps/spa_strings.py:223
+#: cps/spa_strings.py:224
 msgid "Always shown"
 msgstr ""
 
 #: cps/spa_strings.py:225
+msgid "Editing sidebar. Reorder or hide sections, then tap Done."
+msgstr ""
+
+#: cps/spa_strings.py:226
+msgid "Editing cancelled."
+msgstr ""
+
+#: cps/spa_strings.py:227
+msgid ""
+"Drag to reorder. Tap ✕ to hide a section. Arrow keys move the focused handle."
+msgstr ""
+
+#: cps/spa_strings.py:228
 #, fuzzy
 msgid "Sidebar saved."
 msgstr "Sortiermodus"
 
-#: cps/spa_strings.py:226
+#: cps/spa_strings.py:229
 msgid "Sidebar reset to default."
 msgstr ""
 
-#: cps/spa_strings.py:227
+#: cps/spa_strings.py:230
 #, python-brace-format
 msgid "{label} moved to position {pos} of {total}"
 msgstr ""
 
-#: cps/spa_strings.py:228
+#: cps/spa_strings.py:231
 #, python-brace-format
 msgid "Reorder {label} (position {pos} of {total}). Use arrow keys to move."
 msgstr ""
 
-#: cps/spa_strings.py:229
-#, fuzzy, python-brace-format
-msgid "Move {label} up"
-msgstr "Widerrufen"
-
-#: cps/spa_strings.py:230
-#, fuzzy, python-brace-format
-msgid "Move {label} down"
-msgstr "Widerrufen"
-
-#: cps/spa_strings.py:231
-#, fuzzy, python-brace-format
-msgid "Hide {label}"
-msgstr "Widerrufen"
-
 #: cps/spa_strings.py:232
 #, fuzzy, python-brace-format
-msgid "Show {label}"
-msgstr "Zeige alle"
+msgid "Delete {label}"
+msgstr "Widerrufen"
 
 #: cps/spa_strings.py:233
+#, fuzzy, python-brace-format
+msgid "Restore {label}"
+msgstr "Widerrufen"
+
+#: cps/spa_strings.py:234
+#, fuzzy, python-brace-format
+msgid "{label} hidden"
+msgstr "Widerrufen"
+
+#: cps/spa_strings.py:235
+#, fuzzy, python-brace-format
+msgid "{label} restored"
+msgstr "Duplikatgruppe wiederhergestellt"
+
+#: cps/spa_strings.py:236
 #, fuzzy
 msgid "Could not save sidebar. Please try again."
 msgstr ""
@@ -4033,10 +4048,6 @@ msgstr "Als gelesen markieren"
 #: cps/templates/book_table.html:274
 msgid "Mark as unread"
 msgstr "Als ungelesen markieren"
-
-#: cps/templates/_book_organizer.html:164
-msgid "Done"
-msgstr ""
 
 #: cps/templates/_book_organizer.html:180
 #, fuzzy
@@ -9811,6 +9822,18 @@ msgstr "Ausgewählte Regale mit Kobo synchronisieren"
 #: cps/templates/user_table.html:158
 msgid "Show Read/Unread Section"
 msgstr "Zeige Gelesen/Ungelesen-Abschnitt"
+
+#, fuzzy, python-brace-format
+#~ msgid "Move {label} up"
+#~ msgstr "Widerrufen"
+
+#, fuzzy, python-brace-format
+#~ msgid "Hide {label}"
+#~ msgstr "Widerrufen"
+
+#, fuzzy, python-brace-format
+#~ msgid "Show {label}"
+#~ msgstr "Zeige alle"
 
 #~ msgid "Drag to Rearrange Order"
 #~ msgstr "Ziehen und ablegen um Reihenfolge zu ändern"

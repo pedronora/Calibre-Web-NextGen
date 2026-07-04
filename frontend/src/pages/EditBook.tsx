@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useId } from 'react';
+import { createPortal } from 'react-dom';
 import { Link, useLocation } from 'wouter';
-import { ChevronLeft, Save, Trash2, RefreshCw, Image as ImageIcon, Upload as UploadIcon, ExternalLink, Sparkles, Search, Plus, X } from 'lucide-react';
+import { ChevronLeft, Save, Trash2, RefreshCw, Image as ImageIcon, Upload as UploadIcon, ExternalLink, Sparkles, Search, Plus, X, MoreHorizontal } from 'lucide-react';
 import {
   useBookMetadata, useUpdateMetadata, useBook, useMe, useDeleteFormat, useConvertFormat,
   useSetCover, useMetadataSearch, useAddFormat,
@@ -267,36 +268,91 @@ function MetadataFetch({ defaultQuery, onApply }:
   const [query, setQuery] = useState(defaultQuery);
   const [results, setResults] = useState<MetaResult[]>([]);
   const [err, setErr] = useState<string | null>(null);
+  // Editions drill-down (Hardcover): when set we're showing the editions of one
+  // book, and `prev` holds the title-level view to return to via "Back".
+  const [editions, setEditions] = useState<{ prevQuery: string; prevResults: MetaResult[] } | null>(null);
+  // Monotonic search id. Every search (and closing the panel) bumps it; a response
+  // only applies if it's still the latest — so a slow editions request that the
+  // user has since abandoned (Close) or superseded (a second Editions click)
+  // can't force the panel into a stale editions view or show the wrong book.
+  const seq = useRef(0);
 
-  const run = (e: React.FormEvent) => {
-    e.preventDefault();
+  // Single search path for the normal form, the editions drill-down, and Back.
+  // `ed` is the title-level snapshot captured before drilling in; when present we
+  // keep only Hardcover edition rows (a `hardcover-id:<id>` query still fans out
+  // to every enabled provider, so other providers return noise for that string).
+  const doSearch = (q: string, ed?: { prevQuery: string; prevResults: MetaResult[] }) => {
+    const term = q.trim();
+    if (!term) return;
+    const mine = ++seq.current;
     setErr(null);
-    search.mutate(query.trim(), {
-      onSuccess: (r) => setResults(r.results),
-      onError: (e2) => setErr(e2 instanceof ApiError ? e2.message : 'Search failed.'),
+    setQuery(term);
+    search.mutate(term, {
+      onSuccess: (r) => {
+        if (mine !== seq.current) return; // superseded/abandoned — ignore
+        if (ed) {
+          setResults(r.results.filter((x) => x.identifiers && 'hardcover-edition' in x.identifiers));
+          setEditions(ed);
+        } else {
+          setResults(r.results);
+          setEditions(null);
+        }
+      },
+      onError: (e2) => { if (mine === seq.current) setErr(e2 instanceof ApiError ? e2.message : 'Search failed.'); },
     });
   };
+
+  const run = (e: React.FormEvent) => { e.preventDefault(); doSearch(query); };
+  const openEditions = (hardcoverId: string) =>
+    doSearch(`hardcover-id:${hardcoverId}`, { prevQuery: query, prevResults: results });
+  const backToResults = () => {
+    if (!editions) return;
+    setQuery(editions.prevQuery);
+    setResults(editions.prevResults);
+    setEditions(null);
+    setErr(null);
+  };
+  // Open/close the panel from a clean state: never reopen stranded in an editions
+  // drill-down, and invalidate any in-flight request on close.
+  const openPanel = () => { seq.current++; setOpen(true); setQuery(defaultQuery); setEditions(null); setErr(null); };
+  const closePanel = () => { seq.current++; setOpen(false); setEditions(null); };
 
   return (
     <section className={styles.metaFetch}>
       {!open ? (
-        <Button type="button" variant="ghost" onClick={() => { setOpen(true); setQuery(defaultQuery); }}>
+        <Button type="button" variant="ghost" onClick={openPanel}>
           <Sparkles size={15} /> {t('Fetch metadata from web')}
         </Button>
       ) : (
         <div className={styles.metaPanel}>
-          <form className={styles.metaSearchRow} onSubmit={run}>
-            <input className={styles.input} value={query} onChange={(e) => setQuery(e.target.value)}
-              placeholder={t('Title, author, or ISBN')} autoFocus />
-            <Button type="submit" disabled={search.isPending || !query.trim()}>
-              {search.isPending ? <Spinner size={15} /> : <Search size={15} />} {t('Search')}
-            </Button>
-            <button type="button" className={styles.cancel} onClick={() => setOpen(false)}>{t('Close')}</button>
-          </form>
+          {editions ? (
+            <div className={styles.editionsHead}>
+              <button type="button" className={styles.cancel} onClick={backToResults}>
+                <ChevronLeft size={14} /> {t('Back to results')}
+              </button>
+              <span className={styles.editionsTitle}>{t('Editions')}</span>
+              {search.isPending && <Spinner size={14} />}
+              <button type="button" className={styles.cancel} style={{ marginLeft: 'auto' }} onClick={closePanel}>{t('Close')}</button>
+            </div>
+          ) : (
+            <form className={styles.metaSearchRow} onSubmit={run}>
+              <input className={styles.input} value={query} onChange={(e) => setQuery(e.target.value)}
+                placeholder={t('Title, author, or ISBN')} autoFocus />
+              <Button type="submit" disabled={search.isPending || !query.trim()}>
+                {search.isPending ? <Spinner size={15} /> : <Search size={15} />} {t('Search')}
+              </Button>
+              <button type="button" className={styles.cancel} onClick={closePanel}>{t('Close')}</button>
+            </form>
+          )}
           {err && <span className={styles.msgErr}>{err}</span>}
+          {editions && !search.isPending && results.length === 0 && (
+            <span className={styles.metaEmpty}>{t('No editions found for this book.')}</span>
+          )}
           {results.length > 0 && (
             <ul className={styles.metaResults}>
-              {results.map((r, i) => <ResultRow key={i} r={r} onApply={onApply} />)}
+              {results.map((r, i) => (
+                <ResultRow key={i} r={r} onApply={onApply} onEditions={editions ? undefined : openEditions} />
+              ))}
             </ul>
           )}
         </div>
@@ -306,10 +362,21 @@ function MetadataFetch({ defaultQuery, onApply }:
 }
 
 /** One search result: shows the book, and (on "Choose fields") a checklist of the
- *  values it offers so the user applies exactly what they want. */
-function ResultRow({ r, onApply }: { r: MetaResult; onApply: (r: MetaResult, sel: Set<ApplyKey>) => void }) {
+ *  values it offers so the user applies exactly what they want. Hardcover title
+ *  results also expose an "Editions" drill-down (via `onEditions`) so the user can
+ *  pick a specific edition — each carries its own `hardcover-edition`/ISBN
+ *  identifiers, which Hardcover progress-sync needs. */
+function ResultRow({ r, onApply, onEditions }:
+  { r: MetaResult; onApply: (r: MetaResult, sel: Set<ApplyKey>) => void; onEditions?: (hardcoverId: string) => void }) {
   const t = useT();
   const fields = APPLY_FIELDS.filter((f) => f.has(r));
+  const [showDetails, setShowDetails] = useState(false);
+  // Offer "Editions" only on a title-level Hardcover result (has hardcover-id but
+  // is not itself an edition row). onEditions is absent while already viewing editions.
+  const hcId = r.identifiers?.['hardcover-id'];
+  const canEditions = !!onEditions && hcId != null && hcId !== ''
+    && !(r.identifiers && 'hardcover-edition' in r.identifiers);
+  const editionMeta = [r.format, r.publisher, r.publishedDate].filter(Boolean).join(' · ');
   const [expanded, setExpanded] = useState(false);
   const [sel, setSel] = useState<Set<ApplyKey>>(() => new Set(fields.map((f) => f.key)));
 
@@ -319,6 +386,7 @@ function ResultRow({ r, onApply }: { r: MetaResult; onApply: (r: MetaResult, sel
   useEffect(() => {
     setSel(new Set(APPLY_FIELDS.filter((f) => f.has(r)).map((f) => f.key)));
     setExpanded(false);
+    setShowDetails(false);
   }, [r]);
 
   const toggle = (k: ApplyKey) => setSel((s) => {
@@ -334,12 +402,25 @@ function ResultRow({ r, onApply }: { r: MetaResult; onApply: (r: MetaResult, sel
         <div className={styles.metaInfo}>
           <span className={styles.metaTitle}>{r.title}</span>
           <span className={styles.metaAuthors}>{(r.authors || []).join(', ')}</span>
+          {editionMeta && <span className={styles.metaEdition}>{editionMeta}</span>}
           {r.source?.id && <span className={styles.metaSource}>{r.source.id}</span>}
         </div>
-        <Button type="button" variant="ghost" onClick={() => setExpanded((v) => !v)}>
-          {expanded ? t('Hide fields') : t('Choose fields')}
-        </Button>
+        <div className={styles.metaResultActions}>
+          {canEditions && (
+            <Button type="button" variant="ghost" onClick={() => onEditions!(String(hcId))}>
+              <Search size={14} /> {t('Editions')}
+            </Button>
+          )}
+          <Button type="button" variant="ghost" onClick={() => setShowDetails(true)}
+            aria-label={t('View all details')} title={t('View all details')}>
+            <MoreHorizontal size={16} />
+          </Button>
+          <Button type="button" variant="ghost" onClick={() => setExpanded((v) => !v)}>
+            {expanded ? t('Hide fields') : t('Choose fields')}
+          </Button>
+        </div>
       </div>
+      {showDetails && <ResultDetails r={r} onClose={() => setShowDetails(false)} />}
       {expanded && (
         <div className={styles.applyPanel}>
           {fields.map((f) => (
@@ -358,6 +439,111 @@ function ResultRow({ r, onApply }: { r: MetaResult; onApply: (r: MetaResult, sel
         </div>
       )}
     </li>
+  );
+}
+
+/** Full-record overlay for one search result. The compact result row + per-field
+ *  checklist truncate long values (identifiers, tags, description) to one line; a
+ *  Hardcover edition can carry a long ISBN/edition id that must be readable in full
+ *  to pick the right one. This shows every field at full length — identifiers one
+ *  per line. Centered dialog on desktop, bottom sheet on mobile. */
+function ResultDetails({ r, onClose }: { r: MetaResult; onClose: () => void }) {
+  const t = useT();
+  const modalRef = useRef<HTMLDivElement>(null);
+  // Keep the latest onClose in a ref so the focus/scroll effect can run once on
+  // open ([] deps) — `onClose` is a fresh closure each parent render, and using
+  // it as a dep would re-run the effect on any background re-render (e.g. a search
+  // resolving), re-grabbing focus mid-read and flickering the trap.
+  const onCloseRef = useRef(onClose);
+  onCloseRef.current = onClose;
+  const titleId = `md-details-title-${useId()}`;
+
+  // Accessibility: focus the dialog on open, trap Tab within it, restore focus to
+  // the trigger on close, Escape closes, and lock background scroll while open
+  // (mirrors CoverPicker's confirm modal, plus scroll-lock for the mobile sheet).
+  useEffect(() => {
+    const prevFocus = document.activeElement as HTMLElement | null;
+    const node = modalRef.current;
+    const focusables = () => node
+      ? Array.from(node.querySelectorAll<HTMLElement>(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'))
+        .filter((el) => !el.hasAttribute('disabled'))
+      : [];
+    (focusables()[0] ?? node)?.focus();
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') { onCloseRef.current(); return; }
+      if (e.key !== 'Tab') return;
+      const els = focusables();
+      if (!els.length) return;
+      const first = els[0], last = els[els.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    };
+    document.addEventListener('keydown', onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prevOverflow;
+      prevFocus?.focus?.();
+    };
+  }, []);
+
+  const idents = Object.entries(r.identifiers || {}).filter(([, v]) => v !== '' && v != null);
+  const rows = [
+    { label: t('Authors'), value: (r.authors || []).join(', ') },
+    { label: t('Series'), value: r.series ? `${r.series}${r.series_index ? ` #${r.series_index}` : ''}` : '' },
+    { label: t('Format'), value: r.format || '' },
+    { label: t('Publisher'), value: r.publisher || '' },
+    { label: t('Published'), value: r.publishedDate || '' },
+    { label: t('Rating'), value: r.rating ? `${Math.round(r.rating)} ★` : '' },
+    { label: t('Tags'), value: (r.tags || []).join(', ') },
+    { label: t('Source'), value: r.source?.id || '' },
+  ].filter((row) => row.value);
+
+  return createPortal(
+    <div className={styles.detailsOverlay} onClick={onClose} role="presentation">
+      <div className={styles.detailsModal} onClick={(e) => e.stopPropagation()} ref={modalRef}
+        role="dialog" aria-modal="true" aria-labelledby={titleId} tabIndex={-1}>
+        <div className={styles.detailsHead}>
+          <span className={styles.detailsTitle} id={titleId}>{r.title}</span>
+          <button type="button" className={styles.detailsClose} onClick={onClose} aria-label={t('Close')}>
+            <X size={18} />
+          </button>
+        </div>
+        <div className={styles.detailsBody}>
+          {r.cover && <img src={r.cover} alt="" className={styles.detailsCover} loading="lazy" />}
+          <dl className={styles.detailsFields}>
+            {rows.map((row) => (
+              <div key={row.label} className={styles.detailsRow}>
+                <dt className={styles.detailsLabel}>{row.label}</dt>
+                <dd className={styles.detailsValue}>{row.value}</dd>
+              </div>
+            ))}
+            {r.description && (
+              <div className={styles.detailsRow}>
+                <dt className={styles.detailsLabel}>{t('Description')}</dt>
+                <dd className={styles.detailsValue}>{stripTags(r.description)}</dd>
+              </div>
+            )}
+            {idents.length > 0 && (
+              <div className={styles.detailsRow}>
+                <dt className={styles.detailsLabel}>{t('Identifiers')}</dt>
+                <dd className={styles.detailsValue}>
+                  <ul className={styles.detailsIdents}>
+                    {idents.map(([k, v]) => (
+                      <li key={k}><code>{k}</code>: {String(v)}</li>
+                    ))}
+                  </ul>
+                </dd>
+              </div>
+            )}
+          </dl>
+        </div>
+      </div>
+    </div>,
+    document.body,
   );
 }
 

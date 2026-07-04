@@ -36,7 +36,7 @@
 
 .itemActive {
   background: var(--accent-soft);
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 .icon {
@@ -66,7 +66,7 @@
 }
 
 .sectionTitle:hover { color: var(--text); background: var(--surface-2); }
-.sectionTitleActive { color: var(--accent); background: var(--accent-soft); }
+.sectionTitleActive { color: var(--accent-text); background: var(--accent-soft); }
 
 .shelfList {
   display: flex;
@@ -89,7 +89,7 @@
 }
 
 .shelfItem:hover { color: var(--text); background: var(--surface-2); }
-.shelfItemActive { color: var(--accent); background: var(--accent-soft); }
+.shelfItemActive { color: var(--accent-text); background: var(--accent-soft); }
 
 .shelfName {
   overflow: hidden;
@@ -101,6 +101,11 @@
   flex-shrink: 0;
   font-size: var(--fs-xs);
   color: var(--text-faint);
+}
+
+/* Drawer close button — mobile only (the desktop rail has no close affordance). */
+.drawerClose {
+  display: none;
 }
 
 /* Mobile scrim behind the drawer */
@@ -149,6 +154,23 @@
 
   .navOpen {
     transform: translateX(0);
+  }
+
+  .drawerClose {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin-left: auto;
+    margin-bottom: var(--sp-2);
+    border-radius: var(--r-md);
+    color: var(--text-muted);
+  }
+
+  .drawerClose:hover {
+    background: var(--surface-2);
+    color: var(--text);
   }
 
   .scrim {

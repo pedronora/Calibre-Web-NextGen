@@ -1,10 +1,13 @@
+import { useEffect, useRef } from 'react';
 import { Link, useLocation } from 'wouter';
 import {
   Library, Users, Layers, Tag, Building2, Languages, BookCopy, UploadCloud, Shield,
-  Flame, Shuffle, Star, Archive, Info, ListChecks, Table2, Wand2, Files, FileType,
+  Flame, Shuffle, Star, Archive, Info, ListChecks, Table2, Wand2, Files, FileType, X,
 } from 'lucide-react';
 import { useShelves, useMe, useMagicShelves } from '../lib/queries';
 import { useT } from '../lib/i18n';
+import { useIsMobile } from '../lib/a11y/useIsMobile';
+import { useFocusTrap } from '../lib/a11y/useFocusTrap';
 import styles from './Sidebar.module.css';
 
 // `vis` is the sidebar-visibility key (#585) the entry is gated on, matching a
@@ -53,12 +56,29 @@ function isActive(location: string, href: string, exact?: boolean): boolean {
 interface SidebarProps {
   /** Mobile drawer open state. Ignored on desktop (always visible). */
   open: boolean;
+  /** Close the mobile drawer (Escape, scrim click, close button). */
+  onClose: () => void;
   onNavigate: () => void;
 }
 
-export function Sidebar({ open, onNavigate }: SidebarProps) {
+export function Sidebar({ open, onClose, onNavigate }: SidebarProps) {
   const [location] = useLocation();
   const t = useT();
+  const isMobile = useIsMobile();
+  const navRef = useRef<HTMLElement>(null);
+
+  // C5 (SC 2.1.1/2.1.2/2.4.3): on mobile the drawer is off-canvas. When CLOSED it
+  // must leave the tab order + a11y tree; when OPEN it traps focus and Escape
+  // closes it. On desktop it's a persistent rail — never inert, never trapped.
+  // `inert` is set imperatively to avoid React-18 non-boolean-attr console warns.
+  useEffect(() => {
+    const node = navRef.current;
+    if (!node) return;
+    if (isMobile && !open) node.setAttribute('inert', '');
+    else node.removeAttribute('inert');
+  }, [isMobile, open]);
+
+  useFocusTrap(navRef, { onClose, active: isMobile && open });
   const { data: shelvesData } = useShelves();
   const shelves = shelvesData?.items ?? [];
   const magicShelves = useMagicShelves().data?.items ?? [];
@@ -78,9 +98,18 @@ export function Sidebar({ open, onNavigate }: SidebarProps) {
 
   return (
     <>
-      {open && <div className={styles.scrim} onClick={onNavigate} aria-hidden="true" />}
-      <nav className={open ? styles.navOpen : styles.nav} aria-label="Browse">
-        <ul className={styles.list}>
+      {open && <div className={styles.scrim} onClick={onClose} aria-hidden="true" />}
+      <nav
+        ref={navRef}
+        className={open ? styles.navOpen : styles.nav}
+        aria-label={t('Browse')}
+        tabIndex={-1}
+      >
+        {/* Mobile-only close affordance (labelled); hidden on the desktop rail. */}
+        <button type="button" className={styles.drawerClose} onClick={onClose} aria-label={t('Close menu')}>
+          <X size={20} aria-hidden="true" focusable={false} />
+        </button>
+        <ul className={styles.list} role="list">
           {navEntries.map(({ href, label, icon: Icon, exact }) => {
             const active = isActive(location, href, exact);
             return (
@@ -91,7 +120,7 @@ export function Sidebar({ open, onNavigate }: SidebarProps) {
                   aria-current={active ? 'page' : undefined}
                   onClick={onNavigate}
                 >
-                  <Icon size={18} className={styles.icon} />
+                  <Icon size={18} className={styles.icon} aria-hidden="true" focusable={false} />
                   <span>{t(label)}</span>
                 </Link>
               </li>
@@ -100,7 +129,7 @@ export function Sidebar({ open, onNavigate }: SidebarProps) {
         </ul>
 
         {discoverEntries.length > 0 && (
-          <ul className={styles.list}>
+          <ul className={styles.list} role="list">
             {discoverEntries.map(({ href, label, icon: Icon }) => {
               const active = isActive(location, href, true);
               return (
@@ -111,7 +140,7 @@ export function Sidebar({ open, onNavigate }: SidebarProps) {
                     aria-current={active ? 'page' : undefined}
                     onClick={onNavigate}
                   >
-                    <Icon size={18} className={styles.icon} />
+                    <Icon size={18} className={styles.icon} aria-hidden="true" focusable={false} />
                     <span>{t(label)}</span>
                   </Link>
                 </li>
@@ -121,7 +150,7 @@ export function Sidebar({ open, onNavigate }: SidebarProps) {
         )}
 
         {(canUpload || isAdmin) && (
-          <ul className={styles.list}>
+          <ul className={styles.list} role="list">
             {canUpload && (
               <li>
                 <Link
@@ -130,7 +159,7 @@ export function Sidebar({ open, onNavigate }: SidebarProps) {
                   aria-current={isActive(location, '/upload', true) ? 'page' : undefined}
                   onClick={onNavigate}
                 >
-                  <UploadCloud size={18} className={styles.icon} />
+                  <UploadCloud size={18} className={styles.icon} aria-hidden="true" focusable={false} />
                   <span>{t('Upload')}</span>
                 </Link>
               </li>
@@ -143,7 +172,7 @@ export function Sidebar({ open, onNavigate }: SidebarProps) {
                   aria-current={isActive(location, '/admin', true) ? 'page' : undefined}
                   onClick={onNavigate}
                 >
-                  <Shield size={18} className={styles.icon} />
+                  <Shield size={18} className={styles.icon} aria-hidden="true" focusable={false} />
                   <span>{t('Admin')}</span>
                 </Link>
               </li>
@@ -162,13 +191,13 @@ export function Sidebar({ open, onNavigate }: SidebarProps) {
             className={isActive(location, '/shelves', true) ? styles.sectionTitleActive : styles.sectionTitle}
             onClick={onNavigate}
           >
-            <BookCopy size={16} className={styles.icon} />
+            <BookCopy size={16} className={styles.icon} aria-hidden="true" focusable={false} />
             <span>{t('Shelves')}</span>
           </Link>
         </div>
 
         {shelves.length > 0 && (
-          <ul className={styles.shelfList}>
+          <ul className={styles.shelfList} role="list">
             {shelves.map((s) => {
               const href = `/shelf/${s.id}`;
               const active = location === href;
@@ -192,7 +221,7 @@ export function Sidebar({ open, onNavigate }: SidebarProps) {
 
         {/* Smart shelves + power features served by the legacy UI under the
             hybrid cutover — plain <a> so they leave the SPA. Reachable, not omitted. */}
-        <ul className={styles.list}>
+        <ul className={styles.list} role="list">
           {showList && (
             <li>
               <Link
@@ -201,7 +230,7 @@ export function Sidebar({ open, onNavigate }: SidebarProps) {
                 aria-current={isActive(location, '/table', true) ? 'page' : undefined}
                 onClick={onNavigate}
               >
-                <Table2 size={18} className={styles.icon} />
+                <Table2 size={18} className={styles.icon} aria-hidden="true" focusable={false} />
                 <span>{t('Table view')}</span>
               </Link>
             </li>
@@ -213,7 +242,7 @@ export function Sidebar({ open, onNavigate }: SidebarProps) {
               aria-current={isActive(location, '/magic', true) ? 'page' : undefined}
               onClick={onNavigate}
             >
-              <Wand2 size={18} className={styles.icon} />
+              <Wand2 size={18} className={styles.icon} aria-hidden="true" focusable={false} />
               <span>{t('Smart shelves')}</span>
             </Link>
           </li>
@@ -242,7 +271,7 @@ export function Sidebar({ open, onNavigate }: SidebarProps) {
                 aria-current={isActive(location, '/duplicates', true) ? 'page' : undefined}
                 onClick={onNavigate}
               >
-                <Files size={18} className={styles.icon} />
+                <Files size={18} className={styles.icon} aria-hidden="true" focusable={false} />
                 <span>{t('Duplicates')}</span>
               </Link>
             </li>
@@ -250,7 +279,7 @@ export function Sidebar({ open, onNavigate }: SidebarProps) {
         </ul>
 
         {/* Low-frequency info pages, last. */}
-        <ul className={styles.list}>
+        <ul className={styles.list} role="list">
           {SYSTEM.map(({ href, label, icon: Icon }) => {
             const active = isActive(location, href, true);
             return (
@@ -261,7 +290,7 @@ export function Sidebar({ open, onNavigate }: SidebarProps) {
                   aria-current={active ? 'page' : undefined}
                   onClick={onNavigate}
                 >
-                  <Icon size={18} className={styles.icon} />
+                  <Icon size={18} className={styles.icon} aria-hidden="true" focusable={false} />
                   <span>{t(label)}</span>
                 </Link>
               </li>

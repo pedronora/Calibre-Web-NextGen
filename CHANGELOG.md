@@ -48,6 +48,11 @@ is for things you can see or feel when running the app.
   inherited upstream icon.
 
 ### Fixed
+- **The new interface now hides the smart shelves you turned off.** If you
+  unticked some entries under "Magic Shelves Visibility" in your account
+  settings, the new UI sidebar still listed every smart shelf — the setting only
+  worked in the classic view. The sidebar now honours it, so hidden smart
+  shelves stay hidden in both interfaces. Reported by @chloeroform (#667).
 - **Fixed a startup crash-loop on servers that had synced annotations to
   Hardcover.** If your library had ever synced highlights to Hardcover, an
   upgrade could get stuck restarting over and over, never finishing boot. A

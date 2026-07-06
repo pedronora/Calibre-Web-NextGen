@@ -48,6 +48,11 @@ is for things you can see or feel when running the app.
   inherited upstream icon.
 
 ### Fixed
+- **Your profile picture now shows in the new interface.** If you set a profile
+  picture in the classic account settings, the new interface didn't use it — the
+  account button in the top bar and the account page both showed a generic
+  silhouette. Both now display your picture, and fall back to the silhouette only
+  when you haven't set one. Reported by @chloeroform (#668).
 - **Marking a book "unread" now clears its reading progress.** If you opened a
   book just to peek at it, it could stick at something like "0.6% read" with no
   way to reset it — the read/unread switch flipped the status but left the

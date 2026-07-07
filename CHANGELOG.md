@@ -16,6 +16,8 @@ is for things you can see or feel when running the app.
 
 ## [Unreleased]
 
+## [v4.1.6] - 2026-07-07
+
 ### Added
 - **Pick the right Hardcover edition when fetching metadata (new interface).**
   On a Hardcover search result you can now click **Editions** to drill into that

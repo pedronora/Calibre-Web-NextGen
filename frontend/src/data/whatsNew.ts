@@ -56,6 +56,84 @@ export interface WhatsNewRelease {
 /** Newest release first. The `whats-new-populate` skill prepends here. */
 export const WHATS_NEW: WhatsNewRelease[] = [
   {
+    version: 'v4.1.6',
+    date: '2026-07-07',
+    items: [
+      {
+        title: 'Reading position keeps up across your devices',
+        body: 'If you read the same book on two devices, the one that was behind could refuse to jump forward — a manual sync just said "already synced". This happened when each device held a slightly different copy of the book (after a re-upload, a metadata edit, or a side-load). The server now recognises them as the same book, so the furthest position wins everywhere.',
+        category: 'Sync',
+        link: { to: '/account', label: 'Manage sync & app passwords' },
+      },
+      {
+        title: 'Choose the interface font',
+        body: 'Account settings now has body- and display-font pickers — a system sans-serif, a bookish serif, or monospace in place of the defaults. Each option previews in its own font, and your choice is saved to your account, so it follows you to every device and browser.',
+        category: 'Account',
+        link: { to: '/account', label: 'Open account settings' },
+      },
+      {
+        title: 'Arrange the sidebar the way you use it',
+        body: 'A Customize control at the top of the left rail turns the sidebar into an editable list: drag sections into the order you want — move Shelves to the top so you never scroll for it — and hide the ones you don\'t use. It works with the mouse, on touch, and with the keyboard, and your layout is saved to your account.',
+        category: 'Library',
+        link: { to: '/', label: 'Open your library' },
+      },
+      {
+        title: 'Apply the exact Hardcover edition when fetching metadata',
+        body: 'A Hardcover search result now has an Editions view, so you can drill into a book\'s individual editions — paperback, e-book, a translation — and apply the one you actually own. That puts the right edition ISBN and id on your book, which is what Hardcover reading-progress sync needs to match the right copy.',
+        category: 'Library',
+      },
+      {
+        title: 'A What\'s New page',
+        body: 'This page. It lives in the Help ("?") menu and keeps a plain-English log of what changed in each release, newest first, each with a link straight to the thing it describes. A small dot on the Help menu points it out once after an update.',
+        category: 'Under the hood',
+      },
+      {
+        title: 'A much fuller Russian translation',
+        body: 'Russian coverage roughly doubled this release, so far more of the interface reads in Russian instead of falling back to English. Pick it under interface language in your account settings.',
+        category: 'Account',
+        link: { to: '/account', label: 'Open account settings' },
+      },
+      {
+        title: 'Upgrades no longer crash-loop after Hardcover annotation sync',
+        body: 'If your library had ever synced highlights to Hardcover, an upgrade could get stuck restarting over and over and never finish booting. A one-time database step was double-counting your own sync records; it now checks the right thing and completes. No data is lost and no manual steps are needed.',
+        category: 'Under the hood',
+      },
+      {
+        title: 'Your profile picture shows in the new interface',
+        body: 'A picture set in the classic account settings was ignored by the new interface, which showed a generic silhouette in the top bar and on your account page. Both now use your picture, falling back to the silhouette only when you haven\'t set one.',
+        category: 'Account',
+        link: { to: '/account', label: 'Open account settings' },
+      },
+      {
+        title: 'The "Currently reading" marker shows on a book\'s page',
+        body: 'A book you\'re partway through on KOReader or Kobo showed the "Currently reading" marker on the classic book page but nothing in the new interface. The new-UI book page now shows it too — with the synced percentage when it\'s known — while unread and finished books stay unmarked.',
+        category: 'Reading',
+        link: { to: '/', label: 'Open your library' },
+      },
+      {
+        title: 'Marking a book unread clears its progress',
+        body: 'Opening a book just to look could leave it stuck at something like "0.6% read" with no way to reset it — the switch flipped the status but left the percentage behind. Marking a book unread now also resets its progress and where the in-browser reader would resume, so it reads as untouched everywhere.',
+        category: 'Reading',
+      },
+      {
+        title: 'The new interface hides the smart shelves you turned off',
+        body: 'Unticking entries under Magic Shelves Visibility only worked in the classic view — the new-UI sidebar still listed every smart shelf. It now honours the setting, so hidden smart shelves stay hidden in both interfaces.',
+        category: 'Library',
+        link: { to: '/account', label: 'Open account settings' },
+      },
+      {
+        title: 'Fetch Metadata stops reusing one cover across a series',
+        body: 'Searching for one volume of a series could return results where every volume carried an identical cover — and applying metadata then saved that wrong cover onto the book. The cover step now refuses artwork whose volume number disagrees with the book, and keeps the ISBN so the exact-edition cover can be found.',
+        category: 'Library',
+      },
+      {
+        title: 'Smaller fixes',
+        body: 'Your shelves are listed directly under the SHELVES heading in the new-UI sidebar again instead of at the very bottom. The "Contribute here!" link on the partial-translation banner points at a page that exists again. And the browser-tab icon is refreshed to match the app.',
+        category: 'Under the hood',
+      },
+    ],
+  },
+  {
     version: 'v4.1.5',
     date: '2026-07-03',
     items: [

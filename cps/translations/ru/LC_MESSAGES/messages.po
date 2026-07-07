@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web NextGen\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-07 01:37+0000\n"
+"POT-Creation-Date: 2026-07-07 01:43+0000\n"
 "PO-Revision-Date: 2026-07-05 11:16+0300\n"
 "Last-Translator: ZIZA\n"
 "Language-Team: \n"
@@ -155,7 +155,7 @@ msgstr "Пользователь не найден"
 msgid "{} users deleted successfully"
 msgstr "Успешно удалено пользователей: {}"
 
-#: cps/admin.py:801 cps/api/account.py:58
+#: cps/admin.py:801 cps/api/account.py:64
 #: cps/templates/config_view_edit.html:186 cps/templates/user_edit.html:270
 #: cps/templates/user_edit.html:292 cps/templates/user_table.html:81
 msgid "Show All"
@@ -2079,7 +2079,7 @@ msgstr "Категории"
 msgid "Books ordered by category"
 msgstr "Книги, упорядоченные по категории"
 
-#: cps/opds.py:223 cps/render_template.py:107 cps/spa_strings.py:152
+#: cps/opds.py:223 cps/render_template.py:107 cps/spa_strings.py:160
 #: cps/templates/book_edit.html:143 cps/templates/book_table.html:111
 #: cps/templates/cwa_settings.html:362 cps/templates/cwa_settings.html:364
 #: cps/templates/cwa_settings.html:1133
@@ -2282,7 +2282,7 @@ msgstr ""
 "Помогите улучшить перевод Calibre-Web NextGen на %(language)s язык - "
 "%(count)s строк на вашем языке ещё нуждаются в переводе."
 
-#: cps/search.py:53 cps/search.py:454 cps/spa_strings.py:144
+#: cps/search.py:53 cps/search.py:454 cps/spa_strings.py:152
 #: cps/templates/book_edit.html:338 cps/templates/cwa_epub_fixer.html:25
 #: cps/templates/feed.xml:43 cps/templates/index.xml:12
 #: cps/templates/layout.html:313 cps/templates/layout.html:316
@@ -2764,95 +2764,125 @@ msgstr "Язык интерфейса"
 msgid "Invalid username or password."
 msgstr "Неверное имя пользователя или пароль."
 
-#: cps/spa_strings.py:108
+#: cps/spa_strings.py:109
+msgid "UI body font"
+msgstr ""
+
+#: cps/spa_strings.py:110
+msgid "UI display font"
+msgstr ""
+
+#: cps/spa_strings.py:111
+msgid "Default (Optima / Sans-Serif)"
+msgstr ""
+
+#: cps/spa_strings.py:112
+msgid "Default (Bookish Serif)"
+msgstr ""
+
+#: cps/spa_strings.py:113
+#, fuzzy
+msgid "System Sans-Serif"
+msgstr "Статистика системы"
+
+#: cps/spa_strings.py:114
+#, fuzzy
+msgid "Bookish Serif"
+msgstr "Список книг"
+
+#: cps/spa_strings.py:115
+msgid "Monospace"
+msgstr ""
+
+#: cps/spa_strings.py:116
 msgid "Label (e.g. KOReader on phone)"
 msgstr "Метка (например, KOReader на телефоне)"
 
-#: cps/spa_strings.py:109
+#: cps/spa_strings.py:117
 msgid "Languages (comma separated)"
 msgstr "Языки (через запятую)"
 
-#: cps/spa_strings.py:110 cps/templates/read.html:108
+#: cps/spa_strings.py:118 cps/templates/read.html:108
 #: cps/templates/readcbr.html:105
 msgid "Light"
 msgstr "Светлая"
 
-#: cps/spa_strings.py:111
+#: cps/spa_strings.py:119
 msgid "Light theme"
 msgstr "Светлая тема"
 
-#: cps/spa_strings.py:112
+#: cps/spa_strings.py:120
 msgid "Login failed."
 msgstr "Ошибка входа."
 
-#: cps/spa_strings.py:113
+#: cps/spa_strings.py:121
 msgid "Mark read"
 msgstr "Пометить как прочитанное"
 
-#: cps/spa_strings.py:114
+#: cps/spa_strings.py:122
 msgid "Mark unread"
 msgstr "Пометить как непрочитанное"
 
-#: cps/spa_strings.py:115 cps/templates/book_table.html:48
+#: cps/spa_strings.py:123 cps/templates/book_table.html:48
 #: cps/templates/book_table.html:175 cps/templates/duplicates.html:745
 msgid "Merge"
 msgstr "Объединить"
 
-#: cps/spa_strings.py:116
+#: cps/spa_strings.py:124
 #, python-brace-format
 msgid "Metadata applied to {n} book(s)."
 msgstr "Метаданные применены к {n} книге(ам)."
 
-#: cps/spa_strings.py:117
+#: cps/spa_strings.py:125
 #, python-brace-format
 msgid "New password for “{label}” — copy it now, it won’t be shown again:"
 msgstr ""
 "Новый пароль для \"{label}\" - скопируйте его сейчас, он больше не будет "
 "показан:"
 
-#: cps/spa_strings.py:118
+#: cps/spa_strings.py:126
 msgid "New passwords do not match."
 msgstr "Новые пароли не совпадают."
 
-#: cps/spa_strings.py:119
+#: cps/spa_strings.py:127
 msgid "No books here."
 msgstr "Здесь нет книг."
 
-#: cps/spa_strings.py:120
+#: cps/spa_strings.py:128
 #, python-brace-format
 msgid "No results for \"{q}\"."
 msgstr "Нет результатов для \"{q}\"."
 
-#: cps/spa_strings.py:121
+#: cps/spa_strings.py:129
 #, python-brace-format
 msgid "No {filter} books here."
 msgstr "Здесь нет книг ({filter})."
 
-#: cps/spa_strings.py:122
+#: cps/spa_strings.py:130
 msgid "Password changed."
 msgstr "Пароль изменён."
 
-#: cps/spa_strings.py:123
+#: cps/spa_strings.py:131
 msgid "Paste URL"
 msgstr "Вставить URL"
 
-#: cps/spa_strings.py:124
+#: cps/spa_strings.py:132
 msgid "Private shelf"
 msgstr "Приватная полка"
 
-#: cps/spa_strings.py:125
+#: cps/spa_strings.py:133
 msgid "Profile"
 msgstr "Профиль"
 
-#: cps/spa_strings.py:126
+#: cps/spa_strings.py:134
 msgid "Profile saved."
 msgstr "Профиль сохранён."
 
-#: cps/spa_strings.py:127
+#: cps/spa_strings.py:135
 msgid "Public shelf"
 msgstr "Публичная полка"
 
-#: cps/spa_strings.py:128 cps/templates/book_edit.html:159
+#: cps/spa_strings.py:136 cps/templates/book_edit.html:159
 #: cps/templates/book_edit.html:460 cps/templates/cwa_settings.html:348
 #: cps/templates/cwa_settings.html:350 cps/templates/cwa_settings.html:1139
 #: cps/templates/detail.html:1006
@@ -2861,128 +2891,128 @@ msgstr "Публичная полка"
 msgid "Publisher"
 msgstr "Издатель"
 
-#: cps/spa_strings.py:129
+#: cps/spa_strings.py:137
 msgid "Publishers (comma separated)"
 msgstr "Издатели (через запятую)"
 
-#: cps/spa_strings.py:130 cps/templates/image.html:26
+#: cps/spa_strings.py:138 cps/templates/image.html:26
 #: cps/templates/listenmp3.html:159
 msgid "Read"
 msgstr "Прочитано"
 
-#: cps/spa_strings.py:131
+#: cps/spa_strings.py:139
 msgid "Reading progress"
 msgstr "Прогресс чтения"
 
-#: cps/spa_strings.py:132 cps/templates/read.html:186
+#: cps/spa_strings.py:140 cps/templates/read.html:186
 msgid "Red"
 msgstr "Красный"
 
-#: cps/spa_strings.py:133
+#: cps/spa_strings.py:141
 msgid "Registration failed."
 msgstr "Ошибка регистрации."
 
-#: cps/spa_strings.py:134
+#: cps/spa_strings.py:142
 #, python-brace-format
 msgid "Remove {name}"
 msgstr "Удалить {name}"
 
-#: cps/spa_strings.py:135
+#: cps/spa_strings.py:143
 msgid "Request failed."
 msgstr "Ошибка запроса."
 
-#: cps/spa_strings.py:136
+#: cps/spa_strings.py:144
 msgid "Reset"
 msgstr "Сбросить"
 
-#: cps/spa_strings.py:137
+#: cps/spa_strings.py:145
 msgid "Reset your password"
 msgstr "Сбросить пароль"
 
-#: cps/spa_strings.py:138
+#: cps/spa_strings.py:146
 #, python-brace-format
 msgid "Revoke {label}"
 msgstr "Отозвать {label}"
 
-#: cps/spa_strings.py:139
+#: cps/spa_strings.py:147
 msgid "Save changes"
 msgstr "Сохранить изменения"
 
-#: cps/spa_strings.py:140
+#: cps/spa_strings.py:148
 msgid "Save failed."
 msgstr "Сохранение не удалось."
 
-#: cps/spa_strings.py:141
+#: cps/spa_strings.py:149
 msgid "Save profile"
 msgstr "Сохранить профиль"
 
-#: cps/spa_strings.py:142
+#: cps/spa_strings.py:150
 msgid "Saved."
 msgstr "Сохранено."
 
-#: cps/spa_strings.py:143 cps/templates/shelf_order.html:33
+#: cps/spa_strings.py:151 cps/templates/shelf_order.html:33
 msgid "Saving…"
 msgstr "Сохранение…"
 
-#: cps/spa_strings.py:145
+#: cps/spa_strings.py:153
 msgid "Search failed."
 msgstr "Ошибка поиска."
 
-#: cps/spa_strings.py:146
+#: cps/spa_strings.py:154
 msgid "Search for metadata"
 msgstr "Искать метаданные"
 
-#: cps/spa_strings.py:147 cps/templates/shelf.html:119
+#: cps/spa_strings.py:155 cps/templates/shelf.html:119
 msgid "Search results"
 msgstr "Результаты поиска"
 
-#: cps/spa_strings.py:148
+#: cps/spa_strings.py:156
 msgid "Search the library"
 msgstr "Поиск в библиотеке"
 
-#: cps/spa_strings.py:149
+#: cps/spa_strings.py:157
 #, python-brace-format
 msgid "Select {title}"
 msgstr "Выбрать {title}"
 
-#: cps/spa_strings.py:150 cps/templates/read.html:110
+#: cps/spa_strings.py:158 cps/templates/read.html:110
 msgid "Sepia"
 msgstr "Сепия"
 
-#: cps/spa_strings.py:151
+#: cps/spa_strings.py:159
 msgid "Sepia theme"
 msgstr "Тема «Сепия»"
 
-#: cps/spa_strings.py:153
+#: cps/spa_strings.py:161
 #, python-brace-format
 msgid "Series position {n}"
 msgstr "Номер в серии: {n}"
 
-#: cps/spa_strings.py:154
+#: cps/spa_strings.py:162
 msgid "Sign in"
 msgstr "Войти"
 
-#: cps/spa_strings.py:155
+#: cps/spa_strings.py:163
 msgid "Sign in failed. Please try again."
 msgstr "Ошибка входа. Пожалуйста, попробуйте снова."
 
-#: cps/spa_strings.py:156
+#: cps/spa_strings.py:164
 msgid "Skip to content"
 msgstr "Перейти к контенту"
 
-#: cps/spa_strings.py:157
+#: cps/spa_strings.py:165
 msgid "Some fields could not be saved."
 msgstr "Некоторые поля не удалось сохранить."
 
-#: cps/spa_strings.py:158
+#: cps/spa_strings.py:166
 msgid "Table of contents"
 msgstr "Оглавление"
 
-#: cps/spa_strings.py:159
+#: cps/spa_strings.py:167
 msgid "Tags (comma separated)"
 msgstr "Теги (через запятую)"
 
-#: cps/spa_strings.py:160 cps/templates/book_table.html:106
+#: cps/spa_strings.py:168 cps/templates/book_table.html:106
 #: cps/templates/config_view_edit.html:39 cps/templates/cwa_settings.html:327
 #: cps/templates/cwa_settings.html:329 cps/templates/cwa_settings.html:1115
 #: cps/templates/shelf_edit.html:8 cps/templates/tasks.html:41
@@ -2990,107 +3020,107 @@ msgstr "Теги (через запятую)"
 msgid "Title"
 msgstr "Название"
 
-#: cps/spa_strings.py:161
+#: cps/spa_strings.py:169
 msgid "Unread"
 msgstr "Непрочитанные книги"
 
-#: cps/spa_strings.py:162
+#: cps/spa_strings.py:170
 msgid "Update password"
 msgstr "Обновить пароль"
 
-#: cps/spa_strings.py:163 cps/tasks/upload.py:28 cps/templates/admin.html:22
+#: cps/spa_strings.py:171 cps/tasks/upload.py:28 cps/templates/admin.html:22
 #: cps/templates/layout.html:361 cps/templates/user_table.html:146
 msgid "Upload"
 msgstr "Загрузить"
 
-#: cps/spa_strings.py:164
+#: cps/spa_strings.py:172
 msgid "Upload failed."
 msgstr "Сбой загрузки."
 
-#: cps/spa_strings.py:165
+#: cps/spa_strings.py:173
 msgid "Upload image"
 msgstr "Загрузить изображение"
 
-#: cps/spa_strings.py:166
+#: cps/spa_strings.py:174
 msgid "Uploading…"
 msgstr "Загрузка…"
 
-#: cps/spa_strings.py:167 cps/templates/read.html:185
+#: cps/spa_strings.py:175 cps/templates/read.html:185
 msgid "Yellow"
 msgstr "Жёлтый"
 
-#: cps/spa_strings.py:168
+#: cps/spa_strings.py:176
 msgid "e.g. MOBI"
 msgstr "например, MOBI"
 
-#: cps/spa_strings.py:169
+#: cps/spa_strings.py:177
 #, python-brace-format
 msgid "{format} reader"
 msgstr "Ридер {format}"
 
-#: cps/spa_strings.py:170
+#: cps/spa_strings.py:178
 #, python-brace-format
 msgid "{name} API key"
 msgstr "API-ключ {name}"
 
-#: cps/spa_strings.py:171
+#: cps/spa_strings.py:179
 #, python-brace-format
 msgid "{n} book(s) added to the shelf."
 msgstr "{n} книг(и) добавлено на полку."
 
-#: cps/spa_strings.py:172
+#: cps/spa_strings.py:180
 #, python-brace-format
 msgid "{n} book(s) deleted."
 msgstr "{n} книг(и) удалено."
 
-#: cps/spa_strings.py:173
+#: cps/spa_strings.py:181
 #, python-brace-format
 msgid "{n} marked as read."
 msgstr "{n} отмечено как прочитанное."
 
-#: cps/spa_strings.py:174
+#: cps/spa_strings.py:182
 #, python-brace-format
 msgid "{n} marked as unread."
 msgstr "{n} отмечено как непрочитанное."
 
-#: cps/spa_strings.py:175 cps/templates/_book_organizer.html:162
+#: cps/spa_strings.py:183 cps/templates/_book_organizer.html:162
 #, python-brace-format
 msgid "{n} selected"
 msgstr "{n} выбрано"
 
-#: cps/spa_strings.py:176
+#: cps/spa_strings.py:184
 #, python-format, python-brace-format
 msgid "{pct}% read"
 msgstr "Прочитано: {pct}% r"
 
-#: cps/spa_strings.py:182
+#: cps/spa_strings.py:190
 msgid "What's new"
 msgstr "Что нового"
 
-#: cps/spa_strings.py:183
+#: cps/spa_strings.py:191
 msgid "Help — new updates available"
 msgstr "Справка - доступны новые обновления"
 
-#: cps/spa_strings.py:184
+#: cps/spa_strings.py:192
 msgid "The latest features and fixes in Calibre-Web NextGen — newest first."
 msgstr "Последние функции и исправления в Calibre-Web NextGen - новые сверху."
 
-#: cps/spa_strings.py:185
+#: cps/spa_strings.py:193
 #, python-brace-format
 msgid "{n} update"
 msgstr "{n} обновление"
 
-#: cps/spa_strings.py:186
+#: cps/spa_strings.py:194
 #, python-brace-format
 msgid "{n} updates"
 msgstr "{n} обновлений"
 
-#: cps/spa_strings.py:187
+#: cps/spa_strings.py:195
 msgid "No release notes yet — check back after the next update."
 msgstr ""
 "Списка изменений пока нет - загляните сюда после следующего обновления."
 
-#: cps/spa_strings.py:188
+#: cps/spa_strings.py:196
 msgid ""
 "The interface is translated into your language; these update notes are "
 "written in English."
@@ -3098,184 +3128,184 @@ msgstr ""
 "Интерфейс переведен на ваш язык; эти примечания к обновлению написаны на "
 "английском."
 
-#: cps/spa_strings.py:190 cps/templates/image.html:27
+#: cps/spa_strings.py:198 cps/templates/image.html:27
 msgid "Reading"
 msgstr "В процессе чтения"
 
-#: cps/spa_strings.py:191
+#: cps/spa_strings.py:199
 msgid "Library"
 msgstr "Библиотека"
 
-#: cps/spa_strings.py:192
+#: cps/spa_strings.py:200
 msgid "Sync"
 msgstr "Синхронизация"
 
-#: cps/spa_strings.py:193 cps/templates/layout.html:340
+#: cps/spa_strings.py:201 cps/templates/layout.html:340
 #: cps/templates/layout.html:376 cps/templates/user_edit.html:312
 #: cps/templates/user_edit.html:314
 msgid "Account"
 msgstr "Учётная запись"
 
-#: cps/spa_strings.py:194 cps/templates/admin.html:19
+#: cps/spa_strings.py:202 cps/templates/admin.html:19
 #: cps/templates/layout.html:372 cps/templates/user_table.html:144
 msgid "Admin"
 msgstr "Администратор"
 
-#: cps/spa_strings.py:195
+#: cps/spa_strings.py:203
 msgid "Under the hood"
 msgstr "Под капотом"
 
-#: cps/spa_strings.py:198
+#: cps/spa_strings.py:206
 msgid "Open your library"
 msgstr "Открыть вашу библиотеку"
 
-#: cps/spa_strings.py:199
+#: cps/spa_strings.py:207
 msgid "Open your shelves"
 msgstr "Открыть ваши полки"
 
-#: cps/spa_strings.py:200
+#: cps/spa_strings.py:208
 msgid "Manage sync & app passwords"
 msgstr "Управление синхронизацией и паролями приложений"
 
-#: cps/spa_strings.py:201
+#: cps/spa_strings.py:209
 msgid "Create an app password"
 msgstr "Создать пароль приложения"
 
-#: cps/spa_strings.py:202
+#: cps/spa_strings.py:210
 msgid "Browse series"
 msgstr "Просмотр серий"
 
-#: cps/spa_strings.py:203
+#: cps/spa_strings.py:211
 msgid "Open Table view"
 msgstr "Открыть табличный вид"
 
-#: cps/spa_strings.py:204
+#: cps/spa_strings.py:212
 msgid "Open Admin"
 msgstr "Открыть панель администратора"
 
-#: cps/spa_strings.py:205
+#: cps/spa_strings.py:213
 msgid "Browse Discover"
 msgstr "Раздел \"Интересное\""
 
-#: cps/spa_strings.py:206
+#: cps/spa_strings.py:214
 msgid "Explore your library"
 msgstr "Обзор библиотеки"
 
-#: cps/spa_strings.py:207
+#: cps/spa_strings.py:215
 msgid "Go to Upload"
 msgstr "Перейти к загрузке"
 
-#: cps/spa_strings.py:209
+#: cps/spa_strings.py:217
 msgid "Editions"
 msgstr "Издания"
 
-#: cps/spa_strings.py:210
+#: cps/spa_strings.py:218
 msgid "Back to results"
 msgstr "Вернуться к результатам"
 
-#: cps/spa_strings.py:211
+#: cps/spa_strings.py:219
 msgid "No editions found for this book."
 msgstr "Издания для этой книги не найдены."
 
-#: cps/spa_strings.py:213
+#: cps/spa_strings.py:221
 msgid "View all details"
 msgstr "Подробнее о книге"
 
-#: cps/spa_strings.py:214
+#: cps/spa_strings.py:222
 msgid "Result details"
 msgstr "Детали результата"
 
-#: cps/spa_strings.py:215 cps/templates/detail.html:1012
+#: cps/spa_strings.py:223 cps/templates/detail.html:1012
 #: cps/templates/listenmp3.html:111
 msgid "Published"
 msgstr "Опубликовано"
 
-#: cps/spa_strings.py:216 cps/templates/cwa_settings.html:1145
+#: cps/spa_strings.py:224 cps/templates/cwa_settings.html:1145
 msgid "Format"
 msgstr "Формат"
 
-#: cps/spa_strings.py:217 cps/templates/book_edit.html:462
+#: cps/spa_strings.py:225 cps/templates/book_edit.html:462
 msgid "Source"
 msgstr "Источник"
 
-#: cps/spa_strings.py:220
+#: cps/spa_strings.py:228
 msgid "Customize"
 msgstr "Настроить"
 
-#: cps/spa_strings.py:221
+#: cps/spa_strings.py:229
 msgid "Customize sidebar"
 msgstr "Пользовательский фильтр"
 
-#: cps/spa_strings.py:222 cps/templates/_book_organizer.html:164
+#: cps/spa_strings.py:230 cps/templates/_book_organizer.html:164
 msgid "Done"
 msgstr "Готово"
 
-#: cps/spa_strings.py:223
+#: cps/spa_strings.py:231
 msgid "Reset to default"
 msgstr "Сбросить по умолчанию"
 
-#: cps/spa_strings.py:224
+#: cps/spa_strings.py:232
 msgid "Always shown"
 msgstr "Всегда отображается"
 
-#: cps/spa_strings.py:225
+#: cps/spa_strings.py:233
 msgid "Editing sidebar. Reorder or hide sections, then tap Done."
 msgstr ""
 "Редактирование боковой панели. Измените порядок или скройте разделы, затем "
 "нажмите «Готово»."
 
-#: cps/spa_strings.py:226
+#: cps/spa_strings.py:234
 msgid "Editing cancelled."
 msgstr "Редактирование отменено."
 
-#: cps/spa_strings.py:227
+#: cps/spa_strings.py:235
 msgid ""
 "Drag to reorder. Tap ✕ to hide a section. Arrow keys move the focused handle."
 msgstr ""
 "Перетащите для изменения порядка. Нажмите ✕, чтобы скрыть раздел. Клавиши со "
 "стрелками перемещают выделенный элемент."
 
-#: cps/spa_strings.py:228
+#: cps/spa_strings.py:236
 msgid "Sidebar saved."
 msgstr "Боковая панель сохранена."
 
-#: cps/spa_strings.py:229
+#: cps/spa_strings.py:237
 msgid "Sidebar reset to default."
 msgstr "Настройки боковой панели сброшены по умолчанию."
 
-#: cps/spa_strings.py:230
+#: cps/spa_strings.py:238
 #, python-brace-format
 msgid "{label} moved to position {pos} of {total}"
 msgstr "{label} перемещен(а) на позицию {pos} из {total}"
 
-#: cps/spa_strings.py:231
+#: cps/spa_strings.py:239
 #, python-brace-format
 msgid "Reorder {label} (position {pos} of {total}). Use arrow keys to move."
 msgstr ""
 "Изменение порядка {label} (позиция {pos} из {total}). Используйте клавиши со "
 "стрелками для перемещения."
 
-#: cps/spa_strings.py:232
+#: cps/spa_strings.py:240
 #, python-brace-format
 msgid "Delete {label}"
 msgstr "Удалить {label}"
 
-#: cps/spa_strings.py:233
+#: cps/spa_strings.py:241
 #, python-brace-format
 msgid "Restore {label}"
 msgstr "Восстановить {label}"
 
-#: cps/spa_strings.py:234
+#: cps/spa_strings.py:242
 #, python-brace-format
 msgid "{label} hidden"
 msgstr "{label} скрыт(а)"
 
-#: cps/spa_strings.py:235
+#: cps/spa_strings.py:243
 #, python-brace-format
 msgid "{label} restored"
 msgstr "{label} восстановлен(а)"
 
-#: cps/spa_strings.py:236
+#: cps/spa_strings.py:244
 msgid "Could not save sidebar. Please try again."
 msgstr "Не удалось сохранить боковую панель. Пожалуйста, попробуйте снова."
 

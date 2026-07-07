@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web NextGen\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-07 01:18+0000\n"
+"POT-Creation-Date: 2026-07-07 01:43+0000\n"
 "PO-Revision-Date: 2018-02-07 02:20-0500\n"
 "Last-Translator: subdiox <subdiox@gmail.com>\n"
 "Language-Team: ja <LL@li.org>\n"
@@ -151,7 +151,7 @@ msgstr "ユーザーが見つかりません"
 msgid "{} users deleted successfully"
 msgstr "{}人のユーザーが削除されました"
 
-#: cps/admin.py:801 cps/api/account.py:58
+#: cps/admin.py:801 cps/api/account.py:64
 #: cps/templates/config_view_edit.html:186 cps/templates/user_edit.html:270
 #: cps/templates/user_edit.html:292 cps/templates/user_table.html:81
 msgid "Show All"
@@ -2026,7 +2026,7 @@ msgstr "カテゴリ"
 msgid "Books ordered by category"
 msgstr "カテゴリ順"
 
-#: cps/opds.py:223 cps/render_template.py:107 cps/spa_strings.py:152
+#: cps/opds.py:223 cps/render_template.py:107 cps/spa_strings.py:160
 #: cps/templates/book_edit.html:143 cps/templates/book_table.html:111
 #: cps/templates/cwa_settings.html:362 cps/templates/cwa_settings.html:364
 #: cps/templates/cwa_settings.html:1133
@@ -2227,7 +2227,7 @@ msgid ""
 "strings in your language still need translating."
 msgstr ""
 
-#: cps/search.py:53 cps/search.py:454 cps/spa_strings.py:144
+#: cps/search.py:53 cps/search.py:454 cps/spa_strings.py:152
 #: cps/templates/book_edit.html:338 cps/templates/cwa_epub_fixer.html:25
 #: cps/templates/feed.xml:43 cps/templates/index.xml:12
 #: cps/templates/layout.html:313 cps/templates/layout.html:316
@@ -2757,105 +2757,135 @@ msgstr "言語を入力"
 msgid "Invalid username or password."
 msgstr "パスワードをリセットするには有効なユーザー名を入力してください"
 
-#: cps/spa_strings.py:108
+#: cps/spa_strings.py:109
+msgid "UI body font"
+msgstr ""
+
+#: cps/spa_strings.py:110
+msgid "UI display font"
+msgstr ""
+
+#: cps/spa_strings.py:111
+msgid "Default (Optima / Sans-Serif)"
+msgstr ""
+
+#: cps/spa_strings.py:112
+msgid "Default (Bookish Serif)"
+msgstr ""
+
+#: cps/spa_strings.py:113
+#, fuzzy
+msgid "System Sans-Serif"
+msgstr "システムの統計"
+
+#: cps/spa_strings.py:114
+#, fuzzy
+msgid "Bookish Serif"
+msgstr "本の一覧"
+
+#: cps/spa_strings.py:115
+msgid "Monospace"
+msgstr ""
+
+#: cps/spa_strings.py:116
 msgid "Label (e.g. KOReader on phone)"
 msgstr ""
 
-#: cps/spa_strings.py:109
+#: cps/spa_strings.py:117
 #, fuzzy
 msgid "Languages (comma separated)"
 msgstr "信頼するホスト名 (カンマ区切り)"
 
-#: cps/spa_strings.py:110 cps/templates/read.html:108
+#: cps/spa_strings.py:118 cps/templates/read.html:108
 #: cps/templates/readcbr.html:105
 msgid "Light"
 msgstr "ライト"
 
-#: cps/spa_strings.py:111
+#: cps/spa_strings.py:119
 #, fuzzy
 msgid "Light theme"
 msgstr "ライト"
 
-#: cps/spa_strings.py:112
+#: cps/spa_strings.py:120
 #, fuzzy
 msgid "Login failed."
 msgstr "アップデート失敗:"
 
-#: cps/spa_strings.py:113
+#: cps/spa_strings.py:121
 #, fuzzy
 msgid "Mark read"
 msgstr "既読にする"
 
-#: cps/spa_strings.py:114
+#: cps/spa_strings.py:122
 #, fuzzy
 msgid "Mark unread"
 msgstr "未読にする"
 
-#: cps/spa_strings.py:115 cps/templates/book_table.html:48
+#: cps/spa_strings.py:123 cps/templates/book_table.html:48
 #: cps/templates/book_table.html:175 cps/templates/duplicates.html:745
 msgid "Merge"
 msgstr "統合"
 
-#: cps/spa_strings.py:116
+#: cps/spa_strings.py:124
 #, python-brace-format
 msgid "Metadata applied to {n} book(s)."
 msgstr ""
 
-#: cps/spa_strings.py:117
+#: cps/spa_strings.py:125
 #, python-brace-format
 msgid "New password for “{label}” — copy it now, it won’t be shown again:"
 msgstr ""
 
-#: cps/spa_strings.py:118
+#: cps/spa_strings.py:126
 msgid "New passwords do not match."
 msgstr ""
 
-#: cps/spa_strings.py:119
+#: cps/spa_strings.py:127
 #, fuzzy
 msgid "No books here."
 msgstr "トークンが見つかりません"
 
-#: cps/spa_strings.py:120
+#: cps/spa_strings.py:128
 #, fuzzy, python-brace-format
 msgid "No results for \"{q}\"."
 msgstr "結果:"
 
-#: cps/spa_strings.py:121
+#: cps/spa_strings.py:129
 #, python-brace-format
 msgid "No {filter} books here."
 msgstr ""
 
-#: cps/spa_strings.py:122
+#: cps/spa_strings.py:130
 #, fuzzy
 msgid "Password changed."
 msgstr "パスワード"
 
-#: cps/spa_strings.py:123
+#: cps/spa_strings.py:131
 #, fuzzy
 msgid "Paste URL"
 msgstr "OAuth ベースURL"
 
-#: cps/spa_strings.py:124
+#: cps/spa_strings.py:132
 #, fuzzy
 msgid "Private shelf"
 msgstr "本棚を作成する"
 
-#: cps/spa_strings.py:125
+#: cps/spa_strings.py:133
 #, fuzzy
 msgid "Profile"
 msgstr "メールアドレス"
 
-#: cps/spa_strings.py:126
+#: cps/spa_strings.py:134
 #, fuzzy
 msgid "Profile saved."
 msgstr "ファイル %(file)s をアップロードしました"
 
-#: cps/spa_strings.py:127
+#: cps/spa_strings.py:135
 #, fuzzy
 msgid "Public shelf"
 msgstr "みんなの本棚"
 
-#: cps/spa_strings.py:128 cps/templates/book_edit.html:159
+#: cps/spa_strings.py:136 cps/templates/book_edit.html:159
 #: cps/templates/book_edit.html:460 cps/templates/cwa_settings.html:348
 #: cps/templates/cwa_settings.html:350 cps/templates/cwa_settings.html:1139
 #: cps/templates/detail.html:1006
@@ -2864,148 +2894,148 @@ msgstr "みんなの本棚"
 msgid "Publisher"
 msgstr "出版社"
 
-#: cps/spa_strings.py:129
+#: cps/spa_strings.py:137
 #, fuzzy
 msgid "Publishers (comma separated)"
 msgstr "信頼するホスト名 (カンマ区切り)"
 
-#: cps/spa_strings.py:130 cps/templates/image.html:26
+#: cps/spa_strings.py:138 cps/templates/image.html:26
 #: cps/templates/listenmp3.html:159
 msgid "Read"
 msgstr "既読"
 
-#: cps/spa_strings.py:131
+#: cps/spa_strings.py:139
 #, fuzzy
 msgid "Reading progress"
 msgstr "進捗"
 
-#: cps/spa_strings.py:132 cps/templates/read.html:186
+#: cps/spa_strings.py:140 cps/templates/read.html:186
 #, fuzzy
 msgid "Red"
 msgstr "既読"
 
-#: cps/spa_strings.py:133
+#: cps/spa_strings.py:141
 #, fuzzy
 msgid "Registration failed."
 msgstr "誰でも登録可能"
 
-#: cps/spa_strings.py:134
+#: cps/spa_strings.py:142
 #, fuzzy, python-brace-format
 msgid "Remove {name}"
 msgstr "削除"
 
-#: cps/spa_strings.py:135
+#: cps/spa_strings.py:143
 #, fuzzy
 msgid "Request failed."
 msgstr "復元失敗：%(err)s"
 
-#: cps/spa_strings.py:136
+#: cps/spa_strings.py:144
 msgid "Reset"
 msgstr ""
 
-#: cps/spa_strings.py:137
+#: cps/spa_strings.py:145
 #, fuzzy
 msgid "Reset your password"
 msgstr "パスワードをリセット"
 
-#: cps/spa_strings.py:138
+#: cps/spa_strings.py:146
 #, fuzzy, python-brace-format
 msgid "Revoke {label}"
 msgstr "取り消す"
 
-#: cps/spa_strings.py:139
+#: cps/spa_strings.py:147
 #, fuzzy
 msgid "Save changes"
 msgstr "変更履歴を見る"
 
-#: cps/spa_strings.py:140
+#: cps/spa_strings.py:148
 #, fuzzy
 msgid "Save failed."
 msgstr "アップデート失敗:"
 
-#: cps/spa_strings.py:141
+#: cps/spa_strings.py:149
 #, fuzzy
 msgid "Save profile"
 msgstr "%(name)s のプロフィール"
 
-#: cps/spa_strings.py:142
+#: cps/spa_strings.py:150
 #, fuzzy
 msgid "Saved."
 msgstr "保存"
 
-#: cps/spa_strings.py:143 cps/templates/shelf_order.html:33
+#: cps/spa_strings.py:151 cps/templates/shelf_order.html:33
 #, fuzzy
 msgid "Saving…"
 msgstr "検索"
 
-#: cps/spa_strings.py:145
+#: cps/spa_strings.py:153
 #, fuzzy
 msgid "Search failed."
 msgstr "アップデート失敗:"
 
-#: cps/spa_strings.py:146
+#: cps/spa_strings.py:154
 #, fuzzy
 msgid "Search for metadata"
 msgstr "メタデータを取得"
 
-#: cps/spa_strings.py:147 cps/templates/shelf.html:119
+#: cps/spa_strings.py:155 cps/templates/shelf.html:119
 #, fuzzy
 msgid "Search results"
 msgstr "検索する単語:"
 
-#: cps/spa_strings.py:148
+#: cps/spa_strings.py:156
 #, fuzzy
 msgid "Search the library"
 msgstr "ライブラリ内を検索"
 
-#: cps/spa_strings.py:149
+#: cps/spa_strings.py:157
 #, fuzzy, python-brace-format
 msgid "Select {title}"
 msgstr "すべて選択"
 
-#: cps/spa_strings.py:150 cps/templates/read.html:110
+#: cps/spa_strings.py:158 cps/templates/read.html:110
 msgid "Sepia"
 msgstr "セピア"
 
-#: cps/spa_strings.py:151
+#: cps/spa_strings.py:159
 #, fuzzy
 msgid "Sepia theme"
 msgstr "セピア"
 
-#: cps/spa_strings.py:153
+#: cps/spa_strings.py:161
 #, python-brace-format
 msgid "Series position {n}"
 msgstr ""
 
-#: cps/spa_strings.py:154
+#: cps/spa_strings.py:162
 msgid "Sign in"
 msgstr ""
 
-#: cps/spa_strings.py:155
+#: cps/spa_strings.py:163
 #, fuzzy
 msgid "Sign in failed. Please try again."
 msgstr "OAuthアカウントの連携に失敗しました。再試行してください。"
 
-#: cps/spa_strings.py:156
+#: cps/spa_strings.py:164
 msgid "Skip to content"
 msgstr ""
 
-#: cps/spa_strings.py:157
+#: cps/spa_strings.py:165
 #, fuzzy
 msgid "Some fields could not be saved."
 msgstr "更新データを一時フォルダに保存できませんでした"
 
-#: cps/spa_strings.py:158
+#: cps/spa_strings.py:166
 #, fuzzy
 msgid "Table of contents"
 msgstr "表紙ファイルの内容が無効です"
 
-#: cps/spa_strings.py:159
+#: cps/spa_strings.py:167
 #, fuzzy
 msgid "Tags (comma separated)"
 msgstr "信頼するホスト名 (カンマ区切り)"
 
-#: cps/spa_strings.py:160 cps/templates/book_table.html:106
+#: cps/spa_strings.py:168 cps/templates/book_table.html:106
 #: cps/templates/config_view_edit.html:39 cps/templates/cwa_settings.html:327
 #: cps/templates/cwa_settings.html:329 cps/templates/cwa_settings.html:1115
 #: cps/templates/shelf_edit.html:8 cps/templates/tasks.html:41
@@ -3013,310 +3043,310 @@ msgstr "信頼するホスト名 (カンマ区切り)"
 msgid "Title"
 msgstr "タイトル"
 
-#: cps/spa_strings.py:161
+#: cps/spa_strings.py:169
 #, fuzzy
 msgid "Unread"
 msgstr "未読の本"
 
-#: cps/spa_strings.py:162
+#: cps/spa_strings.py:170
 #, fuzzy
 msgid "Update password"
 msgstr "パスワード変更"
 
-#: cps/spa_strings.py:163 cps/tasks/upload.py:28 cps/templates/admin.html:22
+#: cps/spa_strings.py:171 cps/tasks/upload.py:28 cps/templates/admin.html:22
 #: cps/templates/layout.html:361 cps/templates/user_table.html:146
 msgid "Upload"
 msgstr "アップロード"
 
-#: cps/spa_strings.py:164
+#: cps/spa_strings.py:172
 #, fuzzy
 msgid "Upload failed."
 msgstr "アップロード"
 
-#: cps/spa_strings.py:165
+#: cps/spa_strings.py:173
 #, fuzzy
 msgid "Upload image"
 msgstr "アップロード形式"
 
-#: cps/spa_strings.py:166
+#: cps/spa_strings.py:174
 #, fuzzy
 msgid "Uploading…"
 msgstr "読み込み中..."
 
-#: cps/spa_strings.py:167 cps/templates/read.html:185
+#: cps/spa_strings.py:175 cps/templates/read.html:185
 #, fuzzy
 msgid "Yellow"
 msgstr "許可"
 
-#: cps/spa_strings.py:168
+#: cps/spa_strings.py:176
 msgid "e.g. MOBI"
 msgstr ""
 
-#: cps/spa_strings.py:169
+#: cps/spa_strings.py:177
 #, python-brace-format
 msgid "{format} reader"
 msgstr ""
 
-#: cps/spa_strings.py:170
+#: cps/spa_strings.py:178
 #, python-brace-format
 msgid "{name} API key"
 msgstr ""
 
-#: cps/spa_strings.py:171
+#: cps/spa_strings.py:179
 #, fuzzy, python-brace-format
 msgid "{n} book(s) added to the shelf."
 msgstr "本棚に追加"
 
-#: cps/spa_strings.py:172
+#: cps/spa_strings.py:180
 #, fuzzy, python-brace-format
 msgid "{n} book(s) deleted."
 msgstr "選択した本を統合"
 
-#: cps/spa_strings.py:173
+#: cps/spa_strings.py:181
 #, fuzzy, python-brace-format
 msgid "{n} marked as read."
 msgstr "未読に設定"
 
-#: cps/spa_strings.py:174
+#: cps/spa_strings.py:182
 #, fuzzy, python-brace-format
 msgid "{n} marked as unread."
 msgstr "未読に設定"
 
-#: cps/spa_strings.py:175 cps/templates/_book_organizer.html:162
+#: cps/spa_strings.py:183 cps/templates/_book_organizer.html:162
 #, fuzzy, python-brace-format
 msgid "{n} selected"
 msgstr "選択した本を統合"
 
-#: cps/spa_strings.py:176
+#: cps/spa_strings.py:184
 #, python-format, python-brace-format
 msgid "{pct}% read"
 msgstr ""
 
-#: cps/spa_strings.py:182
+#: cps/spa_strings.py:190
 msgid "What's new"
 msgstr ""
 
-#: cps/spa_strings.py:183
+#: cps/spa_strings.py:191
 #, fuzzy
 msgid "Help — new updates available"
 msgstr "アップデート失敗:"
 
-#: cps/spa_strings.py:184
+#: cps/spa_strings.py:192
 #, fuzzy
 msgid "The latest features and fixes in Calibre-Web NextGen — newest first."
 msgstr "Calibre-Web Automated 電子書籍カタログ"
 
-#: cps/spa_strings.py:185
+#: cps/spa_strings.py:193
 #, fuzzy, python-brace-format
 msgid "{n} update"
 msgstr "DB設定を更新しました"
 
-#: cps/spa_strings.py:186
+#: cps/spa_strings.py:194
 #, fuzzy, python-brace-format
 msgid "{n} updates"
 msgstr "DB設定を更新しました"
 
-#: cps/spa_strings.py:187
+#: cps/spa_strings.py:195
 msgid "No release notes yet — check back after the next update."
 msgstr ""
 
-#: cps/spa_strings.py:188
+#: cps/spa_strings.py:196
 msgid ""
 "The interface is translated into your language; these update notes are "
 "written in English."
 msgstr ""
 
-#: cps/spa_strings.py:190 cps/templates/image.html:27
+#: cps/spa_strings.py:198 cps/templates/image.html:27
 #, fuzzy
 msgid "Reading"
 msgstr "既読"
 
-#: cps/spa_strings.py:191
+#: cps/spa_strings.py:199
 #, fuzzy
 msgid "Library"
 msgstr "ライブラリ内"
 
-#: cps/spa_strings.py:192
+#: cps/spa_strings.py:200
 msgid "Sync"
 msgstr ""
 
-#: cps/spa_strings.py:193 cps/templates/layout.html:340
+#: cps/spa_strings.py:201 cps/templates/layout.html:340
 #: cps/templates/layout.html:376 cps/templates/user_edit.html:312
 #: cps/templates/user_edit.html:314
 msgid "Account"
 msgstr "アカウント"
 
-#: cps/spa_strings.py:194 cps/templates/admin.html:19
+#: cps/spa_strings.py:202 cps/templates/admin.html:19
 #: cps/templates/layout.html:372 cps/templates/user_table.html:144
 msgid "Admin"
 msgstr "管理者"
 
-#: cps/spa_strings.py:195
+#: cps/spa_strings.py:203
 msgid "Under the hood"
 msgstr ""
 
-#: cps/spa_strings.py:198
+#: cps/spa_strings.py:206
 #, fuzzy
 msgid "Open your library"
 msgstr "ライブラリ内を検索"
 
-#: cps/spa_strings.py:199
+#: cps/spa_strings.py:207
 #, fuzzy
 msgid "Open your shelves"
 msgstr "除外する本棚"
 
-#: cps/spa_strings.py:200
+#: cps/spa_strings.py:208
 #, fuzzy
 msgid "Manage sync & app passwords"
 msgstr "パスワード変更"
 
-#: cps/spa_strings.py:201
+#: cps/spa_strings.py:209
 #, fuzzy
 msgid "Create an app password"
 msgstr "パスワード変更"
 
-#: cps/spa_strings.py:202
+#: cps/spa_strings.py:210
 #, fuzzy
 msgid "Browse series"
 msgstr "閲覧"
 
-#: cps/spa_strings.py:203
+#: cps/spa_strings.py:211
 msgid "Open Table view"
 msgstr ""
 
-#: cps/spa_strings.py:204
+#: cps/spa_strings.py:212
 #, fuzzy
 msgid "Open Admin"
 msgstr "管理者"
 
-#: cps/spa_strings.py:205
+#: cps/spa_strings.py:213
 #, fuzzy
 msgid "Browse Discover"
 msgstr "見つける"
 
-#: cps/spa_strings.py:206
+#: cps/spa_strings.py:214
 #, fuzzy
 msgid "Explore your library"
 msgstr "ライブラリ内を検索"
 
-#: cps/spa_strings.py:207
+#: cps/spa_strings.py:215
 #, fuzzy
 msgid "Go to Upload"
 msgstr "アップロード"
 
-#: cps/spa_strings.py:209
+#: cps/spa_strings.py:217
 #, fuzzy
 msgid "Editions"
 msgstr "アクション"
 
-#: cps/spa_strings.py:210
+#: cps/spa_strings.py:218
 #, fuzzy
 msgid "Back to results"
 msgstr "検索する単語:"
 
-#: cps/spa_strings.py:211
+#: cps/spa_strings.py:219
 msgid "No editions found for this book."
 msgstr ""
 
-#: cps/spa_strings.py:213
+#: cps/spa_strings.py:221
 #, fuzzy
 msgid "View all details"
 msgstr "本の詳細"
 
-#: cps/spa_strings.py:214
+#: cps/spa_strings.py:222
 msgid "Result details"
 msgstr ""
 
-#: cps/spa_strings.py:215 cps/templates/detail.html:1012
+#: cps/spa_strings.py:223 cps/templates/detail.html:1012
 #: cps/templates/listenmp3.html:111
 msgid "Published"
 msgstr "発売日"
 
-#: cps/spa_strings.py:216 cps/templates/cwa_settings.html:1145
+#: cps/spa_strings.py:224 cps/templates/cwa_settings.html:1145
 #, fuzzy
 msgid "Format"
 msgstr "アップロード形式"
 
-#: cps/spa_strings.py:217 cps/templates/book_edit.html:462
+#: cps/spa_strings.py:225 cps/templates/book_edit.html:462
 msgid "Source"
 msgstr "ソース"
 
-#: cps/spa_strings.py:220
+#: cps/spa_strings.py:228
 #, fuzzy
 msgid "Customize"
 msgstr "カスタムフィルタ"
 
-#: cps/spa_strings.py:221
+#: cps/spa_strings.py:229
 #, fuzzy
 msgid "Customize sidebar"
 msgstr "カスタムフィルタ"
 
-#: cps/spa_strings.py:222 cps/templates/_book_organizer.html:164
+#: cps/spa_strings.py:230 cps/templates/_book_organizer.html:164
 msgid "Done"
 msgstr ""
 
-#: cps/spa_strings.py:223
+#: cps/spa_strings.py:231
 #, fuzzy
 msgid "Reset to default"
 msgstr "先頭に戻る"
 
-#: cps/spa_strings.py:224
+#: cps/spa_strings.py:232
 msgid "Always shown"
 msgstr ""
 
-#: cps/spa_strings.py:225
+#: cps/spa_strings.py:233
 msgid "Editing sidebar. Reorder or hide sections, then tap Done."
 msgstr ""
 
-#: cps/spa_strings.py:226
+#: cps/spa_strings.py:234
 msgid "Editing cancelled."
 msgstr ""
 
-#: cps/spa_strings.py:227
+#: cps/spa_strings.py:235
 msgid ""
 "Drag to reorder. Tap ✕ to hide a section. Arrow keys move the focused handle."
 msgstr ""
 
-#: cps/spa_strings.py:228
+#: cps/spa_strings.py:236
 #, fuzzy
 msgid "Sidebar saved."
 msgstr "並び替えモード"
 
-#: cps/spa_strings.py:229
+#: cps/spa_strings.py:237
 msgid "Sidebar reset to default."
 msgstr ""
 
-#: cps/spa_strings.py:230
+#: cps/spa_strings.py:238
 #, python-brace-format
 msgid "{label} moved to position {pos} of {total}"
 msgstr ""
 
-#: cps/spa_strings.py:231
+#: cps/spa_strings.py:239
 #, python-brace-format
 msgid "Reorder {label} (position {pos} of {total}). Use arrow keys to move."
 msgstr ""
 
-#: cps/spa_strings.py:232
+#: cps/spa_strings.py:240
 #, fuzzy, python-brace-format
 msgid "Delete {label}"
 msgstr "取り消す"
 
-#: cps/spa_strings.py:233
+#: cps/spa_strings.py:241
 #, fuzzy, python-brace-format
 msgid "Restore {label}"
 msgstr "取り消す"
 
-#: cps/spa_strings.py:234
+#: cps/spa_strings.py:242
 #, fuzzy, python-brace-format
 msgid "{label} hidden"
 msgstr "取り消す"
 
-#: cps/spa_strings.py:235
+#: cps/spa_strings.py:243
 #, fuzzy, python-brace-format
 msgid "{label} restored"
 msgstr "本を削除"
 
-#: cps/spa_strings.py:236
+#: cps/spa_strings.py:244
 #, fuzzy
 msgid "Could not save sidebar. Please try again."
 msgstr "OAuthアカウントの連携に失敗しました。再試行してください。"

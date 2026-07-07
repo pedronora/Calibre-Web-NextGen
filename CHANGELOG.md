@@ -24,6 +24,11 @@ is for things you can see or feel when running the app.
   the app stays put and you land right back where you were. Reported by
   @Arjan61 (#716). Also applies to the download buttons on the edit-book screen
   and the annotation exports.
+- **Russian translation corrected in the new interface.** The font-setting
+  labels in the redesigned UI were untranslated, and a few strings showed the
+  wrong text (the "System Sans-Serif" font option read «Статистика системы»).
+  Russian now reads correctly throughout those settings. Contributed by
+  @standhaftsohnsergius (#718).
 
 ## [v4.1.6] - 2026-07-07
 

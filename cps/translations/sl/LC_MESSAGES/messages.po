@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web NextGen\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-06 16:17+0000\n"
+"POT-Creation-Date: 2026-07-07 01:18+0000\n"
 "PO-Revision-Date: 2025-08-11 07:03+0000\n"
 "Last-Translator: Andrej Kralj\n"
 "Language-Team: Slovenian\n"
@@ -1751,52 +1751,52 @@ msgstr "Nepravilna vsebina datoteke z naslovnico"
 msgid "Only jpg/jpeg files are supported as coverfile"
 msgstr "Samo datoteke jpg/jpeg so podprte kot datoteke naslovnic"
 
-#: cps/helper.py:1776 cps/helper.py:2028 cps/spa_strings.py:83
+#: cps/helper.py:1787 cps/helper.py:2039 cps/spa_strings.py:83
 msgid "Cover"
 msgstr "Naslovnica"
 
-#: cps/helper.py:1793
+#: cps/helper.py:1804
 msgid "UnRar binary file not found"
 msgstr "Binarna datoteka UnRar ni bila najdena"
 
-#: cps/helper.py:1804
+#: cps/helper.py:1815
 msgid "Error executing UnRar"
 msgstr "Napaka pri izvajanju UnRar"
 
-#: cps/helper.py:1810
+#: cps/helper.py:1821
 #, python-format
 msgid ""
 "Unsupported architecture detected: %(arch)s. Calibre-Web NextGen is "
 "optimized for x86_64 and aarch64."
 msgstr ""
 
-#: cps/helper.py:1819
+#: cps/helper.py:1830
 msgid "Could not find the specified directory"
 msgstr "Ni bilo mogoče najti določenega imenika"
 
-#: cps/helper.py:1822
+#: cps/helper.py:1833
 msgid "Please specify a directory, not a file"
 msgstr "Navedite imenik in ne datoteke"
 
-#: cps/helper.py:1836
+#: cps/helper.py:1847
 msgid "Calibre binaries not viable"
 msgstr "Binarne datoteke Calibre niso izvedljive"
 
-#: cps/helper.py:1845
+#: cps/helper.py:1856
 #, python-format
 msgid "Missing calibre binaries: %(missing)s"
 msgstr "Manjkajoče binarne datoteke Calibre: %(missing)s"
 
-#: cps/helper.py:1847
+#: cps/helper.py:1858
 #, python-format
 msgid "Missing executable permissions: %(missing)s"
 msgstr "Manjkajoča dovoljenja za izvršilni program: %(missing)s"
 
-#: cps/helper.py:1852
+#: cps/helper.py:1863
 msgid "Error executing Calibre"
 msgstr "Napaka pri izvajanju programa Calibre"
 
-#: cps/helper.py:2030 cps/templates/admin.html:242
+#: cps/helper.py:2041 cps/templates/admin.html:242
 msgid "Queue all books for metadata backup"
 msgstr "Vse knjige v vrsti za varnostno kopiranje metapodatkov"
 
@@ -3796,7 +3796,7 @@ msgstr ""
 msgid "Invalid book ID."
 msgstr "Neveljavna vloga"
 
-#: cps/progress_syncing/protocols/kosync.py:571
+#: cps/progress_syncing/protocols/kosync.py:612
 msgid "KOReader Sync Plugin"
 msgstr "Vtičnik za sinhronizacijo KOReader"
 

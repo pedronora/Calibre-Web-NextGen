@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web NextGen\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-06 16:17+0000\n"
+"POT-Creation-Date: 2026-07-07 01:18+0000\n"
 "PO-Revision-Date: 2025-11-17 12:21-0300\n"
 "Last-Translator: minakmostoles <xxx@xxx.com>\n"
 "Language-Team: es <LL@li.org>\n"
@@ -1765,52 +1765,52 @@ msgstr "Contenido del archivo de portada no válido"
 msgid "Only jpg/jpeg files are supported as coverfile"
 msgstr "Sólo se admiten los archivos jpg/jpeg como portada"
 
-#: cps/helper.py:1776 cps/helper.py:2028 cps/spa_strings.py:83
+#: cps/helper.py:1787 cps/helper.py:2039 cps/spa_strings.py:83
 msgid "Cover"
 msgstr "Portada"
 
-#: cps/helper.py:1793
+#: cps/helper.py:1804
 msgid "UnRar binary file not found"
 msgstr "No se encuentra el archivo binario UnRar"
 
-#: cps/helper.py:1804
+#: cps/helper.py:1815
 msgid "Error executing UnRar"
 msgstr "Error ejecutando UnRar"
 
-#: cps/helper.py:1810
+#: cps/helper.py:1821
 #, python-format
 msgid ""
 "Unsupported architecture detected: %(arch)s. Calibre-Web NextGen is "
 "optimized for x86_64 and aarch64."
 msgstr ""
 
-#: cps/helper.py:1819
+#: cps/helper.py:1830
 msgid "Could not find the specified directory"
 msgstr "No se pudo encontrar el directorio especificado"
 
-#: cps/helper.py:1822
+#: cps/helper.py:1833
 msgid "Please specify a directory, not a file"
 msgstr "Por favor, especifique un directorio, no un archivo"
 
-#: cps/helper.py:1836
+#: cps/helper.py:1847
 msgid "Calibre binaries not viable"
 msgstr "Los binarios de Calibre no son viables"
 
-#: cps/helper.py:1845
+#: cps/helper.py:1856
 #, python-format
 msgid "Missing calibre binaries: %(missing)s"
 msgstr "Faltan binarios de calibre: %(missing)s"
 
-#: cps/helper.py:1847
+#: cps/helper.py:1858
 #, python-format
 msgid "Missing executable permissions: %(missing)s"
 msgstr "Faltan permisos de ejecución: %(missing)s"
 
-#: cps/helper.py:1852
+#: cps/helper.py:1863
 msgid "Error executing Calibre"
 msgstr "Error ejecutando Calibre"
 
-#: cps/helper.py:2030 cps/templates/admin.html:242
+#: cps/helper.py:2041 cps/templates/admin.html:242
 msgid "Queue all books for metadata backup"
 msgstr "Poner en cola todos los libros para la copia de seguridad de metadatos"
 
@@ -3823,7 +3823,7 @@ msgstr ""
 msgid "Invalid book ID."
 msgstr "ID inválido del libro."
 
-#: cps/progress_syncing/protocols/kosync.py:571
+#: cps/progress_syncing/protocols/kosync.py:612
 msgid "KOReader Sync Plugin"
 msgstr "Plugin de Sincronización de KOReader"
 

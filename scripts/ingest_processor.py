@@ -314,7 +314,8 @@ def _load_cps_settings_from_app_db() -> None:
             cur = con.cursor()
             row = cur.execute(
                 "SELECT config_use_google_drive, config_google_drive_folder, "
-                "config_calibre_dir, config_certfile, config_keyfile "
+                "config_calibre_dir, config_certfile, config_keyfile, "
+                "config_calibre_split, config_calibre_split_dir "
                 "FROM settings LIMIT 1"
             ).fetchone()
             if not row:
@@ -328,6 +329,14 @@ def _load_cps_settings_from_app_db() -> None:
                 _cps_config.config_certfile = row[3]
             if row[4]:
                 _cps_config.config_keyfile = row[4]
+            # config.get_book_path() reads both of these; without them any
+            # ingest-side cover write (auto metadata fetch, fork #709) blows up
+            # with "'ConfigSQL' object has no attribute 'config_calibre_split'"
+            # because this minimal loader — not the main app's config.load() —
+            # is what populates config in the ingest process. Split-library
+            # users also need the split dir so covers land in the right tree.
+            _cps_config.config_calibre_split = bool(row[5]) if row[5] is not None else False
+            _cps_config.config_calibre_split_dir = row[6]
     except Exception as e:
         print(f"[ingest-processor] WARN: Could not read CPS settings from app.db ({app_db_path}): {e}", flush=True)
 
@@ -1706,6 +1715,34 @@ class NewBookProcessor:
             print(f"[ingest-processor] An error occurred while attempting to recursively set ownership of {self.library_dir} to abc:abc. See the following error:\n{e}", flush=True)
 
 
+def _truncate_overlong_ingest_name(filepath, max_length=150):
+    """Rename an over-long ingest filename to fit, moving its add_format sidecar
+    manifest with it so the file<->manifest pairing survives (#690).
+
+    Most filesystems cap a single path component at 255 bytes and the pipeline
+    appends suffixes, so a very long name is truncated here. The bug: when the
+    book file was renamed for length but its ``<name>.cwa.json`` sidecar was left
+    behind, the manifest lookup in main() missed and the upload was imported as a
+    NEW book instead of a format on the existing one — the reported duplicate.
+    Returns the (possibly unchanged) path.
+    """
+    directory = os.path.dirname(filepath)
+    name, ext = os.path.splitext(os.path.basename(filepath))
+    allowed_len = max_length - len(ext)
+    if len(name) <= allowed_len:
+        return filepath
+    new_path = os.path.join(directory, name[:allowed_len] + ext)
+    os.rename(filepath, new_path)
+    old_manifest = filepath + ".cwa.json"
+    if os.path.exists(old_manifest):
+        try:
+            os.rename(old_manifest, new_path + ".cwa.json")
+        except OSError as e:
+            print(f"[ingest-processor] WARN: could not move sidecar manifest for "
+                  f"renamed file {os.path.basename(new_path)}: {e}", flush=True)
+    return new_path
+
+
 def main(filepath=None):
     """Checks if filepath is a directory. If it is, main will be ran on every file in the given directory
     Inotifywait won't detect files inside folders if the folder was moved rather than copied"""
@@ -1753,11 +1790,7 @@ def main(filepath=None):
         # before the lock acquisition. Reaching here means the file
         # existed at function entry; intentionally do NOT re-check.
 
-        if len(name) > allowed_len:
-            new_name = name[:allowed_len] + ext
-            new_path = os.path.join(os.path.dirname(filepath), new_name)
-            os.rename(filepath, new_path)
-            filepath = new_path
+        filepath = _truncate_overlong_ingest_name(filepath, MAX_LENGTH)
         ###############################################################################################
         if os.path.isdir(filepath) and Path(filepath).exists():
             # print(os.listdir(filepath))

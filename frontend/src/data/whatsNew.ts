@@ -56,6 +56,65 @@ export interface WhatsNewRelease {
 /** Newest release first. The `whats-new-populate` skill prepends here. */
 export const WHATS_NEW: WhatsNewRelease[] = [
   {
+    version: 'v4.1.7',
+    date: '2026-07-08',
+    items: [
+      {
+        title: 'Book pages show ratings and more by the author',
+        body: 'A book\'s page in the new interface now shows its star rating, and a "More by this author" row underneath, so a book page is a place to keep browsing instead of a dead end. Books without cover art or a description no longer leave the page looking half-empty.',
+        category: 'Library',
+        link: { to: '/', label: 'Open your library' },
+      },
+      {
+        title: 'Removing a duplicate clears the old copy from your Kobo',
+        body: 'When the duplicate-scanner replaces an older copy of a book with a newer one, the server now tells a synced Kobo that the old copy is gone — a signal it never sent before, so removed duplicates could linger on the device. (Some Kobos may still keep a removed side-loaded book until it\'s archived on the device; we\'re improving that next.)',
+        category: 'Sync',
+        link: { to: '/account', label: 'Manage sync & app passwords' },
+      },
+      {
+        title: 'Uploading a format no longer duplicates the book',
+        body: 'Adding a new format to a book — especially one with a very long filename — could import it as a separate, duplicate book instead of attaching to the original. New formats now land on the right book.',
+        category: 'Library',
+      },
+      {
+        title: 'Converting from plugin formats like KFX works again',
+        body: 'Converting a book from a format that needs a Calibre input plugin — KFX and others — failed with "No plugin to handle input format" even with the plugin installed, because the converter wasn\'t reading your plugins folder. It now does.',
+        category: 'Library',
+      },
+      {
+        title: 'Changing a cover updates the file, not just the library',
+        body: 'Picking a new cover updated it in your library but left the old image embedded in the book file, so downloads and the "currently embedded" preview stayed on the old art. The new cover is now written into the book itself.',
+        category: 'Library',
+      },
+      {
+        title: 'Marking a book unread clears "Currently reading" too',
+        body: 'Following last release\'s progress reset: marking a book unread now also clears the "Currently reading" marker, which could otherwise stick even after the percentage was gone. Unread reads as untouched everywhere.',
+        category: 'Reading',
+      },
+      {
+        title: 'Find the Admin page from the account menu',
+        body: 'In the new interface the Admin entry lived only in the sidebar rail, so admins who looked in the account (avatar) menu couldn\'t find it and some switched back to the classic view. Admin accounts now get an Admin link there too.',
+        category: 'Admin',
+        link: { to: '/admin', label: 'Open Admin' },
+      },
+      {
+        title: 'Downloading on an iPhone no longer strands you',
+        body: 'In the new interface, tapping a format to download it could navigate Safari away from the app to a page it couldn\'t show, leaving you stuck until you force-restarted. Downloads now open in a separate tab, so the app stays put and you land right back where you were.',
+        category: 'Library',
+      },
+      {
+        title: 'Covers apply during import on split libraries',
+        body: 'On setups that keep book files separate from metadata.db (the "split library" option), auto-fetching metadata during import silently failed to save the downloaded cover. Covers now apply correctly during import.',
+        category: 'Under the hood',
+      },
+      {
+        title: 'Smaller fixes',
+        body: 'The bulk-edit toolbar shows the real book count again instead of a raw "%(n)s" placeholder. And a few Russian interface labels are corrected — the system sans-serif font option no longer reads "Статистика системы".',
+        category: 'Under the hood',
+      },
+    ],
+  },
+  {
     version: 'v4.1.6',
     date: '2026-07-07',
     items: [

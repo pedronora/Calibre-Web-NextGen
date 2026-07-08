@@ -16,6 +16,8 @@ is for things you can see or feel when running the app.
 
 ## [Unreleased]
 
+## [v4.1.7] - 2026-07-08
+
 ### Added
 - **Book pages now show star ratings and more from the same author.** In the
   redesigned interface, a book's page now displays its star rating (matching the
@@ -67,10 +69,13 @@ is for things you can see or feel when running the app.
   cover updated it in the library but downloads (and the "Currently embedded"
   preview) kept the old image. The new cover is now embedded into the book file.
   Reported by @GustavPersson (#707).
-- **Kobo no longer keeps a duplicate after the duplicate-scanner removes a book.**
-  When the duplicate scanner replaced an older copy with a newer one, a Kobo synced
-  to the server kept both — the removed copy never went away. The device is now
-  told to drop it on the next sync. Reported by @Chronosmage-alt (#708).
+- **Removing a duplicate now tells your Kobo to drop the old copy.** When the
+  duplicate-scanner replaced an older copy of a book with a newer one, the server
+  never told a synced Kobo that the old copy was gone, so it could linger as a
+  duplicate. The server now sends the removal to the device on its next sync.
+  (Some Kobo devices may still keep a removed sideloaded book until it's archived
+  on the device — we're improving that in a follow-up.) Reported by
+  @Chronosmage-alt (#708).
 - **Uploading a new format to a book no longer creates a duplicate on very long
   filenames.** An over-long uploaded filename could be imported as a separate book
   instead of being added as a format to the existing one. Reported by @jrhedman

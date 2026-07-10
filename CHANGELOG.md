@@ -16,6 +16,13 @@ is for things you can see or feel when running the app.
 
 ## [Unreleased]
 
+### Added
+- **The table view can now show a Tags column.** In the redesigned interface's
+  table view, each book's tags now appear as their own column, next to Series —
+  handy when you're skimming or editing metadata and want to see genres and
+  subjects at a glance. Use the "Columns" button to hide it if you'd rather not.
+  Thanks to @mrdynamo and the original reporter (#725).
+
 ### Fixed
 - **Downloads failed with a server error for apps and scripts that don't send a
   browser identifier.** Some OPDS readers, download managers, and command-line

@@ -26,7 +26,9 @@ from .serializers import (SIDEBAR_VISIBILITY_BITS, ORDERABLE_SIDEBAR_KEYS,
 # the stacks live in the SPA (frontend/src/lib/fonts.ts). These sets MUST match
 # the keys in that module (UI_BODY_FONTS / UI_DISPLAY_FONTS). "" = theme default.
 ALLOWED_UI_FONT_BODY = frozenset({"", "system-sans", "serif", "mono"})
-ALLOWED_UI_FONT_DISPLAY = frozenset({"", "system-sans", "mono"})
+# #641 — 'serif' is now a valid DISPLAY preset too: once the display default
+# flipped from bookish serif to System sans, serif has to stay reachable here.
+ALLOWED_UI_FONT_DISPLAY = frozenset({"", "system-sans", "serif", "mono"})
 
 
 def _iso(dt):

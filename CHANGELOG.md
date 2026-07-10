@@ -22,6 +22,7 @@ is for things you can see or feel when running the app.
 
 ### Changed
 
+- The new UI now uses the readable System font by default for both headings and body text, instead of the bookish serif some readers found hard to read. If you prefer the old look, "Bookish Serif" is still one click away under Account → UI display/body font (it's now offered for headings too). ([#641](https://github.com/new-usemame/Calibre-Web-NextGen/issues/641))
 - **German interface: 19 strings that showed in English now appear in German.** The OPDS catalog descriptions (for example "Books sorted by series" and "Popular publications from this catalog based on rating") and the duplicate-scan progress messages were untranslated, so German users saw English there while the rest of the UI was translated. Filled in from pending German translations contributed upstream. Thanks to @djalexz85 and @fucx (Calibre-Web-Automated) and @ManuelDrescher (calibre-web).
 - **Ukrainian interface: 141 more strings now appear in Ukrainian.** Error messages, the metadata review queue, the cover/thumbnail cache tools and other panels that previously showed English for Ukrainian users are now translated. Filled in from pending Ukrainian translations contributed upstream. Thanks to @Demelja (Calibre-Web-Automated).
 

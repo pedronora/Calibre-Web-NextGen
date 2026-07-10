@@ -251,11 +251,24 @@ def test_profile_update_rejects_unknown_body_font_400():
 
 
 @pytest.mark.unit
-def test_profile_update_display_allowlist_is_stricter_than_body():
-    """'serif' is a valid BODY preset but not a valid DISPLAY preset (the
-    display default is already serif) — the display field must reject it."""
+def test_profile_update_accepts_serif_as_display_641():
+    """#641: once the display default flipped from bookish serif to System sans,
+    'serif' must be a selectable DISPLAY preset so the old face stays reachable —
+    the display field must now ACCEPT it (it used to reject it)."""
     user = _user()
     mod, ctx, *patches = _profile_ctx(user, {"ui_font_display": "serif"})
+    with ctx:
+        with patches[0], patches[1], patches[2], patches[3], patches[4]:
+            resp = inspect.unwrap(mod.update_profile)()
+    assert user.ui_font_display == "serif"
+
+
+@pytest.mark.unit
+def test_profile_update_rejects_unknown_display_font_400():
+    """A value that isn't a known DISPLAY preset key must 400, not be stored —
+    the guard that keeps an arbitrary string out of the --font-display CSS var."""
+    user = _user()
+    mod, ctx, *patches = _profile_ctx(user, {"ui_font_display": "Comic Sans; }"})
     with ctx:
         with patches[0], patches[1], patches[2], patches[3], patches[4]:
             resp = inspect.unwrap(mod.update_profile)()
@@ -316,3 +329,27 @@ def test_font_allowlists_match_frontend_ssot_keys():
 
     assert _keys("UI_BODY_FONTS") == set(ALLOWED_UI_FONT_BODY)
     assert _keys("UI_DISPLAY_FONTS") == set(ALLOWED_UI_FONT_DISPLAY)
+
+
+@pytest.mark.unit
+def test_theme_default_fonts_are_system_sans_641():
+    """#641: users who never touch the font picker get the readable System sans
+    for BOTH display and body. The empty-preference path clears the CSS override
+    and falls back to these tokens.css defaults, so pin them to a system stack —
+    a revert to the old serif/Optima defaults must fail here."""
+    import re
+    from pathlib import Path
+
+    tokens = (Path(__file__).resolve().parents[2]
+              / "frontend" / "src" / "styles" / "tokens.css").read_text()
+
+    def _default(var):
+        m = re.search(rf"--{var}:\s*([^;]+);", tokens)
+        assert m, f"--{var} not found in tokens.css"
+        return m.group(1).strip().lower()
+
+    for var in ("font-display", "font-body"):
+        val = _default(var)
+        assert val.startswith("system-ui"), f"--{var} default is not System sans: {val}"
+        assert "serif" not in val.replace("sans-serif", ""), \
+            f"--{var} default still carries a serif face: {val}"

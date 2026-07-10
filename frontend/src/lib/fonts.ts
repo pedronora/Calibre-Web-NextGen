@@ -19,19 +19,21 @@ const SANS = "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
 const SERIF = "'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif";
 const MONO = "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace";
 
-// Body text. Default is the theme's Optima-led sans (tokens.css --font-body).
+// Body text. Default is the theme's System sans (tokens.css --font-body, #641).
 export const UI_BODY_FONTS: FontPreset[] = [
-  { key: '', label: 'Default (Optima / Sans-Serif)', stack: '' },
+  { key: '', label: 'Default (System Sans-Serif)', stack: '' },
   { key: 'system-sans', label: 'System Sans-Serif', stack: SANS },
   { key: 'serif', label: 'Bookish Serif', stack: SERIF },
   { key: 'mono', label: 'Monospace', stack: MONO },
 ];
 
-// Display / headings. Default is already the bookish serif (tokens.css
-// --font-display), so a "serif" preset would be redundant here.
+// Display / headings. Default is the System sans (tokens.css --font-display,
+// #641). 'serif' is offered explicitly so the bookish serif that used to be the
+// display default stays reachable for anyone who preferred it.
 export const UI_DISPLAY_FONTS: FontPreset[] = [
-  { key: '', label: 'Default (Bookish Serif)', stack: '' },
+  { key: '', label: 'Default (System Sans-Serif)', stack: '' },
   { key: 'system-sans', label: 'System Sans-Serif', stack: SANS },
+  { key: 'serif', label: 'Bookish Serif', stack: SERIF },
   { key: 'mono', label: 'Monospace', stack: MONO },
 ];
 

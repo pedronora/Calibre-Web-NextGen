@@ -43,10 +43,13 @@
   --danger-soft:   rgba(224, 104, 95, 0.14);
   --success:       #6cc08a;
 
-  /* ---- Typography (system stacks with character — bookish serif display,
-          humanist sans body. Upgrade to self-hosted woff2 later.) ---- */
-  --font-display: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
-  --font-body:    Optima, 'Avenir Next', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+  /* ---- Typography (#641: the readable System sans is the default for both
+          display and body — it matches the classic UI and what multiple users
+          asked for. The bookish serif and other faces stay one click away in
+          the account font picker; keep these two stacks in step with the
+          `SANS` const in frontend/src/lib/fonts.ts.) ---- */
+  --font-display: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-body:    system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 
   --fs-xs:   0.75rem;   /* 12 */
   --fs-sm:   0.8125rem; /* 13 */

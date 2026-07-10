@@ -26,6 +26,9 @@ is for things you can see or feel when running the app.
 - **German interface: 19 strings that showed in English now appear in German.** The OPDS catalog descriptions (for example "Books sorted by series" and "Popular publications from this catalog based on rating") and the duplicate-scan progress messages were untranslated, so German users saw English there while the rest of the UI was translated. Filled in from pending German translations contributed upstream. Thanks to @djalexz85 and @fucx (Calibre-Web-Automated) and @ManuelDrescher (calibre-web).
 - **Ukrainian interface: 141 more strings now appear in Ukrainian.** Error messages, the metadata review queue, the cover/thumbnail cache tools and other panels that previously showed English for Ukrainian users are now translated. Filled in from pending Ukrainian translations contributed upstream. Thanks to @Demelja (Calibre-Web-Automated).
 
+### Fixed
+- The new UI could keep showing outdated interface translations after you upgraded — for example the French read button reverting to English "Read now" and the "mark as read" toggle showing the wrong wording, even though the fix had already shipped. The interface-text file the new UI loads now refreshes whenever it changes, so an upgrade always shows the current translations (a hard browser refresh clears any that were already cached). ([#615](https://github.com/new-usemame/Calibre-Web-NextGen/issues/615))
+
 ## [v4.1.8] - 2026-07-10
 
 ### Added

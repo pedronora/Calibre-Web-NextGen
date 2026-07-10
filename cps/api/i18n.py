@@ -14,9 +14,10 @@ SPA's English source strings ARE the gettext msgids, so:
 This gives graceful degradation (never a missing-key placeholder) and makes
 adding a translation a pure .po edit — exactly the parity the design requires.
 """
+import hashlib
 import os
 
-from flask import jsonify
+from flask import jsonify, request
 from babel.messages.pofile import read_po
 
 from . import api_v1
@@ -85,6 +86,24 @@ def _load_catalog(locale):
     return catalog
 
 
+def _catalog_etag(locale, catalog):
+    """Content-addressed ETag for a locale catalog.
+
+    Changes exactly when the served strings change, so a client's conditional
+    request gets a cheap 304 while the catalog is unchanged and a fresh 200 the
+    moment an upgrade ships new translations. The locale is folded in so two
+    locales with coincidentally-equal catalogs (e.g. any two empty ones) still
+    validate distinctly. Sorted keys make the hash independent of .po parse
+    order."""
+    h = hashlib.sha1(locale.encode("utf-8"))
+    for key in sorted(catalog):
+        h.update(b"\x1f")
+        h.update(key.encode("utf-8"))
+        h.update(b"\x1e")
+        h.update(catalog[key].encode("utf-8"))
+    return h.hexdigest()
+
+
 @api_v1.route("/i18n/<locale>.json")
 def i18n_catalog(locale):
     """Public: serve the per-locale string catalog for the SPA.
@@ -100,6 +119,14 @@ def i18n_catalog(locale):
     else:
         catalog = _load_catalog(locale)
     resp = jsonify({"locale": locale, "catalog": catalog})
-    # Catalogs are immutable for the life of an image; let the browser cache.
-    resp.headers["Cache-Control"] = "public, max-age=3600"
-    return resp
+    # A catalog is immutable for the life of ONE image, but the URL is stable
+    # ACROSS images and its contents change every release (translations are
+    # updated continuously). A plain `max-age` therefore serves stale strings
+    # after an upgrade — in the browser and, worse for self-hosters, in a
+    # caching reverse proxy — which is #615: French SPA strings reverted to a
+    # pre-fix catalog once the container was updated. Attach a content ETag and
+    # require revalidation: an unchanged catalog costs a cheap 304, a changed
+    # one is fetched fresh, so an upgrade can never keep serving old strings.
+    resp.set_etag(_catalog_etag(locale, catalog))
+    resp.headers["Cache-Control"] = "no-cache"
+    return resp.make_conditional(request)

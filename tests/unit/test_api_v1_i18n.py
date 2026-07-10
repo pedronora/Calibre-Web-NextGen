@@ -68,10 +68,76 @@ def test_unknown_locale_returns_empty_no_error():
 
 
 @pytest.mark.unit
-def test_catalog_has_cache_control_header():
-    """Immutable catalogs are browser-cacheable."""
+def test_catalog_revalidates_with_etag():
+    """The catalog changes across image versions at a stable URL, so it must be
+    revalidated (no-cache) and carry a content ETag — otherwise a browser or
+    reverse proxy serves stale translations after an upgrade (#615)."""
     _, resp = _call_view("de")
-    assert "public" in resp.headers.get("Cache-Control", "")
+    cache_control = resp.headers.get("Cache-Control", "")
+    assert "no-cache" in cache_control
+    # A long-lived opaque cache is exactly the bug: reject any max-age > 0.
+    assert "max-age=3600" not in cache_control
+    etag = resp.headers.get("ETag", "")
+    assert etag  # a validator must be present so caches can revalidate
+
+
+@pytest.mark.unit
+def test_catalog_etag_tracks_content():
+    """The ETag changes when the served strings change and is stable otherwise —
+    so an upgrade that ships new translations invalidates cached catalogs while
+    an unchanged catalog keeps returning 304."""
+    from cps.api import i18n as i18n_mod
+    base = {"Read now": "Lire", "Mark as read": "Marquer comme lu"}
+    same = {"Mark as read": "Marquer comme lu", "Read now": "Lire"}  # order differs
+    changed = {"Read now": "Lire", "Mark as read": "Marquer comme non lu"}  # regressed
+    assert i18n_mod._catalog_etag("fr", base) == i18n_mod._catalog_etag("fr", same)
+    assert i18n_mod._catalog_etag("fr", base) != i18n_mod._catalog_etag("fr", changed)
+    # Locale is folded in: two empty catalogs still validate distinctly.
+    assert i18n_mod._catalog_etag("en", {}) != i18n_mod._catalog_etag("zz", {})
+
+
+@pytest.mark.unit
+def test_conditional_request_returns_304_when_etag_matches():
+    """A client that already holds the current catalog gets a bodiless 304, so
+    revalidation stays cheap; a stale/absent validator gets the fresh catalog."""
+    from cps.api import i18n as i18n_mod
+    app = flask.Flask(__name__)
+
+    # First request: full 200 with an ETag.
+    with app.test_request_context("/api/v1/i18n/de.json"):
+        first = inspect.unwrap(i18n_mod.i18n_catalog)("de")
+    etag = first.headers["ETag"]
+    assert first.status_code == 200
+    assert first.get_data()  # body present
+
+    # Second request carrying the ETag: 304 (the WSGI layer drops the body for a
+    # 304; a direct view call keeps it, so we pin the status contract here and
+    # verify the empty-body wire behaviour over real HTTP in the PR).
+    with app.test_request_context(
+        "/api/v1/i18n/de.json", headers={"If-None-Match": etag}
+    ):
+        second = inspect.unwrap(i18n_mod.i18n_catalog)("de")
+    assert second.status_code == 304
+
+    # A different ETag must NOT short-circuit — the fresh catalog is served.
+    with app.test_request_context(
+        "/api/v1/i18n/de.json", headers={"If-None-Match": '"stale"'}
+    ):
+        third = inspect.unwrap(i18n_mod.i18n_catalog)("de")
+    assert third.status_code == 200
+    assert third.get_data()
+
+
+@pytest.mark.unit
+def test_fr_read_toggle_strings_are_correct():
+    """#615: the read button and read toggle must carry the right French, so a
+    correctly-revalidated catalog never shows English 'Read now' or the inverted
+    'Mark as read' -> 'Marquer comme non lu' the reporter saw on a stale build."""
+    body, _ = _call_view("fr")
+    catalog = body["catalog"]
+    assert catalog.get("Read now") == "Lire"
+    assert catalog.get("Mark as read") == "Marquer comme lu"
+    assert catalog.get("Mark as unread") == "Marquer comme non lu"
 
 
 @pytest.mark.unit

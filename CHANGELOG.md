@@ -31,6 +31,12 @@ is for things you can see or feel when running the app.
   assumed the header was always present. They now handle its absence and serve
   the file normally. Thanks to @AshayK003, who reported and fixed the same crash
   upstream (janeczku/calibre-web#3668).
+- **The "duplicates found" notice no longer nags about books you've archived.**
+  If you archived one book of a duplicate pair, the duplicates page correctly
+  showed nothing — but the sidebar badge and the pop-up notice kept counting it,
+  so clicking through led to an empty page and the notice came back on every
+  refresh. The count now respects the same archived and hidden books the
+  duplicates page does, so the badge and the page agree. Reported by @auspex (#737).
 - **OPDS feeds now each show their own name instead of all reading as your
   library's name.** In an OPDS reader, "Read Books," "Unread Books," each shelf,
   the author and series lists, and search results all appeared with the same

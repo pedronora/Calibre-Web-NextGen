@@ -7,6 +7,7 @@ import {
   useSetCover, useMetadataSearch, useAddFormat,
 } from '../lib/queries';
 import { Button } from '../components/Button';
+import { MetadataTypeahead } from '../components/MetadataTypeahead';
 import { Spinner, SpinnerCentered } from '../components/Spinner';
 import { EmptyState } from '../components/EmptyState';
 import type { MetadataUpdate, MetaResult } from '../lib/api';
@@ -181,12 +182,15 @@ export function EditBook({ id }: { id: string }) {
           <input className={styles.input} value={form.title} onChange={(e) => set('title', e.target.value)} />
         </Field>
         <Field label={t('Authors (separate with &)')} error={fieldErrors.authors}>
-          <input className={styles.input} value={form.authors} onChange={(e) => set('authors', e.target.value)} />
+          <MetadataTypeahead field="authors" multi sep=" & " inputClassName={styles.input}
+            value={form.authors} onChange={(v) => set('authors', v)}
+            aria-label={t('Authors (separate with &)')} />
         </Field>
 
         <div className={styles.row}>
           <Field label={t('Series')} error={fieldErrors.series}>
-            <input className={styles.input} value={form.series} onChange={(e) => set('series', e.target.value)} />
+            <MetadataTypeahead field="series" multi={false} inputClassName={styles.input}
+              value={form.series} onChange={(v) => set('series', v)} aria-label={t('Series')} />
           </Field>
           <Field label={t('Series index')} error={fieldErrors.series_index} grow={false}>
             <input className={styles.inputNarrow} type="number" step="0.01" value={form.series_index}
@@ -195,15 +199,20 @@ export function EditBook({ id }: { id: string }) {
         </div>
 
         <Field label={t('Tags (comma separated)')} error={fieldErrors.tags}>
-          <input className={styles.input} value={form.tags} onChange={(e) => set('tags', e.target.value)} />
+          <MetadataTypeahead field="tags" multi inputClassName={styles.input}
+            value={form.tags} onChange={(v) => set('tags', v)} aria-label={t('Tags (comma separated)')} />
         </Field>
         <Field label={t('Publishers (comma separated)')} error={fieldErrors.publishers}>
-          <input className={styles.input} value={form.publishers} onChange={(e) => set('publishers', e.target.value)} />
+          <MetadataTypeahead field="publishers" multi inputClassName={styles.input}
+            value={form.publishers} onChange={(v) => set('publishers', v)}
+            aria-label={t('Publishers (comma separated)')} />
         </Field>
 
         <div className={styles.row}>
           <Field label={t('Languages (comma separated)')} error={fieldErrors.languages}>
-            <input className={styles.input} value={form.languages} onChange={(e) => set('languages', e.target.value)} />
+            <MetadataTypeahead field="languages" multi inputClassName={styles.input}
+              value={form.languages} onChange={(v) => set('languages', v)}
+              aria-label={t('Languages (comma separated)')} />
           </Field>
           <Field label={t('Rating')} error={fieldErrors.rating} grow={false}>
             <select className={styles.inputNarrow} value={form.rating} onChange={(e) => set('rating', e.target.value)}>

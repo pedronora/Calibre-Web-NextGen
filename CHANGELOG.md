@@ -16,6 +16,10 @@ is for things you can see or feel when running the app.
 
 ## [Unreleased]
 
+### Added
+
+- **The new UI's book editor suggests existing tags, authors, series, publishers, and languages as you type again.** When you edit a book's metadata in the redesigned interface, each of these fields now offers a dropdown of values already in your library, so a typo no longer quietly creates a near-duplicate tag (`sci-fi` vs `scifi`) or series. Pick from the list, or keep typing to enter a brand-new value — the classic editor's autocomplete is back. Thanks to @magdalar for the report. ([#741](https://github.com/new-usemame/Calibre-Web-NextGen/issues/741), [#778](https://github.com/new-usemame/Calibre-Web-NextGen/issues/778), [#689](https://github.com/new-usemame/Calibre-Web-NextGen/issues/689))
+
 ### Fixed
 
 - **New UI: opening a shelf no longer shows a blank screen.** On v4.1.8, clicking any shelf — a manual shelf or a smart (magic) shelf — in the new UI left the page blank, and refreshing the browser did not recover it. The main book list, authors, series and other pages were unaffected. Rolling back to v4.1.7 was the only workaround. This is fixed; shelves open and list their books again. Thanks to @mrfearless and @Gauva1n for the reports (#784).

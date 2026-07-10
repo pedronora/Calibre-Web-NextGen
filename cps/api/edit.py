@@ -21,7 +21,7 @@ from ..usermanagement import login_required_if_no_ano
 import time
 
 from ..editbooks import edit_book_param, delete_book_from_table, modify_identifiers
-from ..helper import convert_book_format, save_cover, save_cover_from_url
+from ..helper import convert_book_format, save_cover, save_cover_from_url, tags_filters
 
 # Fields the SPA edit form can change, applied in this order. Title/authors come
 # first because they may restructure the book's directory; the rest follow.
@@ -99,6 +99,62 @@ def get_metadata(book_id):
     if not book:
         return _err("not_found", "Book not found", 404)
     return jsonify(_editable_metadata(book))
+
+
+# Editor typeahead: existing-value suggestions per metadata field, so the SPA
+# editor stops spawning near-duplicate tags/series/authors from typos
+# (#741, #778, #689). Each field maps to the calibre model + name-normalization
+# the legacy /get_*_json routes use; reusing calibre_db.get_typeahead keeps the
+# SPA's suggestions identical to the classic editor's (single source of truth).
+_TYPEAHEAD_MODELS = {
+    "authors": (lambda: db.Authors, ("|", ",")),
+    "publishers": (lambda: db.Publishers, ("|", ",")),
+    "series": (lambda: db.Series, ("", "")),
+}
+_TYPEAHEAD_LIMIT = 25
+
+
+def _typeahead_names(field, query):
+    """Suggestion names for one editor metadata field, or None for an unknown
+    field. Mirrors cps/web.py's typeahead routes field-for-field."""
+    query = query or ""
+    if field == "tags":
+        raw = calibre_db.get_typeahead(db.Tags, query, tag_filter=tags_filters())
+        return [row["name"] for row in json.loads(raw)][:_TYPEAHEAD_LIMIT]
+    if field == "languages":
+        # Localized display names, ranked start-matches-first (same as
+        # /get_languages_json) but with the editor's larger result cap.
+        needle = query.lower()
+        names = list(isoLanguages.get_language_names(get_locale()).values())
+        ranked = [s for s in names if s.lower().startswith(needle)]
+        if len(ranked) < _TYPEAHEAD_LIMIT:
+            seen = set(ranked)
+            ranked.extend(s for s in names if needle in s.lower() and s not in seen)
+        # de-dupe preserving the start-first order
+        return list(dict.fromkeys(ranked))[:_TYPEAHEAD_LIMIT]
+    spec = _TYPEAHEAD_MODELS.get(field)
+    if spec is None:
+        return None
+    model_factory, replace = spec
+    raw = calibre_db.get_typeahead(model_factory(), query, replace)
+    return [row["name"] for row in json.loads(raw)][:_TYPEAHEAD_LIMIT]
+
+
+@api_v1.route("/metadata/typeahead/<field>")
+@login_required_if_no_ano
+def metadata_typeahead(field):
+    """Existing-value suggestions for an editor metadata field — one of tags,
+    authors, series, publishers, languages. Read-only; gated on the edit role
+    (only editors open the editor, and it avoids leaking the library's full
+    tag/author list to non-editors). Reuses the legacy typeahead query so both
+    editors agree on what already exists (#741, #778, #689)."""
+    guard = _require_edit()
+    if guard:
+        return guard
+    names = _typeahead_names(field, request.args.get("q", ""))
+    if names is None:
+        return _err("invalid_request", "Unknown typeahead field", 400)
+    return jsonify({"field": field, "suggestions": names})
 
 
 @api_v1.route("/books/<int:book_id>/metadata", methods=["POST"])

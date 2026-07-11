@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web NextGen\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-11 06:45+0000\n"
+"POT-Creation-Date: 2026-07-11 06:48+0000\n"
 "PO-Revision-Date: 2020-04-23 22:47+0300\n"
 "Last-Translator: iz <iz7iz7iz@protonmail.ch>\n"
 "Language-Team: \n"
@@ -1988,7 +1988,7 @@ msgid "Books ordered by series"
 msgstr "Seriye göre sıralanmış eKitaplar"
 
 #: cps/opds.py:229 cps/render_template.py:117 cps/spa_strings.py:449
-#: cps/templates/book_table.html:113 cps/templates/detail.html:931
+#: cps/templates/book_table.html:113 cps/templates/detail.html:930
 #: cps/templates/search_form.html:108 cps/web.py:2221
 msgid "Languages"
 msgstr "Diller"
@@ -2434,8 +2434,8 @@ msgstr "Token bulunamadı"
 msgid "Series order (reverse)"
 msgstr "Seri: %(serie)s"
 
-#: cps/spa_strings.py:44 cps/templates/detail.html:966
-#: cps/templates/detail.html:967 cps/templates/detail.html:1541
+#: cps/spa_strings.py:44 cps/templates/detail.html:965
+#: cps/templates/detail.html:966 cps/templates/detail.html:1537
 msgid "Add tag"
 msgstr ""
 
@@ -2443,7 +2443,7 @@ msgstr ""
 msgid "New tag"
 msgstr ""
 
-#: cps/spa_strings.py:46 cps/templates/detail.html:958
+#: cps/spa_strings.py:46 cps/templates/detail.html:957
 msgid "Remove tag"
 msgstr ""
 
@@ -2494,9 +2494,9 @@ msgstr "Kitaplığa ekle"
 msgid "Add rule"
 msgstr "Yeni kullanıcı ekle"
 
-#: cps/spa_strings.py:76 cps/templates/detail.html:787
-#: cps/templates/detail.html:998 cps/templates/detail.html:999
-#: cps/templates/detail.html:1663 cps/templates/listenmp3.html:190
+#: cps/spa_strings.py:76 cps/templates/detail.html:786
+#: cps/templates/detail.html:997 cps/templates/detail.html:998
+#: cps/templates/detail.html:1659 cps/templates/listenmp3.html:190
 #: cps/templates/search.html:17
 msgid "Add to shelf"
 msgstr "Kitaplığa ekle"
@@ -2874,7 +2874,7 @@ msgstr "Kitaplığı düzenle"
 #: cps/spa_strings.py:155 cps/templates/book_edit.html:159
 #: cps/templates/book_edit.html:460 cps/templates/cwa_settings.html:348
 #: cps/templates/cwa_settings.html:350 cps/templates/cwa_settings.html:1139
-#: cps/templates/detail.html:1006
+#: cps/templates/detail.html:1005
 #: cps/templates/hardcover_review_matches.html:148
 #: cps/templates/listenmp3.html:102 cps/templates/search_form.html:16
 msgid "Publisher"
@@ -3266,7 +3266,7 @@ msgstr "eKitap Detayları"
 msgid "Result details"
 msgstr ""
 
-#: cps/spa_strings.py:248 cps/templates/detail.html:1012
+#: cps/spa_strings.py:248 cps/templates/detail.html:1011
 #: cps/templates/listenmp3.html:111
 #, fuzzy
 msgid "Published"
@@ -3393,8 +3393,8 @@ msgstr "Hesap"
 msgid "Add identifier"
 msgstr ""
 
-#: cps/spa_strings.py:291 cps/templates/detail.html:701
-#: cps/templates/detail.html:702 cps/templates/detail.html:704
+#: cps/spa_strings.py:291 cps/templates/detail.html:700
+#: cps/templates/detail.html:701 cps/templates/detail.html:703
 #, fuzzy
 msgid "Add to favorites"
 msgstr "Kitaplığa ekle"
@@ -3471,7 +3471,7 @@ msgstr ""
 msgid "Archive"
 msgstr "Ara"
 
-#: cps/spa_strings.py:307 cps/templates/detail.html:713
+#: cps/spa_strings.py:307 cps/templates/detail.html:712
 #: cps/templates/listenmp3.html:167
 #, fuzzy
 msgid "Archived"
@@ -3559,7 +3559,7 @@ msgstr "Google ile giriş yapılamadı."
 #: cps/templates/config_db.html:110 cps/templates/config_edit.html:715
 #: cps/templates/config_view_edit.html:236 cps/templates/cover_picker.html:189
 #: cps/templates/cwa_convert_library.html:23
-#: cps/templates/cwa_epub_fixer.html:40 cps/templates/detail.html:1193
+#: cps/templates/cwa_epub_fixer.html:40 cps/templates/detail.html:1192
 #: cps/templates/duplicates.html:696 cps/templates/duplicates.html:719
 #: cps/templates/duplicates.html:746 cps/templates/layout.html:828
 #: cps/templates/layout.html:983 cps/templates/modal_dialogs.html:64
@@ -3586,7 +3586,7 @@ msgstr ""
 
 #: cps/spa_strings.py:333 cps/templates/book_edit.html:192
 #: cps/templates/cover_picker.html:12 cps/templates/detail.html:619
-#: cps/templates/detail.html:622 cps/templates/detail.html:745
+#: cps/templates/detail.html:622 cps/templates/detail.html:744
 #, fuzzy
 msgid "Change cover"
 msgstr "Şifre değiştirmeye izin ver"
@@ -3775,7 +3775,7 @@ msgstr "Geçerli sürüm"
 msgid "Current password"
 msgstr "Şifre değiştirmeye izin ver"
 
-#: cps/spa_strings.py:373 cps/templates/detail.html:850
+#: cps/spa_strings.py:373 cps/templates/detail.html:849
 #: cps/templates/image.html:27 cps/templates/index.html:45
 #, fuzzy
 msgid "Currently reading"
@@ -4088,7 +4088,7 @@ msgstr ""
 msgid "It may have moved, or it might still live in the classic interface."
 msgstr ""
 
-#: cps/spa_strings.py:443 cps/templates/detail.html:1018
+#: cps/spa_strings.py:443 cps/templates/detail.html:1017
 #, fuzzy
 msgid "KOReader Progress"
 msgstr "İlerleme"
@@ -4129,7 +4129,7 @@ msgstr ""
 msgid "Larger text"
 msgstr ""
 
-#: cps/spa_strings.py:453 cps/templates/detail.html:1030
+#: cps/spa_strings.py:453 cps/templates/detail.html:1029
 msgid "Last synced"
 msgstr ""
 
@@ -4497,14 +4497,14 @@ msgstr "Kayıt ol"
 msgid "Remember me"
 msgstr ""
 
-#: cps/spa_strings.py:537 cps/templates/detail.html:701
-#: cps/templates/detail.html:702 cps/templates/detail.html:703
+#: cps/spa_strings.py:537 cps/templates/detail.html:700
+#: cps/templates/detail.html:701 cps/templates/detail.html:702
 #, fuzzy
 msgid "Remove from favorites"
 msgstr "Kitaplığa ekle"
 
-#: cps/spa_strings.py:538 cps/templates/detail.html:810
-#: cps/templates/detail.html:992
+#: cps/spa_strings.py:538 cps/templates/detail.html:809
+#: cps/templates/detail.html:991
 #, fuzzy
 msgid "Remove from shelf"
 msgstr "Kitaplığa ekle"
@@ -4654,7 +4654,7 @@ msgstr ""
 msgid "Select multiple"
 msgstr "Kitaplık oluştur"
 
-#: cps/spa_strings.py:569 cps/templates/detail.html:1192
+#: cps/spa_strings.py:569 cps/templates/detail.html:1191
 msgid "Send"
 msgstr ""
 
@@ -4808,7 +4808,7 @@ msgstr "Token bulunamadı"
 msgid "Source details"
 msgstr "eKitap Detayları"
 
-#: cps/spa_strings.py:604 cps/templates/detail.html:1024
+#: cps/spa_strings.py:604 cps/templates/detail.html:1023
 #, fuzzy
 msgid "Started reading"
 msgstr "Başladı"
@@ -4988,7 +4988,7 @@ msgstr ""
 msgid "When locked, fetching metadata will not overwrite this cover."
 msgstr ""
 
-#: cps/spa_strings.py:644 cps/templates/detail.html:1024
+#: cps/spa_strings.py:644 cps/templates/detail.html:1023
 msgid "When reading progress was first synced"
 msgstr ""
 
@@ -5761,9 +5761,9 @@ msgstr "bir seçenek seçin"
 msgid "Add to Shelf"
 msgstr "Kitaplığa ekle"
 
-#: cps/templates/_book_organizer.html:116 cps/templates/detail.html:798
-#: cps/templates/detail.html:820 cps/templates/detail.html:990
-#: cps/templates/detail.html:1626 cps/templates/feed.xml:109
+#: cps/templates/_book_organizer.html:116 cps/templates/detail.html:797
+#: cps/templates/detail.html:819 cps/templates/detail.html:989
+#: cps/templates/detail.html:1622 cps/templates/feed.xml:109
 #: cps/templates/feed.xml:111 cps/templates/index.html:162
 #: cps/templates/layout.html:632 cps/templates/layout.html:645
 #: cps/templates/listenmp3.html:201 cps/templates/listenmp3.html:218
@@ -6291,8 +6291,8 @@ msgstr "azalt"
 msgid "More by"
 msgstr "daha fazla"
 
-#: cps/templates/book_edit.html:53 cps/templates/detail.html:752
-#: cps/templates/detail.html:754
+#: cps/templates/book_edit.html:53 cps/templates/detail.html:751
+#: cps/templates/detail.html:753
 msgid "Delete Book"
 msgstr "eKitabı Sil"
 
@@ -6339,7 +6339,7 @@ msgstr "Hata"
 msgid "Upload Format"
 msgstr "Yükleme"
 
-#: cps/templates/book_edit.html:128 cps/templates/detail.html:900
+#: cps/templates/book_edit.html:128 cps/templates/detail.html:899
 #, fuzzy
 msgid "Imported as"
 msgstr "Güncelleme başarısız:"
@@ -6619,7 +6619,7 @@ msgstr ""
 msgid "The following books will be marked unread:"
 msgstr ""
 
-#: cps/templates/book_table.html:286 cps/templates/detail.html:722
+#: cps/templates/book_table.html:286 cps/templates/detail.html:721
 #, fuzzy
 msgid "Edit Metadata"
 msgstr "metaveri düzenle"
@@ -8937,183 +8937,183 @@ msgid ""
 "help us reproduce issues."
 msgstr ""
 
-#: cps/templates/detail.html:692 cps/templates/detail.html:693
-#: cps/templates/detail.html:1078 cps/templates/listenmp3.html:158
+#: cps/templates/detail.html:691 cps/templates/detail.html:692
+#: cps/templates/detail.html:1077 cps/templates/listenmp3.html:158
 msgid "Mark As Unread"
 msgstr "Okunmadı olarak işaretle"
 
-#: cps/templates/detail.html:692 cps/templates/detail.html:693
-#: cps/templates/detail.html:1079 cps/templates/listenmp3.html:158
+#: cps/templates/detail.html:691 cps/templates/detail.html:692
+#: cps/templates/detail.html:1078 cps/templates/listenmp3.html:158
 msgid "Mark As Read"
 msgstr "Okundu olarak işaretle"
 
-#: cps/templates/detail.html:694
+#: cps/templates/detail.html:693
 #, fuzzy
 msgid "Marked as read"
 msgstr "Okunmadı olarak işaretle"
 
-#: cps/templates/detail.html:695
+#: cps/templates/detail.html:694
 #, fuzzy
 msgid "Marked as unread"
 msgstr "Okunmadı olarak işaretle"
 
-#: cps/templates/detail.html:705
+#: cps/templates/detail.html:704
 #, fuzzy
 msgid "Added to favorites"
 msgstr "Kitaplığa ekle"
 
-#: cps/templates/detail.html:706
+#: cps/templates/detail.html:705
 #, fuzzy
 msgid "Removed from favorites"
 msgstr "Kitaplığa ekle"
 
-#: cps/templates/detail.html:711 cps/templates/detail.html:712
-#: cps/templates/detail.html:1089 cps/templates/listenmp3.html:166
+#: cps/templates/detail.html:710 cps/templates/detail.html:711
+#: cps/templates/detail.html:1088 cps/templates/listenmp3.html:166
 msgid "Restore from archive"
 msgstr ""
 
-#: cps/templates/detail.html:711 cps/templates/detail.html:712
-#: cps/templates/detail.html:1090 cps/templates/listenmp3.html:166
+#: cps/templates/detail.html:710 cps/templates/detail.html:711
+#: cps/templates/detail.html:1089 cps/templates/listenmp3.html:166
 #, fuzzy
 msgid "Add to archive"
 msgstr "Kitaplığa ekle"
 
-#: cps/templates/detail.html:714
+#: cps/templates/detail.html:713
 #, fuzzy
 msgid "Restored from archive"
 msgstr "Kitaplığa ekle"
 
-#: cps/templates/detail.html:737
+#: cps/templates/detail.html:736
 msgid "Reloaded metadata from disk"
 msgstr ""
 
-#: cps/templates/detail.html:738
+#: cps/templates/detail.html:737
 msgid "On-disk metadata matches — nothing to update"
 msgstr ""
 
-#: cps/templates/detail.html:739
+#: cps/templates/detail.html:738
 #, fuzzy
 msgid "Could not reload metadata"
 msgstr "metaveri düzenle"
 
-#: cps/templates/detail.html:740 cps/templates/detail.html:741
+#: cps/templates/detail.html:739 cps/templates/detail.html:740
 msgid "Reload metadata from disk"
 msgstr ""
 
-#: cps/templates/detail.html:769 cps/templates/detail.html:770
+#: cps/templates/detail.html:768 cps/templates/detail.html:769
 msgid "Unhide from your library"
 msgstr ""
 
-#: cps/templates/detail.html:769 cps/templates/detail.html:770
+#: cps/templates/detail.html:768 cps/templates/detail.html:769
 #, fuzzy
 msgid "Hide from your library"
 msgstr "Kitaplıkta"
 
-#: cps/templates/detail.html:771
+#: cps/templates/detail.html:770
 #, fuzzy
 msgid "Hidden"
 msgstr "Popüler"
 
-#: cps/templates/detail.html:772
+#: cps/templates/detail.html:771
 msgid "Unhidden"
 msgstr ""
 
-#: cps/templates/detail.html:859
+#: cps/templates/detail.html:858
 #, fuzzy
 msgid "Rating updated"
 msgstr "E-posta sunucusu ayarları güncellendi"
 
-#: cps/templates/detail.html:860
+#: cps/templates/detail.html:859
 #, fuzzy
 msgid "Rating cleared"
 msgstr "Değerlendirme"
 
-#: cps/templates/detail.html:878 cps/templates/listenmp3.html:62
+#: cps/templates/detail.html:877 cps/templates/listenmp3.html:62
 #, python-format
 msgid "Book %(index)s of %(range)s"
 msgstr ""
 
-#: cps/templates/detail.html:883
+#: cps/templates/detail.html:882
 msgid "ID"
 msgstr ""
 
-#: cps/templates/detail.html:888
+#: cps/templates/detail.html:887
 msgid "UUID"
 msgstr ""
 
-#: cps/templates/detail.html:891
+#: cps/templates/detail.html:890
 msgid "UUID copied to clipboard"
 msgstr ""
 
-#: cps/templates/detail.html:892
+#: cps/templates/detail.html:891
 msgid "Unable to copy UUID"
 msgstr ""
 
-#: cps/templates/detail.html:893 cps/templates/detail.html:894
+#: cps/templates/detail.html:892 cps/templates/detail.html:893
 msgid "Copy UUID"
 msgstr ""
 
-#: cps/templates/detail.html:905
+#: cps/templates/detail.html:904
 msgid "Date added"
 msgstr ""
 
-#: cps/templates/detail.html:909
+#: cps/templates/detail.html:908
 msgid "Last modified"
 msgstr ""
 
-#: cps/templates/detail.html:914
+#: cps/templates/detail.html:913
 msgid "File sizes"
 msgstr ""
 
-#: cps/templates/detail.html:1101 cps/templates/listenmp3.html:177
+#: cps/templates/detail.html:1100 cps/templates/listenmp3.html:177
 msgid "Description:"
 msgstr "Açıklama:"
 
-#: cps/templates/detail.html:1118
+#: cps/templates/detail.html:1117
 #, fuzzy
 msgid "Select eReader Email Addresses"
 msgstr "E-Posta adresiniz"
 
-#: cps/templates/detail.html:1131
+#: cps/templates/detail.html:1130
 #, fuzzy
 msgid "Choose email addresses:"
 msgstr "E-Posta adresiniz"
 
-#: cps/templates/detail.html:1136
+#: cps/templates/detail.html:1135
 #, fuzzy
 msgid "Select All"
 msgstr "Kitaplık oluştur"
 
-#: cps/templates/detail.html:1157
+#: cps/templates/detail.html:1156
 msgid "Other users' eReaders:"
 msgstr ""
 
-#: cps/templates/detail.html:1172
+#: cps/templates/detail.html:1171
 msgid "Additional email addresses:"
 msgstr ""
 
-#: cps/templates/detail.html:1173
+#: cps/templates/detail.html:1172
 msgid "Enter additional email addresses (separated by commas):"
 msgstr ""
 
-#: cps/templates/detail.html:1174
+#: cps/templates/detail.html:1173
 msgid "example@domain.com, another@domain.com"
 msgstr ""
 
-#: cps/templates/detail.html:1175
+#: cps/templates/detail.html:1174
 msgid "Enter one or more email addresses separated by commas"
 msgstr ""
 
-#: cps/templates/detail.html:1180
+#: cps/templates/detail.html:1179
 #, fuzzy
 msgid "Select format:"
 msgstr "Biçimleri Sil:"
 
-#: cps/templates/detail.html:1519
+#: cps/templates/detail.html:1515
 msgid "Failed to update tags"
 msgstr ""
 
-#: cps/templates/detail.html:1627
+#: cps/templates/detail.html:1623
 #, fuzzy
 msgid "Failed to update shelves"
 msgstr "%(file)s dosyası kaydedilemedi."

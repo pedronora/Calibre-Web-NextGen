@@ -23,15 +23,14 @@ is for things you can see or feel when running the app.
 ### Fixed
 
 - **New UI: opening a shelf no longer shows a blank screen.** On v4.1.8, clicking any shelf — a manual shelf or a smart (magic) shelf — in the new UI left the page blank, and refreshing the browser did not recover it. The main book list, authors, series and other pages were unaffected. Rolling back to v4.1.7 was the only workaround. This is fixed; shelves open and list their books again. Thanks to @mrfearless and @Gauva1n for the reports (#784).
+- **Half-star ratings no longer draw a tiny star floating inside the outline.** In the new UI, a book with a half-star rating (3.5, 4.5, …) showed the fractional star as a shrunken miniature star sitting inside the empty outline on the book page. The partial star now fills cleanly from the left edge. Thanks to @KucharczykL for the report ([#776](https://github.com/new-usemame/Calibre-Web-NextGen/issues/776)).
+- The new UI could keep showing outdated interface translations after you upgraded — for example the French read button reverting to English "Read now" and the "mark as read" toggle showing the wrong wording, even though the fix had already shipped. The interface-text file the new UI loads now refreshes whenever it changes, so an upgrade always shows the current translations (a hard browser refresh clears any that were already cached). ([#615](https://github.com/new-usemame/Calibre-Web-NextGen/issues/615))
 
 ### Changed
 
 - The new UI now uses the readable System font by default for both headings and body text, instead of the bookish serif some readers found hard to read. If you prefer the old look, "Bookish Serif" is still one click away under Account → UI display/body font (it's now offered for headings too). ([#641](https://github.com/new-usemame/Calibre-Web-NextGen/issues/641))
 - **German interface: 19 strings that showed in English now appear in German.** The OPDS catalog descriptions (for example "Books sorted by series" and "Popular publications from this catalog based on rating") and the duplicate-scan progress messages were untranslated, so German users saw English there while the rest of the UI was translated. Filled in from pending German translations contributed upstream. Thanks to @djalexz85 and @fucx (Calibre-Web-Automated) and @ManuelDrescher (calibre-web).
 - **Ukrainian interface: 141 more strings now appear in Ukrainian.** Error messages, the metadata review queue, the cover/thumbnail cache tools and other panels that previously showed English for Ukrainian users are now translated. Filled in from pending Ukrainian translations contributed upstream. Thanks to @Demelja (Calibre-Web-Automated).
-
-### Fixed
-- The new UI could keep showing outdated interface translations after you upgraded — for example the French read button reverting to English "Read now" and the "mark as read" toggle showing the wrong wording, even though the fix had already shipped. The interface-text file the new UI loads now refreshes whenever it changes, so an upgrade always shows the current translations (a hard browser refresh clears any that were already cached). ([#615](https://github.com/new-usemame/Calibre-Web-NextGen/issues/615))
 
 ## [v4.1.8] - 2026-07-10
 

@@ -29,4 +29,9 @@
 .fill {
   display: block;
   color: var(--accent);
+  /* The global reset caps every svg at max-width: 100%. Inside the fractional
+     clip wrapper that would SCALE the star down to the wrapper's width (a 50%
+     fill became a tiny star floating in the outline, #776) instead of letting
+     overflow:hidden crop it. Restore the full-size glyph so the clip crops. */
+  max-width: none;
 }

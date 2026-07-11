@@ -8,6 +8,9 @@ import styles from './StarRating.module.css';
  *  single labelled image to assistive tech rather than five ambiguous glyphs. */
 export function StarRating({ rating, size = 16 }: { rating: number; size?: number }) {
   const t = useT();
+  // Callers guard against unset ratings, but stay safe if one slips through:
+  // NaN/undefined would otherwise poison the fill math and the aria label.
+  if (!Number.isFinite(rating) || rating <= 0) return null;
   const stars = Math.max(0, Math.min(5, rating / 2));
   const shown = Number.isInteger(stars) ? String(stars) : stars.toFixed(1);
   const label = t('Rated {rating} out of 5', { rating: shown });

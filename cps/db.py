@@ -35,7 +35,7 @@ from sqlalchemy.ext.associationproxy import association_proxy
 from .cw_login import current_user
 from flask_babel import gettext as _
 from flask_babel import get_locale
-from flask import flash
+from flask import flash, url_for, has_request_context
 
 from . import logger, ub, isoLanguages
 from .pagination import Pagination
@@ -1586,15 +1586,47 @@ class CalibreDB:
                     # book that DO have a valid sort still get ordered).
                     if auth not in _AUTHOR_SORT_DRIFT_WARNED:
                         _AUTHOR_SORT_DRIFT_WARNED.add(auth)
+                        # Give the operator the exact book AND a direct edit
+                        # path (@auspex, #801: the old message named no book
+                        # and pointed at an author-admin UI that doesn't
+                        # exist). The app-relative /admin/book/<id> page is
+                        # where re-saving the Authors field regenerates
+                        # Books.author_sort from Authors.sort — the repair.
+                        book_id = getattr(book, 'id', None)
+                        book_title = getattr(book, 'title', None) or 'untitled'
+                        if book_id is None:
+                            edit_path = "the book's edit page"
+                        else:
+                            # Resolve via url_for so the link honours a
+                            # reverse-proxy subpath mount (SCRIPT_NAME set
+                            # from X-Script-Name / PROXY_SCRIPT_NAME — see
+                            # cps/reverseproxy.py); a hard-coded
+                            # "/admin/book/<id>" would drop the prefix and
+                            # 404 under that supported deployment. The warn
+                            # is normally emitted mid-render (a request
+                            # context is active), but order_authors is also
+                            # reachable from context-free callers (duplicate
+                            # scans), so fall back to the app-relative path.
+                            if has_request_context():
+                                try:
+                                    edit_path = url_for(
+                                        'edit-book.show_edit_book',
+                                        book_id=book_id)
+                                except Exception:
+                                    edit_path = "/admin/book/{}".format(book_id)
+                            else:
+                                edit_path = "/admin/book/{}".format(book_id)
                         log.warning(
                             "Author sort '%s' from Books.author_sort has no "
                             "match in linked authors for book %s ('%s'). "
                             "Falling back to Authors.id order for this "
-                            "author. To repair the mismatch, edit this "
-                            "book's Authors field so its author sort is "
-                            "regenerated, or correct the book in Calibre.",
-                            auth, getattr(book, 'id', 'unknown'),
-                            getattr(book, 'title', 'untitled'))
+                            "author. To repair the mismatch, open %s and "
+                            "re-save the book's Authors field (its author "
+                            "sort is regenerated on save), or correct the "
+                            "book in Calibre.",
+                            auth,
+                            book_id if book_id is not None else 'unknown',
+                            book_title, edit_path)
                     continue
                 authors_ordered.append(ordered)
                 if ordered.id in ids_remaining:

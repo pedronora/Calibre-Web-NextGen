@@ -180,7 +180,11 @@ class TestAuthorSortDriftDedupBehavioral:
 
     def test_warning_identifies_affected_book(self, monkeypatch):
         """The recovery warning must identify the exact book whose
-        ``Books.author_sort`` value drifted so an operator can repair it."""
+        ``Books.author_sort`` value drifted so an operator can repair it,
+        AND point at the app-relative edit page where re-saving the
+        Authors field regenerates ``Books.author_sort`` (@auspex, #801 —
+        the old message named no book and cited an author-admin UI that
+        does not exist)."""
         from cps import db as cps_db
 
         cps_db._AUTHOR_SORT_DRIFT_WARNED.clear()
@@ -203,6 +207,83 @@ class TestAuthorSortDriftDedupBehavioral:
         rendered = warning.call_args.args[0] % warning.call_args.args[1:]
         assert "801" in rendered
         assert "The Mismatched Book" in rendered
+        # The actionable edit path the reporter asked for.
+        assert "/admin/book/801" in rendered
+
+    def test_warning_identifies_book_and_edit_path_combined(self, monkeypatch):
+        """Same guarantee on the ``combined=True`` render path — the one the
+        index/list/search pages actually use (rows carry a ``.Books``
+        attribute, not the book itself). Regression pin so a refactor can't
+        leave the book id/title/edit-path context on only the detail path.
+        Independently flagged as a coverage gap by both Sol and Terra."""
+        from cps import db as cps_db
+
+        cps_db._AUTHOR_SORT_DRIFT_WARNED.clear()
+        warning = MagicMock()
+        monkeypatch.setattr(cps_db.log, "warning", warning)
+
+        instance = cps_db.CalibreDB.__new__(cps_db.CalibreDB)
+        instance.session = MagicMock()
+        instance.ensure_session = lambda: None
+        book = SimpleNamespace(
+            id=1234,
+            title="Leviathan Wakes",
+            author_sort="James S. A. Corey",  # drifted: != Authors.sort
+            authors=[SimpleNamespace(id=7, name="James S. A. Corey",
+                                     sort="Corey, James S. A.")],
+        )
+        # combined=True → order_authors reads entry.Books, not entry.
+        row = SimpleNamespace(Books=book)
+
+        instance.order_authors([row], list_return=True, combined=True)
+
+        warning.assert_called_once()
+        rendered = warning.call_args.args[0] % warning.call_args.args[1:]
+        assert "1234" in rendered
+        assert "Leviathan Wakes" in rendered
+        assert "/admin/book/1234" in rendered
+
+    def test_edit_path_honours_reverse_proxy_subpath(self, monkeypatch):
+        """Under a reverse-proxy subpath mount (SCRIPT_NAME set from
+        X-Script-Name / PROXY_SCRIPT_NAME, cps/reverseproxy.py), the edit
+        link must carry the prefix — a hard-coded "/admin/book/<id>" would
+        404. When a request context is active the warn must resolve the URL
+        via url_for (which honours SCRIPT_NAME), not string-format it.
+        Regression pin for the subpath-proxy break found in verify."""
+        from cps import db as cps_db
+
+        cps_db._AUTHOR_SORT_DRIFT_WARNED.clear()
+        warning = MagicMock()
+        monkeypatch.setattr(cps_db.log, "warning", warning)
+        # Simulate being mid-render behind a /myprefix reverse proxy: a
+        # request context is active and url_for prepends the script root.
+        monkeypatch.setattr(cps_db, "has_request_context", lambda: True)
+        url_for_calls = []
+
+        def fake_url_for(endpoint, **values):
+            url_for_calls.append((endpoint, values))
+            return "/myprefix/admin/book/{}".format(values["book_id"])
+
+        monkeypatch.setattr(cps_db, "url_for", fake_url_for)
+
+        instance = cps_db.CalibreDB.__new__(cps_db.CalibreDB)
+        instance.session = MagicMock()
+        instance.ensure_session = lambda: None
+        book = SimpleNamespace(
+            id=42,
+            title="Neuromancer",
+            author_sort="William Gibson",  # drifted: != Authors.sort
+            authors=[SimpleNamespace(id=3, name="William Gibson",
+                                     sort="Gibson, William")],
+        )
+
+        instance.order_authors([book], list_return=False)
+
+        # The edit-book route was resolved through url_for, so the mounted
+        # prefix survives into the operator-facing message.
+        assert url_for_calls == [("edit-book.show_edit_book", {"book_id": 42})]
+        rendered = warning.call_args.args[0] % warning.call_args.args[1:]
+        assert "/myprefix/admin/book/42" in rendered
 
     def test_continue_preserves_other_authors_ordering_for_same_book(self):
         """A book with TWO linked authors — one whose sort is referenced

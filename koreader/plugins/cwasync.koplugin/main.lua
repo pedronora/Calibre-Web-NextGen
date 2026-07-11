@@ -1295,11 +1295,18 @@ function CWASync:getProgress(ensure_networking, interactive)
             end
 
             local self_older
-            if body.timestamp ~= nil then
+            -- Reading percentage defines direction. Device clocks and local
+            -- resume/page-turn timestamps are not comparable enough to turn
+            -- a further remote position into a backwards-sync decision.
+            -- Timestamp only resolves the equal-percentage case.
+            if body.percentage > percentage then
+                self_older = true
+            elseif body.percentage < percentage then
+                self_older = false
+            elseif body.timestamp ~= nil then
                 self_older = (body.timestamp > self.last_page_turn_timestamp)
             else
-                -- If we are working with an old sync server, we can only use the percentage field.
-                self_older = (body.percentage > percentage)
+                self_older = false
             end
             if self_older then
                 if self.settings.sync_forward == SYNC_STRATEGY.SILENT then

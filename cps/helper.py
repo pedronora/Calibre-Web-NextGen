@@ -602,13 +602,15 @@ def reset_reading_position(session, user_id, book_id):
     """Clear a user's stored reading position for one book so marking it
     'unread' is a genuine reset (#683).
 
-    Two independent stores surface as the "% read" the user sees:
+    Three independent stores surface as the "% read" the user sees:
       * ``ub.KoboReadingState.current_bookmark`` — the KOReader/Kobo synced
         progress percentage shown on the classic detail page and the new-UI book
         page (fork #587);
       * ``ub.Bookmark`` — the web-reader (epub.js) resume point, keyed per
         format; left in place it re-derives the percentage on the next reader
         scroll, so the ghost would return.
+      * ``KOSyncProgress`` — KOReader's server-side resume point, stored under
+        either the Calibre book ID or any registered file checksum.
 
     Kobo/KOReader propagation is automatic: zeroing the KoboBookmark bumps its
     ``last_modified`` (onupdate) and the before_flush listener in ``ub.py`` lifts
@@ -652,7 +654,29 @@ def reset_reading_position(session, user_id, book_id):
     if read_row is not None:
         read_row.read_status = ub.ReadBook.STATUS_UNREAD
         cleared += 1
+    # KOSync may have accumulated a canonical book-id row plus legacy rows for
+    # any checksum ever registered to this book. Delete every equivalent key;
+    # otherwise the next GET can resurrect a finished 100% position. This uses
+    # only database state and remains safe outside a Flask request context.
+    from .progress_syncing.models import KOSyncProgress
+    kosync_keys = {str(book_id)}
+    kosync_keys.update(_get_kosync_checksums_for_book(book_id))
+    cleared += session.query(KOSyncProgress).filter(
+        KOSyncProgress.user_id == uid,
+        KOSyncProgress.document.in_(tuple(kosync_keys))).delete(
+            synchronize_session=False)
     return cleared
+
+
+def _get_kosync_checksums_for_book(book_id):
+    """Return request-independent KOSync document keys for a Calibre book."""
+    try:
+        rows = calibre_db.session.query(db.BookFormatChecksum.checksum).filter(
+            db.BookFormatChecksum.book == book_id).all()
+        return [row[0] for row in rows if row[0]]
+    except Exception as ex:  # pragma: no cover - defensive during DB startup
+        log.warning("Could not resolve KOSync checksums for book %s: %s", book_id, ex)
+        return []
 
 
 def edit_book_read_status(book_id, read_status=None):

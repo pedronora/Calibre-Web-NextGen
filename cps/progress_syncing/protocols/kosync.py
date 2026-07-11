@@ -580,6 +580,7 @@ def get_progress_record(user_id, document_checksum, book_id) -> KOSyncProgress:
         KOSyncProgress.user_id == user_id,
         KOSyncProgress.document.in_(tuple(lookup_keys))
     ).order_by(
+        desc(KOSyncProgress.percentage),
         desc(KOSyncProgress.timestamp)
     ).first()
 
@@ -843,12 +844,36 @@ def update_progress():
         document = book_id or document
 
         if progress_record:
-            # Update existing record
-            progress_record.progress = progress
-            progress_record.percentage = percentage_float
-            progress_record.device = device
-            progress_record.device_id = device_id
-            progress_record.timestamp = timestamp
+            # KOReader devices push their current location on suspend/close,
+            # including after navigating backwards.  A later push therefore
+            # does not necessarily represent the furthest reading position.
+            # A named device is authoritative for its own position, including
+            # deliberate rewinds and restarting a finished book. Missing/empty
+            # device IDs cannot establish identity and are therefore never
+            # treated as same-device pushes. Across devices, preserve the
+            # furthest percentage; equal values may refresh the exact locator.
+            same_device = bool(device_id) and device_id == progress_record.device_id
+            if same_device or percentage_float >= progress_record.percentage:
+                progress_record.progress = progress
+                progress_record.percentage = percentage_float
+                progress_record.device = device
+                progress_record.device_id = device_id
+                progress_record.timestamp = timestamp
+            else:
+                log.info(
+                    "Preserved furthest kosync progress: user=%s, document=%s, "
+                    "incoming=%.2f%%, stored=%.2f%%, incoming_device_id=%r, "
+                    "stored_device_id=%r",
+                    user.id, document, percentage_float,
+                    progress_record.percentage, device_id,
+                    progress_record.device_id,
+                )
+                # The response and downstream Kobo/ReadBook mirror must
+                # describe the accepted server position, not the rejected
+                # backwards push.
+                percentage_float = progress_record.percentage
+                timestamp = progress_record.timestamp
+                response_data["timestamp"] = int(timestamp.timestamp())
             # #633 self-heal: if the book resolved to a book_id, converge the
             # record onto the book_id key. A record first stored under a raw
             # file checksum (book_id didn't resolve at the time) is thereby

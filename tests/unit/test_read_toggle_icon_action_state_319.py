@@ -23,17 +23,14 @@ Two changes pinned here:
    ``glyphicon-unchecked`` (checkbox empty) — both are checkbox-shaped
    so the toggle reads as a single coherent control.
 
-2. **Show ACTION on interactive button, STATE on passive badge.** On
+2. **Show STATE on the interactive checkbox and passive badge.** On
    the detail-page toggle button:
      - `entry.read_status == False` (book is unread) → show
-       ``glyphicon-check`` (the icon for "click to make checked / mark
-       as read"). The button label says "Mark As Read".
+       ``glyphicon-unchecked`` (the book is currently unread). The
+       button label still says "Mark As Read" because labels name actions.
      - `entry.read_status == True` (book is read) → show
-       ``glyphicon-unchecked`` (the icon for "click to make unchecked /
-       mark as unread"). Label says "Mark As Unread".
-   The icon visually previews the action the click will perform. On
-   the passive badges (index grid card, cover overlay) the icon shows
-   STATE — a check means "read" — because there's no action context.
+       ``glyphicon-check`` (the book is currently read). Label says
+       "Mark As Unread". A check consistently means "read" everywhere.
 
 Sweep: detail.html (button + JS), index.html (passive grid badge),
 image.html (passive cover badge), caliBlur.js (caliBlur theme's badge
@@ -74,12 +71,12 @@ def caliblur_js() -> str:
 
 
 # ---------------------------------------------------------------------------
-# Detail-page button — shows ACTION (the state the click will produce).
+# Detail-page button — checkbox glyph shows STATE; label shows ACTION.
 # ---------------------------------------------------------------------------
 
 
 @pytest.mark.unit
-class TestDetailButtonShowsAction:
+class TestDetailButtonShowsState:
     def test_read_icon_uses_check_unchecked_matched_pair(self, detail_html: str):
         """Pin the glyphicon-check / glyphicon-unchecked pair on the
         read-icon span (consistent checkbox-shaped icons)."""
@@ -107,12 +104,8 @@ class TestDetailButtonShowsAction:
             "pushback asked for the matched glyphicon-check pair instead."
         )
 
-    def test_read_icon_shows_action_not_state(self, detail_html: str):
-        """When the book is READ, the icon must show
-        ``glyphicon-unchecked`` (the action: 'click to mark unread').
-        When the book is UNREAD, the icon must show ``glyphicon-check``
-        (the action: 'click to mark read'). The icon visually previews
-        what the click will do, matching the button's label text."""
+    def test_read_icon_shows_state(self, detail_html: str):
+        """A checked box means read and an empty box means unread."""
         m = re.search(
             r'id=["\']read-icon["\'][^>]*class=(["\'])(.+?)\1',
             detail_html,
@@ -121,31 +114,24 @@ class TestDetailButtonShowsAction:
         assert m, "read-icon span not found"
         klass = m.group(2)
         # The Jinja conditional should be:
-        # entry.read_status and 'glyphicon-unchecked' or 'glyphicon-check'
-        # OR equivalent forms that map True→unchecked, False→check.
-        # Pin the inverted-mapping by looking for the read_status-True
-        # arm choosing 'unchecked'.
+        # entry.read_status and 'glyphicon-check' or 'glyphicon-unchecked'
+        # OR equivalent forms that map True→checked, False→unchecked.
         assert re.search(
-            r"read_status\s+and\s+['\"]glyphicon-unchecked['\"]",
+            r"read_status\s+and\s+['\"]glyphicon-check['\"]",
             klass,
         ) or re.search(
-            r"if\s+entry\.read_status\s*%}\s*glyphicon-unchecked",
+            r"if\s+entry\.read_status\s*%}\s*glyphicon-check",
             detail_html,
         ), (
             "When entry.read_status is True (book is READ), read-icon "
-            "must show glyphicon-unchecked — the action is 'mark unread'. "
-            "droM4X #319: 'they should represent the action that will "
-            "happen when clicked'. Got class string: " + repr(klass)
+            "must show glyphicon-check. Got class string: " + repr(klass)
         )
-        # Defensive: the False arm should pick glyphicon-check (the
-        # action 'mark read'). Combined with the True→unchecked above,
-        # this pins the full inversion.
         assert re.search(
-            r"or\s+['\"]glyphicon-check['\"]",
+            r"or\s+['\"]glyphicon-unchecked['\"]",
             klass,
         ), (
             "When entry.read_status is False (book is UNREAD), read-icon "
-            "must show glyphicon-check — the action is 'mark read'."
+            "must show glyphicon-unchecked."
         )
 
     def test_toggle_read_js_handler_uses_check_unchecked(self, detail_html: str):

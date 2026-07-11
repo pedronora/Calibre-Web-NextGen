@@ -678,13 +678,12 @@
                                     {% endif %}
                                     {% if not current_user.is_anonymous %}
                                         {# Read-status icon uses the glyphicon-check / glyphicon-unchecked matched
-                                           pair per fork #319 @droM4X (#2 + #3 of the 2026-05-28 four-item list).
-                                           The icon shows the ACTION the click will perform, matching the button label:
-                                             read_status=False (unread) → label 'Mark As Read'     → icon ☑  glyphicon-check
-                                             read_status=True  (read)   → label 'Mark As Unread'   → icon ☐  glyphicon-unchecked
-                                           Same matched pair is used as a passive STATE indicator on the grid badge
-                                           (index.html) and cover overlay (image.html) — where there's no click context,
-                                           a check means 'this book is read'. The old eye-open / eye-close collided
+                                           pair. The checkbox glyph shows current STATE while the accessible label
+                                           names the action the click will perform:
+                                             read_status=False (unread) → label 'Mark As Read'   → icon ☐
+                                             read_status=True  (read)   → label 'Mark As Unread' → icon ☑
+                                           A check therefore means 'this book is read' consistently with the passive
+                                           grid badge (index.html) and cover overlay (image.html). The old eye icons collided
                                            visually with the hide button (also an eye), which was the SethMilliken
                                            accidental-hide failure mode. Hide button is now gated by the config flag +
                                            placed at the end of the action row — see further down. #}
@@ -693,7 +692,7 @@
                                                 aria-label="{{ entry.read_status and _('Mark As Unread') or _('Mark As Read') }}"
                                                 data-toast-on="{{ _('Marked as read') }}"
                                                 data-toast-off="{{ _('Marked as unread') }}">
-                                            <span id="read-icon" class="glyphicon {{ entry.read_status and 'glyphicon-unchecked' or 'glyphicon-check' }}"></span>
+                                            <span id="read-icon" class="glyphicon {{ entry.read_status and 'glyphicon-check' or 'glyphicon-unchecked' }}"></span>
                                         </button>
                                         {# Favorite / star toggle — fork #27. Always available to signed-in
                                            users (favorites are per-user); flips in place via the form below. #}
@@ -1262,12 +1261,9 @@
                     }
                     var $icon = $("#read-icon");
                     var isRead = $cb.prop("checked");
-                    // Read-status uses the glyphicon-check / glyphicon-unchecked matched
-                    // pair, showing ACTION (fork #319 droM4X). When the book is now read,
-                    // the icon switches to glyphicon-unchecked (next click = mark unread);
-                    // when unread, glyphicon-check (next click = mark read).
-                    $icon.toggleClass("glyphicon-unchecked", isRead)
-                         .toggleClass("glyphicon-check", !isRead);
+                    // Checkbox glyph shows current state; the title names the next action.
+                    $icon.toggleClass("glyphicon-check", isRead)
+                         .toggleClass("glyphicon-unchecked", !isRead);
                     var title = isRead ? $cb.data("checked") : $cb.data("unchecked");
                     $("#toggle-read-btn").attr("title", title).attr("aria-label", title);
                     // Once the user explicitly marks the book read OR unread, the

@@ -34,6 +34,7 @@ is for things you can see or feel when running the app.
 
 - **Saving a cover for a PDF-only or other non-EPUB/AZW3 book no longer ends with a false enforcement error.** The metadata enforcer now preserves the successful cover save, refreshes the format-independent `metadata.opf` backup, and logs an informational note that only in-file embedding was skipped for the unsupported format (#797).
 - **Author-sort mismatch warnings now identify the affected book and give a repair step that exists.** The warning previously omitted the book ID and title, then told administrators to edit an internal author-sort value through a UI that does not expose it directly. It now names the book and points to editing that book's Authors field or correcting it in Calibre. Thanks to @auspex for the report (#801).
+- **The classic book page's read checkbox now matches the book's actual state.** Unread books previously showed a checked box beside the “Mark As Read” action, while read books showed an empty box. The checkbox is now empty for unread and checked for read; its tooltip continues to describe what clicking will do (#771).
 
 ## [v4.1.9] - 2026-07-11
 

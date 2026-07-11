@@ -20,7 +20,10 @@ interface TopBarProps {
 /** Project support channels surfaced in the Help menu — the fork's own GitHub
  *  tracker + Discord (already shipped in the legacy admin page) + README. */
 const HELP_LINKS = {
-  issue: 'https://github.com/new-usemame/Calibre-Web-NextGen/issues/new',
+  // /issues/new/choose lands on the template picker (Bug report / Feature
+  // request) instead of a blank issue — the chooser lists the forms in
+  // .github/ISSUE_TEMPLATE/ (#799, adopts @chloeroform's #800).
+  issue: 'https://github.com/new-usemame/Calibre-Web-NextGen/issues/new/choose',
   discord: 'https://discord.gg/B8NXZmcp32',
   docs: 'https://github.com/new-usemame/Calibre-Web-NextGen#readme',
 };

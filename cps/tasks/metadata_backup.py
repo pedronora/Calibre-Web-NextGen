@@ -23,12 +23,12 @@ class TaskBackupMetadata(CalibreTask):
                  task_message=N_('Backing up Metadata')):
         super(TaskBackupMetadata, self).__init__(task_message)
         self.log = logger.create()
-        self.calibre_db = db.CalibreDB(expire_on_commit=False, init=True)
         self.export_language = export_language
         self.translated_title = translated_title
         self.set_dirty = set_dirty
 
     def run(self, worker_thread):
+        self.calibre_db = db.CalibreDB(expire_on_commit=False, init=True)
         if self.set_dirty:
             self.set_all_books_dirty()
         else:

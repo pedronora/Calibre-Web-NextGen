@@ -15,12 +15,14 @@ class TaskReconnectDatabase(CalibreTask):
     def __init__(self, task_message=N_('Reconnecting Calibre database')):
         super(TaskReconnectDatabase, self).__init__(task_message)
         self.log = logger.create()
-        self.calibre_db = db.CalibreDB(expire_on_commit=False, init=True)
 
     def run(self, worker_thread):
-        self.calibre_db.reconnect_db(config, ub.app_DB_path)
-        self.calibre_db.session.close()
-        self._handleSuccess()
+        self.calibre_db = db.CalibreDB(expire_on_commit=False, init=True)
+        try:
+            self.calibre_db.reconnect_db(config, ub.app_DB_path)
+            self._handleSuccess()
+        finally:
+            self.calibre_db.session.close()
 
     @property
     def name(self):

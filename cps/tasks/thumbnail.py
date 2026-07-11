@@ -337,7 +337,6 @@ class TaskGenerateSeriesThumbnails(CalibreTask):
         super(TaskGenerateSeriesThumbnails, self).__init__(task_message)
         self.log = logger.create()
         self.app_db_session = ub.get_new_session_instance()
-        self.calibre_db = db.CalibreDB(expire_on_commit=False, init=True)
         self.cache = fs.FileSystem()
         self.resolutions = [
             constants.COVER_THUMBNAIL_SMALL,
@@ -345,55 +344,59 @@ class TaskGenerateSeriesThumbnails(CalibreTask):
         ]
 
     def run(self, worker_thread):
-        if self.calibre_db.session and use_IM and self.stat != STAT_CANCELLED and self.stat != STAT_ENDED:
-            self.message = 'Scanning Series'
-            all_series = self.get_series_with_four_plus_books()
-            count = len(all_series)
+        self.calibre_db = db.CalibreDB(expire_on_commit=False, init=True)
+        try:
+            if self.calibre_db.session and use_IM and self.stat != STAT_CANCELLED and self.stat != STAT_ENDED:
+                self.message = 'Scanning Series'
+                all_series = self.get_series_with_four_plus_books()
+                count = len(all_series)
 
-            total_generated = 0
-            for i, series in enumerate(all_series):
-                generated = 0
-                series_thumbnails = self.get_series_thumbnails(series.id)
-                series_books = self.get_series_books(series.id)
+                total_generated = 0
+                for i, series in enumerate(all_series):
+                    generated = 0
+                    series_thumbnails = self.get_series_thumbnails(series.id)
+                    series_books = self.get_series_books(series.id)
 
-                # Generate new thumbnails for missing covers
-                resolutions = list(map(lambda t: t.resolution, series_thumbnails))
-                missing_resolutions = list(set(self.resolutions).difference(resolutions))
-                for resolution in missing_resolutions:
-                    generated += 1
-                    self.create_series_thumbnail(series, series_books, resolution)
-
-                # Replace outdated or missing thumbnails
-                for thumbnail in series_thumbnails:
-                    if any(book.last_modified > thumbnail.generated_at for book in series_books):
+                    # Generate new thumbnails for missing covers
+                    resolutions = list(map(lambda t: t.resolution, series_thumbnails))
+                    missing_resolutions = list(set(self.resolutions).difference(resolutions))
+                    for resolution in missing_resolutions:
                         generated += 1
-                        self.update_series_thumbnail(series_books, thumbnail)
+                        self.create_series_thumbnail(series, series_books, resolution)
 
-                    elif not self.cache.get_cache_file_exists(thumbnail.filename, constants.CACHE_TYPE_THUMBNAILS):
-                        generated += 1
-                        self.update_series_thumbnail(series_books, thumbnail)
+                    # Replace outdated or missing thumbnails
+                    for thumbnail in series_thumbnails:
+                        if any(book.last_modified > thumbnail.generated_at for book in series_books):
+                            generated += 1
+                            self.update_series_thumbnail(series_books, thumbnail)
 
-                # Increment the progress
-                self.progress = (1.0 / count) * i
+                        elif not self.cache.get_cache_file_exists(thumbnail.filename, constants.CACHE_TYPE_THUMBNAILS):
+                            generated += 1
+                            self.update_series_thumbnail(series_books, thumbnail)
 
-                if generated > 0:
-                    total_generated += generated
-                    self.message = N_('Generated {0} series thumbnails').format(total_generated)
+                    # Increment the progress
+                    self.progress = (1.0 / count) * i
 
-                # Check if job has been cancelled or ended
-                if self.stat == STAT_CANCELLED:
-                    self.log.info(f'GenerateSeriesThumbnails task has been cancelled.')
-                    return
+                    if generated > 0:
+                        total_generated += generated
+                        self.message = N_('Generated {0} series thumbnails').format(total_generated)
 
-                if self.stat == STAT_ENDED:
-                    self.log.info(f'GenerateSeriesThumbnails task has been ended.')
-                    return
+                    # Check if job has been cancelled or ended
+                    if self.stat == STAT_CANCELLED:
+                        self.log.info(f'GenerateSeriesThumbnails task has been cancelled.')
+                        return
 
-            if total_generated == 0:
-                self.self_cleanup = True
+                    if self.stat == STAT_ENDED:
+                        self.log.info(f'GenerateSeriesThumbnails task has been ended.')
+                        return
 
-        self._handleSuccess()
-        self.app_db_session.remove()
+                if total_generated == 0:
+                    self.self_cleanup = True
+
+            self._handleSuccess()
+        finally:
+            self.calibre_db.session.close()
+            self.app_db_session.remove()
 
     def get_series_with_four_plus_books(self):
         return self.calibre_db.session \

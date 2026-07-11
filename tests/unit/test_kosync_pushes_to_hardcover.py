@@ -18,9 +18,12 @@ successful progress update where `book_id` resolved to a Calibre book.
 
 import inspect
 import sys
+from types import SimpleNamespace
 from unittest.mock import MagicMock, patch
 
 import pytest
+
+from tests.fixtures.mock_hardcover_client import MockHardcoverClient
 
 
 def _kosync_module():
@@ -169,3 +172,55 @@ class TestPushReadingStateToHardcoverNoActiveContext:
             mock_hardcover.HardcoverClient.assert_called_once_with("fake-token")
             mock_hardcover.HardcoverClient.return_value.update_reading_progress.\
                 assert_called_once_with(book.identifiers, 42)
+
+
+@pytest.mark.unit
+class TestPushReadingStateToHardcoverGuardsAndFailures:
+    """Pin the local Hardcover boundary used by both Kobo and KOReader.
+
+    The client is fully mocked: configuration must prevent *any* external
+    client construction, and a remote failure must not break the device's
+    already-persisted progress update.
+    """
+
+    @staticmethod
+    def _user_and_book():
+        user = SimpleNamespace(name="alice", hardcover_token="fake-token", id=7)
+        book = SimpleNamespace(
+            id=42,
+            identifiers=[SimpleNamespace(type="hardcover-id", val="123"),
+                         SimpleNamespace(type="hardcover-edition", val="456")],
+        )
+        return user, book
+
+    def test_disabled_global_gate_does_not_construct_a_client(self):
+        from cps.kobo import push_reading_state_to_hardcover
+        import cps.kobo as kobo_mod
+
+        user, book = self._user_and_book()
+        constructed = []
+        service = SimpleNamespace(HardcoverClient=lambda token: constructed.append(token))
+        with patch.object(kobo_mod, "config", SimpleNamespace(config_hardcover_sync=False)), \
+                patch.object(kobo_mod, "hardcover", service):
+            push_reading_state_to_hardcover(user, book, 47)
+
+        assert constructed == []
+
+    def test_mapping_is_forwarded_unchanged_and_remote_failure_is_swallowed(self):
+        from cps.kobo import push_reading_state_to_hardcover
+        import cps.kobo as kobo_mod
+
+        user, book = self._user_and_book()
+        client = MockHardcoverClient(progress_raises=RuntimeError("Hardcover unavailable"))
+        service = SimpleNamespace(HardcoverClient=lambda token: client)
+        session = MagicMock()
+        session.query.return_value.filter.return_value.first.return_value = None
+
+        with patch.object(kobo_mod, "config", SimpleNamespace(config_hardcover_sync=True)), \
+                patch.object(kobo_mod, "ub", SimpleNamespace(session=session, HardcoverBookBlacklist=MagicMock())), \
+                patch.object(kobo_mod, "hardcover", service):
+            # The method intentionally returns normally: Kobo/KOReader must not
+            # retry the protocol request merely because Hardcover is unavailable.
+            assert push_reading_state_to_hardcover(user, book, 47) is None
+
+        assert client.calls == [("progress", book.identifiers, 47)]

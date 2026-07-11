@@ -4,7 +4,7 @@ import { Link, useLocation } from 'wouter';
 import { ChevronLeft, Save, Trash2, RefreshCw, Image as ImageIcon, Upload as UploadIcon, ExternalLink, Sparkles, Search, Plus, X, MoreHorizontal, Star } from 'lucide-react';
 import {
   useBookMetadata, useUpdateMetadata, useBook, useMe, useDeleteFormat, useConvertFormat,
-  useSetCover, useMetadataSearch, useAddFormat,
+  useSetCover, useMetadataSearch, useMetadataProviders, useSetMetadataProviderActive, useAddFormat,
 } from '../lib/queries';
 import { Button } from '../components/Button';
 import { MetadataTypeahead } from '../components/MetadataTypeahead';
@@ -312,9 +312,12 @@ function MetadataFetch({ defaultQuery, onApply }:
   const t = useT();
   const search = useMetadataSearch();
   const [open, setOpen] = useState(false);
+  const providers = useMetadataProviders(open);
+  const setProviderActive = useSetMetadataProviderActive();
   const [query, setQuery] = useState(defaultQuery);
   const [results, setResults] = useState<MetaResult[]>([]);
   const [err, setErr] = useState<string | null>(null);
+  const visibleProviders = (providers.data || []).filter((provider) => provider.globally_enabled);
   // Editions drill-down (Hardcover): when set we're showing the editions of one
   // book, and `prev` holds the title-level view to return to via "Back".
   const [editions, setEditions] = useState<{ prevQuery: string; prevResults: MetaResult[] } | null>(null);
@@ -363,6 +366,12 @@ function MetadataFetch({ defaultQuery, onApply }:
   // drill-down, and invalidate any in-flight request on close.
   const openPanel = () => { seq.current++; setOpen(true); setQuery(defaultQuery); setEditions(null); setErr(null); };
   const closePanel = () => { seq.current++; setOpen(false); setEditions(null); };
+  const toggleProvider = (id: string, active: boolean) => {
+    setErr(null);
+    setProviderActive.mutate({ id, value: !active }, {
+      onError: (error) => setErr(error instanceof ApiError ? error.message : t('Could not update provider.')),
+    });
+  };
 
   return (
     <section className={styles.metaFetch}>
@@ -372,6 +381,31 @@ function MetadataFetch({ defaultQuery, onApply }:
         </Button>
       ) : (
         <div className={styles.metaPanel}>
+          <div className={styles.providerSection}>
+            <span className={styles.providerLabel}>{t('Metadata providers')}</span>
+            {providers.isLoading ? (
+              <span className={styles.providerLoading} role="status"><Spinner size={14} /> {t('Loading providers…')}</span>
+            ) : providers.isError ? (
+              <span className={styles.msgErr} role="alert">{t('Could not load providers.')}</span>
+            ) : (
+              <div className={styles.providerPills} role="group" aria-label={t('Metadata providers')}>
+                {visibleProviders.map((provider) => (
+                  <button key={provider.id} type="button" role="switch"
+                    aria-checked={provider.active}
+                    aria-label={t('{provider}: {state}', {
+                      provider: provider.name,
+                      state: provider.active ? t('On') : t('Off'),
+                    })}
+                    className={styles.providerPill}
+                    disabled={setProviderActive.isPending}
+                    onClick={() => toggleProvider(provider.id, provider.active)}>
+                    <span className={styles.providerIndicator} aria-hidden="true" />
+                    {provider.name}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
           {editions ? (
             <div className={styles.editionsHead}>
               <button type="button" className={styles.cancel} onClick={backToResults}>
@@ -386,7 +420,7 @@ function MetadataFetch({ defaultQuery, onApply }:
               <input className={styles.input} value={query} onChange={(e) => setQuery(e.target.value)}
                 aria-label={t('Search for metadata')}
                 placeholder={t('Title, author, or ISBN')} autoFocus />
-              <Button type="submit" disabled={search.isPending || !query.trim()}>
+              <Button type="submit" disabled={search.isPending || setProviderActive.isPending || !query.trim()}>
                 {search.isPending ? <Spinner size={15} /> : <Search size={15} />} {t('Search')}
               </Button>
               <button type="button" className={styles.cancel} onClick={closePanel}>{t('Close')}</button>

@@ -7,6 +7,7 @@
 
 import atexit
 import os
+import re
 import sys
 import sqlite3
 import time
@@ -281,7 +282,7 @@ class User(UserBase, Base):
     view_settings = Column(JSON, default={})
     kobo_only_shelves_sync = Column(Integer, default=0)
     opds_only_shelves_sync = Column(Integer, default=0)
-    hardcover_token = Column(String, unique=True, default=None)
+    hardcover_token = Column(String, default=None)
     # New per-user theme (0=default/light, 1=caliBlur) replacing global-only behavior
     theme = Column(Integer, default=1)
     # Auto-send settings for new books
@@ -1318,6 +1319,154 @@ def migrate_user_session_table(engine, _session):
             ],
         )
 
+
+def migrate_user_hardcover_token_constraint(engine):
+    """Remove the fresh-install-only UNIQUE constraint on Hardcover tokens.
+
+    Older upgrades received this column through ``ALTER TABLE`` without a
+    constraint. Fresh databases created from the former model instead have a
+    SQLite autoindex, which can only be removed by rebuilding the table.
+    """
+    connection = engine.raw_connection()
+    cursor = connection.cursor()
+    foreign_keys_enabled = False
+    try:
+        cursor.execute("PRAGMA busy_timeout=5000")
+        foreign_keys_enabled = bool(cursor.execute("PRAGMA foreign_keys").fetchone()[0])
+
+        unique_token_indexes = set()
+        token_autoindex_present = False
+        for index_row in cursor.execute("PRAGMA index_list('user')").fetchall():
+            # index_list columns: seq, name, unique, origin, partial
+            if not index_row[2]:
+                continue
+            index_name = index_row[1].replace('"', '""')
+            indexed_columns = [
+                row[2]
+                for row in cursor.execute(
+                    f'PRAGMA index_info("{index_name}")'
+                ).fetchall()
+            ]
+            if indexed_columns == ["hardcover_token"]:
+                unique_token_indexes.add(index_row[1])
+                token_autoindex_present = token_autoindex_present or index_row[3] != "c"
+        if not unique_token_indexes:
+            return False
+
+        table_sql_row = cursor.execute(
+            "SELECT sql FROM sqlite_master WHERE type='table' AND name='user'"
+        ).fetchone()
+        if not table_sql_row or not table_sql_row[0]:
+            raise RuntimeError("Could not read CREATE TABLE SQL for user")
+        table_sql = table_sql_row[0]
+
+        replacement_sql, inline_replacements = re.subn(
+            r'(?i)(["`\[]?hardcover_token["`\]]?\s+[^,]*?)\s+UNIQUE\b',
+            r'\1',
+            table_sql,
+            count=1,
+        )
+        replacement_sql, table_replacements = re.subn(
+            r'(?i),\s*(?:CONSTRAINT\s+["`\[]?\w+["`\]]?\s+)?UNIQUE\s*'
+            r'\(\s*["`\[]?hardcover_token["`\]]?\s*\)',
+            '',
+            replacement_sql,
+            count=1,
+        )
+        if token_autoindex_present and inline_replacements + table_replacements != 1:
+            raise RuntimeError(
+                "Detected an automatic unique hardcover_token index but could "
+                "not safely remove its UNIQUE constraint"
+            )
+        replacement_sql, create_table_replacements = re.subn(
+            r'(?i)^(\s*CREATE\s+TABLE\s+)["`\[]?user["`\]]?',
+            r'\1user_new',
+            replacement_sql,
+            count=1,
+        )
+        if create_table_replacements != 1:
+            raise RuntimeError("Could not safely rename user table in CREATE SQL")
+
+        columns = [row[1] for row in cursor.execute("PRAGMA table_info('user')").fetchall()]
+        if not columns:
+            raise RuntimeError("Cannot rebuild user table without columns")
+        quoted_columns = ", ".join(
+            '"{}"'.format(column.replace('"', '""')) for column in columns
+        )
+        schema_objects = [
+            row
+            for row in cursor.execute(
+                "SELECT type, name, sql FROM sqlite_master "
+                "WHERE tbl_name='user' AND type IN ('index', 'trigger') "
+                "AND sql IS NOT NULL ORDER BY type, name"
+            ).fetchall()
+            if row[1] not in unique_token_indexes
+        ]
+        row_count_before = cursor.execute("SELECT COUNT(*) FROM user").fetchone()[0]
+        foreign_key_violations_before = cursor.execute("PRAGMA foreign_key_check").fetchall()
+
+        # PRAGMA foreign_keys is a no-op inside a transaction, so set it first.
+        connection.commit()
+        cursor.execute("PRAGMA foreign_keys=OFF")
+        connection.commit()
+        cursor.execute("BEGIN IMMEDIATE")
+        if cursor.execute(
+            "SELECT 1 FROM sqlite_master WHERE type='table' AND name='user_new'"
+        ).fetchone():
+            raise RuntimeError("Refusing to overwrite pre-existing user_new table")
+        cursor.execute(replacement_sql)
+        cursor.execute(
+            f"INSERT INTO user_new ({quoted_columns}) "
+            f"SELECT {quoted_columns} FROM user"
+        )
+        row_count_copied = cursor.execute("SELECT COUNT(*) FROM user_new").fetchone()[0]
+        if row_count_copied != row_count_before:
+            raise RuntimeError(
+                f"User-table rebuild copied {row_count_copied} of {row_count_before} rows"
+            )
+        cursor.execute("DROP TABLE user")
+        cursor.execute("ALTER TABLE user_new RENAME TO user")
+        for _object_type, _name, object_sql in schema_objects:
+            cursor.execute(object_sql)
+
+        row_count_after = cursor.execute("SELECT COUNT(*) FROM user").fetchone()[0]
+        if row_count_after != row_count_before:
+            raise RuntimeError(
+                f"User-table rebuild retained {row_count_after} of {row_count_before} rows"
+            )
+        foreign_key_violations_after = cursor.execute("PRAGMA foreign_key_check").fetchall()
+        if foreign_key_violations_after != foreign_key_violations_before:
+            raise RuntimeError("User-table rebuild changed foreign-key integrity")
+        for index_row in cursor.execute("PRAGMA index_list('user')").fetchall():
+            if index_row[2]:
+                index_name = index_row[1].replace('"', '""')
+                indexed_columns = [
+                    row[2]
+                    for row in cursor.execute(
+                        f'PRAGMA index_info("{index_name}")'
+                    ).fetchall()
+                ]
+                if indexed_columns == ["hardcover_token"]:
+                    raise RuntimeError("Unique hardcover_token index survived rebuild")
+        connection.commit()
+        log.info(
+            "Removed unique Hardcover token constraint while preserving %d user row(s)",
+            row_count_after,
+        )
+        return True
+    except Exception:
+        connection.rollback()
+        log.exception("Failed to remove unique Hardcover token constraint; rebuild rolled back")
+        raise
+    finally:
+        try:
+            cursor.execute(f"PRAGMA foreign_keys={'ON' if foreign_keys_enabled else 'OFF'}")
+            connection.commit()
+        finally:
+            cursor.close()
+            connection.close()
+
+
 def migrate_user_table(engine, _session):
     try:
         _session.query(exists().where(User.hardcover_token)).scalar()
@@ -1325,6 +1474,8 @@ def migrate_user_table(engine, _session):
     except exc.OperationalError:  # Database is not compatible, some columns are missing
         _safe_session_rollback(_session, "user.hardcover_token")
         _run_ddl_with_retry(engine, "ALTER TABLE user ADD column 'hardcover_token' String")
+
+    migrate_user_hardcover_token_constraint(engine)
 
     try:
         _session.query(exists().where(User.opds_only_shelves_sync)).scalar()

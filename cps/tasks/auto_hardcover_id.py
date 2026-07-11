@@ -45,7 +45,6 @@ class TaskAutoHardcoverID(CalibreTask):
                  task_message=N_('Auto-fetching Hardcover IDs')):
         super(TaskAutoHardcoverID, self).__init__(task_message)
         self.log = logger.create()
-        self.calibre_db = db.CalibreDB(expire_on_commit=False, init=True)
         self.min_confidence = min_confidence
         self.batch_size = batch_size
         self.rate_limit_delay = rate_limit_delay
@@ -90,7 +89,8 @@ class TaskAutoHardcoverID(CalibreTask):
         if not token:
             self._handleError("No valid Hardcover token found. Set HARDCOVER_TOKEN environment variable or configure token in settings.")
             return
-        
+
+        self.calibre_db = db.CalibreDB(expire_on_commit=False, init=True)
         try:
             # Query books without hardcover identifiers
             book_ids = self._get_books_without_hardcover_id()

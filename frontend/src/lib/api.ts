@@ -391,7 +391,9 @@ export async function apiPost<T>(path: string, body?: unknown): Promise<T> {
   }
 
   if (res.status === 204) return undefined as unknown as T;
-  return res.json() as Promise<T>;
+  const text = await res.text();
+  if (!text) return undefined as unknown as T;
+  return JSON.parse(text) as T;
 }
 
 /** DELETE with the same CSRF/base-path handling as apiPost (#782 — the reader
@@ -529,6 +531,24 @@ export interface MetaResult {
 export interface MetaSearchResponse {
   results: MetaResult[];
   providers: { id: string; name: string; status: string; count: number; message: string }[];
+}
+
+export interface MetadataProvider {
+  name: string;
+  active: boolean;
+  initial: boolean;
+  id: string;
+  globally_enabled: boolean;
+}
+
+/** Read the per-user metadata-provider settings shared with the classic UI. */
+export function getMetadataProviders(): Promise<MetadataProvider[]> {
+  return apiGet<MetadataProvider[]>('/metadata/provider');
+}
+
+/** Persist one provider toggle to current_user.view_settings["metadata"]. */
+export function setMetadataProviderActive(id: string, value: boolean): Promise<void> {
+  return apiPost<void>(`/metadata/provider/${encodeURIComponent(id)}`, { id, value });
 }
 
 /** Multipart POST (file upload). Mirrors apiPost's CSRF handling, but lets the

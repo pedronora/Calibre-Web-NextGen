@@ -22,6 +22,8 @@ from cps.services.annotation_sync import (
     dispatch_existing_annotation_sync,
 )
 from cps.services.annotation_sync.base import AnnotationSyncTargetHandler, SyncResult
+from cps.services.annotation_sync.hardcover import HardcoverHandler
+from tests.fixtures.mock_hardcover_client import MockHardcoverClient
 
 
 class StubHandler(AnnotationSyncTargetHandler):
@@ -126,3 +128,40 @@ def test_tombstoned_target_not_repushed(patched_session):
     assert handler.calls == []  # push never attempted
     tgt = s.query(ub.AnnotationSyncTarget).filter_by(annotation_id=row.id).one()
     assert tgt.status == "tombstone"
+
+
+@pytest.mark.unit
+def test_real_hardcover_handler_gates_then_tombstones_without_repush(patched_session):
+    """Use the shared mocked HC client at the web-reader boundary.
+
+    A disabled handler must make no remote attempt. Once enabled, deletion
+    tombstones the remote journal row; repeating fan-out for the stale row
+    must not recreate it.
+    """
+    s, user = patched_session
+    client = MockHardcoverClient(add_response={"id": 91}, delete_response=91)
+    handler = HardcoverHandler(
+        client_factory=lambda _token: client,
+        config_getter=lambda: False,
+        book_identifiers_getter=lambda _book: {"isbn": "9780000000000"},
+        blacklist_check=lambda _book_id: False,
+    )
+    register_handler(handler)
+    row = _seed_web_row(s, user)
+
+    dispatch_existing_annotation_sync(row, _book(), user)
+    assert client.calls == []
+    assert s.query(ub.AnnotationSyncTarget).count() == 0
+
+    handler._config_getter = lambda: True
+    dispatch_existing_annotation_sync(row, _book(), user)
+    assert client.calls[0][0] == "add"
+
+    from cps.services.annotation_sync import dispatch_annotation_deletes
+    dispatch_annotation_deletes([row.annotation_id], user)
+    assert client.calls[1] == ("delete", 91)
+
+    dispatch_existing_annotation_sync(row, _book(), user)
+    assert [call[0] for call in client.calls] == ["add", "delete"]
+    target = s.query(ub.AnnotationSyncTarget).filter_by(annotation_id=row.id).one()
+    assert target.status == "tombstone"

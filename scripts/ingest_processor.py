@@ -304,41 +304,28 @@ def get_app_db_path() -> str:
     return os.path.join(base_path, "app.db")
 
 
-def _load_cps_settings_from_app_db() -> None:
-    """Load minimal CPS settings needed for GDrive + internal HTTPS handling."""
+def _load_cps_configuration_from_app_db() -> None:
+    """Populate the CPS config singleton through the application's load path."""
     if not _cps_config:
         return
+    app_db_path = get_app_db_path()
     try:
-        app_db_path = get_app_db_path()
-        with sqlite3.connect(app_db_path, timeout=30) as con:
-            cur = con.cursor()
-            row = cur.execute(
-                "SELECT config_use_google_drive, config_google_drive_folder, "
-                "config_calibre_dir, config_certfile, config_keyfile, "
-                "config_calibre_split, config_calibre_split_dir "
-                "FROM settings LIMIT 1"
-            ).fetchone()
-            if not row:
-                return
+        from cps import cli_param, config_sql, ub
 
-            _cps_config.config_use_google_drive = bool(row[0]) if row[0] is not None else False
-            _cps_config.config_google_drive_folder = row[1]
-            if row[2]:
-                _cps_config.config_calibre_dir = row[2]
-            if row[3]:
-                _cps_config.config_certfile = row[3]
-            if row[4]:
-                _cps_config.config_keyfile = row[4]
-            # config.get_book_path() reads both of these; without them any
-            # ingest-side cover write (auto metadata fetch, fork #709) blows up
-            # with "'ConfigSQL' object has no attribute 'config_calibre_split'"
-            # because this minimal loader — not the main app's config.load() —
-            # is what populates config in the ingest process. Split-library
-            # users also need the split dir so covers land in the right tree.
-            _cps_config.config_calibre_split = bool(row[5]) if row[5] is not None else False
-            _cps_config.config_calibre_split_dir = row[6]
+        ub.init_db(app_db_path)
+        encrypt_key, error = config_sql.get_encryption_key(
+            os.path.dirname(app_db_path)
+        )
+        config_sql.load_configuration(ub.session, encrypt_key)
+        _cps_config.init_config(ub.session, encrypt_key, cli_param)
+        if error:
+            print(f"[ingest-processor] WARN: {error}", flush=True)
     except Exception as e:
-        print(f"[ingest-processor] WARN: Could not read CPS settings from app.db ({app_db_path}): {e}", flush=True)
+        print(
+            f"[ingest-processor] WARN: Could not load CPS configuration "
+            f"from app.db ({app_db_path}): {e}",
+            flush=True,
+        )
 
 def _ensure_project_root_on_path() -> None:
     cps_path = os.path.dirname(os.path.dirname(__file__))
@@ -383,7 +370,7 @@ def _load_optional_cps_modules() -> None:
             _cps_config = loaded_cps_config
             _GDRIVE_AVAILABLE = True
             print("[ingest-processor] GDrive functionality available", flush=True)
-            _load_cps_settings_from_app_db()
+            _load_cps_configuration_from_app_db()
         except (ImportError, TypeError, AttributeError) as e:
             print(f"[ingest-processor] GDrive functionality not available: {e}", flush=True)
             _gdriveutils = None

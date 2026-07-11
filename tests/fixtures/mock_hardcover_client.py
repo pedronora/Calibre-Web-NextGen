@@ -22,6 +22,7 @@ class MockHardcoverClient:
         update_raises: Optional[Exception] = None,
         delete_response: Optional[int] = None,
         delete_raises: Optional[Exception] = None,
+        progress_raises: Optional[Exception] = None,
     ):
         self.add_response = add_response if add_response is not None else {"id": 42}
         self.add_raises = add_raises
@@ -29,6 +30,7 @@ class MockHardcoverClient:
         self.update_raises = update_raises
         self.delete_response = delete_response
         self.delete_raises = delete_raises
+        self.progress_raises = progress_raises
         self.calls = []
 
     def add_journal_entry(self, *args, **kwargs):
@@ -48,3 +50,8 @@ class MockHardcoverClient:
         if self.delete_raises:
             raise self.delete_raises
         return self.delete_response if self.delete_response is not None else journal_id
+
+    def update_reading_progress(self, identifiers, progress_percent):
+        self.calls.append(("progress", identifiers, progress_percent))
+        if self.progress_raises:
+            raise self.progress_raises

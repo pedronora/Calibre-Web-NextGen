@@ -20,6 +20,25 @@ import pytest
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
+_MISSING = object()
+
+
+def _restore_binding(mapping, key, original):
+    """Restore a sys.modules-style binding to its pre-stub value (or remove)."""
+    if original is _MISSING:
+        mapping.pop(key, None)
+    else:
+        mapping[key] = original
+
+
+def _restore_attr(obj, name, original):
+    """Restore an attribute to its pre-stub value (or delete it)."""
+    if original is _MISSING:
+        if hasattr(obj, name):
+            delattr(obj, name)
+    else:
+        setattr(obj, name, original)
+
 
 def _load_extract_module():
     """Idempotently top up the cps stub so this test plays nicely with
@@ -47,6 +66,14 @@ def _load_extract_module():
     sys.modules["cps.logger"] = logger_mod
     cps_pkg.logger = logger_mod
 
+    # Snapshot the real cps.config binding so the isolated stub below does not
+    # leak into other test files sharing this xdist worker. Overwriting
+    # cps_pkg.config / sys.modules["cps.config"] with a bare ModuleType stub
+    # otherwise corrupts the real ConfigSQL singleton for any later file that
+    # does `from cps import config` (e.g. the ingest config-load tests, which
+    # then AttributeError on real methods like init_config). See fix/hardcover.
+    _orig_config_sysmod = sys.modules.get("cps.config", _MISSING)
+    _orig_pkg_config = getattr(cps_pkg, "config", _MISSING)
     config_mod = sys.modules.get("cps.config") or types.ModuleType("cps.config")
     if not hasattr(config_mod, "get_book_path"):
         config_mod.get_book_path = lambda: "/tmp/library"
@@ -64,6 +91,11 @@ def _load_extract_module():
     module = importlib.util.module_from_spec(spec)
     sys.modules["cps.services.cover_extract"] = module
     spec.loader.exec_module(module)
+    # cover_extract captured its `config` reference during exec_module above,
+    # so restoring the globals here keeps this module working while leaving the
+    # real cps.config intact for every other test file on the worker.
+    _restore_binding(sys.modules, "cps.config", _orig_config_sysmod)
+    _restore_attr(cps_pkg, "config", _orig_pkg_config)
     return module
 
 

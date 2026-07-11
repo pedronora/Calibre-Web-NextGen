@@ -1,7 +1,10 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { apiGet, apiPost, apiUpload, apiPostForm, ApiError } from './api';
+import {
+  apiGet, apiPost, apiUpload, apiPostForm, ApiError,
+  getMetadataProviders, setMetadataProviderActive,
+} from './api';
 import { removeBookFromCache } from './scrollCache';
-import type { MetaSearchResponse } from './api';
+import type { MetadataProvider, MetaSearchResponse } from './api';
 import type {
   Me, BooksPage, BookDetail, EntityList, Shelf, ShelfDetail,
   SearchOptions, AdvancedSearchParams, AdvSearchResult, Account, ProfileUpdate,
@@ -642,6 +645,37 @@ export function useConvertFormat(id: string | number) {
 export function useMetadataSearch() {
   return useMutation({
     mutationFn: (query: string) => apiPostForm<MetaSearchResponse>('/metadata/search', { query }),
+  });
+}
+
+const metadataProviderQueryKey = ['metadata-providers'] as const;
+
+/** Provider order and per-user active state shared with the classic UI. */
+export function useMetadataProviders(enabled = true) {
+  return useQuery({
+    queryKey: metadataProviderQueryKey,
+    queryFn: getMetadataProviders,
+    enabled,
+  });
+}
+
+/** Optimistically toggle a provider, then reconcile with the server SSOT. */
+export function useSetMetadataProviderActive() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: ({ id, value }: { id: string; value: boolean }) =>
+      setMetadataProviderActive(id, value),
+    onMutate: async ({ id, value }) => {
+      await qc.cancelQueries({ queryKey: metadataProviderQueryKey });
+      const previous = qc.getQueryData<MetadataProvider[]>(metadataProviderQueryKey);
+      qc.setQueryData<MetadataProvider[]>(metadataProviderQueryKey, (providers) =>
+        providers?.map((provider) => provider.id === id ? { ...provider, active: value } : provider));
+      return { previous };
+    },
+    onError: (_error, _vars, context) => {
+      if (context?.previous) qc.setQueryData(metadataProviderQueryKey, context.previous);
+    },
+    onSettled: () => void qc.invalidateQueries({ queryKey: metadataProviderQueryKey }),
   });
 }
 

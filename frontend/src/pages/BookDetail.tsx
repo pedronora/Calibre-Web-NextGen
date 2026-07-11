@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef, Fragment } from 'react';
-import { Link, useParams } from 'wouter';
-import { Download, Pencil, Star, Archive, EyeOff, Eye, Send, Highlighter, Image as ImageIcon, Plus, X, BookOpen } from 'lucide-react';
+import { Link, useParams, useLocation } from 'wouter';
+import { Download, Pencil, Star, Archive, EyeOff, Eye, Send, Highlighter, Image as ImageIcon, Plus, X, BookOpen, Trash2 } from 'lucide-react';
 import {
   useBook, useToggleRead, useToggleFavorite, useToggleArchived, useToggleHidden,
-  useSendToEreader, useMe, useAccount, useUpdateMetadata,
+  useSendToEreader, useMe, useAccount, useUpdateMetadata, useDeleteBook,
 } from '../lib/queries';
 import { Pill } from '../components/Pill';
 import { AddToShelf } from '../components/AddToShelf';
@@ -215,6 +215,8 @@ export function BookDetail() {
   const toggleArchived = useToggleArchived(id);
   const toggleHidden = useToggleHidden(id);
   const sendToEreader = useSendToEreader(id);
+  const deleteBook = useDeleteBook(id);
+  const [, navigate] = useLocation();
   const me = useMe().data;
   // The send-to-e-reader button only renders when mail is configured + the user
   // can download, so defer the account fetch (which carries the saved e-reader
@@ -223,6 +225,7 @@ export function BookDetail() {
   const savedEreader = useAccount({ enabled: canSend }).data?.kindle_mail ?? '';
   const [sendOpen, setSendOpen] = useState(false);
   const [sendBanner, setSendBanner] = useState<{ ok: boolean; text: string } | null>(null);
+  const [deleteError, setDeleteError] = useState<string | null>(null);
 
   if (isLoading) return <SpinnerCentered size={40} />;
   if (error || !book) {
@@ -419,7 +422,38 @@ export function BookDetail() {
               <Highlighter size={14} />
               {t('Highlights')}
             </Link>
+
+            {/* Delete the whole book — DB + files (fork #803). Hidden entirely for
+                users without the delete role; the server re-checks and returns 403,
+                so this is a UX gate, not the security boundary. */}
+            {me?.role?.delete_books && (
+              <button
+                type="button"
+                className={styles.actionDanger}
+                disabled={deleteBook.isPending}
+                aria-label={t('Delete book')}
+                onClick={() => {
+                  if (deleteBook.isPending) return;
+                  if (!window.confirm(
+                    t('Delete "{title}"? This permanently removes the book and all its files from your library. This cannot be undone.', { title: book.title })
+                  )) return;
+                  setDeleteError(null);
+                  deleteBook.mutate(undefined, {
+                    onSuccess: () => navigate('/'),
+                    onError: (err) =>
+                      setDeleteError(err instanceof ApiError ? err.message : t('Could not delete this book.')),
+                  });
+                }}
+              >
+                <Trash2 size={14} />
+                {deleteBook.isPending ? t('Deleting…') : t('Delete')}
+              </button>
+            )}
           </div>
+
+          {deleteError && (
+            <p className={styles.deleteErr} role="alert">{deleteError}</p>
+          )}
 
           {/* Send-to-e-reader panel */}
           {sendOpen && (

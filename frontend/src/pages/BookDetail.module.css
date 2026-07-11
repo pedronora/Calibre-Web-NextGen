@@ -351,6 +351,40 @@
   background: var(--surface-2);
 }
 
+/* Destructive whole-book delete (fork #803). Same shape as .downloadBtn, danger-tinted. */
+.actionDanger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semi);
+  font-family: var(--font-body);
+  padding: var(--sp-2) var(--sp-3);
+  height: 38px;
+  border-radius: var(--r-md);
+  background: transparent;
+  border: 1px solid var(--danger);
+  color: var(--danger);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background var(--dur-fast) var(--ease);
+}
+
+.actionDanger:hover:not(:disabled) {
+  background: var(--danger-soft);
+}
+
+.actionDanger:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.deleteErr {
+  color: var(--danger);
+  font-size: var(--fs-sm);
+  margin-top: var(--sp-2);
+}
+
 /* Tags row */
 .tags {
   display: flex;

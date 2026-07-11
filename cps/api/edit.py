@@ -234,7 +234,12 @@ def delete_book(book_id):
         return _err("unauthorized", "You must be signed in", 401)
     if not current_user.role_delete_books():
         return _err("forbidden", "You are not allowed to delete books", 403)
-    if not calibre_db.get_book(book_id):
+    # Authorize against the caller's VISIBLE library, not the raw table: a user
+    # with the (global) delete role but a language/tag/custom-column visibility
+    # restriction must not be able to enumerate and delete a book they cannot
+    # see. allow_show_archived/hidden keep their OWN archived/hidden books
+    # deletable (hidden is a listing exclusion, not an access revocation — #319).
+    if not calibre_db.get_filtered_book(book_id, allow_show_archived=True, allow_show_hidden=True):
         return _err("not_found", "Book not found", 404)
     # delete_book_from_table re-checks the role and does the data-safe (DB-first,
     # files-last) whole-book delete + shelf cleanup. book_format="" = whole book.
@@ -251,7 +256,8 @@ def delete_format(book_id, fmt):
         return _err("unauthorized", "You must be signed in", 401)
     if not current_user.role_delete_books():
         return _err("forbidden", "You are not allowed to delete books", 403)
-    if not calibre_db.get_book(book_id):
+    # Same visibility-scoped authorization as whole-book delete above.
+    if not calibre_db.get_filtered_book(book_id, allow_show_archived=True, allow_show_hidden=True):
         return _err("not_found", "Book not found", 404)
     delete_book_from_table(book_id, fmt.upper(), True)
     return "", 204

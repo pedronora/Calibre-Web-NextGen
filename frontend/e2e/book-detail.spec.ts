@@ -96,6 +96,82 @@ test('"More by this author" strip renders with a fully-interpolated heading (no 
   assertNoPageErrors(errors);
 });
 
+/** First book id in the seeded library, or null. */
+async function firstBookId(page: Page): Promise<number | null> {
+  return page.evaluate(async () => {
+    const r = await fetch('/api/v1/books?per_page=1', { headers: { Accept: 'application/json' } })
+      .then((x) => (x.ok ? x.json() : null))
+      .catch(() => null);
+    return r?.items?.[0]?.id ?? null;
+  });
+}
+
+// #803 — the new UI had no way to delete a book (users had to switch to classic).
+// The book-detail page now carries a whole-book delete action, gated on the
+// delete role and confirmed before it fires. These fail pre-fix (no button).
+
+test('a permitted user gets a delete action that confirms, calls the delete endpoint, and returns to the library (#803)', async ({ page }) => {
+  await page.goto('/app');
+  const bookId = await firstBookId(page);
+  test.skip(bookId == null, 'seed has no books');
+
+  const errors = collectPageErrors(page);
+
+  // Stub the destructive call so the shared seed library isn't actually mutated,
+  // while still proving the button fires the correct endpoint.
+  await page.route(`**/api/v1/books/${bookId}/delete`, async (route) => {
+    await route.fulfill({ status: 204, contentType: 'application/json', body: '' });
+  });
+  // A confirm() must be accepted for the delete to proceed.
+  let sawConfirm = false;
+  page.on('dialog', (d) => {
+    sawConfirm = d.type() === 'confirm';
+    void d.accept();
+  });
+
+  await page.goto(`/app/book/${bookId}`, { waitUntil: 'domcontentloaded' });
+
+  const del = page.getByRole('button', { name: 'Delete book' });
+  await expect(del).toBeVisible({ timeout: 10_000 });
+
+  // Clicking fires the confirm dialog, then a POST to the whole-book delete
+  // endpoint (not a per-format one). Capture the request so the assertion on
+  // it isn't racy against the route handler.
+  const [req] = await Promise.all([
+    page.waitForRequest(`**/api/v1/books/${bookId}/delete`, { timeout: 10_000 }),
+    del.click(),
+  ]);
+  expect(sawConfirm, 'a confirm dialog was shown before deleting').toBe(true);
+  expect(req.method()).toBe('POST');
+
+  // After success the user leaves the (now-deleted) book's detail page and
+  // lands back in the library — never stranded on a dead /book/<id> route.
+  await expect(page).not.toHaveURL(new RegExp(`/book/${bookId}\\b`), { timeout: 10_000 });
+
+  assertNoPageErrors(errors);
+});
+
+test('the delete action is hidden for a user without the delete role (#803)', async ({ page }) => {
+  await page.goto('/app');
+  const bookId = await firstBookId(page);
+  test.skip(bookId == null, 'seed has no books');
+
+  // Force the current-user payload to lack the delete role; the control must
+  // not render at all (hidden, never merely disabled — a forged request is
+  // separately rejected server-side with 403).
+  await page.route('**/api/v1/auth/me', async (route) => {
+    const res = await route.fetch();
+    const me = await res.json();
+    if (me?.role) me.role.delete_books = false;
+    await route.fulfill({ response: res, json: me });
+  });
+
+  await page.goto(`/app/book/${bookId}`, { waitUntil: 'domcontentloaded' });
+  // The page has rendered (an existing action is present) but delete is absent.
+  await expect(page.getByRole('button', { name: /Mark as (read|unread)/ })).toBeVisible({ timeout: 10_000 });
+  await expect(page.getByRole('button', { name: 'Delete book' })).toHaveCount(0);
+});
+
 test('book detail with a "More by" strip has no horizontal overflow on mobile', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/app');

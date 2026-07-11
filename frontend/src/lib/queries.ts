@@ -607,6 +607,32 @@ export function useUpdateMetadata(id: string | number) {
   });
 }
 
+/** Delete a whole book — DB rows + files on disk (fork #803). Reuses the
+ *  data-safe POST /api/v1/books/<id>/delete (role_delete_books re-checked
+ *  server-side → 403 if the user lacks the delete role). Evicts the book from
+ *  every cached catalog snapshot so a later scroll-restore can't resurrect it
+ *  as a ghost card (#578), then refreshes the library + shelves. Callers redirect
+ *  away from the now-deleted book's detail page on success. */
+export function useDeleteBook(id: string | number) {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: () => apiPost(`/api/v1/books/${id}/delete`),
+    onSuccess: () => {
+      removeBookFromCache(Number(id));
+      // Drop the deleted book's own detail cache, and refetch every surface that
+      // could still list it: the catalog, the home discover strip (we redirect
+      // there), and shelf views/counts. Otherwise the book lingers as a ghost
+      // card that 404s on click (#578).
+      qc.removeQueries({ queryKey: ['book', String(id)] });
+      void qc.invalidateQueries({ queryKey: ['books'] });
+      void qc.invalidateQueries({ queryKey: ['discover-strip'] });
+      void qc.invalidateQueries({ queryKey: ['shelves'] });
+      void qc.invalidateQueries({ queryKey: ['shelf'] });
+      void qc.invalidateQueries({ queryKey: ['magicshelf'] });
+    },
+  });
+}
+
 /** Delete a single format from a book (keeps the book). */
 export function useDeleteFormat(id: string | number) {
   const qc = useQueryClient();

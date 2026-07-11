@@ -114,22 +114,49 @@ def test_delete_book_not_found_404():
     from cps.api import edit as mod
     with _ctx("/api/v1/books/999/delete"):
         with patch.object(mod, "current_user", _editor()), \
-             patch.object(mod, "calibre_db", SimpleNamespace(get_book=lambda _id: None)):
+             patch.object(mod, "calibre_db", SimpleNamespace(get_filtered_book=lambda *a, **k: None)):
             resp = inspect.unwrap(mod.delete_book)(999)
     assert resp[1] == 404
 
 
 @pytest.mark.unit
-def test_delete_book_success_204_calls_core():
+def test_delete_book_visibility_scoped_404_does_not_delete():
+    """IDOR guard: a user with the (global) delete role but a visibility
+    restriction that hides the book must not be able to delete it. The endpoint
+    authorizes against get_filtered_book (visible library), not the raw table,
+    so an inaccessible id returns 404 and the delete core is never invoked."""
     from cps.api import edit as mod
+    with _ctx("/api/v1/books/7/delete"):
+        with patch.object(mod, "current_user", _editor(role_delete=True)), \
+             patch.object(mod, "calibre_db", SimpleNamespace(
+                 get_book=lambda _id: SimpleNamespace(id=7),          # raw row EXISTS
+                 get_filtered_book=lambda *a, **k: None)), \
+             patch.object(mod, "delete_book_from_table") as core:
+            resp = inspect.unwrap(mod.delete_book)(7)
+    assert resp[1] == 404
+    core.assert_not_called()
+
+
+@pytest.mark.unit
+def test_delete_book_authorizes_with_visibility_filter():
+    """The authorization lookup passes allow_show_archived/hidden so a user's own
+    archived/hidden books stay deletable (a listing exclusion, not access loss)."""
+    from cps.api import edit as mod
+    seen = {}
+
+    def _gfb(book_id, allow_show_archived=False, allow_show_hidden=False):
+        seen["archived"], seen["hidden"] = allow_show_archived, allow_show_hidden
+        return SimpleNamespace(id=book_id)
+
     with _ctx("/api/v1/books/5/delete"):
         with patch.object(mod, "current_user", _editor()), \
-             patch.object(mod, "calibre_db", SimpleNamespace(get_book=lambda _id: object())), \
+             patch.object(mod, "calibre_db", SimpleNamespace(get_filtered_book=_gfb)), \
              patch.object(mod, "delete_book_from_table", return_value='{"location":"/"}') as core:
             resp = inspect.unwrap(mod.delete_book)(5)
     assert resp[1] == 204
     # whole-book delete: book_format="" , json_response=True
     assert core.call_args.args[0] == 5 and core.call_args.args[1] == ""
+    assert seen == {"archived": True, "hidden": True}
 
 
 @pytest.mark.unit
@@ -202,11 +229,26 @@ def test_delete_format_uses_core_with_uppercased_format():
     from cps.api import edit as mod
     with _ctx("/api/v1/books/5/formats/epub/delete"):
         with patch.object(mod, "current_user", _editor()), \
-             patch.object(mod.calibre_db, "get_book", return_value=SimpleNamespace(id=5)), \
+             patch.object(mod.calibre_db, "get_filtered_book", return_value=SimpleNamespace(id=5)), \
              patch.object(mod, "delete_book_from_table") as core:
             resp = inspect.unwrap(mod.delete_format)(5, "epub")
     assert resp[1] == 204
     core.assert_called_once_with(5, "EPUB", True)
+
+
+@pytest.mark.unit
+def test_delete_format_visibility_scoped_404_does_not_delete():
+    """Same IDOR guard as whole-book delete, on the per-format endpoint."""
+    from cps.api import edit as mod
+    with _ctx("/api/v1/books/7/formats/epub/delete"):
+        with patch.object(mod, "current_user", _editor(role_delete=True)), \
+             patch.object(mod, "calibre_db", SimpleNamespace(
+                 get_book=lambda _id: SimpleNamespace(id=7),          # raw row EXISTS
+                 get_filtered_book=lambda *a, **k: None)), \
+             patch.object(mod, "delete_book_from_table") as core:
+            resp = inspect.unwrap(mod.delete_format)(7, "epub")
+    assert resp[1] == 404
+    core.assert_not_called()
 
 
 # ── cover (#27) ──────────────────────────────────────────────────────────────

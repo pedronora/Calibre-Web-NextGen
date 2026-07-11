@@ -1,10 +1,11 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'wouter';
-import { Search } from 'lucide-react';
+import { LayoutGrid, List, Search } from 'lucide-react';
 import { useEntityList } from '../lib/queries';
 import { SpinnerCentered } from '../components/Spinner';
 import { EmptyState } from '../components/EmptyState';
 import { useT } from '../lib/i18n';
+import { usePersistentBool } from '../lib/usePersistentBool';
 import styles from './BrowseList.module.css';
 
 interface BrowseListProps {
@@ -18,6 +19,7 @@ export function BrowseList({ plural, title }: BrowseListProps) {
   const t = useT();
   const { data, isLoading, error } = useEntityList(plural);
   const [q, setQ] = useState('');
+  const [compact, setCompact] = usePersistentBool('cwng:browse-list-compact', false);
 
   const items = useMemo(() => {
     const all = data?.items ?? [];
@@ -29,8 +31,18 @@ export function BrowseList({ plural, title }: BrowseListProps) {
   return (
     <main className={styles.container}>
       <div className={styles.header}>
-        <h1 className={styles.title}>{title}</h1>
-        {data && <span className={styles.count}>{data.items.length}</span>}
+        <div className={styles.heading}>
+          <h1 className={styles.title}>{title}</h1>
+          {data && <span className={styles.count}>{data.items.length}</span>}
+        </div>
+        <div className={styles.viewToggle} role="group" aria-label={t('View')}>
+          <button type="button" onClick={() => setCompact(false)} aria-pressed={!compact} aria-label={t('Grid view')}>
+            <LayoutGrid size={17} aria-hidden="true" focusable={false} />
+          </button>
+          <button type="button" onClick={() => setCompact(true)} aria-pressed={compact} aria-label={t('List view')}>
+            <List size={17} aria-hidden="true" focusable={false} />
+          </button>
+        </div>
       </div>
 
       {data && data.items.length > 8 && (
@@ -54,7 +66,7 @@ export function BrowseList({ plural, title }: BrowseListProps) {
       ) : items.length === 0 ? (
         <EmptyState message={q ? `No ${title.toLowerCase()} match "${q}".` : `No ${title.toLowerCase()} yet.`} />
       ) : (
-        <ul className={styles.grid}>
+        <ul className={compact ? styles.list : styles.grid} role="list">
           {items.map((e) => (
             <li key={String(e.id)}>
               <Link href={`/${plural}/${encodeURIComponent(String(e.id))}`} className={styles.item}>

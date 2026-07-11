@@ -250,6 +250,32 @@ def register_oauth_blueprint(cid, show_name):
     oauth_check[cid] = show_name
 
 
+# Neutral default shown when the admin hasn't configured a custom OIDC button label.
+GENERIC_OAUTH_FALLBACK_LABEL = "OpenID Connect"
+
+
+def generic_oauth_login_button():
+    """The admin-configured display label for the generic OIDC login button, with
+    a neutral fallback.
+
+    Single source of truth for the button text shown to logged-out users on BOTH
+    login surfaces: the classic Jinja login page (cps/web.py) and the React SPA
+    login config (cps/api/auth.py::_oauth_providers). The value originates from the
+    ``OAuthProvider.login_button`` column (set via the admin OAuth settings) and is
+    carried on the in-memory generic blueprint descriptor built at OAuth init.
+
+    Returns the fallback if OAuth blueprints aren't initialised or no generic
+    provider is present, so callers never need their own fallback string.
+    """
+    try:
+        for bp in oauthblueprints:
+            if bp.get('provider_name') == 'generic':
+                return bp.get('login_button') or GENERIC_OAUTH_FALLBACK_LABEL
+    except Exception:
+        pass
+    return GENERIC_OAUTH_FALLBACK_LABEL
+
+
 def register_user_with_oauth(user=None):
     all_oauth = {}
     for oauth_key in oauth_check.keys():

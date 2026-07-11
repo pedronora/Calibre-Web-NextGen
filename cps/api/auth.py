@@ -22,29 +22,54 @@ def _err(code, message, status):
     return jsonify({"error": {"code": code, "message": message}}), status
 
 
+# Display labels for the fixed GitHub/Google providers, mirroring the strings the
+# classic login page hardcodes (cps/templates/login.html). oauth_check maps a
+# provider id to its *internal* name ("github"/"google"/"generic"), which is NOT
+# what the button should read — hence this explicit label map. The generic (OIDC)
+# provider's label is admin-configurable, so it's resolved separately from the
+# single source of truth in oauth_bb (fork issue #807).
+_OAUTH_STATIC_LABELS = {1: "Login with GitHub", 2: "Login with Google"}
+_GENERIC_OAUTH_ID = 3
+
+
 def _oauth_providers():
     """OAuth/OIDC providers for the SPA login buttons, as {id, name, url}.
 
     Matches the classic login page EXACTLY: providers are only offered when the
     instance's login type is OAuth (config_login_type == LOGIN_OAUTH) AND the
-    provider is registered in oauth_check. Without the login-type gate the buttons
-    would appear on a standard- or LDAP-login instance and error on click (the
-    provider isn't configured). URLs are built with url_for so they're correct
-    behind a reverse-proxy subpath. Endpoints map to the same oauth.* routes the
-    classic template links to."""
+    provider is registered in oauth_check. The ``name`` is the human-facing button
+    label the classic page renders — a fixed "Login with GitHub"/"Login with
+    Google" for those two, and the admin-configured "Button label" for the generic
+    OIDC provider (falling back to "OpenID Connect") — NOT the internal provider
+    name stored in oauth_check. Without the login-type gate the buttons would
+    appear on a standard- or LDAP-login instance and error on click (the provider
+    isn't configured). URLs are built with url_for so they're correct behind a
+    reverse-proxy subpath. Endpoints map to the same oauth.* routes the classic
+    template links to.
+
+    SECURITY: this feeds an UNAUTHENTICATED endpoint (/api/v1/auth/config). Only
+    the display label, numeric id and login URL are exposed here — never the
+    client secret, client id, or any other provider configuration. Build the
+    output dict explicitly; do not serialise the OAuthProvider row.
+    """
     if config.config_login_type != constants.LOGIN_OAUTH:
         return []
     endpoints = {1: "oauth.github_login", 2: "oauth.google_login", 3: "oauth.generic_login"}
     try:
-        from ..oauth_bb import oauth_check
+        from ..oauth_bb import oauth_check, generic_oauth_login_button
         out = []
-        for cid, name in oauth_check.items():
+        for cid in oauth_check:
             ep = endpoints.get(cid)
-            if ep:
-                try:
-                    out.append({"id": cid, "name": name, "url": url_for(ep)})
-                except Exception:
-                    pass
+            if not ep:
+                continue
+            if cid == _GENERIC_OAUTH_ID:
+                label = generic_oauth_login_button()
+            else:
+                label = _OAUTH_STATIC_LABELS.get(cid, oauth_check[cid])
+            try:
+                out.append({"id": cid, "name": label, "url": url_for(ep)})
+            except Exception:
+                pass
         return out
     except Exception:
         return []

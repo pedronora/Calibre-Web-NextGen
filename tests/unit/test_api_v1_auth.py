@@ -1,4 +1,5 @@
 import inspect
+import json
 from datetime import datetime
 import pytest
 import flask
@@ -204,14 +205,110 @@ def test_oauth_providers_hidden_unless_login_type_oauth():
 @pytest.mark.unit
 def test_oauth_providers_maps_ids_to_urls_when_oauth():
     from cps import constants
+    # oauth_check stores the *internal* provider name ("github"/"google"); the SPA
+    # button must render the human-facing label that classic renders, not that.
     with patch.object(cps.api.auth, "config") as cfg, \
          patch.object(cps.api.auth, "url_for", side_effect=lambda ep: "/" + ep.replace(".", "/")), \
-         patch.dict("cps.oauth_bb.oauth_check", {1: "GitHub", 2: "Google"}, clear=True):
+         patch.dict("cps.oauth_bb.oauth_check", {1: "github", 2: "google"}, clear=True):
         cfg.config_login_type = constants.LOGIN_OAUTH
         provs = cps.api.auth._oauth_providers()
     by_id = {p["id"]: p for p in provs}
     assert by_id[1]["url"] == "/oauth/github_login"
-    assert by_id[2]["name"] == "Google"
+    assert by_id[1]["name"] == "Login with GitHub"
+    assert by_id[2]["name"] == "Login with Google"
+
+
+@pytest.mark.unit
+def test_oauth_providers_generic_uses_configured_button_label():
+    """REGRESSION (#807): the SPA generic/OIDC button must show the admin-configured
+    "Button label" (OAuthProvider.login_button) — exactly what the classic login
+    page shows — not the internal provider name "generic". Pre-fix, _oauth_providers
+    returned oauth_check[3] == "generic"; this asserts the configured label instead."""
+    from cps import constants
+    generic_bp = {"provider_name": "generic", "login_button": "Continue with Acme Identity",
+                  "oauth_client_id": "acme-client-id", "oauth_client_secret": "acme-super-secret"}
+    with patch.object(cps.api.auth, "config") as cfg, \
+         patch.object(cps.api.auth, "url_for", side_effect=lambda ep: "/" + ep.replace(".", "/")), \
+         patch.dict("cps.oauth_bb.oauth_check", {3: "generic"}, clear=True), \
+         patch("cps.oauth_bb.oauthblueprints", [{"provider_name": "github"},
+                                                {"provider_name": "google"}, generic_bp]):
+        cfg.config_login_type = constants.LOGIN_OAUTH
+        provs = cps.api.auth._oauth_providers()
+    by_id = {p["id"]: p for p in provs}
+    assert by_id[3]["name"] == "Continue with Acme Identity"
+    assert by_id[3]["url"] == "/oauth/generic_login"
+
+
+@pytest.mark.unit
+def test_oauth_providers_generic_falls_back_to_openid_connect():
+    """When no custom button label is configured, the generic button reads
+    "OpenID Connect" — the same fallback the classic page uses."""
+    from cps import constants
+    generic_bp = {"provider_name": "generic", "login_button": None}
+    with patch.object(cps.api.auth, "config") as cfg, \
+         patch.object(cps.api.auth, "url_for", side_effect=lambda ep: "/" + ep.replace(".", "/")), \
+         patch.dict("cps.oauth_bb.oauth_check", {3: "generic"}, clear=True), \
+         patch("cps.oauth_bb.oauthblueprints", [{"provider_name": "github"},
+                                                {"provider_name": "google"}, generic_bp]):
+        cfg.config_login_type = constants.LOGIN_OAUTH
+        provs = cps.api.auth._oauth_providers()
+    by_id = {p["id"]: p for p in provs}
+    assert by_id[3]["name"] == "OpenID Connect"
+
+
+@pytest.mark.unit
+def test_oauth_providers_payload_never_leaks_secrets():
+    """SECURITY (#807): _oauth_providers feeds the UNAUTHENTICATED /auth/config
+    endpoint. Each provider descriptor must expose ONLY {id, name, url} and never a
+    client secret / client id or any other OIDC config, even when those values live
+    on the source blueprint dict."""
+    from cps import constants
+    generic_bp = {"provider_name": "generic", "login_button": "Continue with Acme",
+                  "oauth_client_id": "acme-client-id", "oauth_client_secret": "acme-super-secret",
+                  "oauth_token_url": "https://idp.example/token", "metadata_url": "https://idp.example/.well-known"}
+    with patch.object(cps.api.auth, "config") as cfg, \
+         patch.object(cps.api.auth, "url_for", side_effect=lambda ep: "/" + ep.replace(".", "/")), \
+         patch.dict("cps.oauth_bb.oauth_check", {1: "github", 3: "generic"}, clear=True), \
+         patch("cps.oauth_bb.oauthblueprints", [{"provider_name": "github"},
+                                                {"provider_name": "google"}, generic_bp]):
+        cfg.config_login_type = constants.LOGIN_OAUTH
+        provs = cps.api.auth._oauth_providers()
+    assert provs, "expected providers"
+    for p in provs:
+        assert set(p.keys()) == {"id", "name", "url"}, p
+    blob = json.dumps(provs)
+    for leak in ("acme-super-secret", "acme-client-id", "client_secret", "client_id",
+                 "oauth_client_secret", "metadata_url", "token_url"):
+        assert leak not in blob, f"leaked {leak!r} into public payload: {blob}"
+
+
+@pytest.mark.unit
+def test_auth_config_endpoint_never_leaks_oauth_secrets():
+    """End-to-end at the route level: GET /api/v1/auth/config (public) must not
+    contain any OAuth secret material anywhere in its JSON body."""
+    from cps import constants
+    app = _app()
+    generic_bp = {"provider_name": "generic", "login_button": "Continue with Acme",
+                  "oauth_client_id": "acme-client-id", "oauth_client_secret": "acme-super-secret"}
+    with patch.object(cps.api.auth, "config") as cfg, \
+         patch.object(cps.api.auth, "url_for", side_effect=lambda ep: "/" + ep.replace(".", "/")), \
+         patch.dict("cps.oauth_bb.oauth_check", {3: "generic"}, clear=True), \
+         patch("cps.oauth_bb.oauthblueprints", [{"provider_name": "github"},
+                                                {"provider_name": "google"}, generic_bp]):
+        cfg.config_login_type = constants.LOGIN_OAUTH
+        cfg.get_mail_server_configured.return_value = False
+        cfg.config_public_reg = False
+        cfg.config_register_email = False
+        cfg.config_disable_standard_login = False
+        cfg.config_remote_login = False
+        cfg.config_calibre_web_title = "Calibre-Web NextGen"
+        with app.test_client() as c:
+            r = c.get("/api/v1/auth/config")
+            assert r.status_code == 200
+            body = r.get_data(as_text=True)
+    assert "Continue with Acme" in body  # the label IS exposed (intended)
+    for leak in ("acme-super-secret", "acme-client-id", "client_secret"):
+        assert leak not in body, f"leaked {leak!r}: {body}"
 
 
 # ── Magic-link (remote) login ────────────────────────────────────────────────

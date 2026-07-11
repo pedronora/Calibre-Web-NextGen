@@ -2684,17 +2684,12 @@ def render_login(username="", password=""):
     # Get OAuth check status
     oauth_check = oauth_bb.oauth_check if feature_support['oauth'] else {}
 
-    # Get generic OAuth login button text for display
+    # Get generic OAuth login button text for display. Shares the single source of
+    # truth with the SPA login (cps/api/auth.py::_oauth_providers) so both surfaces
+    # render the same admin-configured label (fork issue #807).
     generic_login_button = None
     if feature_support['oauth']:
-        try:
-            # oauth_bb is already imported at module level, access oauthblueprints from it
-            # oauthblueprints[2] is the generic OIDC provider (index 0=github, 1=google, 2=generic)
-            if hasattr(oauth_bb, 'oauthblueprints') and len(oauth_bb.oauthblueprints) > 2:
-                generic_login_button = oauth_bb.oauthblueprints[2].get('login_button') or 'OpenID Connect'
-        except (AttributeError, IndexError):
-            # Silently fall back to default if oauthblueprints not available
-            pass
+        generic_login_button = oauth_bb.generic_oauth_login_button()
 
     return render_title_template('login.html',
                                  title=_("Login"),

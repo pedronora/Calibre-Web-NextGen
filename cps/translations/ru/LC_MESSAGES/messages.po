@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web NextGen\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-11 05:28+0000\n"
+"POT-Creation-Date: 2026-07-11 05:32+0000\n"
 "PO-Revision-Date: 2026-07-10 11:21+0300\n"
 "Last-Translator: ZIZA\n"
 "Language-Team: \n"
@@ -4388,8 +4388,9 @@ msgid "Read status filter"
 msgstr "Фильтр по статусу прочтения"
 
 #: cps/spa_strings.py:529
-msgid "Recipient(s) — blank = your e-reader email"
-msgstr "Получатели (оставьте пустым для email адреса вашей читалки)"
+#, fuzzy
+msgid "Recipient(s)"
+msgstr "Получатели"
 
 #: cps/spa_strings.py:530
 msgid "Redirect host (full URL)"
@@ -4877,84 +4878,88 @@ msgid "Your personal digital library"
 msgstr "Ваша личная цифровая библиотека"
 
 #: cps/spa_strings.py:644
+msgid "Your saved e-reader address is shown — change it for this send only."
+msgstr ""
+
+#: cps/spa_strings.py:645
 msgid "all rules"
 msgstr "все правила"
 
-#: cps/spa_strings.py:645
+#: cps/spa_strings.py:646
 msgid "any rule"
 msgstr "любое правило"
 
-#: cps/spa_strings.py:646
+#: cps/spa_strings.py:647
 msgid "books"
 msgstr "книги"
 
-#: cps/spa_strings.py:647
+#: cps/spa_strings.py:648
 msgid "books match"
 msgstr "подходящих книг"
 
-#: cps/spa_strings.py:648
+#: cps/spa_strings.py:649
 msgid "copies"
 msgstr "копии"
 
-#: cps/spa_strings.py:649
+#: cps/spa_strings.py:650
 msgid "e-reader"
 msgstr "читалка"
 
-#: cps/spa_strings.py:650
+#: cps/spa_strings.py:651
 msgid "e.g. Unread sci-fi"
 msgstr "напр., Непрочитанная научная фантастика"
 
-#: cps/spa_strings.py:651
+#: cps/spa_strings.py:652
 msgid "eReader email subject"
 msgstr "Тема письма для читалки"
 
-#: cps/spa_strings.py:652
+#: cps/spa_strings.py:653
 msgid "or continue with"
 msgstr "или продолжить с помощью"
 
-#: cps/spa_strings.py:653
+#: cps/spa_strings.py:654
 msgid "shared"
 msgstr "общие"
 
-#: cps/spa_strings.py:654
+#: cps/spa_strings.py:655
 msgid "to"
 msgstr "до"
 
-#: cps/spa_strings.py:655
+#: cps/spa_strings.py:656
 msgid "type (isbn, amazon, doi…)"
 msgstr "тип (isbn, amazon, doi...)"
 
-#: cps/spa_strings.py:656
+#: cps/spa_strings.py:657
 msgid "value"
 msgstr "значение"
 
-#: cps/spa_strings.py:657
+#: cps/spa_strings.py:658
 msgid "you"
 msgstr "вы"
 
-#: cps/spa_strings.py:658
+#: cps/spa_strings.py:659
 #, python-brace-format
 msgid "{n} found"
 msgstr "{n} найдено"
 
-#: cps/spa_strings.py:659
+#: cps/spa_strings.py:660
 #, python-brace-format
 msgid "{ok} of {total} sources answered"
 msgstr "Получен ответ {ok} из {total} источников"
 
-#: cps/spa_strings.py:660
+#: cps/spa_strings.py:661
 msgid "…or paste an image URL"
 msgstr "...или вставьте URL изображения"
 
-#: cps/spa_strings.py:661
+#: cps/spa_strings.py:662
 msgid "← Back to book"
 msgstr "← Вернуться к книге"
 
-#: cps/spa_strings.py:662
+#: cps/spa_strings.py:663
 msgid "← Back to sign in"
 msgstr "← Вернуться ко входу"
 
-#: cps/spa_strings.py:663
+#: cps/spa_strings.py:664
 msgid "← Library"
 msgstr "← Библиотека"
 
@@ -11239,6 +11244,9 @@ msgstr "Показывать выбранные полки в OPDS"
 #: cps/templates/user_table.html:158
 msgid "Show Read/Unread Section"
 msgstr "Показать раздел прочитанного/непрочитанного"
+
+#~ msgid "Recipient(s) — blank = your e-reader email"
+#~ msgstr "Получатели (оставьте пустым для email адреса вашей читалки)"
 
 #, python-format
 #~ msgid "Remove tag %(name)s"

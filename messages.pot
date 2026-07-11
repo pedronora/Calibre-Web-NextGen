@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web Automated v4.0.6\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-11 05:28+0000\n"
+"POT-Creation-Date: 2026-07-11 05:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4174,7 +4174,7 @@ msgid "Read status filter"
 msgstr ""
 
 #: cps/spa_strings.py:529
-msgid "Recipient(s) — blank = your e-reader email"
+msgid "Recipient(s)"
 msgstr ""
 
 #: cps/spa_strings.py:530
@@ -4651,84 +4651,88 @@ msgid "Your personal digital library"
 msgstr ""
 
 #: cps/spa_strings.py:644
-msgid "all rules"
+msgid "Your saved e-reader address is shown — change it for this send only."
 msgstr ""
 
 #: cps/spa_strings.py:645
-msgid "any rule"
+msgid "all rules"
 msgstr ""
 
 #: cps/spa_strings.py:646
-msgid "books"
+msgid "any rule"
 msgstr ""
 
 #: cps/spa_strings.py:647
-msgid "books match"
+msgid "books"
 msgstr ""
 
 #: cps/spa_strings.py:648
-msgid "copies"
+msgid "books match"
 msgstr ""
 
 #: cps/spa_strings.py:649
-msgid "e-reader"
+msgid "copies"
 msgstr ""
 
 #: cps/spa_strings.py:650
-msgid "e.g. Unread sci-fi"
+msgid "e-reader"
 msgstr ""
 
 #: cps/spa_strings.py:651
-msgid "eReader email subject"
+msgid "e.g. Unread sci-fi"
 msgstr ""
 
 #: cps/spa_strings.py:652
-msgid "or continue with"
+msgid "eReader email subject"
 msgstr ""
 
 #: cps/spa_strings.py:653
-msgid "shared"
+msgid "or continue with"
 msgstr ""
 
 #: cps/spa_strings.py:654
-msgid "to"
+msgid "shared"
 msgstr ""
 
 #: cps/spa_strings.py:655
-msgid "type (isbn, amazon, doi…)"
+msgid "to"
 msgstr ""
 
 #: cps/spa_strings.py:656
-msgid "value"
+msgid "type (isbn, amazon, doi…)"
 msgstr ""
 
 #: cps/spa_strings.py:657
-msgid "you"
+msgid "value"
 msgstr ""
 
 #: cps/spa_strings.py:658
-#, python-brace-format
-msgid "{n} found"
+msgid "you"
 msgstr ""
 
 #: cps/spa_strings.py:659
 #, python-brace-format
-msgid "{ok} of {total} sources answered"
+msgid "{n} found"
 msgstr ""
 
 #: cps/spa_strings.py:660
-msgid "…or paste an image URL"
+#, python-brace-format
+msgid "{ok} of {total} sources answered"
 msgstr ""
 
 #: cps/spa_strings.py:661
-msgid "← Back to book"
+msgid "…or paste an image URL"
 msgstr ""
 
 #: cps/spa_strings.py:662
-msgid "← Back to sign in"
+msgid "← Back to book"
 msgstr ""
 
 #: cps/spa_strings.py:663
+msgid "← Back to sign in"
+msgstr ""
+
+#: cps/spa_strings.py:664
 msgid "← Library"
 msgstr ""
 

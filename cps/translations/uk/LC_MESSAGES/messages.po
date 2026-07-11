@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web NextGen\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-11 05:28+0000\n"
+"POT-Creation-Date: 2026-07-11 05:32+0000\n"
 "PO-Revision-Date: 2017-04-30 00:47+0300\n"
 "Last-Translator: ABIS Team <biblio.if.abis@gmail.com>\n"
 "Language-Team: \n"
@@ -4493,7 +4493,7 @@ msgid "Read status filter"
 msgstr "Статус"
 
 #: cps/spa_strings.py:529
-msgid "Recipient(s) — blank = your e-reader email"
+msgid "Recipient(s)"
 msgstr ""
 
 #: cps/spa_strings.py:530
@@ -5021,91 +5021,95 @@ msgid "Your personal digital library"
 msgstr ""
 
 #: cps/spa_strings.py:644
-msgid "all rules"
+msgid "Your saved e-reader address is shown — change it for this send only."
 msgstr ""
 
 #: cps/spa_strings.py:645
+msgid "all rules"
+msgstr ""
+
+#: cps/spa_strings.py:646
 #, fuzzy
 msgid "any rule"
 msgstr "Додати користувача"
 
-#: cps/spa_strings.py:646
+#: cps/spa_strings.py:647
 #, fuzzy
 msgid "books"
 msgstr "Книжки"
 
-#: cps/spa_strings.py:647
+#: cps/spa_strings.py:648
 #, fuzzy
 msgid "books match"
 msgstr "Додати на книжкову полицю"
 
-#: cps/spa_strings.py:648
+#: cps/spa_strings.py:649
 msgid "copies"
 msgstr ""
 
-#: cps/spa_strings.py:649
+#: cps/spa_strings.py:650
 #, fuzzy
 msgid "e-reader"
 msgstr "Засіб для читання txt-файлів"
 
-#: cps/spa_strings.py:650
+#: cps/spa_strings.py:651
 msgid "e.g. Unread sci-fi"
 msgstr ""
 
-#: cps/spa_strings.py:651
+#: cps/spa_strings.py:652
 #, fuzzy
 msgid "eReader email subject"
 msgstr "Kindle"
 
-#: cps/spa_strings.py:652
+#: cps/spa_strings.py:653
 msgid "or continue with"
 msgstr ""
 
-#: cps/spa_strings.py:653
+#: cps/spa_strings.py:654
 msgid "shared"
 msgstr ""
 
-#: cps/spa_strings.py:654
+#: cps/spa_strings.py:655
 msgid "to"
 msgstr ""
 
-#: cps/spa_strings.py:655
+#: cps/spa_strings.py:656
 msgid "type (isbn, amazon, doi…)"
 msgstr ""
 
-#: cps/spa_strings.py:656
+#: cps/spa_strings.py:657
 msgid "value"
 msgstr ""
 
-#: cps/spa_strings.py:657
+#: cps/spa_strings.py:658
 msgid "you"
 msgstr ""
 
-#: cps/spa_strings.py:658
+#: cps/spa_strings.py:659
 #, fuzzy, python-brace-format
 msgid "{n} found"
 msgstr "Тег не знайдено"
 
-#: cps/spa_strings.py:659
+#: cps/spa_strings.py:660
 #, python-brace-format
 msgid "{ok} of {total} sources answered"
 msgstr ""
 
-#: cps/spa_strings.py:660
+#: cps/spa_strings.py:661
 #, fuzzy
 msgid "…or paste an image URL"
 msgstr "Огляд"
 
-#: cps/spa_strings.py:661
+#: cps/spa_strings.py:662
 msgid "← Back to book"
 msgstr ""
 
-#: cps/spa_strings.py:662
+#: cps/spa_strings.py:663
 #, fuzzy
 msgid "← Back to sign in"
 msgstr "Помилка пошуку!"
 
-#: cps/spa_strings.py:663
+#: cps/spa_strings.py:664
 #, fuzzy
 msgid "← Library"
 msgstr "У бібліотеці"

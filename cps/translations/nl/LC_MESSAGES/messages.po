@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web (GPLV3)\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-11 00:13+0000\n"
+"POT-Creation-Date: 2026-07-11 00:20+0000\n"
 "PO-Revision-Date: 2026-04-26 13:31+0200\n"
 "Last-Translator: Michiel Cornelissen <michiel.cornelissen+gitbhun at proton."
 "me>\n"
@@ -144,7 +144,7 @@ msgstr "Aangepaste kolom Nr.%(column)d bestaat niet in de Calibre Database"
 msgid "Edit Users"
 msgstr "Bewerken Gebruikers"
 
-#: cps/admin.py:733 cps/opds.py:1196 cps/templates/grid.html:14
+#: cps/admin.py:733 cps/opds.py:1267 cps/templates/grid.html:14
 #: cps/templates/list.html:19
 msgid "All"
 msgstr "Alles"
@@ -546,7 +546,7 @@ msgstr "Onbekende fout opgetreden. Probeer het later nog eens."
 msgid "Settings DB is not Writeable"
 msgstr "Instellingen database is niet schrijfbaar."
 
-#: cps/admin.py:2090 cps/opds.py:309 cps/opds.py:344 cps/opds.py:347
+#: cps/admin.py:2090 cps/opds.py:309 cps/opds.py:347 cps/opds.py:350
 #: cps/web.py:3102 cps/web.py:3237
 msgid "title"
 msgstr "titel"
@@ -2083,12 +2083,12 @@ msgstr "Boeken georganiseerd op boekenplanken"
 msgid "description"
 msgstr "omschrijving"
 
-#: cps/opds.py:782
+#: cps/opds.py:820 cps/opds.py:1252
 #, python-brace-format
 msgid "{} Stars"
 msgstr "{} sterren"
 
-#: cps/opds.py:1072 cps/search.py:53 cps/search.py:454 cps/spa_strings.py:169
+#: cps/opds.py:1127 cps/search.py:53 cps/search.py:454 cps/spa_strings.py:169
 #: cps/templates/book_edit.html:338 cps/templates/cwa_epub_fixer.html:25
 #: cps/templates/feed.xml:43 cps/templates/index.xml:12
 #: cps/templates/layout.html:313 cps/templates/layout.html:316

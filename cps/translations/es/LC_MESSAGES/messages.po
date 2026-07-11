@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web NextGen\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-11 00:13+0000\n"
+"POT-Creation-Date: 2026-07-11 00:20+0000\n"
 "PO-Revision-Date: 2025-11-17 12:21-0300\n"
 "Last-Translator: minakmostoles <xxx@xxx.com>\n"
 "Language-Team: es <LL@li.org>\n"
@@ -146,7 +146,7 @@ msgstr ""
 msgid "Edit Users"
 msgstr "Editar usuarios"
 
-#: cps/admin.py:733 cps/opds.py:1196 cps/templates/grid.html:14
+#: cps/admin.py:733 cps/opds.py:1267 cps/templates/grid.html:14
 #: cps/templates/list.html:19
 msgid "All"
 msgstr "Todo"
@@ -552,7 +552,7 @@ msgstr ""
 msgid "Settings DB is not Writeable"
 msgstr "La configuración de la Base de Datos no es escribible"
 
-#: cps/admin.py:2090 cps/opds.py:309 cps/opds.py:344 cps/opds.py:347
+#: cps/admin.py:2090 cps/opds.py:309 cps/opds.py:347 cps/opds.py:350
 #: cps/web.py:3102 cps/web.py:3237
 #, fuzzy
 msgid "title"
@@ -2150,12 +2150,12 @@ msgstr "Libros organizados en estanterías"
 msgid "description"
 msgstr "Descripción"
 
-#: cps/opds.py:782
+#: cps/opds.py:820 cps/opds.py:1252
 #, python-brace-format
 msgid "{} Stars"
 msgstr "{} Estrellas"
 
-#: cps/opds.py:1072 cps/search.py:53 cps/search.py:454 cps/spa_strings.py:169
+#: cps/opds.py:1127 cps/search.py:53 cps/search.py:454 cps/spa_strings.py:169
 #: cps/templates/book_edit.html:338 cps/templates/cwa_epub_fixer.html:25
 #: cps/templates/feed.xml:43 cps/templates/index.xml:12
 #: cps/templates/layout.html:313 cps/templates/layout.html:316

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web NextGen\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-11 00:13+0000\n"
+"POT-Creation-Date: 2026-07-11 00:20+0000\n"
 "PO-Revision-Date: 2020-09-27 22:18+0800\n"
 "Last-Translator: xlivevil <xlivevil@aliyun.com>\n"
 "Language-Team: zh_Hans_CN <LL@li.org>\n"
@@ -132,7 +132,7 @@ msgstr "自定義列號：%(column)d在Calibre數據庫中不存在"
 msgid "Edit Users"
 msgstr "管理用戶"
 
-#: cps/admin.py:733 cps/opds.py:1196 cps/templates/grid.html:14
+#: cps/admin.py:733 cps/opds.py:1267 cps/templates/grid.html:14
 #: cps/templates/list.html:19
 msgid "All"
 msgstr "全部"
@@ -504,7 +504,7 @@ msgstr "發生一個未知錯誤，請稍後再試。"
 msgid "Settings DB is not Writeable"
 msgstr ""
 
-#: cps/admin.py:2090 cps/opds.py:309 cps/opds.py:344 cps/opds.py:347
+#: cps/admin.py:2090 cps/opds.py:309 cps/opds.py:347 cps/opds.py:350
 #: cps/web.py:3102 cps/web.py:3237
 #, fuzzy
 msgid "title"
@@ -2031,12 +2031,12 @@ msgstr "書架上的書"
 msgid "description"
 msgstr "簡介"
 
-#: cps/opds.py:782
+#: cps/opds.py:820 cps/opds.py:1252
 #, python-brace-format
 msgid "{} Stars"
 msgstr "{} 星"
 
-#: cps/opds.py:1072 cps/search.py:53 cps/search.py:454 cps/spa_strings.py:169
+#: cps/opds.py:1127 cps/search.py:53 cps/search.py:454 cps/spa_strings.py:169
 #: cps/templates/book_edit.html:338 cps/templates/cwa_epub_fixer.html:25
 #: cps/templates/feed.xml:43 cps/templates/index.xml:12
 #: cps/templates/layout.html:313 cps/templates/layout.html:316

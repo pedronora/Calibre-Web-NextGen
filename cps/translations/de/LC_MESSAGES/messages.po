@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web NextGen\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-11 00:13+0000\n"
+"POT-Creation-Date: 2026-07-11 00:20+0000\n"
 "PO-Revision-Date: 2026-04-06 17:03+0000\n"
 "Last-Translator: Manuel Drescher\n"
 "Language-Team: German\n"
@@ -136,7 +136,7 @@ msgstr ""
 msgid "Edit Users"
 msgstr "Benutzer bearbeiten"
 
-#: cps/admin.py:733 cps/opds.py:1196 cps/templates/grid.html:14
+#: cps/admin.py:733 cps/opds.py:1267 cps/templates/grid.html:14
 #: cps/templates/list.html:19
 msgid "All"
 msgstr "Alle"
@@ -534,7 +534,7 @@ msgstr ""
 msgid "Settings DB is not Writeable"
 msgstr "Einstellungsdatenbank ist nicht schreibbar"
 
-#: cps/admin.py:2090 cps/opds.py:309 cps/opds.py:344 cps/opds.py:347
+#: cps/admin.py:2090 cps/opds.py:309 cps/opds.py:347 cps/opds.py:350
 #: cps/web.py:3102 cps/web.py:3237
 msgid "title"
 msgstr "Titel"
@@ -2128,12 +2128,12 @@ msgstr "Fehler beim Laden des magischen Regals"
 msgid "description"
 msgstr "Beschreibung"
 
-#: cps/opds.py:782
+#: cps/opds.py:820 cps/opds.py:1252
 #, python-brace-format
 msgid "{} Stars"
 msgstr "{} Sterne"
 
-#: cps/opds.py:1072 cps/search.py:53 cps/search.py:454 cps/spa_strings.py:169
+#: cps/opds.py:1127 cps/search.py:53 cps/search.py:454 cps/spa_strings.py:169
 #: cps/templates/book_edit.html:338 cps/templates/cwa_epub_fixer.html:25
 #: cps/templates/feed.xml:43 cps/templates/index.xml:12
 #: cps/templates/layout.html:313 cps/templates/layout.html:316

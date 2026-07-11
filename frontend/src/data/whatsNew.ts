@@ -56,6 +56,81 @@ export interface WhatsNewRelease {
 /** Newest release first. The `whats-new-populate` skill prepends here. */
 export const WHATS_NEW: WhatsNewRelease[] = [
   {
+    version: 'v4.1.10',
+    date: '2026-07-11',
+    items: [
+      {
+        title: 'Your reading position follows you between both readers',
+        body: 'Turn pages in the classic reader, then open the same book in the new interface (or the other way around), and it now resumes exactly where you left off. Both readers save your position to your account continuously — not just when you tap the bookmark button — and your last spot still restores when you are offline.',
+        category: 'Reading',
+      },
+      {
+        title: 'Delete a book from the new interface',
+        body: 'The new book page now has a Delete button, so you no longer have to switch to the classic view to remove a book. It asks for confirmation, removes the book and its files, and returns you to your library. The button only appears if your account has permission to delete books.',
+        category: 'Library',
+        link: { to: '/', label: 'Open your library' },
+      },
+      {
+        title: 'Set a rating with a click, half stars included',
+        body: 'The new editor now has an inline five-star rating control. Click either half of a star for half-star precision, nudge it with the arrow keys, or clear the rating entirely — no dropdown to open.',
+        category: 'Library',
+      },
+      {
+        title: 'A compact list view for authors, series and tags',
+        body: 'Browse pages for authors, series, tags, publishers and more now have a grid/list toggle. Switch to full-width rows that show each name and its book count; your choice is remembered in this browser, including on mobile.',
+        category: 'Library',
+        link: { to: '/authors', label: 'Browse authors' },
+      },
+      {
+        title: 'Turn metadata sources on or off in the new editor',
+        body: 'When you fetch metadata in the new editor you can now switch individual sources — like Hardcover — on and off, just as you can in the classic view. The choice is saved to your account, so it is the same in either interface.',
+        category: 'Library',
+      },
+      {
+        title: 'The Publication date field is back in the new editor',
+        body: 'The redesigned editor has a Published date input again, so you can set or clear a book’s publication date without switching to the classic UI. It is prefilled from the book’s current date and can be cleared to reset it.',
+        category: 'Library',
+      },
+      {
+        title: 'KOReader keeps your furthest position across devices',
+        body: 'Syncing from a device that was behind no longer overwrites a further position saved from another device, and clock differences between devices no longer make a real forward sync look like a rewind. Marking a finished book unread also clears its KOReader position so you can start it over.',
+        category: 'Sync',
+        link: { to: '/account', label: 'Manage sync & app passwords' },
+      },
+      {
+        title: 'A “Currently Reading” feed for OPDS apps',
+        body: 'The OPDS catalog now offers a feed of exactly the books you have in progress, instead of lumping them into the broad “not finished” group. It respects the same visibility and shelf restrictions as the rest of your OPDS catalog.',
+        category: 'Sync',
+      },
+      {
+        title: 'Send-to-e-reader shows your saved address again',
+        body: 'The new interface’s Send dialog now prefills the e-reader address saved in your account, instead of a blank field that made it look lost. Type a different address to override it for one send, or clear it to fall back to your saved one.',
+        category: 'Library',
+        link: { to: '/account', label: 'Check your e-reader address' },
+      },
+      {
+        title: 'Hardcover metadata fetching is more reliable',
+        body: 'Several Hardcover issues are fixed: the “Run Hardcover Auto-Fetch” tool no longer stops with an internal error partway through, automatic fetching during ingest works again when a token is set in the environment, and two people on the same server can now share one Hardcover token.',
+        category: 'Under the hood',
+      },
+      {
+        title: 'The new login page shows your configured SSO button label',
+        body: 'If you sign in with OpenID Connect and set a custom button label, the new interface’s login button now shows that label instead of the internal provider name — matching what the classic login page has always shown.',
+        category: 'Account',
+      },
+      {
+        title: 'Clearer server logs around covers and metadata',
+        body: 'Saving a cover for a PDF-only book no longer ends with a misleading failure message, editing one book no longer floods the log with repeated “file not found” warnings, and author-sort warnings now name the affected book and point to where you can fix it. These are log-quality fixes with no change to your library.',
+        category: 'Under the hood',
+      },
+      {
+        title: 'Smaller fixes and polish',
+        body: 'The classic book page’s read checkbox now matches the book’s actual state, the edit pencil on a book card can be opened in a new tab, the Help menu’s “Report Issue” link opens the bug-report form, and four remaining Russian interface strings are now translated.',
+        category: 'Under the hood',
+      },
+    ],
+  },
+  {
     version: 'v4.1.9',
     date: '2026-07-11',
     items: [

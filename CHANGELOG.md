@@ -16,6 +16,8 @@ is for things you can see or feel when running the app.
 
 ## [Unreleased]
 
+## [v4.1.10] - 2026-07-11
+
 ### Added
 
 - **You can delete a book from the new UI again.** The redesigned book page had no delete control, so removing a book meant switching to the classic interface. The book page now has a Delete button (shown only to accounts with the "Delete books" permission) that asks for confirmation, then removes the book and its files just like the classic view — after which you're taken back to your library with the book gone from the grid. Thanks to @Glalith121 for the report ([#803](https://github.com/new-usemame/Calibre-Web-NextGen/issues/803)).

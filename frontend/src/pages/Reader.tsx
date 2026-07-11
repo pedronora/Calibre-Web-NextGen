@@ -2,10 +2,10 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import { Link } from 'wouter';
 import ePub from 'epubjs';
 import {
-  ChevronLeft, ChevronRight, X, List, Type, Sun, Moon, Coffee, Loader2,
+  ChevronLeft, ChevronRight, X, List, Type, Sun, Moon, Coffee, Loader2, Trash2,
 } from 'lucide-react';
 import { useBook, useBookmark, useSaveBookmark } from '../lib/queries';
-import { apiPost, apiUrl, resourceUrl } from '../lib/api';
+import { apiPost, apiDelete, apiPatch, apiUrl, resourceUrl } from '../lib/api';
 import { EmptyState } from '../components/EmptyState';
 import { VisuallyHidden } from '../components/VisuallyHidden';
 import { useFocusTrap } from '../lib/a11y/useFocusTrap';
@@ -65,6 +65,10 @@ export function Reader({ id }: { id: string }) {
   const viewerRef = useRef<HTMLDivElement>(null);
   const tocRef = useRef<HTMLElement>(null);
   const popRef = useRef<HTMLDivElement>(null);
+  // Edit/remove popover for an existing highlight (#782). Separate from popRef
+  // (the create-color popover) so each has its own focus-trap lifecycle; the two
+  // are mutually exclusive — opening one closes the other.
+  const hlPopRef = useRef<HTMLDivElement>(null);
   const renditionRef = useRef<any>(null);
   const bookRef = useRef<any>(null);
 
@@ -84,39 +88,86 @@ export function Reader({ id }: { id: string }) {
   const [progress, setProgress] = useState(0);
   // Pending text selection awaiting a highlight-color choice.
   const [pendingSel, setPendingSel] = useState<{ cfiRange: string; text: string } | null>(null);
+  // Existing highlight the user tapped — drives the edit/remove popover (#782).
+  const [activeHl, setActiveHl] = useState<{ cfiRange: string; id: string; color: string } | null>(null);
 
   const epubFormat = book?.formats.find((f) => f.format.toLowerCase() === 'epub');
 
-  // C10: the TOC drawer and highlight popover are overlays — trap focus while
+  // C10: the TOC drawer and highlight popovers are overlays — trap focus while
   // open, restore on close, Escape closes (hooks run unconditionally every render).
   useFocusTrap(tocRef, { onClose: () => setTocOpen(false), active: tocOpen });
   useFocusTrap(popRef, { onClose: () => setPendingSel(null), active: !!pendingSel });
+  useFocusTrap(hlPopRef, { onClose: () => setActiveHl(null), active: !!activeHl });
 
-  // Paint a highlight onto the live rendition (epub.js annotations API).
-  const paintHighlight = useCallback((cfiRange: string, color: string) => {
+  // Open the edit/remove popover for a highlight the reader was tapped on (#782).
+  // Closes the create-color popover so the two never show at once.
+  const openHighlightEditor = useCallback((cfiRange: string, annotationId: string, color: string) => {
+    setPendingSel(null);
+    setActiveHl({ cfiRange, id: annotationId, color });
+  }, []);
+
+  // Paint a highlight onto the live rendition (epub.js annotations API). The
+  // data param stashes the server annotation id + color so the click callback
+  // knows which row it represents; a real click callback (3rd arg) + 'cwng-hl'
+  // className (4th arg) make tapping the highlight open the editor (#782).
+  const paintHighlight = useCallback((cfiRange: string, color: string, annotationId: string) => {
     try {
       renditionRef.current?.annotations?.highlight(
-        cfiRange, {}, undefined, '',
+        cfiRange,
+        { id: annotationId, color },
+        () => openHighlightEditor(cfiRange, annotationId, color),
+        'cwng-hl',
         { fill: HILITE_FILL[color] || HILITE_FILL.yellow, 'fill-opacity': '0.35' },
       );
     } catch { /* epub.js throws on a stale/foreign CFI — ignore */ }
-  }, []);
+  }, [openHighlightEditor]);
 
-  // Create a highlight from the pending selection, persist it, paint it.
+  // Create a highlight from the pending selection, persist it, paint it. The
+  // create endpoint returns the new annotation row (incl. its id) — capture it
+  // so the just-created highlight is immediately removable (#782).
   const createHighlight = useCallback(async (color: string) => {
     const sel = pendingSel;
     if (!sel) return;
     setPendingSel(null);
     try {
-      await apiPost(`/annotations/${id}`, {
+      const created = await apiPost<{ annotation_id?: string }>(`/annotations/${id}`, {
         cfi_range: sel.cfiRange, highlighted_text: sel.text, highlight_color: color,
       });
-      paintHighlight(sel.cfiRange, color);
+      paintHighlight(sel.cfiRange, color, created?.annotation_id ?? '');
     } catch { /* surfaced as no-op; user can retry */ }
     try {
       (renditionRef.current?.getContents?.() || []).forEach((c: any) => c.window?.getSelection?.().removeAllRanges());
     } catch { /* noop */ }
   }, [pendingSel, id, paintHighlight]);
+
+  // Remove the tapped highlight server-side, then un-paint it (#782). Fails
+  // silently (the reader has no toast) and leaves the highlight painted on
+  // error — the row is still on the server, so keeping it painted stays honest.
+  const removeHighlight = useCallback(async () => {
+    const hl = activeHl;
+    if (!hl) return;
+    setActiveHl(null);
+    try {
+      await apiDelete(`/annotations/${id}/${hl.id}`);
+      try { renditionRef.current?.annotations?.remove(hl.cfiRange, 'highlight'); } catch { /* noop */ }
+    } catch { /* silent: keep the highlight painted */ }
+  }, [activeHl, id]);
+
+  // Recolor the tapped highlight (PATCH supports highlight_color). epub.js keys
+  // an annotation by (cfiRange + type), so a new color is applied by removing
+  // the old paint and re-adding with the new fill. Silent on error (old paint
+  // is untouched, server keeps the prior color).
+  const recolorHighlight = useCallback(async (color: string) => {
+    const hl = activeHl;
+    if (!hl) return;
+    setActiveHl(null);
+    if (hl.color === color) return;
+    try {
+      await apiPatch(`/annotations/${id}/${hl.id}`, { highlight_color: color });
+      try { renditionRef.current?.annotations?.remove(hl.cfiRange, 'highlight'); } catch { /* noop */ }
+      paintHighlight(hl.cfiRange, color, hl.id);
+    } catch { /* silent: keep the highlight in its original color */ }
+  }, [activeHl, id, paintHighlight]);
 
   useEffect(() => {
     savedCfiRef.current = savedBookmark?.bookmark ?? savedCfiRef.current;
@@ -228,17 +279,16 @@ export function Reader({ id }: { id: string }) {
           }
         });
 
-        // Render existing highlights (the CFI-anchored ones we can place).
+        // Render existing highlights (the CFI-anchored ones we can place). Each
+        // row carries its server annotation_id; paintHighlight stashes it in the
+        // epub.js data param so a later tap can target the right row (#782).
         fetch(apiUrl(`/annotations/${id}/data.json`), { credentials: 'include' })
           .then((r) => (r.ok ? r.json() : null))
           .then((d) => {
             if (cancelled || !d) return;
             (d.annotations || []).forEach((a: any) => {
               if (a.cfi_range) {
-                try {
-                  rendition.annotations.highlight(a.cfi_range, {}, undefined, '',
-                    { fill: HILITE_FILL[a.highlight_color] || HILITE_FILL.yellow, 'fill-opacity': '0.35' });
-                } catch { /* skip un-placeable CFI */ }
+                paintHighlight(a.cfi_range, a.highlight_color || 'yellow', a.annotation_id);
               }
             });
           })
@@ -248,7 +298,10 @@ export function Reader({ id }: { id: string }) {
         rendition.on('selected', (cfiRange: string, contents: any) => {
           let text = '';
           try { text = (contents?.window?.getSelection?.().toString() || '').trim(); } catch { /* noop */ }
-          if (cfiRange) setPendingSel({ cfiRange, text });
+          if (cfiRange) {
+            setActiveHl(null);
+            setPendingSel({ cfiRange, text });
+          }
         });
       } catch (e) {
         if (!cancelled) setRenderError(e instanceof Error ? e.message : t('Failed to open the book.'));
@@ -426,6 +479,27 @@ export function Reader({ id }: { id: string }) {
               onClick={() => createHighlight(c)} aria-label={colorLabel(c)} title={colorLabel(c)} />
           ))}
           <button className={styles.hiliteCancel} onClick={() => setPendingSel(null)} aria-label={t('Cancel')}>
+            <X size={16} aria-hidden="true" focusable={false} />
+          </button>
+        </div>
+      )}
+
+      {/* Edit/remove popover for a tapped existing highlight (#782).
+          Swatches recolor (PATCH); the Remove button deletes (DELETE) + unpaints. */}
+      {activeHl && (
+        <div ref={hlPopRef} className={styles.hilitePop} role="dialog" aria-modal="true"
+          aria-label={t('Highlight color')} tabIndex={-1}>
+          <span className={styles.hiliteLabel}>{t('Highlight')}</span>
+          {HILITE_ORDER.map((c) => (
+            <button key={c} className={styles.hiliteSwatch} style={{ background: HILITE_FILL[c] }}
+              onClick={() => recolorHighlight(c)}
+              aria-pressed={activeHl.color === c} aria-label={colorLabel(c)} title={colorLabel(c)} />
+          ))}
+          <button className={styles.hiliteRemove} onClick={removeHighlight} title={t('Remove highlight')}>
+            <Trash2 size={15} aria-hidden="true" focusable={false} />
+            <span>{t('Remove highlight')}</span>
+          </button>
+          <button className={styles.hiliteCancel} onClick={() => setActiveHl(null)} aria-label={t('Cancel')}>
             <X size={16} aria-hidden="true" focusable={false} />
           </button>
         </div>

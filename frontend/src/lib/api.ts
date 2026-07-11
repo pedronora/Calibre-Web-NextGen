@@ -391,6 +391,89 @@ export async function apiPost<T>(path: string, body?: unknown): Promise<T> {
   return res.json() as Promise<T>;
 }
 
+/** DELETE with the same CSRF/base-path handling as apiPost (#782 — the reader
+ *  needs to remove a highlight). DELETE responses are frequently empty or 204,
+ *  so this tolerates a missing body rather than throwing on res.json(). */
+export async function apiDelete<T>(path: string): Promise<T> {
+  const doDelete = async (csrf: string): Promise<Response> =>
+    fetch(apiUrl(path), {
+      method: 'DELETE',
+      credentials: 'include',
+      headers: { 'X-CSRFToken': csrf },
+    });
+
+  let csrf = await getCsrf();
+  let res = await doDelete(csrf);
+
+  // Same stale-CSRF replay as apiPost — a non-JSON 400 is the global HTML error
+  // page triggered by a bad token; a JSON 400 is one of our own validation errors.
+  const isJson400 = res.status === 400
+    && (res.headers.get('content-type') || '').includes('application/json');
+  if (res.status === 400 && !isJson400) {
+    clearCsrf();
+    csrf = await getCsrf();
+    res = await doDelete(csrf);
+  }
+
+  if (!res.ok) {
+    let msg = res.statusText;
+    try {
+      const d = await res.json() as { error?: string | { message?: string } };
+      if (typeof d.error === 'string') msg = d.error;
+      else if (d.error?.message) msg = d.error.message;
+    } catch { /* non-JSON body — keep statusText */ }
+    throw new ApiError(res.status, msg);
+  }
+
+  // 204 No Content, or any empty body → resolve undefined. A JSON body is parsed.
+  if (res.status === 204) return undefined as unknown as T;
+  const text = await res.text();
+  if (!text) return undefined as unknown as T;
+  try {
+    return JSON.parse(text) as T;
+  } catch { /* not JSON (e.g. an empty/whitespace body) — tolerate it */ }
+  return undefined as unknown as T;
+}
+
+/** PATCH with the same CSRF/base-path handling as apiPost (#782 — the reader
+ *  recolors an existing highlight). Mirrors apiPost's JSON body + replay. */
+export async function apiPatch<T>(path: string, body?: unknown): Promise<T> {
+  const doPatch = async (csrf: string): Promise<Response> =>
+    fetch(apiUrl(path), {
+      method: 'PATCH',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': csrf,
+      },
+      body: body !== undefined ? JSON.stringify(body) : undefined,
+    });
+
+  let csrf = await getCsrf();
+  let res = await doPatch(csrf);
+
+  const isJson400 = res.status === 400
+    && (res.headers.get('content-type') || '').includes('application/json');
+  if (res.status === 400 && !isJson400) {
+    clearCsrf();
+    csrf = await getCsrf();
+    res = await doPatch(csrf);
+  }
+
+  if (!res.ok) {
+    let msg = res.statusText;
+    try {
+      const d = await res.json() as { error?: string | { message?: string } };
+      if (typeof d.error === 'string') msg = d.error;
+      else if (d.error?.message) msg = d.error.message;
+    } catch { /* non-JSON body — keep statusText */ }
+    throw new ApiError(res.status, msg);
+  }
+
+  if (res.status === 204) return undefined as unknown as T;
+  return res.json() as Promise<T>;
+}
+
 /** Form-encoded POST (application/x-www-form-urlencoded). Used to consume the
  *  legacy form endpoints (e.g. /metadata/search) directly, reusing their logic
  *  rather than duplicating it under /api/v1. Same CSRF-retry as apiPost. */

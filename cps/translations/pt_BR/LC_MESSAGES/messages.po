@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web NextGen\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-11 04:50+0000\n"
+"POT-Creation-Date: 2026-07-11 05:21+0000\n"
 "PO-Revision-Date: 2025-12-02 12:00+0000\n"
 "Last-Translator: Alex <298750+alexantao@users.noreply.github.com>\n"
 "Language-Team: pt_BR <LL@li.org>\n"
@@ -1618,12 +1618,12 @@ msgstr "%(book)s enviado para E-Reader"
 msgid "The requested file could not be read. Maybe wrong permissions?"
 msgstr "O arquivo solicitado não pôde ser lido. Permissões erradas, Talvez?"
 
-#: cps/helper.py:710
+#: cps/helper.py:734
 #, python-brace-format
 msgid "Read status could not set: {}"
 msgstr "Status Lido não pode ser alterado: {}"
 
-#: cps/helper.py:738
+#: cps/helper.py:762
 #, python-format
 msgid ""
 "Deleting bookfolder for book %(id)s failed, path has subfolders: %(path)s"
@@ -1631,12 +1631,12 @@ msgstr ""
 "A exclusão da pasta de livros do livro %(id)s falhou, o caminho tem "
 "subpastas: %(path)s"
 
-#: cps/helper.py:750
+#: cps/helper.py:774
 #, python-format
 msgid "Deleting book %(id)s failed: %(message)s"
 msgstr "Falha ao excluir livro %(id)s: %(message)s"
 
-#: cps/helper.py:761
+#: cps/helper.py:785
 #, python-format
 msgid ""
 "Deleting book %(id)s from database only, book path in database not valid: "
@@ -1645,73 +1645,73 @@ msgstr ""
 "Excluindo livro %(id)s somente do banco de dados, caminho do livro inválido: "
 "%(path)s"
 
-#: cps/helper.py:851
+#: cps/helper.py:875
 #, python-format
 msgid ""
 "Rename author from: '%(src)s' to '%(dest)s' failed with error: %(error)s"
 msgstr ""
 "Renomear autor de: '%(src)s' para '%(dest)s' falhou com o erro: %(error)s"
 
-#: cps/helper.py:920 cps/helper.py:929
+#: cps/helper.py:944 cps/helper.py:953
 #, python-format
 msgid "File %(file)s not found on Google Drive"
 msgstr "Arquivo %(file)s não encontrado no Google Drive"
 
-#: cps/helper.py:1019
+#: cps/helper.py:1043
 #, python-format
 msgid "Rename title from: '%(src)s' to '%(dest)s' failed with error: %(error)s"
 msgstr ""
 "Renomear título de: '%(src)s' para '%(dest)s' falhou com o erro: %(error)s"
 
-#: cps/helper.py:1058
+#: cps/helper.py:1082
 #, python-format
 msgid "Book path %(path)s not found on Google Drive"
 msgstr "Caminho do livro %(path)s não encontrado no Google Drive"
 
-#: cps/helper.py:1118
+#: cps/helper.py:1142
 msgid "Found an existing account for this Email address"
 msgstr "Encontrado uma conta existente para este E-Mail"
 
-#: cps/helper.py:1126
+#: cps/helper.py:1150
 msgid "This username is already taken"
 msgstr "Este nome de usuário já está registrado"
 
-#: cps/helper.py:1140
+#: cps/helper.py:1164
 #, fuzzy
 msgid "Invalid Email address format"
 msgstr "Formato de endereço de e-mail inválido"
 
-#: cps/helper.py:1162
+#: cps/helper.py:1186
 msgid "Password doesn't comply with password validation rules"
 msgstr "Senha não está conforme as regras de validação"
 
-#: cps/helper.py:1506
+#: cps/helper.py:1530
 msgid ""
 "Python module 'advocate' is not installed but is needed for cover uploads"
 msgstr ""
 "O módulo Python 'advocate' não está instalado, mas é necessário para uploads "
 "de capa"
 
-#: cps/helper.py:1514 cps/helper.py:1549
+#: cps/helper.py:1538 cps/helper.py:1573
 msgid "Error Downloading Cover"
 msgstr "Erro ao Baixar a capa"
 
-#: cps/helper.py:1518 cps/helper.py:1526
+#: cps/helper.py:1542 cps/helper.py:1550
 #, python-format
 msgid "Cover image exceeds maximum size of %(size)s MB"
 msgstr ""
 
-#: cps/helper.py:1535 cps/helper.py:1582 cps/helper.py:1595 cps/helper.py:1598
+#: cps/helper.py:1559 cps/helper.py:1606 cps/helper.py:1619 cps/helper.py:1622
 msgid "Cover-file is not a valid image file, or could not be stored"
 msgstr ""
 "O arquivo de capa não é um arquivo de imagem válido, ou não pôde ser "
 "armazenado"
 
-#: cps/helper.py:1552
+#: cps/helper.py:1576
 msgid "Cover Format Error"
 msgstr "Erro de Formato da Capa"
 
-#: cps/helper.py:1555
+#: cps/helper.py:1579
 msgid ""
 "You are not allowed to access localhost or the local network for cover "
 "uploads"
@@ -1719,73 +1719,73 @@ msgstr ""
 "Você não tem permissão para acessar localhost ou a rede local para uploads "
 "de capa"
 
-#: cps/helper.py:1571
+#: cps/helper.py:1595
 msgid "Failed to create path for cover"
 msgstr "Falha em criar caminho para a capa"
 
-#: cps/helper.py:1615
+#: cps/helper.py:1639
 msgid "Only jpg/jpeg/png/webp/bmp files are supported as coverfile"
 msgstr ""
 "Apenas arquivos jpg/jpeg/png/webp/bmp são suportados como arquivos de capa"
 
-#: cps/helper.py:1631 cps/helper.py:1636
+#: cps/helper.py:1655 cps/helper.py:1660
 msgid "Invalid cover file content"
 msgstr "Conteúdo do arquivo de capa inválido"
 
-#: cps/helper.py:1640
+#: cps/helper.py:1664
 msgid "Only jpg/jpeg files are supported as coverfile"
 msgstr "Apenas arquivos jpg/jpeg são suportados como arquivos de capa"
 
-#: cps/helper.py:1862 cps/helper.py:2114 cps/spa_strings.py:99
+#: cps/helper.py:1886 cps/helper.py:2138 cps/spa_strings.py:99
 #, fuzzy
 msgid "Cover"
 msgstr "Capa"
 
-#: cps/helper.py:1879
+#: cps/helper.py:1903
 msgid "UnRar binary file not found"
 msgstr "Binário UnRar não encontrado"
 
-#: cps/helper.py:1890
+#: cps/helper.py:1914
 #, fuzzy
 msgid "Error executing UnRar"
 msgstr "Erro excecutando UnRar"
 
-#: cps/helper.py:1896
+#: cps/helper.py:1920
 #, python-format
 msgid ""
 "Unsupported architecture detected: %(arch)s. Calibre-Web NextGen is "
 "optimized for x86_64 and aarch64."
 msgstr ""
 
-#: cps/helper.py:1905
+#: cps/helper.py:1929
 msgid "Could not find the specified directory"
 msgstr "Não foi possível encontrar o diretório especificado"
 
-#: cps/helper.py:1908
+#: cps/helper.py:1932
 msgid "Please specify a directory, not a file"
 msgstr "Por favor, especifique um diretório, não um arquivo"
 
-#: cps/helper.py:1922
+#: cps/helper.py:1946
 #, fuzzy
 msgid "Calibre binaries not viable"
 msgstr "Binários do Calibre não viáveis"
 
-#: cps/helper.py:1931
+#: cps/helper.py:1955
 #, python-format
 msgid "Missing calibre binaries: %(missing)s"
 msgstr "Binários do calibre faltando: %(missing)s"
 
-#: cps/helper.py:1933
+#: cps/helper.py:1957
 #, fuzzy, python-format
 msgid "Missing executable permissions: %(missing)s"
 msgstr "Faltam as permissões de execução: %(missing)s"
 
-#: cps/helper.py:1938
+#: cps/helper.py:1962
 #, fuzzy
 msgid "Error executing Calibre"
 msgstr "Erro excecutando Calibre"
 
-#: cps/helper.py:2116 cps/templates/admin.html:242
+#: cps/helper.py:2140 cps/templates/admin.html:242
 msgid "Queue all books for metadata backup"
 msgstr "Enfileirar todos os livros para backup de metadados"
 
@@ -5616,7 +5616,7 @@ msgstr ""
 msgid "Invalid book ID."
 msgstr "ID de livro inválido."
 
-#: cps/progress_syncing/protocols/kosync.py:612
+#: cps/progress_syncing/protocols/kosync.py:613
 msgid "KOReader Sync Plugin"
 msgstr "Plugin de Sincronização KOReader"
 

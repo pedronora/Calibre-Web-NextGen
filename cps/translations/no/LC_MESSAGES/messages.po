@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web NextGen\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-11 04:50+0000\n"
+"POT-Creation-Date: 2026-07-11 05:21+0000\n"
 "PO-Revision-Date: 2023-01-06 11:00+0000\n"
 "Last-Translator: Vegard Fladby <vegard.fladby@gmail.com>\n"
 "Language-Team: \n"
@@ -1594,12 +1594,12 @@ msgstr "%(book)s sendes til E-Reader"
 msgid "The requested file could not be read. Maybe wrong permissions?"
 msgstr "Den forespurte filen kunne ikke leses. Kanskje feil tillatelser?"
 
-#: cps/helper.py:710
+#: cps/helper.py:734
 #, python-brace-format
 msgid "Read status could not set: {}"
 msgstr "Lesestatus kunne ikke angis: {}"
 
-#: cps/helper.py:738
+#: cps/helper.py:762
 #, python-format
 msgid ""
 "Deleting bookfolder for book %(id)s failed, path has subfolders: %(path)s"
@@ -1607,12 +1607,12 @@ msgstr ""
 "Sletting av bokmappe for bok %(id)s mislyktes, banen har undermapper: "
 "%(path)s"
 
-#: cps/helper.py:750
+#: cps/helper.py:774
 #, python-format
 msgid "Deleting book %(id)s failed: %(message)s"
 msgstr "Sletting av bok %(id)s mislyktes: %(message)s"
 
-#: cps/helper.py:761
+#: cps/helper.py:785
 #, python-format
 msgid ""
 "Deleting book %(id)s from database only, book path in database not valid: "
@@ -1621,7 +1621,7 @@ msgstr ""
 "Sletter bok %(id)s kun fra databasen, bokbanen i databasen er ikke gyldig: "
 "%(path)s"
 
-#: cps/helper.py:851
+#: cps/helper.py:875
 #, python-format
 msgid ""
 "Rename author from: '%(src)s' to '%(dest)s' failed with error: %(error)s"
@@ -1629,66 +1629,66 @@ msgstr ""
 "Endre navn på forfatter fra: '%(src)s' til '%(dest)s' mislyktes med feil: "
 "%(error)s"
 
-#: cps/helper.py:920 cps/helper.py:929
+#: cps/helper.py:944 cps/helper.py:953
 #, python-format
 msgid "File %(file)s not found on Google Drive"
 msgstr "Fil %(file)s ikke funnet på Google Disk"
 
-#: cps/helper.py:1019
+#: cps/helper.py:1043
 #, python-format
 msgid "Rename title from: '%(src)s' to '%(dest)s' failed with error: %(error)s"
 msgstr ""
 "Endre navn på tittel fra: '%(src)s' til '%(dest)s' mislyktes med feil: "
 "%(error)s"
 
-#: cps/helper.py:1058
+#: cps/helper.py:1082
 #, python-format
 msgid "Book path %(path)s not found on Google Drive"
 msgstr "Finner ikke bokbane %(path)s på Google Disk"
 
-#: cps/helper.py:1118
+#: cps/helper.py:1142
 #, fuzzy
 msgid "Found an existing account for this Email address"
 msgstr "Fant en eksisterende konto for denne e-postadressen"
 
-#: cps/helper.py:1126
+#: cps/helper.py:1150
 msgid "This username is already taken"
 msgstr "Dette brukernavnet er allerede tatt"
 
-#: cps/helper.py:1140
+#: cps/helper.py:1164
 #, fuzzy
 msgid "Invalid Email address format"
 msgstr "Ugyldig format for e-postadresse"
 
-#: cps/helper.py:1162
+#: cps/helper.py:1186
 msgid "Password doesn't comply with password validation rules"
 msgstr ""
 
-#: cps/helper.py:1506
+#: cps/helper.py:1530
 msgid ""
 "Python module 'advocate' is not installed but is needed for cover uploads"
 msgstr ""
 "Python-modulen 'advocate' er ikke installert, men er nødvendig for "
 "omslagsopplastinger"
 
-#: cps/helper.py:1514 cps/helper.py:1549
+#: cps/helper.py:1538 cps/helper.py:1573
 msgid "Error Downloading Cover"
 msgstr "Feil ved nedlasting av cover"
 
-#: cps/helper.py:1518 cps/helper.py:1526
+#: cps/helper.py:1542 cps/helper.py:1550
 #, python-format
 msgid "Cover image exceeds maximum size of %(size)s MB"
 msgstr ""
 
-#: cps/helper.py:1535 cps/helper.py:1582 cps/helper.py:1595 cps/helper.py:1598
+#: cps/helper.py:1559 cps/helper.py:1606 cps/helper.py:1619 cps/helper.py:1622
 msgid "Cover-file is not a valid image file, or could not be stored"
 msgstr "Cover-filen er ikke en gyldig bildefil, eller kunne ikke lagres"
 
-#: cps/helper.py:1552
+#: cps/helper.py:1576
 msgid "Cover Format Error"
 msgstr "Omslagsformatfeil"
 
-#: cps/helper.py:1555
+#: cps/helper.py:1579
 msgid ""
 "You are not allowed to access localhost or the local network for cover "
 "uploads"
@@ -1696,70 +1696,70 @@ msgstr ""
 "Du har ikke tilgang til localhost eller det lokale nettverket for "
 "coveropplastinger"
 
-#: cps/helper.py:1571
+#: cps/helper.py:1595
 msgid "Failed to create path for cover"
 msgstr "Kunne ikke opprette bane for dekning"
 
-#: cps/helper.py:1615
+#: cps/helper.py:1639
 msgid "Only jpg/jpeg/png/webp/bmp files are supported as coverfile"
 msgstr "Bare jpg/jpeg/png/webp/bmp-filer støttes som coverfile"
 
-#: cps/helper.py:1631 cps/helper.py:1636
+#: cps/helper.py:1655 cps/helper.py:1660
 msgid "Invalid cover file content"
 msgstr "Ugyldig omslagsfilinnhold"
 
-#: cps/helper.py:1640
+#: cps/helper.py:1664
 msgid "Only jpg/jpeg files are supported as coverfile"
 msgstr "Bare jpg/jpeg-filer støttes som coverfile"
 
-#: cps/helper.py:1862 cps/helper.py:2114 cps/spa_strings.py:99
+#: cps/helper.py:1886 cps/helper.py:2138 cps/spa_strings.py:99
 msgid "Cover"
 msgstr "Dekke"
 
-#: cps/helper.py:1879
+#: cps/helper.py:1903
 msgid "UnRar binary file not found"
 msgstr "UnRar binær fil ikke funnet"
 
-#: cps/helper.py:1890
+#: cps/helper.py:1914
 msgid "Error executing UnRar"
 msgstr "Feil ved kjøring av UnRar"
 
-#: cps/helper.py:1896
+#: cps/helper.py:1920
 #, python-format
 msgid ""
 "Unsupported architecture detected: %(arch)s. Calibre-Web NextGen is "
 "optimized for x86_64 and aarch64."
 msgstr ""
 
-#: cps/helper.py:1905
+#: cps/helper.py:1929
 msgid "Could not find the specified directory"
 msgstr ""
 
-#: cps/helper.py:1908
+#: cps/helper.py:1932
 msgid "Please specify a directory, not a file"
 msgstr ""
 
-#: cps/helper.py:1922
+#: cps/helper.py:1946
 #, fuzzy
 msgid "Calibre binaries not viable"
 msgstr "DB er ikke skrivbar"
 
-#: cps/helper.py:1931
+#: cps/helper.py:1955
 #, python-format
 msgid "Missing calibre binaries: %(missing)s"
 msgstr ""
 
-#: cps/helper.py:1933
+#: cps/helper.py:1957
 #, fuzzy, python-format
 msgid "Missing executable permissions: %(missing)s"
 msgstr "Utførelsestillatelser mangler"
 
-#: cps/helper.py:1938
+#: cps/helper.py:1962
 #, fuzzy
 msgid "Error executing Calibre"
 msgstr "Feil ved kjøring av UnRar"
 
-#: cps/helper.py:2116 cps/templates/admin.html:242
+#: cps/helper.py:2140 cps/templates/admin.html:242
 msgid "Queue all books for metadata backup"
 msgstr "Sett alle bøker i kø for sikkerhetskopiering av metadata"
 
@@ -5573,7 +5573,7 @@ msgstr ""
 msgid "Invalid book ID."
 msgstr "Ugyldig rolle"
 
-#: cps/progress_syncing/protocols/kosync.py:612
+#: cps/progress_syncing/protocols/kosync.py:613
 msgid "KOReader Sync Plugin"
 msgstr ""
 

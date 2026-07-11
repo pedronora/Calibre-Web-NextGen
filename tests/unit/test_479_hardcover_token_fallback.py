@@ -37,12 +37,22 @@ def _resp(status, data=None):
     return _R()
 
 
+def _cfg(token):
+    """Real ConfigSQL instance so the provider's token resolution (#743's
+    resolved_hardcover_token) is exercised, not a lookalike."""
+    from cps.config_sql import ConfigSQL
+    cfg = ConfigSQL()
+    cfg.config_hardcover_token = token
+    return cfg
+
+
 def test_search_falls_back_to_global_when_user_token_rejected(monkeypatch):
     from cps.metadata_provider import hardcover as hc
 
     monkeypatch.setattr(hc, "current_user", types.SimpleNamespace(hardcover_token="EXPIRED_USER"))
-    monkeypatch.setattr(hc, "config", types.SimpleNamespace(config_hardcover_token="VALID_GLOBAL"))
+    monkeypatch.setattr(hc, "config", _cfg("VALID_GLOBAL"))
     monkeypatch.delenv("HARDCOVER_TOKEN", raising=False)
+    monkeypatch.delenv("HARDCOVER_TOKEN_FILE", raising=False)
 
     calls = []
 
@@ -69,8 +79,9 @@ def test_search_aborts_only_when_every_token_rejected(monkeypatch):
     from cps.metadata_provider import hardcover as hc
 
     monkeypatch.setattr(hc, "current_user", types.SimpleNamespace(hardcover_token="BAD1"))
-    monkeypatch.setattr(hc, "config", types.SimpleNamespace(config_hardcover_token="BAD2"))
+    monkeypatch.setattr(hc, "config", _cfg("BAD2"))
     monkeypatch.delenv("HARDCOVER_TOKEN", raising=False)
+    monkeypatch.delenv("HARDCOVER_TOKEN_FILE", raising=False)
 
     calls = []
 
@@ -94,8 +105,9 @@ def test_token_bearer_prefix_and_whitespace_trimmed(monkeypatch):
     from cps.metadata_provider import hardcover as hc
 
     monkeypatch.setattr(hc, "current_user", types.SimpleNamespace(hardcover_token="  Bearer abc123\n"))
-    monkeypatch.setattr(hc, "config", types.SimpleNamespace(config_hardcover_token=None))
+    monkeypatch.setattr(hc, "config", _cfg(None))
     monkeypatch.delenv("HARDCOVER_TOKEN", raising=False)
+    monkeypatch.delenv("HARDCOVER_TOKEN_FILE", raising=False)
 
     sent = []
 

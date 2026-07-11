@@ -241,12 +241,8 @@ def trigger_hardcover_auto_fetch():
     
     try:
         # Check if token is available
-        from os import getenv
-        token_available = bool(
-            getattr(config, "config_hardcover_token", None) or 
-            getenv("HARDCOVER_TOKEN")
-        )
-        
+        token_available = bool(config.resolved_hardcover_token())
+
         if not token_available:
             show_text['text'] = _('Error: No Hardcover token available. Set HARDCOVER_TOKEN environment variable or configure in Basic Configuration.')
             return json.dumps(show_text), 400

@@ -296,7 +296,9 @@ def _classify_empty_provider(provider) -> tuple:
     """
     pid = getattr(provider, "__id__", "")
     if pid == "hardcover":
-        token = getattr(config, "config_hardcover_token", None)
+        # Resolve like the provider itself (DB value or HARDCOVER_TOKEN env,
+        # #743) — an env-supplied token must not trigger the missing-key hint.
+        token = config.resolved_hardcover_token()
         if not token:
             return ("missing_key",
                     "Set a Hardcover API key in Admin → Configuration → "

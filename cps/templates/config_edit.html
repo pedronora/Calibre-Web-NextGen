@@ -280,6 +280,9 @@
         <label for="config_hardcover_token">{{_('Hardcover API Key')}}</label>
         <input type="text" class="form-control" id="config_hardcover_token" name="config_hardcover_token" value="{% if config.config_hardcover_token != None %}{{ config.config_hardcover_token }}{% endif %}" autocomplete="off">
         <div class="help-block">{{_('Free key from https://hardcover.app/account/api — required for Hardcover metadata results.')}}</div>
+        {% if config.hardcover_token_from_env() %}
+        <div class="help-block">{{_('A token from the HARDCOVER_TOKEN environment variable is currently active. It is not shown here; a key entered in this field would override it.')}}</div>
+        {% endif %}
       </div>
     </div>
     <div class="form-group">

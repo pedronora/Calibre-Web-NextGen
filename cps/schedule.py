@@ -243,17 +243,13 @@ def _schedule_hardcover_auto_fetch(scheduler, timezone_info):
             _sys.path.insert(1, '/app/calibre-web-automated/scripts/')
         from cwa_db import CWA_DB
         from .tasks.auto_hardcover_id import TaskAutoHardcoverID
-        from os import getenv
 
         db = CWA_DB()
         cwa_settings = db.get_cwa_settings()
         
         # Check if enabled and token available
         enabled = bool(cwa_settings.get('hardcover_auto_fetch_enabled', False))
-        token_available = bool(
-            getattr(config, "config_hardcover_token", None) or 
-            getenv("HARDCOVER_TOKEN")
-        )
+        token_available = bool(config.resolved_hardcover_token())
         
         if not enabled or not token_available:
             return

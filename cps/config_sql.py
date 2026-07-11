@@ -222,6 +222,22 @@ class _Settings(_Base):
 
 
 # Class holds all application specific settings in calibre-web automated
+def _read_secret_file(path):
+    """Read a docker-secrets-style token file (fork #743).
+
+    Returns the stripped first line, or "" when the variable is unset, the
+    file is missing, or it is unreadable — a broken secret mount must
+    degrade to "no token", never crash config loading.
+    """
+    if not path:
+        return ""
+    try:
+        with open(path, "r", encoding="utf-8") as fh:
+            return fh.readline().strip()
+    except OSError:
+        return ""
+
+
 class ConfigSQL(object):
     # pylint: disable=no-member
     def __init__(self):
@@ -394,6 +410,38 @@ class ConfigSQL(object):
                     and 'secret' not in k.lower():
                 storage[k] = v
         return storage
+
+    def resolved_hardcover_token(self):
+        """Global Hardcover token: the admin-configured value, else the
+        HARDCOVER_TOKEN environment variable, else the file named by
+        HARDCOVER_TOKEN_FILE (docker-secrets style) — fork #743.
+
+        Single source of truth for every global-token consumer (metadata
+        provider, scheduler, auto-fetch task, admin trigger, zero-result
+        classifier). The env value is resolved per call rather than copied
+        into the config row so an admin form save never persists it to the
+        DB and container-level rotation keeps working. A stray "Bearer "
+        prefix (common copy-paste failure) is trimmed. Per-USER tokens are
+        a separate, deliberate concept and are not consulted here.
+        """
+        raw = (
+            self.config_hardcover_token
+            or os.environ.get("HARDCOVER_TOKEN")
+            or _read_secret_file(os.environ.get("HARDCOVER_TOKEN_FILE"))
+            or ""
+        )
+        return raw.replace("Bearer ", "").strip()
+
+    def hardcover_token_from_env(self):
+        """True when the active global token comes from the environment —
+        lets the admin form explain why its field is empty yet Hardcover
+        works (fork #743)."""
+        if (self.config_hardcover_token or "").strip():
+            return False
+        return bool(
+            (os.environ.get("HARDCOVER_TOKEN") or "").strip()
+            or _read_secret_file(os.environ.get("HARDCOVER_TOKEN_FILE"))
+        )
 
     def load(self):
         """Load all configuration values from the underlying storage."""

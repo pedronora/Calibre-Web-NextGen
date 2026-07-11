@@ -440,7 +440,15 @@ Without this, CWA may see different client IPs across requests and trigger Sessi
 
 Hardcover then appears in the Fetch Metadata modal.
 
-If you set the token through the `HARDCOVER_TOKEN` environment variable, the **Hardcover API Key** field in the admin UI stays empty — that field only shows a key entered through the UI, and an environment-supplied token is not echoed back into the page. The token still works; Hardcover results appearing in the Fetch Metadata modal confirm it is active.
+If you set the token through the `HARDCOVER_TOKEN` environment variable, the **Hardcover API Key** field in the admin UI stays empty — that field only shows a key entered through the UI, and an environment-supplied token is not echoed back into the page. When an environment token is active, the admin page shows a note under the field saying so; a key typed into the field overrides the environment value.
+
+To keep the token out of your compose file entirely, point `HARDCOVER_TOKEN_FILE` at a file containing just the token (docker-secrets style):
+
+```yaml
+   - HARDCOVER_TOKEN_FILE=/run/secrets/hardcover_token
+```
+
+Precedence: UI-configured key → `HARDCOVER_TOKEN` → `HARDCOVER_TOKEN_FILE`.
 
 ### KOReader sync
 

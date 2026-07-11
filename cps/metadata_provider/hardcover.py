@@ -162,8 +162,7 @@ class Hardcover(Metadata):
         candidate_tokens = []
         for raw in (
             getattr(current_user, "hardcover_token", None),
-            getattr(config, "config_hardcover_token", None),
-            getenv("HARDCOVER_TOKEN"),
+            config.resolved_hardcover_token(),
         ):
             if not raw:
                 continue

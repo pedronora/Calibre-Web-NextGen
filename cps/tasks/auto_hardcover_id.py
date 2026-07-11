@@ -177,12 +177,8 @@ class TaskAutoHardcoverID(CalibreTask):
             self.calibre_db.session.close()
 
     def _get_hardcover_token(self) -> Optional[str]:
-        """Get Hardcover token from environment or config"""
-        token = (
-            getattr(config, "config_hardcover_token", None)
-            or getenv("HARDCOVER_TOKEN")
-        )
-        return token
+        """Get Hardcover token from config or environment (#743)."""
+        return config.resolved_hardcover_token() or None
 
     def _get_books_without_hardcover_id(self) -> List[int]:
         """

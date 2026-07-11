@@ -1062,11 +1062,7 @@ def set_cwa_settings():
         cwa_settings = cwa_db.get_cwa_settings()
 
     # Check if Hardcover token is available
-    from os import getenv
-    hardcover_token_available = bool(
-        getattr(config, "config_hardcover_token", None) or 
-        getenv("HARDCOVER_TOKEN")
-    )
+    hardcover_token_available = bool(config.resolved_hardcover_token())
 
 
     next_scan_run = get_next_duplicate_scan_run(cwa_settings)

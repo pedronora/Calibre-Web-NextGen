@@ -56,6 +56,60 @@ export interface WhatsNewRelease {
 /** Newest release first. The `whats-new-populate` skill prepends here. */
 export const WHATS_NEW: WhatsNewRelease[] = [
   {
+    version: 'v4.1.9',
+    date: '2026-07-11',
+    items: [
+      {
+        title: 'Refresh your library from the new interface',
+        body: 'The new interface now has a Refresh button in the library toolbar, so after you add books to your ingest folder you can trigger a scan without switching back to the classic view. It reports progress and reloads the grid when new books appear.',
+        category: 'Library',
+        link: { to: '/', label: 'Open your library' },
+      },
+      {
+        title: 'Remove and recolor highlights while reading',
+        body: 'In the in-browser reader you can now tap an existing highlight to change its color or remove it — previously highlights could only be created, never cleared. The change is saved, so a removed highlight stays gone after you reload.',
+        category: 'Reading',
+      },
+      {
+        title: 'The metadata editor suggests values as you type',
+        body: 'Editing a book in the new interface, the Tags, Authors, Series, Publishers and Languages fields now suggest values already in your library, so a small spelling difference no longer creates a near-duplicate tag or series. Pick from the list or keep typing to add a new one.',
+        category: 'Library',
+      },
+      {
+        title: 'The new interface stays chosen',
+        body: 'Once you switch to the new interface it now sticks: opening the site again — or a bookmarked link — keeps you in the new interface until you choose to go back to the classic view. Use "Back to the classic view" from the account menu to switch back.',
+        category: 'Account',
+      },
+      {
+        title: 'Half-star ratings display correctly',
+        body: 'A book rated a half-star (like 3.5) now shows a cleanly half-filled star on its page, instead of a shrunken star floating inside the outline.',
+        category: 'Library',
+      },
+      {
+        title: 'Admin configuration pages open in place',
+        body: 'On the Admin page, the "More server configuration" buttons now open in the same tab instead of spawning a new one each time — no more piled-up windows when you visit the deeper settings screens.',
+        category: 'Admin',
+        link: { to: '/admin', label: 'Open Admin' },
+      },
+      {
+        title: 'OPDS feeds are easier to tell apart',
+        body: 'In an OPDS reader, an alphabetical sub-list or a specific author, category, series, rating, format or language now names itself in the feed title — "Authors (V)", "Categories: Fantasy", "Ratings: 4.5 Stars" — so your feed list is no longer a wall of identical names.',
+        category: 'Sync',
+      },
+      {
+        title: 'Set the Hardcover token by environment variable',
+        body: 'A Hardcover API token set through the HARDCOVER_TOKEN environment variable now works everywhere in the app, and the Admin page notes when an environment token is active. You can also keep the token in a file with the new HARDCOVER_TOKEN_FILE variable.',
+        category: 'Admin',
+        link: { to: '/admin', label: 'Open Admin' },
+      },
+      {
+        title: 'Cleaner startup logs',
+        body: 'The container no longer prints an alarming "desktop integration failed" warning with a traceback on first start — that step is skipped cleanly in a headless server, so a healthy startup now looks healthy.',
+        category: 'Under the hood',
+      },
+    ],
+  },
+  {
     version: 'v4.1.8',
     date: '2026-07-10',
     items: [

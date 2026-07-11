@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web NextGen\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-11 06:48+0000\n"
+"POT-Creation-Date: 2026-07-11 06:49+0000\n"
 "PO-Revision-Date: 2020-09-27 22:18+0800\n"
 "Last-Translator: xlivevil <xlivevil@aliyun.com>\n"
 "Language-Team: zh_Hans_CN <LL@li.org>\n"
@@ -131,7 +131,7 @@ msgstr "自定义列号：%(column)d 在 Calibre 数据库中不存在"
 msgid "Edit Users"
 msgstr "管理用户"
 
-#: cps/admin.py:733 cps/opds.py:1267 cps/templates/grid.html:14
+#: cps/admin.py:733 cps/opds.py:1308 cps/templates/grid.html:14
 #: cps/templates/list.html:19
 msgid "All"
 msgstr "全部"
@@ -503,7 +503,7 @@ msgstr "发生一个未知错误，请稍后再试"
 msgid "Settings DB is not Writeable"
 msgstr "设置数据库不可写"
 
-#: cps/admin.py:2090 cps/opds.py:309 cps/opds.py:347 cps/opds.py:350
+#: cps/admin.py:2090 cps/opds.py:316 cps/opds.py:354 cps/opds.py:357
 #: cps/web.py:3118 cps/web.py:3253
 #, fuzzy
 msgid "title"
@@ -1897,86 +1897,96 @@ msgstr "Google Oauth 错误: {}"
 msgid "OAuth error: {}"
 msgstr "GitHub Oauth 错误: {}"
 
-#: cps/opds.py:163
+#: cps/opds.py:164
 msgid "Alphabetical Books"
 msgstr "字母排序书籍"
 
-#: cps/opds.py:164
+#: cps/opds.py:165
 msgid "Books sorted alphabetically"
 msgstr "按字母排序的书籍"
 
-#: cps/opds.py:169 cps/render_template.py:77
+#: cps/opds.py:170 cps/render_template.py:77
 msgid "Hot Books"
 msgstr "热门书籍"
 
-#: cps/opds.py:170
+#: cps/opds.py:171
 msgid "Popular publications from this catalog based on Downloads."
 msgstr "基于下载数的热门书籍"
 
-#: cps/opds.py:175 cps/render_template.py:91 cps/web.py:719
+#: cps/opds.py:176 cps/render_template.py:91 cps/web.py:719
 msgid "Top Rated Books"
 msgstr "最高评分书籍"
 
-#: cps/opds.py:176
+#: cps/opds.py:177
 msgid "Popular publications from this catalog based on Rating."
 msgstr "基于评分的热门书籍"
 
-#: cps/opds.py:181
+#: cps/opds.py:182
 #, fuzzy
 msgid "Recently added Books"
 msgstr "已下载书籍"
 
-#: cps/opds.py:182
+#: cps/opds.py:183
 msgid "The latest Books"
 msgstr "最新书籍"
 
-#: cps/opds.py:187
+#: cps/opds.py:188
 msgid "Random Books"
 msgstr "随机书籍"
 
-#: cps/opds.py:188 cps/render_template.py:103 cps/templates/user_table.html:161
+#: cps/opds.py:189 cps/render_template.py:103 cps/templates/user_table.html:161
 #: cps/templates/user_table.html:164
 msgid "Show Random Books"
 msgstr "显示随机书籍"
 
-#: cps/opds.py:193 cps/opds.py:194 cps/render_template.py:94 cps/web.py:1084
+#: cps/opds.py:194 cps/opds.py:195 cps/render_template.py:94 cps/web.py:1084
 msgid "Read Books"
 msgstr "已读书籍"
 
-#: cps/opds.py:199 cps/opds.py:200 cps/render_template.py:98 cps/web.py:1087
+#: cps/opds.py:200
+#, fuzzy
+msgid "Currently Reading"
+msgstr "当前版本"
+
+#: cps/opds.py:201
+#, fuzzy
+msgid "Books currently being read"
+msgstr "当前版本"
+
+#: cps/opds.py:206 cps/opds.py:207 cps/render_template.py:98 cps/web.py:1087
 msgid "Unread Books"
 msgstr "未读书籍"
 
-#: cps/opds.py:205 cps/render_template.py:110 cps/spa_strings.py:313
+#: cps/opds.py:212 cps/render_template.py:110 cps/spa_strings.py:313
 #: cps/templates/book_table.html:109 cps/templates/cwa_settings.html:334
 #: cps/templates/cwa_settings.html:336
 #: cps/templates/hardcover_review_matches.html:134
 msgid "Authors"
 msgstr "作者"
 
-#: cps/opds.py:206
+#: cps/opds.py:213
 msgid "Books ordered by Author"
 msgstr "书籍按作者排序"
 
-#: cps/opds.py:211 cps/render_template.py:114 cps/spa_strings.py:526
+#: cps/opds.py:218 cps/render_template.py:114 cps/spa_strings.py:526
 #: cps/templates/book_table.html:115 cps/web.py:2097
 msgid "Publishers"
 msgstr "出版社"
 
-#: cps/opds.py:212
+#: cps/opds.py:219
 msgid "Books ordered by publisher"
 msgstr "书籍按出版社排序"
 
-#: cps/opds.py:217 cps/render_template.py:104 cps/spa_strings.py:330
+#: cps/opds.py:224 cps/render_template.py:104 cps/spa_strings.py:330
 #: cps/templates/book_table.html:110 cps/web.py:2249
 msgid "Categories"
 msgstr "分类"
 
-#: cps/opds.py:218
+#: cps/opds.py:225
 msgid "Books ordered by category"
 msgstr "书籍按分类排序"
 
-#: cps/opds.py:223 cps/render_template.py:107 cps/spa_strings.py:179
+#: cps/opds.py:230 cps/render_template.py:107 cps/spa_strings.py:179
 #: cps/templates/book_edit.html:143 cps/templates/book_table.html:111
 #: cps/templates/cwa_settings.html:362 cps/templates/cwa_settings.html:364
 #: cps/templates/cwa_settings.html:1133
@@ -1985,66 +1995,66 @@ msgstr "书籍按分类排序"
 msgid "Series"
 msgstr "丛书"
 
-#: cps/opds.py:224
+#: cps/opds.py:231
 msgid "Books ordered by series"
 msgstr "书籍按丛书排序"
 
-#: cps/opds.py:229 cps/render_template.py:117 cps/spa_strings.py:449
+#: cps/opds.py:236 cps/render_template.py:117 cps/spa_strings.py:449
 #: cps/templates/book_table.html:113 cps/templates/detail.html:930
 #: cps/templates/search_form.html:108 cps/web.py:2221
 msgid "Languages"
 msgstr "语言"
 
-#: cps/opds.py:230
+#: cps/opds.py:237
 msgid "Books ordered by Languages"
 msgstr "书籍按语言排序"
 
-#: cps/opds.py:235 cps/render_template.py:121 cps/web.py:2181
+#: cps/opds.py:242 cps/render_template.py:121 cps/web.py:2181
 msgid "Ratings"
 msgstr "评分"
 
-#: cps/opds.py:236
+#: cps/opds.py:243
 msgid "Books ordered by Rating"
 msgstr "书籍按评分排序"
 
-#: cps/opds.py:241 cps/render_template.py:124
+#: cps/opds.py:248 cps/render_template.py:124
 msgid "File formats"
 msgstr "文件格式"
 
-#: cps/opds.py:242
+#: cps/opds.py:249
 msgid "Books ordered by file formats"
 msgstr "书籍按文件格式排序"
 
-#: cps/opds.py:247 cps/spa_strings.py:586 cps/templates/layout.html:629
+#: cps/opds.py:254 cps/spa_strings.py:586 cps/templates/layout.html:629
 #: cps/templates/search_form.html:88
 msgid "Shelves"
 msgstr "书架列表"
 
-#: cps/opds.py:248
+#: cps/opds.py:255
 msgid "Books organized in shelves"
 msgstr "书架上的书"
 
-#: cps/opds.py:253
+#: cps/opds.py:260
 #, fuzzy
 msgid "Magic Shelves"
 msgstr "同步所选书架到 Kobo"
 
-#: cps/opds.py:254
+#: cps/opds.py:261
 #, fuzzy
 msgid "Books organized in magic shelves"
 msgstr "书架上的书"
 
-#: cps/opds.py:310
+#: cps/opds.py:317
 #, fuzzy
 msgid "description"
 msgstr "简介"
 
-#: cps/opds.py:820 cps/opds.py:1252
+#: cps/opds.py:827 cps/opds.py:1293
 #, python-brace-format
 msgid "{} Stars"
 msgstr "{} 星"
 
-#: cps/opds.py:1127 cps/search.py:53 cps/search.py:454 cps/spa_strings.py:171
+#: cps/opds.py:1168 cps/search.py:53 cps/search.py:454 cps/spa_strings.py:171
 #: cps/templates/book_edit.html:338 cps/templates/cwa_epub_fixer.html:25
 #: cps/templates/feed.xml:43 cps/templates/index.xml:12
 #: cps/templates/layout.html:313 cps/templates/layout.html:316

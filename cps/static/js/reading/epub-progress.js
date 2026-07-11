@@ -99,6 +99,65 @@ function calculateSectionProgress(){
     return Math.max(0, Math.min(100, Math.round(sectionNorm * 100)));
 }
 
+let cfiSaveTimer = null;
+let pendingCfi = null;
+
+function cfiStorageKey() {
+    return window.calibre && window.calibre.bookUrl
+        ? "calibre.reader.cfi." + window.calibre.bookUrl : null;
+}
+
+function storeCfi(cfi, dirty) {
+    let key = cfiStorageKey();
+    if (key && cfi) {
+        localStorage.setItem(key, JSON.stringify({cfi: cfi, dirty: dirty, savedAt: Date.now()}));
+    }
+}
+
+function persistCfi(cfi, keepalive) {
+    if (!cfi || !window.calibre || !window.calibre.bookmarkUrl) return Promise.resolve();
+    let token = window.calibre.csrfToken || document.querySelector("input[name='csrf_token']")?.value;
+    return fetch(window.calibre.bookmarkUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-CSRFToken': token || ''
+        },
+        body: 'bookmark=' + encodeURIComponent(cfi),
+        credentials: 'same-origin',
+        keepalive: !!keepalive
+    }).then((response) => {
+        if (!response.ok) throw new Error('bookmark save failed');
+        storeCfi(cfi, false);
+    }).catch(() => {
+        storeCfi(cfi, true);
+    });
+}
+
+function scheduleCfiSave(cfi) {
+    pendingCfi = cfi;
+    if (cfiSaveTimer) clearTimeout(cfiSaveTimer);
+    cfiSaveTimer = setTimeout(() => {
+        cfiSaveTimer = null;
+        let currentCfi = pendingCfi;
+        pendingCfi = null;
+        persistCfi(currentCfi, false);
+    }, 800);
+}
+
+function flushCfiSave() {
+    if (cfiSaveTimer) clearTimeout(cfiSaveTimer);
+    cfiSaveTimer = null;
+    let currentCfi = pendingCfi || reader?.rendition?.currentLocation?.()?.start?.cfi;
+    pendingCfi = null;
+    if (currentCfi) persistCfi(currentCfi, true);
+}
+
+document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') flushCfiSave();
+});
+window.addEventListener('pagehide', flushCfiSave);
+
 // register new event emitter locationchange that fires on urlchange
 // source: https://stackoverflow.com/a/52809105/21941129
 (() => {
@@ -151,6 +210,9 @@ window.addEventListener('locationchange',()=>{
             && epub.locations._locations.length > 0) {
         let bookKey = window.calibre.bookUrl;
         localStorage.setItem("calibre.reader.progress." + bookKey, newPos);
+        let cfi = reader && reader.rendition && reader.rendition.currentLocation
+            ? reader.rendition.currentLocation()?.start?.cfi : null;
+        if (cfi) scheduleCfiSave(cfi);
     }
 });
 
@@ -163,29 +225,47 @@ qFinished(()=>{
         return;
     }
     epub.locations.generate().then(()=> {
-        // Restore progress from localStorage if available
+        // A dirty CFI is an unsynced offline edit; otherwise the server is the
+        // source of truth and legacy percentage storage is only a fallback.
         if (window.calibre && window.calibre.bookUrl && reader && reader.rendition) {
             let bookKey = window.calibre.bookUrl;
             let savedProgress = localStorage.getItem("calibre.reader.progress." + bookKey);
-            let hasBookmark = window.calibre.bookmark && window.calibre.bookmark.length > 0;
-            if (savedProgress) {
-                // Try to jump to the saved progress (percentage)
+            let local = null;
+            let restoreCfi = null;
+            try {
+                local = JSON.parse(localStorage.getItem("calibre.reader.cfi." + bookKey) || 'null');
+            } catch (_) { /* corrupt cache falls through */ }
+            if (local && local.dirty && local.cfi) {
+                restoreCfi = local.cfi;
+                persistCfi(local.cfi, false);
+            } else if (window.calibre.bookmark && window.calibre.bookmark.length > 0) {
+                restoreCfi = window.calibre.bookmark;
+            } else if (local && local.cfi) {
+                restoreCfi = local.cfi;
+            } else if (savedProgress) {
                 let percentage = parseInt(savedProgress, 10) / 100;
                 let cfi = epub.locations.cfiFromPercentage(percentage);
                 if (cfi) {
-                    reader.rendition.display(cfi);
+                    restoreCfi = cfi;
                 }
-            } else if (!hasBookmark && window.calibre.kosyncPercent !== null && window.calibre.kosyncPercent !== undefined) {
+            } else if (window.calibre.kosyncPercent !== null && window.calibre.kosyncPercent !== undefined) {
                 let kosyncPercent = parseFloat(window.calibre.kosyncPercent);
                 if (!isNaN(kosyncPercent) && kosyncPercent > 0) {
                     let percentage = kosyncPercent / 100;
                     let cfi = epub.locations.cfiFromPercentage(percentage);
                     if (cfi) {
-                        reader.rendition.display(cfi);
+                        restoreCfi = cfi;
                     }
                 }
             }
+            if (restoreCfi) {
+                return Promise.resolve(reader.rendition.display(restoreCfi));
+            }
         }
-        window.dispatchEvent(new Event('locationchange'))
+    }).catch(() => {
+        // A malformed stale CFI must not prevent the reader's normal progress
+        // event from initializing the UI.
+    }).finally(() => {
+        window.dispatchEvent(new Event('locationchange'));
     });
 })

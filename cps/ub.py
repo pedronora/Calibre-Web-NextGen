@@ -2737,6 +2737,44 @@ def migrate_kobo_bookmark_created_at(engine, _session):
             raise
 
 
+def migrate_bookmark_format_lowercase(engine, _session):
+    """Normalize legacy Bookmark formats and merge case-only duplicates.
+
+    Old classic-reader writes used uppercase formats while the SPA uses
+    lowercase.  SQLite installations upgraded from an older schema can retain
+    both values despite the current NOCASE column declaration.  The largest id
+    is the newest-write proxy because both writers replace rows on save.
+    """
+    with engine.begin() as conn:
+        rows = conn.execute(text(
+            "SELECT name FROM sqlite_master WHERE type='table' AND name='bookmark'"
+        )).fetchall()
+        if not rows:
+            return
+
+        ambiguous = conn.execute(text(
+            "SELECT user_id, book_id, lower(format), COUNT(*) "
+            "FROM bookmark GROUP BY user_id, book_id, lower(format) HAVING COUNT(*) > 1"
+        )).fetchall()
+        merged = conn.execute(text(
+            "DELETE FROM bookmark WHERE id NOT IN ("
+            "SELECT MAX(id) FROM bookmark GROUP BY user_id, book_id, lower(format))"
+        )).rowcount
+        # COLLATE BINARY forces a case-SENSITIVE comparison: the ``format``
+        # column is declared ``COLLATE NOCASE``, so a bare ``format <>
+        # lower(format)`` compares case-insensitively and is always false —
+        # the UPDATE would silently no-op on every NOCASE database and leave
+        # stray uppercase rows behind. Binary comparison lowercases them too.
+        updated = conn.execute(text(
+            "UPDATE bookmark SET format = lower(format) "
+            "WHERE format <> lower(format) COLLATE BINARY"
+        )).rowcount
+        if ambiguous:
+            log.warning("[bookmark-format-migration] merged %d ambiguous case-only groups", len(ambiguous))
+        if merged or updated:
+            log.info("[bookmark-format-migration] merged %d rows; lowercased %d rows", merged, updated)
+
+
 def migrate_Database(_session):
     engine = _session.bind
     add_missing_tables(engine, _session)
@@ -2753,6 +2791,7 @@ def migrate_Database(_session):
     migrate_kobo_unique_constraints(engine, _session)
     migrate_kobo_deleted_book(engine, _session)
     migrate_kobo_bookmark_created_at(engine, _session)
+    migrate_bookmark_format_lowercase(engine, _session)
     # Must run before config_sql.load_configuration (it does — ub.init_db
     # precedes config load in cps/__init__.py) so the flipped value is live
     # the same boot.

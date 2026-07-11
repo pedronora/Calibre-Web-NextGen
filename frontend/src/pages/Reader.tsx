@@ -59,7 +59,7 @@ function loadFont(): number {
 export function Reader({ id }: { id: string }) {
   const t = useT();
   const { data: book, isLoading, error } = useBook(id);
-  const { data: savedBookmark } = useBookmark(id, 'epub');
+  const { data: savedBookmark, isFetched: isBookmarkFetched } = useBookmark(id, 'epub');
   const saveBookmark = useSaveBookmark(id);
 
   const viewerRef = useRef<HTMLDivElement>(null);
@@ -76,6 +76,7 @@ export function Reader({ id }: { id: string }) {
   const colorLabel = (c: HiliteColor) =>
     ({ yellow: t('Yellow'), green: t('Green'), blue: t('Blue'), red: t('Red') })[c];
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const lastCfiRef = useRef<string | null>(null);
   // Hold the freshest saved CFI so it survives re-renders without re-running the effect.
   const savedCfiRef = useRef<string | null>(null);
 
@@ -175,8 +176,10 @@ export function Reader({ id }: { id: string }) {
 
   const persistCfi = useCallback(
     (cfi: string) => {
+      lastCfiRef.current = cfi;
       if (saveTimer.current) clearTimeout(saveTimer.current);
       saveTimer.current = setTimeout(() => {
+        saveTimer.current = null;
         saveBookmark.mutate({ format: 'epub', bookmark: cfi });
       }, 800);
     },
@@ -211,7 +214,7 @@ export function Reader({ id }: { id: string }) {
 
   // Build the rendition once the epub format + its download URL are known.
   useEffect(() => {
-    if (!epubFormat || !viewerRef.current) return;
+    if (!epubFormat || !viewerRef.current || !isBookmarkFetched) return;
     let cancelled = false;
     setRendered(false);
     setRenderError(null);
@@ -310,7 +313,14 @@ export function Reader({ id }: { id: string }) {
 
     return () => {
       cancelled = true;
-      if (saveTimer.current) clearTimeout(saveTimer.current);
+      if (saveTimer.current) {
+        clearTimeout(saveTimer.current);
+        saveTimer.current = null;
+        const cfi = lastCfiRef.current;
+        if (cfi) {
+          void apiPost(`/api/v1/books/${id}/bookmark`, { format: 'epub', bookmark: cfi }, { keepalive: true });
+        }
+      }
       try { renditionRef.current?.destroy(); } catch { /* noop */ }
       try { bookRef.current?.destroy(); } catch { /* noop */ }
       renditionRef.current = null;
@@ -318,7 +328,7 @@ export function Reader({ id }: { id: string }) {
     };
     // Re-render only when the source changes; theme/font are applied imperatively.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [epubFormat?.download_url]);
+  }, [epubFormat?.download_url, isBookmarkFetched]);
 
   // Apply theme / font changes to a live rendition without rebuilding it, and
   // remember the preference across sessions.

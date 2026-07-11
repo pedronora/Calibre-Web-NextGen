@@ -210,6 +210,7 @@ def get_email_status_json():
 @web.route("/ajax/bookmark/<int:book_id>/<book_format>", methods=['POST'])
 @user_login_required
 def set_bookmark(book_id, book_format):
+    book_format = (book_format or "").lower()
     bookmark_key = request.form["bookmark"]
     ub.session.query(ub.Bookmark).filter(and_(ub.Bookmark.user_id == int(current_user.id),
                                               ub.Bookmark.book_id == book_id,
@@ -3415,10 +3416,10 @@ def read_book(book_id, book_format):
     if current_user.is_authenticated:
         bm_q = ub.session.query(ub.Bookmark).filter(and_(ub.Bookmark.user_id == int(current_user.id),
                                                          ub.Bookmark.book_id == book_id,
-                                                         ub.Bookmark.format == book_format.upper())).first()
+                                                         ub.Bookmark.format == book_format.lower())).first()
         if bm_q is None and book_format.lower() in ("epub", "kepub"):
             # fall back to the sibling epub-family format's bookmark
-            sibling = "EPUB" if book_format.lower() == "kepub" else "KEPUB"
+            sibling = "epub" if book_format.lower() == "kepub" else "kepub"
             bm_q = ub.session.query(ub.Bookmark).filter(and_(ub.Bookmark.user_id == int(current_user.id),
                                                              ub.Bookmark.book_id == book_id,
                                                              ub.Bookmark.format == sibling)).first()

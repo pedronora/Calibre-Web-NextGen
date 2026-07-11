@@ -9,6 +9,14 @@ echo "[metadata-change-detector] Watching folder: $WATCH_FOLDER"
 # Create the folder if it doesn't exist
 install -d -o abc -g abc "$WATCH_FOLDER"
 
+# Both watcher backends feed change-log *filenames* (one per line) into the
+# debouncing dispatcher, which coalesces the burst of duplicate events a single
+# save produces into at most one enforcement pass per file and then runs the
+# enforcer. This unifies the inotify and polling paths behind one dedup so one
+# save == one enforcement pass, with no "not found after 3 attempts" spam
+# (fork #802). See scripts/metadata_change_dispatch.py.
+DISPATCHER="/app/calibre-web-automated/scripts/metadata_change_dispatch.py"
+
 # Monitor the folder for new files; on inotify errors, fall back to polling
 run_fallback() {
         echo "[metadata-change-detector] Falling back to polling watcher (inotify unavailable or out of watches)" >&2
@@ -17,10 +25,9 @@ run_fallback() {
                 --interval 5 \
                 --exts "json,log" |
         while read -r events filepath; do
-                filename=$(basename -- "$filepath")
-                echo "[metadata-change-detector] New file detected: $filename"
-                python3 /app/calibre-web-automated/scripts/cover_enforcer.py "--log" "$filename"
-        done
+                basename -- "$filepath"
+        done |
+        python3 "$DISPATCHER" --watch-folder "$WATCH_FOLDER"
 }
 
 # Detect if running under Docker Desktop (Windows/macOS) and prefer polling
@@ -62,9 +69,6 @@ fi
 
 (
         set -o pipefail
-        s6-setuidgid abc inotifywait -m -e close_write -e moved_to --exclude '^.*\.(swp)$' "$WATCH_FOLDER" |
-        while read -r directory events filename; do
-                echo "[metadata-change-detector] New file detected: $filename"
-                python3 /app/calibre-web-automated/scripts/cover_enforcer.py "--log" "$filename"
-        done
+        s6-setuidgid abc inotifywait -m -e close_write -e moved_to --format '%f' --exclude '^.*\.(swp)$' "$WATCH_FOLDER" |
+        python3 "$DISPATCHER" --watch-folder "$WATCH_FOLDER"
 ) || run_fallback

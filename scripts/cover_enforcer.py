@@ -390,8 +390,13 @@ class Enforcer:
                         time.sleep(retry_delay)
                         continue
                     else:
-                        print(f"[cover-metadata-enforcer] WARNING: Log file '{os.path.basename(file_path)}' not found after {max_retries} attempts. "
-                              f"This may be due to a race condition or the file was already processed and deleted.", flush=True)
+                        # Benign: the change log was already consumed by an
+                        # earlier enforcement pass (the detector debounces
+                        # bursts, but a late duplicate can still slip through on
+                        # some filesystems). One calm INFO line, no alarm, no
+                        # second "Skipping" line — see fork #802.
+                        print(f"[cover-metadata-enforcer] INFO: Change log '{os.path.basename(file_path)}' "
+                              f"already processed; nothing to do.", flush=True)
                         return None
                 
                 # Try to read the file
@@ -407,8 +412,10 @@ class Enforcer:
                     time.sleep(retry_delay)
                     continue
                 else:
-                    print(f"[cover-metadata-enforcer] WARNING: Log file '{os.path.basename(file_path)}' not found after {max_retries} attempts. "
-                          f"This may be due to a race condition or the file was already processed and deleted.", flush=True)
+                    # Benign already-consumed case (see the os.path.exists branch
+                    # above and fork #802): a single calm INFO line.
+                    print(f"[cover-metadata-enforcer] INFO: Change log '{os.path.basename(file_path)}' "
+                          f"already processed; nothing to do.", flush=True)
                     return None
             except json.JSONDecodeError as e:
                 if attempt < max_retries - 1:
@@ -932,9 +939,11 @@ def main():
         ### log passed: (args.log), no dir
         log_info = enforcer.read_log()
         
-        # Handle case where log file doesn't exist (race condition)
+        # Handle case where log file doesn't exist (race condition).
+        # read_log() has already logged the reason (a single INFO for the
+        # benign already-processed case, or an ERROR for a malformed log), so
+        # we exit quietly here rather than adding a second line (fork #802).
         if log_info is None:
-            print(f"[cover-metadata-enforcer] Skipping processing due to missing or invalid log file. This is normal if the file was already processed.")
             sys.exit(0)
 
         # If multiple logs exist for the same book, prefer the newest one
@@ -945,7 +954,7 @@ def main():
             enforcer.delete_log(auto=False, log_path=current_log_path)
             log_info = enforcer.read_log(auto=False, log_path=latest_log_path)
             if log_info is None:
-                print(f"[cover-metadata-enforcer] Skipping processing due to missing or invalid log file. This is normal if the file was already processed.")
+                # read_log() already logged the reason; exit quietly (fork #802).
                 sys.exit(0)
         
         book_dir = enforcer.get_book_dir_from_log(log_info)

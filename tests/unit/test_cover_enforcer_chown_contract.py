@@ -4,7 +4,10 @@ Context — the May-13 s6 privilege-drop audit
 (`notes/s6-privilege-drop-audit.md`, autopilot-side):
 
 `metadata-change-detector/run` runs ``cover_enforcer.py`` as root by
-design. ``cover_enforcer`` shells out to ``calibredb`` /
+design (since fork #802 via the ``metadata_change_dispatch.py``
+debouncer, which itself runs as root and invokes the enforcer — the
+privilege model is unchanged, only the invocation is indirected).
+``cover_enforcer`` shells out to ``calibredb`` /
 ``ebook-polish`` to edit the on-disk Calibre tree, then explicitly
 ``os.chown(book_dir, uid, gid)`` back to PUID:PGID so the Flask app
 (which runs as ``abc``) keeps write access to the same files.
@@ -125,19 +128,35 @@ def test_chown_helper_walks_directory_contents():
 
 
 def test_metadata_change_detector_invokes_cover_enforcer():
-    """Inverse pin: the metadata-change-detector run script must
-    still invoke cover_enforcer.py. If a future PR routes around it
-    (e.g. inlines the metadata logic into Flask), the chown invariant
-    above becomes moot and the audit's disposition needs revisiting.
-    Surface that change as a test failure rather than letting it
-    silently land."""
+    """Inverse pin: a change-log event must still reach cover_enforcer.py
+    (which performs the root->abc chown pinned above).
+
+    Since fork #802 the detector run script no longer spawns the enforcer
+    once per raw event; both watcher backends now feed change-log filenames
+    into the debouncing dispatcher (``metadata_change_dispatch.py``), which
+    invokes ``cover_enforcer.py --log <file>`` at most once per file. The
+    enforcer — and therefore its chown contract — is still in the path; only
+    the invocation is indirected through the dispatcher. This test follows
+    that chain so a future PR that routes around the enforcer entirely
+    (e.g. inlines the metadata logic into Flask) still goes red and forces a
+    revisit of notes/s6-privilege-drop-audit.md.
+    """
     run = REPO_ROOT / "root" / "etc" / "s6-overlay" / "s6-rc.d" / "metadata-change-detector" / "run"
     assert run.exists(), f"missing {run}"
-    text = run.read_text()
-    assert "cover_enforcer.py" in text, (
-        "metadata-change-detector no longer calls cover_enforcer.py — "
-        "the chown contract pinned by the other tests in this file is "
-        "now decoupled from the metadata-edit flow. Revisit "
-        "notes/s6-privilege-drop-audit.md and update the audit "
-        "disposition before adjusting these tests."
+    run_text = run.read_text()
+    assert "metadata_change_dispatch.py" in run_text, (
+        "metadata-change-detector no longer feeds the debouncing dispatcher — "
+        "the change-log -> enforcer chain that carries the chown contract has "
+        "been rewired. Revisit notes/s6-privilege-drop-audit.md and update the "
+        "audit disposition before adjusting these tests."
+    )
+
+    dispatcher = REPO_ROOT / "scripts" / "metadata_change_dispatch.py"
+    assert dispatcher.exists(), f"missing {dispatcher}"
+    dispatch_text = dispatcher.read_text()
+    assert "cover_enforcer.py" in dispatch_text, (
+        "the dispatcher no longer invokes cover_enforcer.py — the chown "
+        "contract pinned by the other tests in this file is now decoupled "
+        "from the metadata-edit flow. Revisit notes/s6-privilege-drop-audit.md "
+        "and update the audit disposition before adjusting these tests."
     )

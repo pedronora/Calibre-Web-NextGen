@@ -24,9 +24,10 @@ def test_bookcard_has_quick_edit_affordance():
     src = (_FE / "components" / "BookCard.tsx").read_text()
     # Opt-in prop so shelves/discover rows don't get the control unless asked.
     assert "quickEdit" in src
-    # Navigates straight to the edit route (not the detail page).
+    # Navigates straight to the edit route (not the detail page) — as a real
+    # anchor since #798, so modified clicks (⌘/ctrl) open a new tab natively.
     assert "/edit" in src
-    assert "useLocation" in src or "navigate" in src
+    assert "href={`/book/${book.id}/edit`}" in src
     # A pencil icon, consistent with the detail-page Edit button.
     assert "Pencil" in src
     # Must not appear in multi-select mode: selection is a separate early-return

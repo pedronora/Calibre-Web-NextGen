@@ -1,5 +1,5 @@
 import { Check, X, Pencil } from 'lucide-react';
-import { Link, useLocation } from 'wouter';
+import { Link } from 'wouter';
 import type { Book } from '../lib/api';
 import { useT } from '../lib/i18n';
 import { BookCover } from './BookCover';
@@ -41,7 +41,6 @@ export function BookCard({
   const t = useT();
   const authorStr = book.authors.join(', ');
   const seriesIndexLabel = showSeriesIndex ? formatSeriesIndex(book.series_index) : null;
-  const [, navigate] = useLocation();
 
   // Cover + overlay badges. All non-interactive (pointer-events: none via CSS) so
   // the single wrapping control (link or toggle button) is the only tab stop.
@@ -120,14 +119,20 @@ export function BookCard({
         </button>
       )}
       {quickEdit && (
-        <button
-          type="button"
+        <Link
+          href={`/book/${book.id}/edit`}
           className={styles.quickEditBtn}
           aria-label={t('Edit {title}', { title: book.title })}
-          onClick={() => navigate(`/book/${book.id}/edit`)}
+          // The pencil is a SIBLING of the card link (never nested in an <a>),
+          // so a click can't bubble to the card's own navigation — stopPropagation
+          // keeps that invariant explicit if the layout is ever re-nested.
+          // wouter's <Link> runs SPA navigation only on a plain left-click; on
+          // ⌘/ctrl/shift/alt-click it returns early without preventDefault, so the
+          // browser opens the edit page in a new tab natively (#798).
+          onClick={(e) => e.stopPropagation()}
         >
           <Pencil size={13} strokeWidth={2.5} aria-hidden="true" />
-        </button>
+        </Link>
       )}
     </div>
   );

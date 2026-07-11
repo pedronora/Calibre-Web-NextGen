@@ -1,9 +1,9 @@
-import { useState, Fragment } from 'react';
+import { useState, useEffect, useRef, Fragment } from 'react';
 import { Link, useParams } from 'wouter';
 import { Download, Pencil, Star, Archive, EyeOff, Eye, Send, Highlighter, Image as ImageIcon, Plus, X, BookOpen } from 'lucide-react';
 import {
   useBook, useToggleRead, useToggleFavorite, useToggleArchived, useToggleHidden,
-  useSendToEreader, useMe, useUpdateMetadata,
+  useSendToEreader, useMe, useAccount, useUpdateMetadata,
 } from '../lib/queries';
 import { Pill } from '../components/Pill';
 import { AddToShelf } from '../components/AddToShelf';
@@ -56,16 +56,27 @@ interface SendPanelProps {
   formats: string[];
   pending: boolean;
   banner: { ok: boolean; text: string } | null;
+  /** User's saved e-reader address, used to prefill the recipient field (#715). */
+  defaultEmail: string;
   onSend: (format: string, convert: boolean, emails: string) => void;
 }
 
 /** Compact send-to-e-reader form: pick a format, optionally convert, optionally
- *  override the recipient(s). Empty recipient → user's configured e-reader email. */
-function SendPanel({ formats, pending, banner, onSend }: SendPanelProps) {
+ *  override the recipient(s). The recipient field is prefilled with the user's
+ *  saved e-reader address (#715 — previously the field was blank with only a
+ *  "blank = your e-reader email" hint, so users thought the address was lost).
+ *  Empty recipient still falls back to the saved address server-side. */
+function SendPanel({ formats, pending, banner, defaultEmail, onSend }: SendPanelProps) {
   const t = useT();
   const [format, setFormat] = useState(formats[0] ?? '');
   const [convert, setConvert] = useState(false);
-  const [emails, setEmails] = useState('');
+  const [emails, setEmails] = useState(defaultEmail);
+  const dirty = useRef(false);
+  // The account query (which serves kindle_mail) may resolve after the panel
+  // first mounts; keep seeding the saved address until the user edits the field.
+  useEffect(() => {
+    if (!dirty.current && defaultEmail) setEmails(defaultEmail);
+  }, [defaultEmail]);
   return (
     <div className={styles.sendPanel}>
       <div className={styles.sendRow}>
@@ -76,11 +87,17 @@ function SendPanel({ formats, pending, banner, onSend }: SendPanelProps) {
           </select>
         </label>
         <label className={styles.sendField}>
-          <span>{t('Recipient(s) — blank = your e-reader email')}</span>
+          <span>{t('Recipient(s)')}</span>
           <input
-            type="text" value={emails} placeholder="a@kindle.com, b@kindle.com"
-            onChange={(e) => setEmails(e.target.value)}
+            type="text" value={emails}
+            placeholder={defaultEmail || 'a@kindle.com, b@kindle.com'}
+            onChange={(e) => { dirty.current = true; setEmails(e.target.value); }}
           />
+          {defaultEmail && (
+            <small className={styles.sendHint}>
+              {t('Your saved e-reader address is shown — change it for this send only.')}
+            </small>
+          )}
         </label>
       </div>
       <div className={styles.sendActions}>
@@ -199,6 +216,11 @@ export function BookDetail() {
   const toggleHidden = useToggleHidden(id);
   const sendToEreader = useSendToEreader(id);
   const me = useMe().data;
+  // The send-to-e-reader button only renders when mail is configured + the user
+  // can download, so defer the account fetch (which carries the saved e-reader
+  // address used to prefill the recipient field, #715) until that's possible.
+  const canSend = !!me?.features?.mail_configured && !!me?.role?.download;
+  const savedEreader = useAccount({ enabled: canSend }).data?.kindle_mail ?? '';
   const [sendOpen, setSendOpen] = useState(false);
   const [sendBanner, setSendBanner] = useState<{ ok: boolean; text: string } | null>(null);
 
@@ -405,6 +427,7 @@ export function BookDetail() {
               formats={book.formats.map((f) => f.format)}
               pending={sendToEreader.isPending}
               banner={sendBanner}
+              defaultEmail={savedEreader}
               onSend={(format, convert, emails) => {
                 setSendBanner(null);
                 sendToEreader.mutate(

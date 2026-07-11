@@ -476,3 +476,4 @@
 
 .sendOk { color: var(--success); font-size: var(--fs-sm); }
 .sendErr { color: var(--danger); font-size: var(--fs-sm); }
+.sendHint { color: var(--text-muted); font-size: var(--fs-xs); }

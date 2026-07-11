@@ -684,10 +684,11 @@ export function useSaveBookmark(bookId: string | number) {
 
 // ── Account ──────────────────────────────────────────────────────────────────
 
-export function useAccount() {
+export function useAccount(options?: { enabled?: boolean }) {
   return useQuery<Account>({
     queryKey: ['account'],
     queryFn: () => apiGet<Account>('/api/v1/account'),
+    enabled: options?.enabled ?? true,
   });
 }
 

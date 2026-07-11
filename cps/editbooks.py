@@ -622,6 +622,30 @@ def edit_book_param(param, vals):
             metadata_changed = rating_changed
             log_key = 'rating'
             log_value = vals.get('value', '')
+        elif param == 'pubdate':
+            # Publication date in the redesigned editor (#689). The SPA's
+            # <input type="date"> posts YYYY-MM-DD, but accept the partial
+            # forms (YYYY, YYYY-MM) the classic editor accepts too (#472) via
+            # the shared validator — single source of truth for date parsing.
+            # parse_partial_pubdate raises BEFORE the assignment, so an invalid
+            # value leaves book.pubdate unchanged (rejected, not clobbered —
+            # unlike the classic editor's reset-to-default). Empty clears,
+            # matching the classic editor (reset to the DEFAULT_PUBDATE
+            # sentinel, year 101).
+            pubdate_text = (vals.get('value') or '').strip()
+            try:
+                book.pubdate = parse_partial_pubdate(pubdate_text) if pubdate_text else db.Books.DEFAULT_PUBDATE
+            except ValueError as e:
+                ret = Response(json.dumps({'success': False, 'msg': str(e)}),
+                               mimetype='application/json')
+            else:
+                new_pubdate = (book.pubdate.date().isoformat()
+                               if getattr(book.pubdate, 'year', 0) > 101 else '')
+                ret = Response(json.dumps({'success': True, 'newValue': new_pubdate}),
+                               mimetype='application/json')
+                metadata_changed = True
+                log_key = 'pubdate'
+                log_value = pubdate_text
         elif param == 'is_archived':
             is_archived = change_archived_books(book.id, vals['value'] == "True",
                                                 message="Book {} archive bit set to: {}".format(book.id, vals['value']))

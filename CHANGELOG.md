@@ -16,6 +16,10 @@ is for things you can see or feel when running the app.
 
 ## [Unreleased]
 
+### Added
+
+- **The new UI's book editor has a Publication date field again.** The redesigned editor shipped without the publication-date field the classic editor has, so the date could only be set from the classic UI. The editor now has a "Published" date input — prefilled from the book's current date, and clearable to reset it. This completes the #689 report alongside the metadata autocomplete that shipped in v4.1.9. ([#689](https://github.com/new-usemame/Calibre-Web-NextGen/issues/689))
+
 ### Fixed
 
 - **Reporting an issue from the new UI's Help menu now opens the bug-report form instead of a blank issue.** The "Report Issue on GitHub" link pointed at the blank-issue URL, so reporters landed on an empty textarea rather than the Bug report / Feature request templates defined in the repo. It now opens the issue-template chooser. Thanks to @auspex for the report ([#799](https://github.com/new-usemame/Calibre-Web-NextGen/issues/799)).

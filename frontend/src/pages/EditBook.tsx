@@ -27,6 +27,7 @@ interface FormState {
   languages: string;
   rating: string;
   comments: string;
+  pubdate: string;
   identifiers: Ident[];
 }
 
@@ -73,6 +74,7 @@ export function EditBook({ id }: { id: string }) {
       languages: meta.languages,
       rating: meta.rating ? String(meta.rating) : '',
       comments: meta.comments,
+      pubdate: meta.pubdate || '',
       identifiers: (meta.identifiers || []).map((i) => ({ type: i.type, val: i.val })),
     });
   }, [meta]);
@@ -146,6 +148,7 @@ export function EditBook({ id }: { id: string }) {
       languages: form.languages,
       rating: form.rating ? Number(form.rating) : 0,
       comments: form.comments,
+      pubdate: form.pubdate,
       // Drop blank rows; the backend reconciles the rest against existing rows.
       identifiers: form.identifiers
         .map((i) => ({ type: i.type.trim().toLowerCase(), val: i.val.trim() }))
@@ -206,6 +209,11 @@ export function EditBook({ id }: { id: string }) {
           <MetadataTypeahead field="publishers" multi inputClassName={styles.input}
             value={form.publishers} onChange={(v) => set('publishers', v)}
             aria-label={t('Publishers (comma separated)')} />
+        </Field>
+
+        <Field label={t('Published')} error={fieldErrors.pubdate}>
+          <input className={styles.input} type="date" value={form.pubdate}
+            onChange={(e) => set('pubdate', e.target.value)} />
         </Field>
 
         <div className={styles.row}>

@@ -27,7 +27,7 @@ from ..helper import convert_book_format, save_cover, save_cover_from_url, tags_
 # first because they may restructure the book's directory; the rest follow.
 EDITABLE_FIELDS = [
     "title", "authors", "series", "series_index",
-    "tags", "publishers", "languages", "comments", "rating",
+    "tags", "publishers", "languages", "comments", "rating", "pubdate",
 ]
 
 
@@ -67,6 +67,15 @@ def _editable_metadata(book):
         isoLanguages.get_language_name(get_locale(), l.lang_code)
         for l in (getattr(book, "languages", None) or [])
     ]
+    # Publication date — sentinel year <= 101 (Books.DEFAULT_PUBDATE) reads as
+    # "" so the editor's <input type="date"> shows blank for "no pubdate"
+    # (mirrors serialize_book_detail's null mapping, #689).
+    pubdate_raw = getattr(book, "pubdate", None)
+    pubdate = (
+        pubdate_raw.date().isoformat()
+        if pubdate_raw is not None and getattr(pubdate_raw, "year", 0) > 101
+        else ""
+    )
     return {
         "id": book.id,
         "title": book.title or "",
@@ -81,6 +90,8 @@ def _editable_metadata(book):
         "comments": comments[0].text if comments else "",
         # calibre ratings are stored 0-10 (half-stars); expose 0-5.
         "rating": (rating_rows[0].rating / 2) if rating_rows else 0,
+        # Publication date as YYYY-MM-DD (or "" for the default sentinel), #689.
+        "pubdate": pubdate,
         # ISBN/ASIN/etc. — editable as a table in the SPA (fork #580).
         "identifiers": [
             {"type": i.type, "val": i.val}

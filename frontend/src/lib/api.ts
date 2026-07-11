@@ -249,6 +249,9 @@ export interface BookMetadata {
   languages: string;
   comments: string;
   rating: number;
+  /** Publication date as YYYY-MM-DD, or "" when the book has no pubdate
+   *  (calibre's year-101 DEFAULT_PUBDATE sentinel). Editable in the SPA (#689). */
+  pubdate: string;
   identifiers: { type: string; val: string }[];
   errors?: Record<string, string>;
 }

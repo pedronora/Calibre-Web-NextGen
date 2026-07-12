@@ -3,6 +3,7 @@ import { Router, Route, Switch } from 'wouter';
 import { RouteA11y } from './lib/a11y/useRouteA11y';
 import { BASE_PREFIX } from './lib/api';
 import { bodyFontStack, displayFontStack } from './lib/fonts';
+import { resolveTheme } from './lib/themes';
 import { useMe, useLogout } from './lib/queries';
 import { Login } from './pages/Login';
 import { MagicLink } from './pages/MagicLink';
@@ -58,6 +59,23 @@ export function App() {
     if (display) root.style.setProperty('--font-display', display);
     else root.style.removeProperty('--font-display');
   }, [me?.ui_font_body, me?.ui_font_display]);
+
+  // Apply the user's saved palette after authentication. The pre-boot script
+  // handles the logged-out/loading tree; this keeps it current once `me` loads.
+  useEffect(() => {
+    const stored = me?.theme || 'dark';
+    localStorage.setItem('cwng.theme', stored);
+    document.documentElement.setAttribute('data-theme', resolveTheme(stored));
+
+    if (stored !== 'system') return;
+
+    const media = window.matchMedia('(prefers-color-scheme: light)');
+    const onChange = () => {
+      document.documentElement.setAttribute('data-theme', resolveTheme('system'));
+    };
+    media.addEventListener('change', onChange);
+    return () => media.removeEventListener('change', onChange);
+  }, [me?.theme]);
 
   // #609: the classic UI puts the configured instance title in <title> on every
   // page. Per-page titling + route focus is handled by <RouteA11y> below

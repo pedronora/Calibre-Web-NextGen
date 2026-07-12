@@ -16,23 +16,60 @@
 }
 
 .fallback {
+  position: relative;
   width: 100%;
   height: 100%;
-  background: var(--surface-2);
+  box-sizing: border-box;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: center;
   padding: var(--sp-3);
   border-radius: var(--r-md);
 }
 
+.fallback::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--sp-1);
+  background: var(--accent);
+}
+
 .fallbackTitle {
   font-family: var(--font-display);
-  color: var(--text-muted);
-  font-size: var(--fs-sm);
-  text-align: center;
+  color: var(--text);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semi);
+  line-height: var(--lh-tight);
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
+}
+
+.fallbackAuthor {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  margin-top: var(--sp-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.fallbackMark {
+  /* --accent-text (not --accent): small accent text must clear 4.5:1 on the
+     card surface in every theme; the raw --accent fill is only ~3:1 on light. */
+  color: var(--accent-text);
+  font-family: var(--font-display);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.08em;
+  margin-top: auto;
+  text-transform: uppercase;
 }

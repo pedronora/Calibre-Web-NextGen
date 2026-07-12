@@ -142,7 +142,9 @@
 .coverControls { display: flex; flex-direction: column; gap: var(--sp-2); flex: 1; }
 .coverUploadBtn {
   display: inline-flex; align-items: center; gap: var(--sp-2); cursor: pointer;
-  font-size: var(--fs-sm); color: var(--accent);
+  /* --accent-text (not --accent): accent-as-text must clear 4.5:1 on the light
+     surface; the raw --accent fill is only ~3:1 on Light. */
+  font-size: var(--fs-sm); color: var(--accent-text);
   border: 1px solid var(--border); border-radius: var(--r-md); padding: var(--sp-2) var(--sp-3);
   width: fit-content;
 }

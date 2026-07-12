@@ -136,7 +136,7 @@ export function MagicShelf({ editId }: { editId?: string }) {
 
       <div className={styles.matchRow}>
         {t('Match')}
-        <select value={condition} onChange={(e) => setCondition(e.target.value as 'AND' | 'OR')}>
+        <select aria-label={t('Match condition')} value={condition} onChange={(e) => setCondition(e.target.value as 'AND' | 'OR')}>
           <option value="AND">{t('all rules')}</option>
           <option value="OR">{t('any rule')}</option>
         </select>
@@ -147,13 +147,13 @@ export function MagicShelf({ editId }: { editId?: string }) {
           const ops = isNum(r.id) ? NUM_OPS : TEXT_OPS;
           return (
             <div key={r._k} className={styles.ruleRow}>
-              <select value={r.id} onChange={(e) => {
+              <select aria-label={t('Rule field')} value={r.id} onChange={(e) => {
                 const id = e.target.value;
                 setRule(r._k, { id, operator: (isNum(id) ? NUM_OPS : TEXT_OPS)[0].id });
               }}>
                 {FIELDS.map((f) => <option key={f.id} value={f.id}>{t(f.label)}</option>)}
               </select>
-              <select value={r.operator} onChange={(e) => setRule(r._k, { operator: e.target.value })}>
+              <select aria-label={t('Rule operator')} value={r.operator} onChange={(e) => setRule(r._k, { operator: e.target.value })}>
                 {ops.map((o) => <option key={o.id} value={o.id}>{o.label}</option>)}
               </select>
               <input value={r.value} onChange={(e) => setRule(r._k, { value: e.target.value })}

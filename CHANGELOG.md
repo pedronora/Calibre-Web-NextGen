@@ -16,7 +16,13 @@ is for things you can see or feel when running the app.
 
 ## [Unreleased]
 
-## [v4.1.10] - 2026-07-11
+### Added
+
+- **You can finally choose your theme — and it sticks.** The new interface was dark-only: picking a theme said "Settings saved" but nothing changed, and it was still dark after logging out and back in. There is now a real per-account **Theme** picker in Account settings with six choices — **System** (follows your device's light/dark setting and switches live when it flips), **Light**, **Dark**, **Sepia**, **High contrast**, and **Midnight** (true-black for OLED screens). Your choice applies instantly, is saved to your account, and survives logging out, coming back, and server restarts. Every theme is checked against WCAG AA contrast, and High contrast goes further for low-vision reading. Thanks to @auspex for the report ([#736](https://github.com/new-usemame/Calibre-Web-NextGen/issues/736)).
+
+### Changed
+
+- **Books without a cover now show a clean Calibre-Web NextGen placeholder instead of the old logo card.** Coverless books used to display a generic dark logo image that looked out of place — especially on the new Light and Sepia themes. In the new interface they now get a tasteful typographic cover (the book's title and author on a card that matches your theme); the classic interface, OPDS, and Kobo get a refreshed NextGen placeholder image. Real covers are unchanged.
 
 ### Added
 

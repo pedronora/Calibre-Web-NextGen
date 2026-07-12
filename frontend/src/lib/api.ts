@@ -217,6 +217,7 @@ export interface Account {
   opds_only_shelves_sync: boolean;
   locale: string;
   default_language: string;
+  theme: string;
   ui_font_body: string;
   ui_font_display: string;
   role: Record<string, boolean>;
@@ -234,6 +235,7 @@ export interface ProfileUpdate {
   opds_only_shelves_sync?: boolean;
   locale?: string;
   default_language?: string;
+  theme?: string;
   ui_font_body?: string;
   ui_font_display?: string;
 }

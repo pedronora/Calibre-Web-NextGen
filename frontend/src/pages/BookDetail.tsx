@@ -259,6 +259,10 @@ export function BookDetail() {
             ) : (
               <div className={styles.coverFallback} aria-label={book.title}>
                 <span className={styles.coverFallbackTitle}>{book.title}</span>
+                {book.authors.length > 0 && (
+                  <span className={styles.coverFallbackAuthor}>{book.authors[0].name}</span>
+                )}
+                <span className={styles.coverFallbackMark} aria-hidden="true">NextGen</span>
               </div>
             )}
             {me?.role?.edit && (

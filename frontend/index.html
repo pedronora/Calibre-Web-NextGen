@@ -4,6 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calibre-Web NextGen</title>
+    <script>
+      (function () {
+        try {
+          var s = localStorage.getItem('cwng.theme') || 'dark';
+          if (s === 'system') s = (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', s);
+        } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

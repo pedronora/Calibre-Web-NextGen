@@ -27,7 +27,7 @@ def _user(**kw):
         name="maggie", email="m@example.com", kindle_mail="",
         locale="en", default_language="all", password="HASH",
         kindle_mail_subject="", kobo_only_shelves_sync=0, opds_only_shelves_sync=0,
-        ui_font_body="", ui_font_display="",
+        ui_font_body="", ui_font_display="", theme=1,  # #736: real User always has a theme code
         role_admin=lambda: False, role_passwd=lambda: True,
         role_upload=lambda: False, role_edit=lambda: False,
         role_download=lambda: True, role_delete_books=lambda: False,

@@ -19,6 +19,7 @@ from .. import calibre_db, ub
 from ..cw_login import current_user
 from ..cw_babel import get_available_locale
 from ..helper import valid_password, valid_email, check_email
+from ..ui_themes import ALLOWED_THEME_SLUGS, theme_slug, theme_code
 from .serializers import (SIDEBAR_VISIBILITY_BITS, ORDERABLE_SIDEBAR_KEYS,
                           serialize_sidebar_visibility, serialize_sidebar_order)
 
@@ -74,6 +75,7 @@ def _serialize_account():
         "opds_only_shelves_sync": bool(current_user.opds_only_shelves_sync),
         "locale": current_user.locale,
         "default_language": current_user.default_language,
+        "theme": theme_slug(current_user.theme),
         "ui_font_body": current_user.ui_font_body or "",
         "ui_font_display": current_user.ui_font_display or "",
         "role": {
@@ -129,6 +131,10 @@ def update_profile():
             current_user.locale = data["locale"]
         if "default_language" in data and data["default_language"]:
             current_user.default_language = data["default_language"]
+        if "theme" in data:
+            if data["theme"] not in ALLOWED_THEME_SLUGS:
+                return _err("invalid_request", "Invalid theme option", 400)
+            current_user.theme = theme_code(data["theme"])
         if "ui_font_body" in data:
             val = "" if data["ui_font_body"] is None else data["ui_font_body"]
             if not isinstance(val, str) or val not in ALLOWED_UI_FONT_BODY:

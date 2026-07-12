@@ -10,6 +10,7 @@ import { SpinnerCentered } from '../components/Spinner';
 import { EmptyState } from '../components/EmptyState';
 import { ApiError } from '../lib/api';
 import { UI_BODY_FONTS, UI_DISPLAY_FONTS } from '../lib/fonts';
+import { THEMES, resolveTheme } from '../lib/themes';
 import { useT } from '../lib/i18n';
 import styles from './Account.module.css';
 
@@ -38,7 +39,9 @@ export function Account() {
   const [defaultLanguage, setDefaultLanguage] = useState('');
   const [uiFontBody, setUiFontBody] = useState('');
   const [uiFontDisplay, setUiFontDisplay] = useState('');
+  const [theme, setTheme] = useState('dark');
   const [profileMsg, setProfileMsg] = useState<{ ok: boolean; text: string } | null>(null);
+  const [themeMsg, setThemeMsg] = useState<{ ok: boolean; text: string } | null>(null);
 
   // App passwords
   const [appPwLabel, setAppPwLabel] = useState('');
@@ -61,6 +64,7 @@ export function Account() {
     setOpdsSync(account.opds_only_shelves_sync);
     setLocale(account.locale);
     setDefaultLanguage(account.default_language);
+    setTheme(account.theme || 'dark');
     setUiFontBody(account.ui_font_body || '');
     setUiFontDisplay(account.ui_font_display || '');
   }, [account]);
@@ -88,6 +92,19 @@ export function Account() {
         onSuccess: () => setProfileMsg({ ok: true, text: t('Profile saved.') }),
         onError: (err) =>
           setProfileMsg({ ok: false, text: err instanceof ApiError ? err.message : t('Could not save.') }),
+      },
+    );
+  };
+
+  const onThemeChange = (slug: string) => {
+    setTheme(slug);
+    document.documentElement.setAttribute('data-theme', resolveTheme(slug));
+    localStorage.setItem('cwng.theme', slug);
+    updateProfile.mutate(
+      { theme: slug },
+      {
+        onSuccess: () => setThemeMsg({ ok: true, text: t('Theme saved.') }),
+        onError: () => setThemeMsg({ ok: false, text: t('Could not save theme.') }),
       },
     );
   };
@@ -126,6 +143,7 @@ export function Account() {
   };
 
   const activeRoles = Object.entries(account.role).filter(([, v]) => v);
+  const selectedTheme = THEMES.find((o) => o.slug === theme);
 
   return (
     <main className={styles.container}>
@@ -197,6 +215,23 @@ export function Account() {
               {account.languages.map((l) => <option key={l.id} value={l.id}>{l.name}</option>)}
             </select>
           </div>
+        </div>
+
+        <div className={styles.field}>
+          <label className={styles.label} htmlFor="acc-theme">{t('Theme')}</label>
+          <select id="acc-theme" className={styles.input}
+            value={theme} onChange={(e) => onThemeChange(e.target.value)}>
+            {THEMES.map((o) => <option key={o.slug} value={o.slug}>{t(o.label)}</option>)}
+          </select>
+          {selectedTheme?.hint && (
+            <p className={styles.hint}>{t(selectedTheme.hint)}</p>
+          )}
+          <span
+            className={themeMsg ? (themeMsg.ok ? styles.msgOk : styles.msgErr) : undefined}
+            role="status"
+          >
+            {themeMsg?.text}
+          </span>
         </div>
 
         {/* #701 — per-user UI fonts. Each option previews in its own family

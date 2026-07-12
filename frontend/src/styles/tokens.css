@@ -9,6 +9,14 @@
 @layer reset, base, components, utilities;
 
 :root {
+  /* Dark is the default palette (:root) and also the concrete [data-theme="dark"]
+     target — App.tsx sets data-theme on <html> for every theme incl. dark, and
+     'system' resolves to light/dark live. Only COLOR tokens are overridden per
+     theme below; spacing/typography/radii/motion/z all inherit from here.
+     WCAG 2.2 AA verified: every text/background pair ≥4.5:1 (large ≥3:1), UI
+     accents ≥3:1 — see the contrast table in the PR / theme design note. */
+  color-scheme: dark;
+
   /* ---- Color: surfaces (deep blue-charcoal, layered for depth) ---- */
   --bg:            #141c24;   /* page base (slightly deeper than legacy #161f27) */
   --bg-glow:       #1a2733;   /* top atmosphere of the page gradient */
@@ -98,3 +106,135 @@
   /* ---- Layout ---- */
   --topbar-h: 56px;
 }
+
+/* ============================================================================
+   Per-user themes (#736). Each block overrides ONLY the color tokens; every
+   other token cascades from :root. Applied as <html data-theme="<slug>"> by
+   App.tsx (and the pre-boot inline script in index.html, to avoid a flash of
+   the wrong theme). 'system' is not a block — it resolves to light/dark at
+   runtime. Palettes authored + verified against WCAG 2.2 AA with a contrast
+   checker (0 hard-AA failures across all five concrete themes).
+   ============================================================================ */
+
+/* Dark — explicit alias of :root so data-theme="dark" is unambiguous. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+/* Light — warm paper, near-black warm text, darkened amber for AA on white. */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg:            #f4f1ea;
+  --bg-glow:       #faf8f2;
+  --surface-1:     #ffffff;
+  --surface-2:     #eee9df;
+  --surface-3:     #e7e1d4;
+  --border:        #d9d2c4;
+  --border-strong: #8c8272;
+  --accent:        #a3600f;
+  --accent-hover:  #8c520c;
+  --accent-press:  #77460a;
+  --accent-soft:   rgba(163, 96, 15, 0.12);
+  --accent-ring:   rgba(163, 96, 15, 0.45);
+  --accent-text:   #8a5310;
+  --text:          #23292f;
+  --text-muted:    #54606b;
+  --text-faint:    #59646f;
+  --on-accent:     #ffffff;
+  --danger:        #b12318;
+  --danger-soft:   rgba(177, 35, 24, 0.10);
+  --success:       #1f7a44;
+  /* Shadows are near-invisible on a light surface at dark-theme opacities;
+     drop them so cards read as clean, not smudged. */
+  --elev-1:        0 1px 2px rgba(0,0,0,.06), 0 2px 8px rgba(0,0,0,.05);
+  --elev-2:        0 4px 14px rgba(0,0,0,.09), 0 2px 4px rgba(0,0,0,.06);
+  --elev-3:        0 12px 34px rgba(0,0,0,.14);
+  --cover-shadow:  0 6px 18px rgba(0,0,0,.16);
+}
+
+/* Sepia — warm cream/parchment, dark-brown ink (the requested reading palette). */
+:root[data-theme="sepia"] {
+  color-scheme: light;
+  --bg:            #ece0c8;
+  --bg-glow:       #f3ead6;
+  --surface-1:     #f4ecd9;
+  --surface-2:     #e4d7ba;
+  --surface-3:     #dccdac;
+  --border:        #cdbc99;
+  --border-strong: #877758;
+  --accent:        #8f5411;
+  --accent-hover:  #79470d;
+  --accent-press:  #653c0b;
+  --accent-soft:   rgba(143, 84, 17, 0.13);
+  --accent-ring:   rgba(143, 84, 17, 0.45);
+  --accent-text:   #79490f;
+  --text:          #382d18;
+  --text-muted:    #5a4d31;
+  --text-faint:    #5e5133;
+  --on-accent:     #fbf4e6;
+  --danger:        #9c2c1c;
+  --danger-soft:   rgba(156, 44, 28, 0.12);
+  --success:       #3a6b28;
+  --elev-1:        0 1px 2px rgba(60,40,10,.10), 0 2px 8px rgba(60,40,10,.07);
+  --elev-2:        0 4px 14px rgba(60,40,10,.12), 0 2px 4px rgba(60,40,10,.08);
+  --elev-3:        0 12px 34px rgba(60,40,10,.18);
+  --cover-shadow:  0 6px 18px rgba(60,40,10,.20);
+}
+
+/* High contrast — pure-black ground, pure-white ink, bright amber, hard borders.
+   Text pairs clear AAA (≥7:1); every control has a ≥3:1 visible border. Serves
+   the #736 low-vision reporter directly + the fork's standing WCAG-AA commitment. */
+:root[data-theme="high-contrast"] {
+  color-scheme: dark;
+  --bg:            #000000;
+  --bg-glow:       #000000;
+  --surface-1:     #0a0a0a;
+  --surface-2:     #161616;
+  --surface-3:     #202020;
+  --border:        #8a8a8a;
+  --border-strong: #ffffff;
+  --accent:        #ffb02e;
+  --accent-hover:  #ffc250;
+  --accent-press:  #e69826;
+  --accent-soft:   rgba(255, 176, 46, 0.18);
+  --accent-ring:   rgba(255, 176, 46, 0.75);
+  --accent-text:   #ffc659;
+  --text:          #ffffff;
+  --text-muted:    #ededed;
+  --text-faint:    #d6d6d6;
+  --on-accent:     #000000;
+  --danger:        #ff7c72;
+  --danger-soft:   rgba(255, 124, 114, 0.20);
+  --success:       #5ee08a;
+}
+
+/* Midnight — AMOLED true black (power-saving on OLED phones). Dark family with
+   pure #000 base; text slightly lifted to reduce halation on true black. */
+:root[data-theme="midnight"] {
+  color-scheme: dark;
+  --bg:            #000000;
+  --bg-glow:       #05090d;
+  --surface-1:     #0b1116;
+  --surface-2:     #151d25;
+  --surface-3:     #1e2731;
+  --border:        #232f3a;
+  --border-strong: #55677b;
+  --accent:        #cc7b19;
+  --accent-hover:  #e0902a;
+  --accent-press:  #b86d12;
+  --accent-soft:   rgba(204, 123, 25, 0.14);
+  --accent-ring:   rgba(224, 144, 42, 0.55);
+  --accent-text:   #e6a13f;
+  --text:          #ece8e1;
+  --text-muted:    #a6b2bd;
+  --text-faint:    #98a4af;
+  --on-accent:     #1a1206;
+  --danger:        #e57369;
+  --danger-soft:   rgba(229, 115, 105, 0.14);
+  --success:       #6cc08a;
+  --cover-shadow:  0 6px 18px rgba(0,0,0,.70);
+}
+
+/* Honour reduced-motion for the theme transition (the token change itself is
+   instant; only opt-in transitions elsewhere respect this — kept here as the
+   documented contract). */

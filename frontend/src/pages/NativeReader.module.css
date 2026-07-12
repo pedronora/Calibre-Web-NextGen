@@ -18,7 +18,7 @@
   max-width: 820px; margin: 0 auto;
 }
 .fallback { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; gap: var(--sp-3); color: var(--text-muted); }
-.fallbackBtn { background: var(--accent); color: #fff; border-radius: var(--r-md); padding: var(--sp-2) var(--sp-4); }
+.fallbackBtn { background: var(--accent); color: var(--on-accent); border-radius: var(--r-md); padding: var(--sp-2) var(--sp-4); }
 
 .comic { position: relative; display: flex; align-items: center; justify-content: center; height: 100%; background: #000; }
 .comicPage { max-width: 100%; max-height: 100%; object-fit: contain; }

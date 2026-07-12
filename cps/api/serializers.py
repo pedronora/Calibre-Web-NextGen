@@ -4,6 +4,7 @@
 
 from .. import constants
 from ..clean_html import clean_string
+from ..ui_themes import theme_slug
 
 
 # Fork #585 (@Glennza1962 et al.): map the SPA sidebar's nav entries to the
@@ -75,7 +76,7 @@ def serialize_user(user):
         "id": user.id,
         "name": user.name,
         "locale": user.locale,
-        "theme": user.theme,
+        "theme": theme_slug(user.theme),
         "ui_font_body": user.ui_font_body or "",
         "ui_font_display": user.ui_font_display or "",
         "role": {

@@ -77,7 +77,9 @@ def test_serialize_user_roles():
     u.id, u.name, u.locale, u.theme = 1, "admin", "en", 1
     u.role = constants.ROLE_ADMIN | constants.ROLE_UPLOAD
     out = serialize_user(u)
-    assert out["id"] == 1 and out["name"] == "admin" and out["locale"] == "en" and out["theme"] == 1
+    # #736: serialize_user now emits the SPA theme SLUG (via ui_themes.theme_slug),
+    # not the raw int code. Stored code 1 -> "dark" (the default all existing users sit on).
+    assert out["id"] == 1 and out["name"] == "admin" and out["locale"] == "en" and out["theme"] == "dark"
     assert out["role"]["admin"] is True
     assert out["role"]["upload"] is True
     assert out["role"]["edit"] is False

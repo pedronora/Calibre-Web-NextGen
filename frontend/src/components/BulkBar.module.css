@@ -115,7 +115,7 @@
   padding: var(--sp-2) var(--sp-3); color: var(--text); font-size: var(--fs-sm);
 }
 .metaApply {
-  align-self: flex-end; background: var(--accent); color: #fff;
+  align-self: flex-end; background: var(--accent); color: var(--on-accent);
   border-radius: var(--r-md); padding: var(--sp-2) var(--sp-4); font-size: var(--fs-sm);
 }
 .metaApply:disabled { opacity: 0.5; }

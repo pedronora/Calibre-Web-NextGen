@@ -2874,12 +2874,6 @@ def _handle_edit_user(to_save, content, languages, translations, kobo_support):
             log.error(ex)
             flash(str(ex), category="error")
         return redirect(url_for('admin.admin'))
-    # Theme update for admin editing user (force dark)
-    if 'theme' in to_save:
-        try:
-            content.theme = 1
-        except Exception:
-            pass
     # Proceed with remaining updates (previously skipped when 'theme' in to_save)
     if not ub.session.query(ub.User).filter(ub.User.role.op('&')(constants.ROLE_ADMIN) == constants.ROLE_ADMIN,
                                             ub.User.id != content.id).count() and 'admin_role' not in to_save:

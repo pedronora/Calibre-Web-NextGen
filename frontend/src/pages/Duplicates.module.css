@@ -24,5 +24,7 @@
 .bookTitle { color: var(--text); font-size: var(--fs-sm); font-weight: 600; }
 .bookTitle:hover { color: var(--accent); }
 .bookAuthors { color: var(--text-muted); font-size: var(--fs-xs); }
-.bookFormats { color: var(--text-muted); font-size: var(--fs-xs); text-transform: uppercase; opacity: 0.8; }
+/* No opacity: 0.8 — it dropped --text-muted below 4.5:1 on the Light theme.
+   --text-muted at full opacity is AA on every theme surface. */
+.bookFormats { color: var(--text-muted); font-size: var(--fs-xs); text-transform: uppercase; }
 .bookEdit { color: var(--accent); font-size: var(--fs-xs); flex-shrink: 0; }

@@ -3001,13 +3001,6 @@ def change_profile(kobo_support, hardcover_support, local_oauth_check, oauth_sta
                     ub.session.delete(hidden)
                     log.info(f"User {current_user.id} unhid custom shelf {hidden.shelf_id}")
         
-        # Theme change (force dark)
-        if 'theme' in to_save:
-            try:
-                current_user.theme = 1
-            except Exception:
-                pass
-
         # OPDS root order
         opds_order_raw = to_save.get("opds_root_order", "").strip()
         if opds_order_raw:

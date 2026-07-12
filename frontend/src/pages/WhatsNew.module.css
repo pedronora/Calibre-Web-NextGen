@@ -208,6 +208,23 @@
 .catAdmin   { color: #e0a05f; background: rgba(214, 150, 95, 0.14);  border-color: rgba(214, 150, 95, 0.30); }
 .catHood    { color: var(--text-faint); background: var(--surface-3); border-color: var(--border); }
 
+/* #736 cross-screen theme sweep: the bright category hues above are tuned for
+   the dark surfaces (Dark/Midnight/High-Contrast). On the light-family themes
+   the same hues over a light tint fall to ~2:1, so darken the TEXT to an
+   AA-passing shade of each hue (the tint bg + border keep carrying the colour;
+   the icon+label mean colour is never the sole signal). Verified ≥4.5:1 on both
+   the Light and Sepia composited tints. */
+:root[data-theme="light"] .catReading,
+:root[data-theme="sepia"] .catReading { color: #6f4109; }
+:root[data-theme="light"] .catLibrary,
+:root[data-theme="sepia"] .catLibrary { color: #1f5aa0; }
+:root[data-theme="light"] .catSync,
+:root[data-theme="sepia"] .catSync    { color: #165c34; }
+:root[data-theme="light"] .catAccount,
+:root[data-theme="sepia"] .catAccount { color: #743aa0; }
+:root[data-theme="light"] .catAdmin,
+:root[data-theme="sepia"] .catAdmin   { color: #7a470f; }
+
 /* "Try it" deep link — quiet until hover, then amber. */
 .tryLink {
   display: inline-flex;

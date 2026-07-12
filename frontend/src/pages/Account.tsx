@@ -100,6 +100,8 @@ export function Account() {
   };
 
   const onThemeChange = (slug: string) => {
+    const previousTheme = theme;
+    setThemeMsg(null);
     setTheme(slug);
     document.documentElement.setAttribute('data-theme', resolveTheme(slug));
     localStorage.setItem('cwng.theme', slug);
@@ -107,7 +109,14 @@ export function Account() {
       { theme: slug },
       {
         onSuccess: () => setThemeMsg({ ok: true, text: t('Theme saved.') }),
-        onError: () => setThemeMsg({ ok: false, text: t('Could not save theme.') }),
+        onError: () => {
+          // The server-side User.theme value is the source of truth. Keep the
+          // live preview optimistic, but never leave an unsaved palette active.
+          setTheme(previousTheme);
+          document.documentElement.setAttribute('data-theme', resolveTheme(previousTheme));
+          localStorage.setItem('cwng.theme', previousTheme);
+          setThemeMsg({ ok: false, text: t('Could not save theme.') });
+        },
       },
     );
   };
@@ -238,6 +247,7 @@ export function Account() {
         <div className={styles.field}>
           <label className={styles.label} htmlFor="acc-theme">{t('Theme')}</label>
           <select id="acc-theme" className={styles.input}
+            disabled={updateProfile.isPending}
             value={theme} onChange={(e) => onThemeChange(e.target.value)}>
             {THEMES.map((o) => <option key={o.slug} value={o.slug}>{t(o.label)}</option>)}
           </select>
@@ -245,6 +255,7 @@ export function Account() {
             <p className={styles.hint}>{t(selectedTheme.hint)}</p>
           )}
           <span
+            id="acc-theme-msg"
             className={themeMsg ? (themeMsg.ok ? styles.msgOk : styles.msgErr) : undefined}
             role="status"
           >

@@ -602,6 +602,9 @@ export function useUpdateMetadata(id: string | number) {
       qc.setQueryData(['metadata', String(id)], data);
       // The detail/catalog views show the same fields — refresh them.
       void qc.invalidateQueries({ queryKey: ['book', String(id)] });
+      // A title/author edit can make this book stop matching a restored catalog
+      // search. Remove the old object before the refetch reconciles its page.
+      removeBookFromCache(Number(id));
       void qc.invalidateQueries({ queryKey: ['books'] });
     },
   });

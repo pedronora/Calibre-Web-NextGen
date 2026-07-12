@@ -602,10 +602,12 @@ export function useUpdateMetadata(id: string | number) {
       qc.setQueryData(['metadata', String(id)], data);
       // The detail/catalog views show the same fields — refresh them.
       void qc.invalidateQueries({ queryKey: ['book', String(id)] });
-      // A title/author edit can make this book stop matching a restored catalog
-      // search. Remove the old object before the refetch reconciles its page.
+      // A title/author edit can make this book stop matching both a restored
+      // catalog snapshot and react-query's retained page for that search. Drop
+      // both layers: otherwise the retained page is replayed on remount and
+      // dedupAppend re-adds the stale card before the refetch can return empty.
       removeBookFromCache(Number(id));
-      void qc.invalidateQueries({ queryKey: ['books'] });
+      qc.removeQueries({ queryKey: ['books'] });
     },
   });
 }

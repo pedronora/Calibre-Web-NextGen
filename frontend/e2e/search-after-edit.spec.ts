@@ -9,16 +9,27 @@ async function search(page: Page, title: string) {
 }
 
 test('editing removes a restored book from old-title search results', async ({ page }) => {
+  const initialResponsePromise = page.waitForResponse((response) =>
+    response.url().includes('/api/v1/books?') && response.status() === 200,
+  );
   await page.goto('/app');
-  const initialCard = page.locator('a[href*="/book/"]').first();
-  await expect(initialCard).toBeVisible();
+  const initialPage = await (await initialResponsePromise).json() as BooksPage;
+  const originalBook = initialPage.items.find((book) => book.id && book.title);
+  expect(originalBook, 'initial catalog response had no usable seed book').toBeTruthy();
+  const id = String(originalBook!.id);
+  const oldTitle = String(originalBook!.title);
 
-  const href = await initialCard.getAttribute('href');
-  const id = href?.match(/\/book\/(\d+)/)?.[1];
-  const oldTitle = await initialCard.getAttribute('aria-label');
-  expect(id, 'could not resolve a book id from the grid').toBeTruthy();
-  expect(oldTitle, 'could not resolve the selected book title').toBeTruthy();
-  if (!id || !oldTitle) throw new Error('seed book was missing an id or title');
+  let afterEdit = false;
+  let seenEmptyOldTitleSearch = false;
+  await page.route('**/api/v1/books?**', async (route) => {
+    const term = new URL(route.request().url()).searchParams.get('search');
+    if (term !== oldTitle) return route.continue();
+    seenEmptyOldTitleSearch ||= afterEdit;
+    const body: BooksPage = afterEdit
+      ? { items: [], total: 0 }
+      : { items: [originalBook!], total: 1 };
+    await route.fulfill({ contentType: 'application/json', body: JSON.stringify(body) });
+  });
 
   // Use the real initial search to seed Catalog's scroll snapshot with this card.
   const originalResponsePromise = page.waitForResponse((response) =>
@@ -27,31 +38,10 @@ test('editing removes a restored book from old-title search results', async ({ p
     && response.status() === 200,
   );
   await search(page, oldTitle);
-  const originalResponse = await originalResponsePromise;
-  const originalPage = await originalResponse.json() as BooksPage;
-  const originalBook = originalPage.items.find((book) => String(book.id) === id);
-  expect(originalBook, 'exact-title search did not include the selected book').toBeTruthy();
+  await originalResponsePromise;
   await expect(page.locator(`a[href$="/book/${id}"]`)).toBeVisible();
 
   const newTitle = `#744 edited title ${Date.now()}`;
-  let afterEdit = false;
-  let seenEmptyOldTitleSearch = false;
-
-  await page.route('**/api/v1/books?**', async (route) => {
-    const requestUrl = new URL(route.request().url());
-    const term = requestUrl.searchParams.get('search');
-    if (!afterEdit || term !== oldTitle) return route.continue();
-
-    // After the title changes, the authoritative old-title result is empty.
-    // Without #744's removeBookFromCache(), Catalog restores the saved card and
-    // dedupAppend cannot remove it when this empty page arrives. With the fix,
-    // the restored snapshot is empty and Catalog renders its no-results state.
-    seenEmptyOldTitleSearch = true;
-    await route.fulfill({
-      contentType: 'application/json',
-      body: JSON.stringify({ items: [], total: 0 } satisfies BooksPage),
-    });
-  });
   await page.route(`**/api/v1/books/${id}/metadata`, async (route) => {
     if (route.request().method() !== 'POST') return route.continue();
     afterEdit = true;
@@ -81,6 +71,9 @@ test('editing removes a restored book from old-title search results', async ({ p
     && response.status() === 200,
   );
   const globalSearch = page.getByRole('searchbox', { name: 'Search the library' });
+  if (!await globalSearch.isVisible()) {
+    await page.getByRole('button', { name: 'Search the library' }).click();
+  }
   await globalSearch.fill(oldTitle);
   await globalSearch.press('Enter');
   await restoredResponsePromise;

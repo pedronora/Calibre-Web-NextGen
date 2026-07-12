@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web NextGen\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-12 20:57+0000\n"
+"POT-Creation-Date: 2026-07-12 21:13+0000\n"
 "PO-Revision-Date: 2025-11-17 21:51+0100\n"
 "Last-Translator: Tex <tex@grosist.fr>\n"
 "Language-Team: \n"
@@ -1079,56 +1079,56 @@ msgstr "non installé"
 msgid "Execution permissions missing"
 msgstr "Les permissions d'exécutions manquantes"
 
-#: cps/cover_picker.py:113 cps/spa_strings.py:367
+#: cps/cover_picker.py:121 cps/spa_strings.py:367
 #, fuzzy
 msgid "Back to edit metadata"
 msgstr "modifier les métadonnées"
 
-#: cps/cover_picker.py:116 cps/spa_strings.py:107
+#: cps/cover_picker.py:124 cps/spa_strings.py:107
 #: cps/templates/book_edit.html:39
 msgid "Back to book"
 msgstr ""
 
-#: cps/cover_picker.py:124
+#: cps/cover_picker.py:132
 #, fuzzy, python-format
 msgid "Change cover — %(title)s"
 msgstr " Échanger l’auteur et le titre"
 
-#: cps/cover_picker.py:231
+#: cps/cover_picker.py:240
 msgid "This book's cover is locked. Unlock it first."
 msgstr ""
 
-#: cps/cover_picker.py:244
+#: cps/cover_picker.py:253
 msgid "Provide a cover URL."
 msgstr ""
 
-#: cps/cover_picker.py:251
+#: cps/cover_picker.py:260
 msgid "This book doesn't have an embedded cover we can extract."
 msgstr ""
 
-#: cps/cover_picker.py:255
+#: cps/cover_picker.py:264
 #, fuzzy
 msgid "Unknown cover source."
 msgstr "Erreur de connexion"
 
-#: cps/cover_picker.py:284
+#: cps/cover_picker.py:293
 msgid "Could not save lock state."
 msgstr ""
 
-#: cps/cover_picker.py:331
+#: cps/cover_picker.py:340
 msgid "Only http(s) URLs can be previewed."
 msgstr ""
 
-#: cps/cover_picker.py:355
+#: cps/cover_picker.py:364
 #, fuzzy
 msgid "Could not render the e-reader preview."
 msgstr "Impossible de trouver le répertoire spécifié"
 
-#: cps/cover_picker.py:358
+#: cps/cover_picker.py:367
 msgid "Could not load a source image to preview."
 msgstr ""
 
-#: cps/cover_picker.py:564 cps/cover_picker.py:578 cps/spa_strings.py:419
+#: cps/cover_picker.py:573 cps/cover_picker.py:587 cps/spa_strings.py:419
 msgid "Cover save failed."
 msgstr ""
 

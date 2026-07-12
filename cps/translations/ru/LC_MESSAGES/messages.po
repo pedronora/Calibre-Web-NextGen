@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web NextGen\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-12 20:57+0000\n"
+"POT-Creation-Date: 2026-07-12 21:13+0000\n"
 "PO-Revision-Date: 2026-07-11 09:50+0300\n"
 "Last-Translator: ZIZA\n"
 "Language-Team: \n"
@@ -1047,56 +1047,56 @@ msgstr "не установлено"
 msgid "Execution permissions missing"
 msgstr "Отсутствуют права на выполнение"
 
-#: cps/cover_picker.py:113 cps/spa_strings.py:367
+#: cps/cover_picker.py:121 cps/spa_strings.py:367
 msgid "Back to edit metadata"
 msgstr "Вернуться к редактированию метаданных"
 
-#: cps/cover_picker.py:116 cps/spa_strings.py:107
+#: cps/cover_picker.py:124 cps/spa_strings.py:107
 #: cps/templates/book_edit.html:39
 msgid "Back to book"
 msgstr "Вернуться к книге"
 
-#: cps/cover_picker.py:124
+#: cps/cover_picker.py:132
 #, python-format
 msgid "Change cover — %(title)s"
 msgstr "Изменить обложку - %(title)s"
 
-#: cps/cover_picker.py:231
+#: cps/cover_picker.py:240
 msgid "This book's cover is locked. Unlock it first."
 msgstr "Обложка этой книги заблокирована. Сначала разблокируйте её."
 
-#: cps/cover_picker.py:244
+#: cps/cover_picker.py:253
 msgid "Provide a cover URL."
 msgstr "Укажите URL-адрес обложки."
 
-#: cps/cover_picker.py:251
+#: cps/cover_picker.py:260
 msgid "This book doesn't have an embedded cover we can extract."
 msgstr "У этой книги нет встроенной обложки, которую мы могли бы извлечь."
 
-#: cps/cover_picker.py:255
+#: cps/cover_picker.py:264
 msgid "Unknown cover source."
 msgstr "Неизвестный источник обложки."
 
-#: cps/cover_picker.py:284
+#: cps/cover_picker.py:293
 msgid "Could not save lock state."
 msgstr "Не удалось сохранить состояние блокировки."
 
-#: cps/cover_picker.py:331
+#: cps/cover_picker.py:340
 msgid "Only http(s) URLs can be previewed."
 msgstr ""
 "Предварительный просмотр возможен только для URL-адресов, начинающихся с "
 "http(s)."
 
-#: cps/cover_picker.py:355
+#: cps/cover_picker.py:364
 msgid "Could not render the e-reader preview."
 msgstr "Не удалось отобразить предварительный просмотр для eReader."
 
-#: cps/cover_picker.py:358
+#: cps/cover_picker.py:367
 msgid "Could not load a source image to preview."
 msgstr ""
 "Не удалось загрузить исходное изображение для предварительного просмотра."
 
-#: cps/cover_picker.py:564 cps/cover_picker.py:578 cps/spa_strings.py:419
+#: cps/cover_picker.py:573 cps/cover_picker.py:587 cps/spa_strings.py:419
 msgid "Cover save failed."
 msgstr "Ошибка сохранения обложки."
 

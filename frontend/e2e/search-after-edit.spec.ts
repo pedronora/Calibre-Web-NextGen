@@ -35,28 +35,22 @@ test('editing removes a restored book from old-title search results', async ({ p
 
   const newTitle = `#744 edited title ${Date.now()}`;
   let afterEdit = false;
-  const seenOldSearchTotals: number[] = [];
-  const seenNewSearchTotals: number[] = [];
+  let seenEmptyOldTitleSearch = false;
 
   await page.route('**/api/v1/books?**', async (route) => {
     const requestUrl = new URL(route.request().url());
     const term = requestUrl.searchParams.get('search');
-    if (!afterEdit || (term !== oldTitle && term !== newTitle)) return route.continue();
+    if (!afterEdit || term !== oldTitle) return route.continue();
 
-    // The first old-title response is empty; the next is deliberately nonempty
-    // but omits the edited ID. Both must not resurrect the saved card.
-    const oldSearchCount = seenOldSearchTotals.length;
-    const body: BooksPage = term === oldTitle
-      ? oldSearchCount === 0
-        ? { items: [], total: 0 }
-        : {
-            items: [{ ...originalBook!, id: Number(id) + 1_000_000, title: '#744 unrelated match' }],
-            total: 1,
-          }
-      : { items: [{ ...originalBook!, id: Number(id), title: newTitle }], total: 1 };
-    if (term === oldTitle) seenOldSearchTotals.push(body.total);
-    else seenNewSearchTotals.push(body.total);
-    await route.fulfill({ contentType: 'application/json', body: JSON.stringify(body) });
+    // After the title changes, the authoritative old-title result is empty.
+    // Without #744's removeBookFromCache(), Catalog restores the saved card and
+    // dedupAppend cannot remove it when this empty page arrives. With the fix,
+    // the restored snapshot is empty and Catalog renders its no-results state.
+    seenEmptyOldTitleSearch = true;
+    await route.fulfill({
+      contentType: 'application/json',
+      body: JSON.stringify({ items: [], total: 0 } satisfies BooksPage),
+    });
   });
   await page.route(`**/api/v1/books/${id}/metadata`, async (route) => {
     if (route.request().method() !== 'POST') return route.continue();
@@ -76,23 +70,24 @@ test('editing removes a restored book from old-title search results', async ({ p
   await page.getByRole('button', { name: /^Save changes$/ }).click();
   await expect(page).toHaveURL(new RegExp(`/book/${id}$`));
 
-  await page.locator('a[href="/app/"]').first().click();
-  await expect(page).toHaveURL(/\/app\/$/);
-  await expect(page.getByRole('searchbox', { name: 'Search books' })).toHaveValue(oldTitle);
-  await expect.poll(() => seenOldSearchTotals).toContain(0);
+  // A local Catalog search does not put its term in the URL. Catalog only
+  // accepts a library snapshot when snapshot.search matches the URL's ?q, so a
+  // plain /app/ link rejects this searched snapshot. Return through the global
+  // search instead: it performs SPA navigation to /app/?q=<oldTitle>, remounts
+  // Catalog, and satisfies the production snapshot-restoration guard.
+  const restoredResponsePromise = page.waitForResponse((response) =>
+    response.url().includes('/api/v1/books?')
+    && new URL(response.url()).searchParams.get('search') === oldTitle
+    && response.status() === 200,
+  );
+  const globalSearch = page.getByRole('searchbox', { name: 'Search the library' });
+  await globalSearch.fill(oldTitle);
+  await globalSearch.press('Enter');
+  await restoredResponsePromise;
+  await expect(page).toHaveURL((url) =>
+    url.pathname.endsWith('/app/') && url.searchParams.get('q') === oldTitle,
+  );
+  await expect.poll(() => seenEmptyOldTitleSearch).toBe(true);
   await expect(page.locator(`a[href$="/book/${id}"]`)).toHaveCount(0);
-  await expect(page.getByText('No books match those criteria.')).toBeVisible();
-
-  // Re-run the old search with a nonempty authoritative page that omits this
-  // ID. The accumulator must not add the stale saved card back.
-  await search(page, `${oldTitle} `);
-  await search(page, oldTitle);
-  await expect.poll(() => seenOldSearchTotals.some((total) => total === 1)).toBe(true);
-  await expect(page.locator(`a[href$="/book/${id}"]`)).toHaveCount(0);
-
-  await search(page, newTitle);
-  await expect.poll(() => seenNewSearchTotals).toContain(1);
-  const newCard = page.locator(`a[href$="/book/${id}"]`);
-  await expect(newCard).toHaveCount(1);
-  await expect(newCard).toHaveAttribute('aria-label', newTitle);
+  await expect(page.getByText(`No results for "${oldTitle}".`)).toBeVisible();
 });

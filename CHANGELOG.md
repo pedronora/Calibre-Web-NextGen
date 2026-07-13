@@ -16,6 +16,8 @@ is for things you can see or feel when running the app.
 
 ## [Unreleased]
 
+## [v4.1.12] - 2026-07-13
+
 - **Newly imported books now sync KOReader progress immediately in filename-matching mode.** A book added after server startup could report “No book found” until it was downloaded once or the server restarted, leaving progress detached from the web UI and other devices. Both document identities are now registered as part of ingest. ([#509](https://github.com/new-usemame/Calibre-Web-NextGen/issues/509), [#627](https://github.com/new-usemame/Calibre-Web-NextGen/issues/627))
 - **A replaced side-loaded book no longer stays duplicated in a Kobo's My Books list after the old copy is deleted.** Hard-delete sync now uses the full archive/removal response Kobo firmware honors, while preserving official Kobo-store sync responses and hiding the dead entry from Archive. ([#832](https://github.com/new-usemame/Calibre-Web-NextGen/issues/832))
 

@@ -56,6 +56,71 @@ export interface WhatsNewRelease {
 /** Newest release first. The `whats-new-populate` skill prepends here. */
 export const WHATS_NEW: WhatsNewRelease[] = [
   {
+    version: 'v4.1.12',
+    date: '2026-07-13',
+    items: [
+      {
+        title: 'Fit more books on screen, especially on your phone',
+        body: 'Library View settings now offer Comfortable, Compact, and Dense layouts, so a phone can show two, three, or four complete covers per row instead of one — and wide desktop screens use their full width. Your choice is remembered in that browser, and covers are never cropped.',
+        category: 'Library',
+        link: { to: '/', label: 'Open your library' },
+      },
+      {
+        title: 'Read a series as a list, not just a wall of covers',
+        body: 'Series pages now have a grid/list switch, so you can swap the cover grid for a readable, compact list. The toggle is keyboard- and touch-accessible and remembers your choice.',
+        category: 'Library',
+        link: { to: '/series', label: 'Browse series' },
+      },
+      {
+        title: 'A calmer book page on mobile',
+        body: 'On a phone, book details now keep the cover and title together instead of pushing the description off-screen, collapse long tag lists behind a Show all control after the first eight, and show your synced reading position as a progress bar.',
+        category: 'Library',
+      },
+      {
+        title: 'Keep high-resolution covers even with Amazon metadata turned off',
+        body: 'The cover picker now uses a book’s stored ISBN to offer the high-resolution Amazon cover on its own, so you can leave the sometimes-unreliable Amazon metadata provider disabled without losing that cover source.',
+        category: 'Library',
+      },
+      {
+        title: 'Bring back the Table view from Customize navigation',
+        body: 'If you hide the Table view, you can now restore it right from Customize navigation in the new interface — no need to switch back to the classic view. Open Customize navigation and use Show Table view.',
+        category: 'Library',
+        link: { to: '/table', label: 'Open Table view' },
+      },
+      {
+        title: 'Your book page shows the real filename and current file sizes',
+        body: 'A browser-uploaded book again shows its real imported filename as “Imported as,” instead of an internal timestamp or staging prefix. And reloading metadata now rechecks each file on disk and updates stale EPUB/PDF sizes, so an obsolete size no longer blocks Send to eReader.',
+        category: 'Library',
+      },
+      {
+        title: 'New books sync your KOReader progress right away',
+        body: 'A book added while the server is running used to report “No book found” in KOReader until it was downloaded once or the server restarted, leaving your progress detached. Newly imported books now register for filename-matching sync as part of ingest, so progress flows immediately.',
+        category: 'Sync',
+      },
+      {
+        title: 'A replaced book leaves your Kobo’s list when you delete it',
+        body: 'When you delete a side-loaded book that was replaced, your Kobo’s My Books list no longer keeps a duplicate dead entry. Hard-delete sync now uses the removal response Kobo firmware honors, while official Kobo-store sync keeps working.',
+        category: 'Sync',
+      },
+      {
+        title: 'One tidy sign-in row for magic links and SSO',
+        body: 'The login page no longer stretches magic-link and single-sign-on choices into separate sections. Every configured method now appears in one compact “Login with” row, under the display names you set.',
+        category: 'Account',
+      },
+      {
+        title: 'More of the interface in Russian and French',
+        body: 'Data-driven sidebar, filter, and sort labels now translate like the rest of the interface — Russian picks up the remaining menu translations and French gains the library, search, and sort labels. Set your language in Account settings.',
+        category: 'Under the hood',
+        link: { to: '/account', label: 'Open account settings' },
+      },
+      {
+        title: 'Shelf controls stay inside a phone screen',
+        body: 'On a narrow phone, a shelf’s rename, visibility, Kobo, reorder, and delete controls now wrap within the shelf instead of pushing the page wider than the screen.',
+        category: 'Library',
+      },
+    ],
+  },
+  {
     version: 'v4.1.11',
     date: '2026-07-12',
     items: [

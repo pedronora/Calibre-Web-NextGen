@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web NextGen\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-13 23:40+0000\n"
+"POT-Creation-Date: 2026-07-14 00:51+0000\n"
 "PO-Revision-Date: 2023-01-21 10:00+0700\n"
 "Last-Translator: Arief Hidayat<arihid95@gmail.com>\n"
 "Language-Team: Arief Hidayat <arihid95@gmail.com>\n"
@@ -130,7 +130,7 @@ msgid "UI Configuration"
 msgstr "Pengaturan Antarmuka"
 
 #: cps/admin.py:679 cps/admin.py:1426 cps/db.py:1408 cps/search.py:153
-#: cps/web.py:743 cps/web.py:1073
+#: cps/web.py:672 cps/web.py:1002
 #, python-format
 msgid "Custom Column No.%(column)d does not exist in calibre database"
 msgstr "Kolom Kustom No.%(column)d tidak ada di basis data kaliber"
@@ -430,7 +430,7 @@ msgstr ""
 #: cps/admin.py:2846 cps/admin.py:3108 cps/editbooks.py:1152
 #: cps/editbooks.py:2054 cps/shelf.py:148 cps/shelf.py:226 cps/shelf.py:297
 #: cps/shelf.py:332 cps/shelf.py:389 cps/shelf.py:464 cps/shelf.py:547
-#: cps/shelf.py:672 cps/tasks/convert.py:145 cps/web.py:3192
+#: cps/shelf.py:672 cps/tasks/convert.py:145 cps/web.py:3121
 #, python-format
 msgid "Oops! Database Error: %(error)s."
 msgstr "Kesalahan basis data: %(error)s"
@@ -527,7 +527,7 @@ msgstr "Durasi tidak valid untuk tugas yang ditentukan"
 msgid "Scheduled tasks settings updated"
 msgstr "Pengaturan tugas terjadwal diperbarui"
 
-#: cps/admin.py:2075 cps/admin.py:2219 cps/admin.py:3104 cps/web.py:2631
+#: cps/admin.py:2075 cps/admin.py:2219 cps/admin.py:3104 cps/web.py:2560
 msgid "Oops! An unknown error occurred. Please try again later."
 msgstr "Terjadi kesalahan yang tidak diketahui. Coba lagi nanti."
 
@@ -536,7 +536,7 @@ msgid "Settings DB is not Writeable"
 msgstr "Pengaturan DB tidak dapat ditulisi"
 
 #: cps/admin.py:2098 cps/opds.py:316 cps/opds.py:354 cps/opds.py:357
-#: cps/web.py:3108 cps/web.py:3243
+#: cps/web.py:3037 cps/web.py:3172
 #, fuzzy
 msgid "title"
 msgstr "Judul"
@@ -698,7 +698,7 @@ msgstr "Pengaturan Basis Data diperbarui"
 msgid "Database Configuration"
 msgstr "Pengaturan Basis Data"
 
-#: cps/admin.py:2801 cps/web.py:2600
+#: cps/admin.py:2801 cps/web.py:2529
 msgid "Oops! Please complete all fields."
 msgstr "Harap masukkan seluruh isian!"
 
@@ -732,7 +732,7 @@ msgstr "Tidak dapat menghapus Pengguna Tamu"
 msgid "No admin user remaining, can't delete user"
 msgstr "Tidak ada pengguna admin tersisa, tidak dapat menghapus pengguna"
 
-#: cps/admin.py:3059 cps/web.py:2923
+#: cps/admin.py:3059 cps/web.py:2852
 msgid "Email can't be empty and has to be a valid Email"
 msgstr "Alamat email tidak boleh kosong dan harus berupa email yang valid"
 
@@ -1276,9 +1276,9 @@ msgstr ""
 #: cps/db.py:1776 cps/spa_strings.py:592 cps/templates/config_edit.html:359
 #: cps/templates/config_view_edit.html:79
 #: cps/templates/config_view_edit.html:90 cps/templates/email_edit.html:41
-#: cps/web.py:886 cps/web.py:920 cps/web.py:965 cps/web.py:1005 cps/web.py:1034
-#: cps/web.py:2095 cps/web.py:2132 cps/web.py:2183 cps/web.py:2215
-#: cps/web.py:2254
+#: cps/web.py:815 cps/web.py:849 cps/web.py:894 cps/web.py:934 cps/web.py:963
+#: cps/web.py:2024 cps/web.py:2061 cps/web.py:2112 cps/web.py:2144
+#: cps/web.py:2183
 msgid "None"
 msgstr "Tidak ada"
 
@@ -1372,8 +1372,8 @@ msgstr "Ekstensi berkas '%(ext)s' tidak diizinkan untuk diunggah ke server ini"
 msgid "File to be uploaded must have an extension"
 msgstr "Berkas yang akan diunggah harus memiliki ekstensi"
 
-#: cps/editbooks.py:935 cps/editbooks.py:1674 cps/web.py:853 cps/web.py:3373
-#: cps/web.py:3555 cps/web.py:3705
+#: cps/editbooks.py:935 cps/editbooks.py:1674 cps/web.py:782 cps/web.py:3302
+#: cps/web.py:3484 cps/web.py:3634
 msgid ""
 "Oops! Selected book is unavailable. File does not exist or is not accessible"
 msgstr ""
@@ -1955,7 +1955,7 @@ msgstr "Buku Populer"
 msgid "Popular publications from this catalog based on Downloads."
 msgstr "Publikasi populer dari katalog ini berdasarkan Unduhan."
 
-#: cps/opds.py:176 cps/render_template.py:91 cps/web.py:728
+#: cps/opds.py:176 cps/render_template.py:91 cps/web.py:657
 msgid "Top Rated Books"
 msgstr "Buku Berperingkat Teratas"
 
@@ -1981,7 +1981,7 @@ msgstr "Buku Acak"
 msgid "Show Random Books"
 msgstr "Tampilkan Buku Acak"
 
-#: cps/opds.py:194 cps/opds.py:195 cps/render_template.py:94 cps/web.py:1093
+#: cps/opds.py:194 cps/opds.py:195 cps/render_template.py:94 cps/web.py:1022
 msgid "Read Books"
 msgstr "Buku Telah Dibaca"
 
@@ -1995,7 +1995,7 @@ msgstr "Versi saat ini"
 msgid "Books currently being read"
 msgstr "Versi saat ini"
 
-#: cps/opds.py:206 cps/opds.py:207 cps/render_template.py:98 cps/web.py:1096
+#: cps/opds.py:206 cps/opds.py:207 cps/render_template.py:98 cps/web.py:1025
 msgid "Unread Books"
 msgstr "Buku yang Belum Dibaca"
 
@@ -2011,7 +2011,7 @@ msgid "Books ordered by Author"
 msgstr "Buku yang diurutkan menurut Penulis"
 
 #: cps/opds.py:218 cps/render_template.py:114 cps/spa_strings.py:617
-#: cps/templates/book_table.html:115 cps/web.py:2106
+#: cps/templates/book_table.html:115 cps/web.py:2035
 msgid "Publishers"
 msgstr "Penerbit"
 
@@ -2020,7 +2020,7 @@ msgid "Books ordered by publisher"
 msgstr "Buku yang diurutkan menurut Penerbit"
 
 #: cps/opds.py:224 cps/render_template.py:104 cps/spa_strings.py:395
-#: cps/templates/book_table.html:110 cps/web.py:2258
+#: cps/templates/book_table.html:110 cps/web.py:2187
 msgid "Categories"
 msgstr "Kategori"
 
@@ -2033,7 +2033,7 @@ msgstr "Buku yang diurutkan menurut Kategori"
 #: cps/templates/cwa_settings.html:362 cps/templates/cwa_settings.html:364
 #: cps/templates/cwa_settings.html:1133
 #: cps/templates/hardcover_review_matches.html:140
-#: cps/templates/search_form.html:70 cps/web.py:2138 cps/web.py:2150
+#: cps/templates/search_form.html:70 cps/web.py:2067 cps/web.py:2079
 msgid "Series"
 msgstr "Seri"
 
@@ -2043,7 +2043,7 @@ msgstr "Buku yang diurutkan menurut Seri"
 
 #: cps/opds.py:236 cps/render_template.py:117 cps/spa_strings.py:531
 #: cps/templates/book_table.html:113 cps/templates/detail.html:930
-#: cps/templates/search_form.html:108 cps/web.py:2230
+#: cps/templates/search_form.html:108 cps/web.py:2159
 msgid "Languages"
 msgstr "Bahasa"
 
@@ -2052,7 +2052,7 @@ msgid "Books ordered by Languages"
 msgstr "Buku yang diurutkan menurut Bahasa"
 
 #: cps/opds.py:242 cps/render_template.py:121 cps/spa_strings.py:621
-#: cps/web.py:2190
+#: cps/web.py:2119
 msgid "Ratings"
 msgstr "Peringkat"
 
@@ -2107,7 +2107,7 @@ msgstr "Telusuri"
 
 #: cps/remotelogin.py:76 cps/spa_strings.py:541 cps/templates/layout.html:344
 #: cps/templates/layout.html:385 cps/templates/login.html:11
-#: cps/templates/login.html:39 cps/web.py:2704
+#: cps/templates/login.html:39 cps/web.py:2633
 msgid "Login"
 msgstr "Masuk"
 
@@ -2202,7 +2202,7 @@ msgstr "Tampilkan pilihan peringkat"
 msgid "Show File Formats Section"
 msgstr "Tampilkan pilihan format berkas"
 
-#: cps/render_template.py:128 cps/web.py:1119
+#: cps/render_template.py:128 cps/web.py:1048
 msgid "Archived Books"
 msgstr "Buku yang Diarsipkan"
 
@@ -2219,7 +2219,7 @@ msgstr ""
 msgid "Show Favorites"
 msgstr ""
 
-#: cps/render_template.py:137 cps/web.py:1912
+#: cps/render_template.py:137 cps/web.py:1841
 msgid "Books List"
 msgstr "Daftar Buku"
 
@@ -2666,7 +2666,7 @@ msgstr ""
 msgid "Back to sign in"
 msgstr "Istilah Penelusuran:"
 
-#: cps/spa_strings.py:109 cps/templates/read.html:189
+#: cps/spa_strings.py:109 cps/templates/read.html:197
 msgid "Blue"
 msgstr ""
 
@@ -2791,7 +2791,7 @@ msgstr "Hapus"
 #: cps/templates/book_table.html:66 cps/templates/book_table.html:145
 #: cps/templates/book_table.html:194 cps/templates/duplicates.html:718
 #: cps/templates/modal_dialogs.html:63 cps/templates/modal_dialogs.html:116
-#: cps/templates/read.html:180 cps/templates/user_edit.html:333
+#: cps/templates/read.html:188 cps/templates/user_edit.html:333
 #: cps/templates/user_table.html:150
 msgid "Delete"
 msgstr "Hapus"
@@ -2868,7 +2868,7 @@ msgstr "Gagal masuk dengan Google."
 msgid "Generate"
 msgstr "Kesalahan umum"
 
-#: cps/spa_strings.py:150 cps/templates/read.html:188
+#: cps/spa_strings.py:150 cps/templates/read.html:196
 msgid "Green"
 msgstr ""
 
@@ -3044,7 +3044,7 @@ msgstr "Baca"
 msgid "Reading progress"
 msgstr "Kemajuan"
 
-#: cps/spa_strings.py:189 cps/templates/read.html:187
+#: cps/spa_strings.py:189 cps/templates/read.html:195
 #, fuzzy
 msgid "Red"
 msgstr "Baca"
@@ -3240,7 +3240,7 @@ msgstr "Format Unggahan"
 msgid "Uploading…"
 msgstr "Memuat..."
 
-#: cps/spa_strings.py:232 cps/templates/read.html:186
+#: cps/spa_strings.py:232 cps/templates/read.html:194
 #, fuzzy
 msgid "Yellow"
 msgstr "Izinkan"
@@ -3870,7 +3870,7 @@ msgstr "Gagal masuk dengan Google."
 #: cps/templates/duplicates.html:746 cps/templates/layout.html:828
 #: cps/templates/layout.html:983 cps/templates/modal_dialogs.html:64
 #: cps/templates/modal_dialogs.html:99 cps/templates/modal_dialogs.html:117
-#: cps/templates/modal_dialogs.html:135 cps/templates/read.html:179
+#: cps/templates/modal_dialogs.html:135 cps/templates/read.html:187
 #: cps/templates/schedule_edit.html:46 cps/templates/shelf.html:125
 #: cps/templates/shelf_edit.html:34 cps/templates/tasks.html:94
 #: cps/templates/tasks.html:166 cps/templates/tasks.html:173
@@ -5033,7 +5033,7 @@ msgstr "STARTTLS"
 #: cps/spa_strings.py:648 cps/templates/book_edit.html:313
 #: cps/templates/config_db.html:111 cps/templates/config_edit.html:734
 #: cps/templates/config_view_edit.html:237 cps/templates/email_edit.html:71
-#: cps/templates/read.html:178 cps/templates/schedule_edit.html:47
+#: cps/templates/read.html:186 cps/templates/schedule_edit.html:47
 #: cps/templates/shelf_edit.html:36 cps/templates/shelf_reorder.html:38
 #: cps/templates/user_edit.html:585
 msgid "Save"
@@ -5528,137 +5528,182 @@ msgid "Your saved e-reader address is shown — change it for this send only."
 msgstr ""
 
 #: cps/spa_strings.py:756
-msgid "all rules"
-msgstr ""
+#, fuzzy
+msgid "Book default"
+msgstr "Judul Buku"
 
 #: cps/spa_strings.py:757
 #, fuzzy
-msgid "any rule"
-msgstr "Tambahkan pengguna baru"
+msgid "Could not save reader settings."
+msgstr "Tidak dapat login: %(message)s"
 
 #: cps/spa_strings.py:758
 #, fuzzy
-msgid "begins with"
-msgstr "Masuk dengan Magic Link"
+msgid "Font family"
+msgstr "Pembaruan gagal:"
 
 #: cps/spa_strings.py:759
 #, fuzzy
-msgid "books"
-msgstr "Buku"
+msgid "Font size"
+msgstr "ukuran"
 
-#: cps/spa_strings.py:760
+#: cps/spa_strings.py:760 cps/templates/read.html:132
 #, fuzzy
-msgid "books match"
-msgstr "Tambah ke rak"
+msgid "Line height"
+msgstr "Terang"
 
 #: cps/spa_strings.py:761
-msgid "contains"
-msgstr ""
+#, fuzzy
+msgid "Page margins"
+msgstr "Halaman Selanjutnya"
 
 #: cps/spa_strings.py:762
-msgid "copies"
-msgstr ""
+#, fuzzy
+msgid "Page theme"
+msgstr "Hapus"
 
 #: cps/spa_strings.py:763
 #, fuzzy
-msgid "does not contain"
-msgstr "Deskripsi"
+msgid "Reader settings saved."
+msgstr "Setelan server email diperbarui"
 
 #: cps/spa_strings.py:764
 #, fuzzy
-msgid "e-reader"
-msgstr "Pembaca EPUB"
+msgid "Reading appearance"
+msgstr "Kemajuan"
 
 #: cps/spa_strings.py:765
-msgid "e.g. Unread sci-fi"
+msgid "all rules"
 msgstr ""
 
 #: cps/spa_strings.py:766
 #, fuzzy
+msgid "any rule"
+msgstr "Tambahkan pengguna baru"
+
+#: cps/spa_strings.py:767
+#, fuzzy
+msgid "begins with"
+msgstr "Masuk dengan Magic Link"
+
+#: cps/spa_strings.py:768
+#, fuzzy
+msgid "books"
+msgstr "Buku"
+
+#: cps/spa_strings.py:769
+#, fuzzy
+msgid "books match"
+msgstr "Tambah ke rak"
+
+#: cps/spa_strings.py:770
+msgid "contains"
+msgstr ""
+
+#: cps/spa_strings.py:771
+msgid "copies"
+msgstr ""
+
+#: cps/spa_strings.py:772
+#, fuzzy
+msgid "does not contain"
+msgstr "Deskripsi"
+
+#: cps/spa_strings.py:773
+#, fuzzy
+msgid "e-reader"
+msgstr "Pembaca EPUB"
+
+#: cps/spa_strings.py:774
+msgid "e.g. Unread sci-fi"
+msgstr ""
+
+#: cps/spa_strings.py:775
+#, fuzzy
 msgid "eReader email subject"
 msgstr "Email E-Reader"
 
-#: cps/spa_strings.py:767
+#: cps/spa_strings.py:776
 msgid "ends with"
 msgstr ""
 
-#: cps/spa_strings.py:768
+#: cps/spa_strings.py:777
 #, fuzzy
 msgid "is"
 msgstr "Daftar"
 
-#: cps/spa_strings.py:769
+#: cps/spa_strings.py:778
 msgid "is not"
 msgstr ""
 
-#: cps/spa_strings.py:770
+#: cps/spa_strings.py:779
 msgid "or continue with"
 msgstr ""
 
-#: cps/spa_strings.py:771
+#: cps/spa_strings.py:780
 msgid "shared"
 msgstr ""
 
-#: cps/spa_strings.py:772
+#: cps/spa_strings.py:781
 msgid "to"
 msgstr ""
 
-#: cps/spa_strings.py:773
+#: cps/spa_strings.py:782
 msgid "type (isbn, amazon, doi…)"
 msgstr ""
 
-#: cps/spa_strings.py:774
+#: cps/spa_strings.py:783
 msgid "value"
 msgstr ""
 
-#: cps/spa_strings.py:775
+#: cps/spa_strings.py:784
 msgid "you"
 msgstr ""
 
-#: cps/spa_strings.py:776
+#: cps/spa_strings.py:785
 #, fuzzy, python-brace-format
 msgid "{count} books"
 msgstr "Konversi buku"
 
-#: cps/spa_strings.py:777
+#: cps/spa_strings.py:786
 #, fuzzy, python-brace-format
 msgid "{count} results for \"{query}\""
 msgstr "Hasil untuk:"
 
-#: cps/spa_strings.py:778
+#: cps/spa_strings.py:787
 #, fuzzy, python-brace-format
 msgid "{n} found"
 msgstr "Tag tidak ditemukan"
 
-#: cps/spa_strings.py:779
+#: cps/spa_strings.py:788
 #, python-brace-format
 msgid "{ok} of {total} sources answered"
 msgstr ""
 
-#: cps/spa_strings.py:780
+#: cps/spa_strings.py:789
 #, fuzzy
 msgid "…or paste an image URL"
 msgstr "Sampul"
 
-#: cps/spa_strings.py:781
+#: cps/spa_strings.py:790
 msgid "← Back to book"
 msgstr ""
 
-#: cps/spa_strings.py:782
+#: cps/spa_strings.py:791
 #, fuzzy
 msgid "← Back to sign in"
 msgstr "Istilah Penelusuran:"
 
-#: cps/spa_strings.py:783
+#: cps/spa_strings.py:792
 #, fuzzy
 msgid "← Library"
 msgstr "Dalam Pustaka"
 
-#: cps/spa_strings.py:784
+#: cps/spa_strings.py:793
 msgid "≤"
 msgstr ""
 
-#: cps/spa_strings.py:785
+#: cps/spa_strings.py:794
 msgid "≥"
 msgstr ""
 
@@ -5727,320 +5772,320 @@ msgstr ""
 msgid "No release information available"
 msgstr "Tidak ada informasi rilis yang tersedia"
 
-#: cps/templates/index.html:33 cps/web.py:755
+#: cps/templates/index.html:33 cps/web.py:684
 msgid "Discover (Random Books)"
 msgstr "Temukan (Buku Acak)"
 
-#: cps/web.py:805
+#: cps/web.py:734
 msgid "Hot Books (Most Downloaded)"
 msgstr "Buku Populer (Paling Banyak Diunduh)"
 
-#: cps/web.py:836
+#: cps/web.py:765
 #, python-format
 msgid "Downloaded books by %(user)s"
 msgstr "Buku telah diunduh oleh %(user)s"
 
-#: cps/web.py:869
+#: cps/web.py:798
 #, python-format
 msgid "Author: %(name)s"
 msgstr "Penulis: %(name)s"
 
-#: cps/web.py:905
+#: cps/web.py:834
 #, python-format
 msgid "Publisher: %(name)s"
 msgstr "Penerbit: %(name)s"
 
-#: cps/web.py:933
+#: cps/web.py:862
 #, python-format
 msgid "Series: %(serie)s"
 msgstr "Seri: %(serie)s"
 
-#: cps/web.py:947
+#: cps/web.py:876
 msgid "Rating: None"
 msgstr "Peringkat: Tidak ada"
 
-#: cps/web.py:956
+#: cps/web.py:885
 #, python-format
 msgid "Rating: %(rating)s stars"
 msgstr "Peringkat: %(rating)s★"
 
-#: cps/web.py:987
+#: cps/web.py:916
 #, python-format
 msgid "File format: %(format)s"
 msgstr "Format berkas: %(format)s"
 
-#: cps/web.py:1024
+#: cps/web.py:953
 #, python-format
 msgid "Category: %(name)s"
 msgstr "Kategori: %(name)s"
 
-#: cps/web.py:1053
+#: cps/web.py:982
 #, python-format
 msgid "Language: %(name)s"
 msgstr "Bahasa: %(name)s"
 
-#: cps/web.py:1144
+#: cps/web.py:1073
 #, fuzzy
 msgid "Favorite Books"
 msgstr "Buku Populer"
 
-#: cps/templates/user_edit.html:177 cps/web.py:1168
+#: cps/templates/user_edit.html:177 cps/web.py:1097
 #, fuzzy
 msgid "Hidden Books"
 msgstr "Buku Tersembunyi"
 
-#: cps/web.py:1234
+#: cps/web.py:1163
 #, fuzzy
 msgid "Error loading magic shelf"
 msgstr "Kesalahan menghapus Rak"
 
-#: cps/web.py:1259
+#: cps/web.py:1188
 #, python-format
 msgid "Magic Shelf&nbsp&nbsp&nbsp—&nbsp&nbsp&nbsp%(icon)s %(name)s"
 msgstr ""
 
-#: cps/web.py:1435
+#: cps/web.py:1364
 msgid "No rules provided"
 msgstr ""
 
-#: cps/web.py:1441
+#: cps/web.py:1370
 #, fuzzy
 msgid "Invalid rules format"
 msgstr "Format alamat email tidak valid"
 
-#: cps/web.py:1463
+#: cps/web.py:1392
 msgid "Error processing rules"
 msgstr ""
 
-#: cps/web.py:1467
+#: cps/web.py:1396
 #, fuzzy
 msgid "Invalid request"
 msgstr "Peran tidak valid"
 
-#: cps/web.py:1534
+#: cps/web.py:1463
 msgid "Name and rules are required"
 msgstr ""
 
-#: cps/web.py:1537 cps/web.py:1668
+#: cps/web.py:1466 cps/web.py:1597
 msgid "Shelf name too long (max 100 characters)"
 msgstr ""
 
-#: cps/web.py:1577 cps/web.py:1712
+#: cps/web.py:1506 cps/web.py:1641
 msgid ""
 "Kobo sync for Magic Shelves is disabled globally — this shelf won't reach "
 "your Kobo until 'Sync Magic Shelves to Kobo' is enabled in CWA Settings."
 msgstr ""
 
-#: cps/web.py:1585
+#: cps/web.py:1514
 #, fuzzy
 msgid "Error creating shelf"
 msgstr "Kesalahan menghapus Rak"
 
-#: cps/templates/layout.html:648 cps/web.py:1601
+#: cps/templates/layout.html:648 cps/web.py:1530
 #, fuzzy
 msgid "Create Magic Shelf"
 msgstr "Buat Rak"
 
-#: cps/web.py:1661
+#: cps/web.py:1590
 msgid "Permission denied to change public status"
 msgstr ""
 
-#: cps/web.py:1665
+#: cps/web.py:1594
 #, fuzzy
 msgid "Shelf name is required"
 msgstr "Isian Ini Diperlukan"
 
-#: cps/web.py:1720
+#: cps/web.py:1649
 #, fuzzy
 msgid "Error updating shelf"
 msgstr "Kesalahan menghapus Rak"
 
-#: cps/web.py:1737
+#: cps/web.py:1666
 #, fuzzy
 msgid "Edit Magic Shelf"
 msgstr "Edit Rak"
 
-#: cps/web.py:1754
+#: cps/web.py:1683
 #, fuzzy
 msgid "Shelf not found"
 msgstr "Pengguna tidak ditemukan"
 
-#: cps/web.py:1759
+#: cps/web.py:1688
 msgid "Permission denied"
 msgstr ""
 
-#: cps/web.py:1790
+#: cps/web.py:1719
 #, fuzzy
 msgid "Shelf duplicated successfully"
 msgstr "{} pengguna berhasil dihapus"
 
-#: cps/web.py:1796
+#: cps/web.py:1725
 #, fuzzy
 msgid "Error duplicating shelf"
 msgstr "Kesalahan menghapus Rak"
 
-#: cps/templates/magic_shelf_edit.html:506 cps/web.py:1823
+#: cps/templates/magic_shelf_edit.html:506 cps/web.py:1752
 msgid ""
 "System shelves cannot be deleted. You can hide them in your user profile "
 "settings."
 msgstr ""
 
-#: cps/web.py:1841
+#: cps/web.py:1770
 #, fuzzy
 msgid "Error deleting shelf"
 msgstr "Kesalahan menghapus Rak"
 
-#: cps/web.py:1857
+#: cps/web.py:1786
 msgid ""
 "You cannot hide your own shelves. Delete them instead if you don't want them."
 msgstr ""
 
-#: cps/web.py:1867
+#: cps/web.py:1796
 msgid "Shelf already hidden"
 msgstr ""
 
-#: cps/web.py:1881
+#: cps/web.py:1810
 #, fuzzy
 msgid "Error hiding shelf"
 msgstr "Kesalahan menghapus Rak"
 
-#: cps/web.py:1895
+#: cps/web.py:1824
 msgid "Shelf was not hidden"
 msgstr ""
 
-#: cps/web.py:1904
+#: cps/web.py:1833
 #, fuzzy
 msgid "Error unhiding shelf"
 msgstr "Kesalahan menghapus Rak"
 
-#: cps/templates/admin.html:18 cps/web.py:2065
+#: cps/templates/admin.html:18 cps/web.py:1994
 msgid "Downloads"
 msgstr "Unduhan"
 
-#: cps/web.py:2217
+#: cps/web.py:2146
 msgid "File formats list"
 msgstr "Daftar format berkas"
 
-#: cps/web.py:2464 cps/web.py:2502
+#: cps/web.py:2393 cps/web.py:2431
 #, fuzzy
 msgid "Please configure the SMTP mail settings first..."
 msgstr "Harap atur pengaturan email SMTP terlebih dahulu..."
 
-#: cps/web.py:2468
+#: cps/web.py:2397
 #, fuzzy
 msgid "Oops! Please update your profile with a valid eReader Email."
 msgstr ""
 "Harap perbarui profil Anda dengan alamat e-mail Kirim ke Kindle yang valid."
 
-#: cps/web.py:2490
+#: cps/web.py:2419
 #, python-format
 msgid "Success! Book queued for sending to %(eReadermail)s"
 msgstr "Buku telah diantrikan untuk dikirim ke %(eReadermail)s"
 
-#: cps/web.py:2493 cps/web.py:2570
+#: cps/web.py:2422 cps/web.py:2499
 #, python-format
 msgid "Oops! There was an error sending book: %(res)s"
 msgstr "Oops! Terjadi kesalahan saat mengirim buku: %(res)s"
 
-#: cps/web.py:2510 cps/web.py:2520
+#: cps/web.py:2439 cps/web.py:2449
 msgid "No email addresses selected"
 msgstr ""
 
-#: cps/web.py:2541
+#: cps/web.py:2470
 msgid "Additional email addresses are disabled for your account."
 msgstr ""
 
-#: cps/web.py:2568
+#: cps/web.py:2497
 #, fuzzy
 msgid "Success! Book queued for sending to the selected address(es)!"
 msgstr "Buku telah diantrikan untuk dikirim ke %(eReadermail)s"
 
-#: cps/web.py:2587
+#: cps/web.py:2516
 msgid "Please wait one minute to register next user"
 msgstr ""
 
 #: cps/templates/layout.html:345 cps/templates/layout.html:386
-#: cps/templates/login.html:48 cps/templates/register.html:17 cps/web.py:2588
-#: cps/web.py:2592 cps/web.py:2597 cps/web.py:2601 cps/web.py:2607
-#: cps/web.py:2632 cps/web.py:2636 cps/web.py:2649 cps/web.py:2652
+#: cps/templates/login.html:48 cps/templates/register.html:17 cps/web.py:2517
+#: cps/web.py:2521 cps/web.py:2526 cps/web.py:2530 cps/web.py:2536
+#: cps/web.py:2561 cps/web.py:2565 cps/web.py:2578 cps/web.py:2581
 msgid "Register"
 msgstr "Daftar"
 
-#: cps/web.py:2591 cps/web.py:2751
+#: cps/web.py:2520 cps/web.py:2680
 #, fuzzy
 msgid "Connection error to limiter backend, please contact your administrator"
 msgstr "Server email belum diatur, silakan hubungi administrator!"
 
-#: cps/web.py:2596 cps/web.py:2648
+#: cps/web.py:2525 cps/web.py:2577
 msgid ""
 "Oops! Email server is not configured, please contact your administrator."
 msgstr "Server email belum diatur, silakan hubungi administrator!"
 
-#: cps/web.py:2634
+#: cps/web.py:2563
 msgid "Oops! Your Email is not allowed."
 msgstr "Alamat email Anda tidak diizinkan untuk mendaftar"
 
-#: cps/web.py:2637
+#: cps/web.py:2566
 msgid "Success! Confirmation Email has been sent."
 msgstr "E-mail konfirmasi telah dikirimkan ke alamat email Anda."
 
-#: cps/web.py:2685
+#: cps/web.py:2614
 #, fuzzy
 msgid ""
 "Authentication loop detected. If you're experiencing login issues, please "
 "contact your administrator."
 msgstr "Instans Calibre-Web belum diatur, harap hubungi administrator Anda"
 
-#: cps/web.py:2725
+#: cps/web.py:2654
 #, fuzzy
 msgid ""
 "OAuth authentication is not properly configured. Please contact "
 "administrator."
 msgstr "Server email belum diatur, silakan hubungi administrator!"
 
-#: cps/web.py:2730 cps/web.py:2757
+#: cps/web.py:2659 cps/web.py:2686
 #, fuzzy
 msgid "Cannot activate LDAP authentication"
 msgstr "Tidak dapat mengaktifkan autentikasi LDAP."
 
-#: cps/web.py:2739
+#: cps/web.py:2668
 msgid "Standard login is disabled."
 msgstr ""
 
-#: cps/web.py:2747
+#: cps/web.py:2676
 msgid "Please wait one minute before next login"
 msgstr ""
 
-#: cps/web.py:2765
+#: cps/web.py:2694
 msgid "Username cannot be empty"
 msgstr ""
 
-#: cps/web.py:2777
+#: cps/web.py:2706
 #, fuzzy, python-format
 msgid "you are now logged in as: '%(nickname)s'"
 msgstr "Anda sekarang login sebagai: %(nickname)s"
 
-#: cps/web.py:2796
+#: cps/web.py:2725
 #, fuzzy, python-format
 msgid ""
 "Welcome! Your account has been automatically created. You are now logged in "
 "as: '%(nickname)s'"
 msgstr "Anda sekarang login sebagai: %(nickname)s"
 
-#: cps/web.py:2801 cps/web.py:2804
+#: cps/web.py:2730 cps/web.py:2733
 #, fuzzy
 msgid ""
 "Authentication successful, but account creation failed. Please contact your "
 "administrator."
 msgstr "Instans Calibre-Web belum diatur, harap hubungi administrator Anda"
 
-#: cps/web.py:2808
+#: cps/web.py:2737
 msgid ""
 "Authentication successful, but no local account found. Please contact your "
 "administrator to create your account."
 msgstr ""
 
-#: cps/web.py:2816
+#: cps/web.py:2745
 #, fuzzy, python-format
 msgid ""
 "Fallback Login as: '%(nickname)s', LDAP Server not reachable, or user not "
@@ -6049,55 +6094,55 @@ msgstr ""
 "Login Pengganti sebagai: '%(nickname)s', Server LDAP tidak dapat dijangkau, "
 "atau pengguna tidak diketahui."
 
-#: cps/web.py:2822
+#: cps/web.py:2751
 #, fuzzy, python-format
 msgid "Could not login: %(message)s"
 msgstr "Tidak dapat login: %(message)s"
 
-#: cps/web.py:2845 cps/web.py:2846 cps/web.py:2889
+#: cps/web.py:2774 cps/web.py:2775 cps/web.py:2818
 #, fuzzy
 msgid "Wrong Username or Password"
 msgstr "Pengguna atau Kata Sandi salah"
 
-#: cps/web.py:2854
+#: cps/web.py:2783
 #, fuzzy
 msgid "New Password was sent to your email address"
 msgstr "Kata Sandi baru telah dikirimkan ke alamat email Anda"
 
-#: cps/web.py:2858
+#: cps/web.py:2787
 #, fuzzy
 msgid "An unknown error occurred. Please try again later."
 msgstr "Terjadi kesalahan yang tidak diketahui. Coba lagi nanti."
 
-#: cps/web.py:2860
+#: cps/web.py:2789
 #, fuzzy
 msgid "Please enter valid username to reset password"
 msgstr "Harap masukkan pengguna valid untuk mengatur ulang kata sandi"
 
-#: cps/web.py:2868
+#: cps/web.py:2797
 #, fuzzy, python-format
 msgid "You are now logged in as: '%(nickname)s'"
 msgstr "Anda sekarang login sebagai: %(nickname)s"
 
-#: cps/web.py:3181
+#: cps/web.py:3110
 #, fuzzy
 msgid "Success! Profile Updated"
 msgstr "Profil diperbarui"
 
-#: cps/web.py:3187
+#: cps/web.py:3116
 msgid "Oops! An account already exists for this Email."
 msgstr "Ditemukan akun yang ada untuk alamat email ini"
 
-#: cps/web.py:3321
+#: cps/web.py:3250
 msgid "App-password label must be 1-64 characters."
 msgstr ""
 
-#: cps/web.py:3356
+#: cps/web.py:3285
 #, python-format
 msgid "App password '%(label)s' revoked."
 msgstr ""
 
-#: cps/web.py:3568
+#: cps/web.py:3497
 #, fuzzy
 msgid "Invalid book ID."
 msgstr "Peran tidak valid"
@@ -6829,7 +6874,7 @@ msgstr ""
 msgid "Source: %(s)s"
 msgstr "Seri: %(serie)s"
 
-#: cps/templates/annotations_view.html:45 cps/templates/read.html:184
+#: cps/templates/annotations_view.html:45 cps/templates/read.html:192
 msgid "No annotations on this book yet."
 msgstr ""
 
@@ -10671,61 +10716,61 @@ msgstr ""
 msgid "Text margin"
 msgstr "Halaman Selanjutnya"
 
-#: cps/templates/read.html:132
+#: cps/templates/read.html:140
 msgid "Font"
 msgstr ""
 
-#: cps/templates/read.html:134
+#: cps/templates/read.html:142
 #, fuzzy
 msgid "Default"
 msgstr "Hapus"
 
-#: cps/templates/read.html:135
+#: cps/templates/read.html:143
 msgid "Yahei"
 msgstr ""
 
-#: cps/templates/read.html:136
+#: cps/templates/read.html:144
 msgid "SimSun"
 msgstr ""
 
-#: cps/templates/read.html:137
+#: cps/templates/read.html:145
 #, fuzzy
 msgid "KaiTi"
 msgstr "Menunggu"
 
-#: cps/templates/read.html:138
+#: cps/templates/read.html:146
 #, fuzzy
 msgid "Arial"
 msgstr "Vertical"
 
-#: cps/templates/read.html:143
+#: cps/templates/read.html:151
 #, fuzzy
 msgid "Spread"
 msgstr "Baca"
 
-#: cps/templates/read.html:145
+#: cps/templates/read.html:153
 #, fuzzy
 msgid "Two columns"
 msgstr "Kolom Baca Tidak Valid"
 
-#: cps/templates/read.html:146
+#: cps/templates/read.html:154
 #, fuzzy
 msgid "One column"
 msgstr "Kolom Baca Tidak Valid"
 
-#: cps/templates/read.html:153
+#: cps/templates/read.html:161
 msgid "Reflow text when sidebars are open."
 msgstr "Reflow teks saat sidebar terbuka."
 
-#: cps/templates/read.html:181
+#: cps/templates/read.html:189
 msgid "Note"
 msgstr ""
 
-#: cps/templates/read.html:182
+#: cps/templates/read.html:190
 msgid "Add a note (optional)"
 msgstr ""
 
-#: cps/templates/read.html:183
+#: cps/templates/read.html:191
 msgid "Select within a paragraph to highlight."
 msgstr ""
 

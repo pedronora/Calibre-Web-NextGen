@@ -22,6 +22,7 @@ from cps.services.Metadata import Metadata
 from cps.services.cover_booster import boost_covers
 from . import config, constants, logger, ub, web_server
 from .usermanagement import user_login_required
+from .metadata_constants import metadata_provider_enabled
 
 
 meta = Blueprint("metadata", __name__)
@@ -158,12 +159,6 @@ PROVIDER_KEY_REGISTRY = {
         "signup": "https://console.cloud.google.com/apis/library/books.googleapis.com",
         "help":   "Enable 'Books API' in any Google Cloud project, then create an API key under Credentials.",
     },
-    "goodreads": {
-        "name":   "Goodreads",
-        "config": "config_goodreads_api_key",
-        "signup": "https://www.goodreads.com/api/keys",
-        "help":   "Goodreads' developer API was discontinued in 2020. Existing keys still work for legacy integrations.",
-    },
 }
 
 
@@ -236,13 +231,15 @@ def metadata_provider():
     global_enabled = _get_global_provider_enabled_map()
     provider = list()
     for c in cl:
-        ac = active.get(c.__id__, True)
+        ac = metadata_provider_enabled(c.__id__, active)
         provider.append(
             {
                 "name": c.__name__,
                 "active": ac,
                 "initial": ac,
                 "id": c.__id__,
+                # Global omission means available; best-effort defaults are a
+                # per-user/ingest opt-in, not hidden from the SPA toggle list.
                 "globally_enabled": bool(global_enabled.get(c.__id__, True)),
             }
         )
@@ -367,7 +364,7 @@ def metadata_search():
     # globally). This keeps modal copy stable across reload.
     runnable = {}
     for provider in cl:
-        is_active = active.get(provider.__id__, True)
+        is_active = metadata_provider_enabled(provider.__id__, active)
         is_global = bool(global_enabled.get(provider.__id__, True))
         if not is_active or not is_global:
             provider_status.append({

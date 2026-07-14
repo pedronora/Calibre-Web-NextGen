@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-14 01:53+0000\n"
+"POT-Creation-Date: 2026-07-14 16:19+0000\n"
 "PO-Revision-Date: 2026-05-12 00:06+0200\n"
 "Last-Translator: Gabor L. <nom@il.thx>\n"
 "Language-Team: \n"
@@ -1434,7 +1434,7 @@ msgid "Error editing book: {}"
 msgstr "Hiba a könyv szerkesztésénél: {}"
 
 #: cps/editbooks.py:1250 cps/editbooks.py:1300 cps/editbooks.py:2102
-#: cps/updater.py:674 cps/uploader.py:97 cps/uploader.py:106
+#: cps/updater.py:674 cps/uploader.py:142 cps/uploader.py:151
 msgid "Unknown"
 msgstr "Ismeretlen"
 
@@ -1511,28 +1511,28 @@ msgstr ""
 msgid "Book file not found on disk: %(path)s"
 msgstr "EPUB fájl nem található a lemezen."
 
-#: cps/editbooks.py:2402
+#: cps/editbooks.py:2408
 #, python-format
 msgid "Could not parse metadata from %(format)s file: %(err)s"
 msgstr ""
 
-#: cps/editbooks.py:2521
+#: cps/editbooks.py:2529
 #, fuzzy, python-format
 msgid ""
 "Could not rename the book folder to match the reloaded metadata: %(err)s"
 msgstr "Nem sikerült menteni a zárolási állapotot."
 
-#: cps/editbooks.py:2543
+#: cps/editbooks.py:2551
 #, fuzzy, python-format
 msgid "Could not save reloaded metadata: %(err)s"
 msgstr "Nem sikerült menteni a zárolási állapotot."
 
-#: cps/editbooks.py:2549
+#: cps/editbooks.py:2557
 #, python-format
 msgid "Reloaded %(n)d field(s) from on-disk %(fmt)s"
 msgstr ""
 
-#: cps/editbooks.py:2552
+#: cps/editbooks.py:2560
 msgid "On-disk metadata matches current — no fields updated"
 msgstr ""
 

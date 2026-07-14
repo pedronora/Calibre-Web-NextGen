@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web NextGen\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-14 01:53+0000\n"
+"POT-Creation-Date: 2026-07-14 16:19+0000\n"
 "PO-Revision-Date: 2026-07-11 09:50+0300\n"
 "Last-Translator: ZIZA\n"
 "Language-Team: \n"
@@ -1456,7 +1456,7 @@ msgid "Error editing book: {}"
 msgstr "Ошибка редактирования книги: {}"
 
 #: cps/editbooks.py:1250 cps/editbooks.py:1300 cps/editbooks.py:2102
-#: cps/updater.py:674 cps/uploader.py:97 cps/uploader.py:106
+#: cps/updater.py:674 cps/uploader.py:142 cps/uploader.py:151
 msgid "Unknown"
 msgstr "Неизвестно"
 
@@ -1532,12 +1532,12 @@ msgstr "У книги нет файлов на диске для перезаг�
 msgid "Book file not found on disk: %(path)s"
 msgstr "Файл книги не найден на диске: %(path)s"
 
-#: cps/editbooks.py:2402
+#: cps/editbooks.py:2408
 #, python-format
 msgid "Could not parse metadata from %(format)s file: %(err)s"
 msgstr "Не удалось извлечь метаданные из файла %(format)s: %(err)s"
 
-#: cps/editbooks.py:2521
+#: cps/editbooks.py:2529
 #, python-format
 msgid ""
 "Could not rename the book folder to match the reloaded metadata: %(err)s"
@@ -1545,17 +1545,17 @@ msgstr ""
 "Не удалось переименовать папку книги в соответствии с обновленными "
 "метаданными: %(err)s"
 
-#: cps/editbooks.py:2543
+#: cps/editbooks.py:2551
 #, python-format
 msgid "Could not save reloaded metadata: %(err)s"
 msgstr "Не удалось сохранить перезагруженные метаданные: %(err)s"
 
-#: cps/editbooks.py:2549
+#: cps/editbooks.py:2557
 #, python-format
 msgid "Reloaded %(n)d field(s) from on-disk %(fmt)s"
 msgstr "Перезагружено %(n)d поле(й) из %(fmt)s на диске"
 
-#: cps/editbooks.py:2552
+#: cps/editbooks.py:2560
 msgid "On-disk metadata matches current — no fields updated"
 msgstr "Метаданные на диске совпадают с текущими - поля не обновлены"
 

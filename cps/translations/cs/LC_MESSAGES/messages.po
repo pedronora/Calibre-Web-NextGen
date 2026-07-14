@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web NextGen\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-14 01:53+0000\n"
+"POT-Creation-Date: 2026-07-14 16:19+0000\n"
 "PO-Revision-Date: 2020-06-09 21:11+0100\n"
 "Last-Translator: Lukas Heroudek <lukas.heroudek@gmail.com>\n"
 "Language-Team: \n"
@@ -1388,7 +1388,7 @@ msgid "Error editing book: {}"
 msgstr ""
 
 #: cps/editbooks.py:1250 cps/editbooks.py:1300 cps/editbooks.py:2102
-#: cps/updater.py:674 cps/uploader.py:97 cps/uploader.py:106
+#: cps/updater.py:674 cps/uploader.py:142 cps/uploader.py:151
 msgid "Unknown"
 msgstr "Neznámý"
 
@@ -1464,28 +1464,28 @@ msgstr ""
 msgid "Book file not found on disk: %(path)s"
 msgstr "%(format)s formát nenalezen na disku"
 
-#: cps/editbooks.py:2402
+#: cps/editbooks.py:2408
 #, python-format
 msgid "Could not parse metadata from %(format)s file: %(err)s"
 msgstr ""
 
-#: cps/editbooks.py:2521
+#: cps/editbooks.py:2529
 #, python-format
 msgid ""
 "Could not rename the book folder to match the reloaded metadata: %(err)s"
 msgstr ""
 
-#: cps/editbooks.py:2543
+#: cps/editbooks.py:2551
 #, python-format
 msgid "Could not save reloaded metadata: %(err)s"
 msgstr ""
 
-#: cps/editbooks.py:2549
+#: cps/editbooks.py:2557
 #, python-format
 msgid "Reloaded %(n)d field(s) from on-disk %(fmt)s"
 msgstr ""
 
-#: cps/editbooks.py:2552
+#: cps/editbooks.py:2560
 msgid "On-disk metadata matches current — no fields updated"
 msgstr ""
 

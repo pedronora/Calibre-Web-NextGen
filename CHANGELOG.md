@@ -16,6 +16,8 @@ is for things you can see or feel when running the app.
 
 ## [Unreleased]
 
+## [v4.1.13] - 2026-07-14
+
 ### Added
 
 - **Metadata searches for English and Dutch books can now find Goodreads and bol.com results after you opt in to their clearly labeled best-effort providers.** Both are off by default, require no API key, use hard request timeouts, and leave other enabled sources working if either website blocks a request or changes its pages. ([#303](https://github.com/new-usemame/Calibre-Web-NextGen/issues/303), [#315](https://github.com/new-usemame/Calibre-Web-NextGen/issues/315))

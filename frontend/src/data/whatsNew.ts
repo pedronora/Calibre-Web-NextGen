@@ -56,6 +56,72 @@ export interface WhatsNewRelease {
 /** Newest release first. The `whats-new-populate` skill prepends here. */
 export const WHATS_NEW: WhatsNewRelease[] = [
   {
+    version: 'v4.1.13',
+    date: '2026-07-14',
+    items: [
+      {
+        title: 'Reloading metadata no longer renames your books',
+        body: 'Reload metadata now reads PDF, FB2, comic, audio, EPUB, and KEPUB files, not just EPUBs, and applies only the details a file actually contains. A book whose file has no title or author keeps the title and authors you curated instead of being renamed after its filename, and editors can run it from the new book page. Uploading a PDF also picks up the author recorded inside the file.',
+        category: 'Library',
+      },
+      {
+        title: 'Your KOReader highlights come back to the library',
+        body: 'Highlights and notes you make in KOReader can now sync into Calibre-Web NextGen and appear in the Highlights list on each book’s page. They survive edits from more than one device, so notes made on your phone and your e-reader don’t overwrite each other.',
+        category: 'Sync',
+      },
+      {
+        title: 'Two more places to find book metadata',
+        body: 'Metadata search can now pull results from Goodreads and bol.com once you turn on their best-effort providers, which helps for English and Dutch books. Both are off by default and need no API key; if either site blocks a request, your other enabled sources keep working.',
+        category: 'Library',
+      },
+      {
+        title: 'Set a default view for your library',
+        body: 'If you always want the same starting filter — hiding comics by tag, say — you can now save any advanced search as your library’s default view. The choice follows you across devices, with a one-click way to clear it.',
+        category: 'Library',
+        link: { to: '/search', label: 'Open search' },
+      },
+      {
+        title: 'See when each book was added and last changed',
+        body: 'Book details and the sortable table now show when a book was added to your library and when its metadata last changed, restoring information that was only visible in the classic interface.',
+        category: 'Library',
+        link: { to: '/table', label: 'Open Table view' },
+      },
+      {
+        title: 'Fix a book title without leaving the table',
+        body: 'Editors can now correct a book’s title directly in the sortable table, with keyboard-friendly Save and Cancel controls. Viewers still see a read-only table.',
+        category: 'Library',
+        link: { to: '/table', label: 'Open Table view' },
+      },
+      {
+        title: 'Your reading layout follows you everywhere',
+        body: 'The new in-browser reader now keeps your font, text size, margins, line height, and page theme with your account, so your preferred layout carries between browsers and between the classic and new interfaces. Changing one setting no longer wipes the others, and the appearance panel works with touch and keyboard on phones and desktops.',
+        category: 'Reading',
+      },
+      {
+        title: 'Load your grid the way you like it',
+        body: 'Book grids can now load a set number of complete rows at any cover density, Discover honors the random-book count your server sets, and on touch screens the Read now action lines up along the bottom of each card.',
+        category: 'Library',
+        link: { to: '/', label: 'Open your library' },
+      },
+      {
+        title: 'Build moving-date smart shelves in the new interface',
+        body: 'The new interface’s smart-shelf rule builder now offers Publication Date and Date Added fields with day-based operators, so a shelf like “added in the last 30 days” keeps itself up to date. This was previously only possible in the classic builder.',
+        category: 'Library',
+        link: { to: '/shelves', label: 'Open your shelves' },
+      },
+      {
+        title: 'Hardcover reports its status correctly',
+        body: 'The Fetch Metadata Keys panel now shows Hardcover as Configured when its token comes from an environment variable or a secret file, instead of looking unset. Hardcover auto-fetch also records each run on the Stats & Activity page, which had been staying blank even though the work finished.',
+        category: 'Under the hood',
+      },
+      {
+        title: 'The favorite star updates the moment you click',
+        body: 'On the classic book page, the favorite star now fills or empties as soon as you click it, instead of waiting for the page to reload.',
+        category: 'Library',
+      },
+    ],
+  },
+  {
     version: 'v4.1.12',
     date: '2026-07-13',
     items: [

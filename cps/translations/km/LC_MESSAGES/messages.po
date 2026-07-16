@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web NextGen\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-16 00:52+0000\n"
+"POT-Creation-Date: 2026-07-15 20:54-0400\n"
 "PO-Revision-Date: 2018-08-27 17:06+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "Generated-By: Babel 2.13.1\n"
 
-#: cps/about.py:65 cps/spa_strings.py:735
+#: cps/about.py:65 cps/spa_strings.py:790
 msgid "Statistics"
 msgstr "ស្ថិតិ"
 
@@ -144,7 +144,7 @@ msgstr ""
 msgid "Edit Users"
 msgstr "អ្នកប្រើប្រាស់រដ្ឋបាល"
 
-#: cps/admin.py:748 cps/opds.py:1311 cps/spa_strings.py:361
+#: cps/admin.py:748 cps/opds.py:1311 cps/spa_strings.py:383
 #: cps/templates/grid.html:14 cps/templates/list.html:19
 msgid "All"
 msgstr ""
@@ -339,7 +339,7 @@ msgid ""
 "the device will receive on next sync"
 msgstr ""
 
-#: cps/admin.py:1424 cps/api/browse.py:79 cps/spa_strings.py:61
+#: cps/admin.py:1424 cps/api/browse.py:79 cps/spa_strings.py:83
 msgid "Tag not found"
 msgstr ""
 
@@ -421,7 +421,7 @@ msgstr ""
 #: cps/admin.py:2865 cps/admin.py:3127 cps/editbooks.py:1157
 #: cps/editbooks.py:2059 cps/shelf.py:148 cps/shelf.py:226 cps/shelf.py:297
 #: cps/shelf.py:332 cps/shelf.py:389 cps/shelf.py:464 cps/shelf.py:547
-#: cps/shelf.py:672 cps/tasks/convert.py:145 cps/web.py:3135
+#: cps/shelf.py:672 cps/tasks/convert.py:145 cps/web.py:3140
 #, python-format
 msgid "Oops! Database Error: %(error)s."
 msgstr ""
@@ -511,7 +511,7 @@ msgstr ""
 msgid "Scheduled tasks settings updated"
 msgstr ""
 
-#: cps/admin.py:2082 cps/admin.py:2226 cps/admin.py:3123 cps/web.py:2565
+#: cps/admin.py:2082 cps/admin.py:2226 cps/admin.py:3123 cps/web.py:2570
 msgid "Oops! An unknown error occurred. Please try again later."
 msgstr ""
 
@@ -520,7 +520,7 @@ msgid "Settings DB is not Writeable"
 msgstr ""
 
 #: cps/admin.py:2105 cps/opds.py:316 cps/opds.py:354 cps/opds.py:357
-#: cps/web.py:3051 cps/web.py:3186
+#: cps/web.py:3056 cps/web.py:3191
 #, fuzzy
 msgid "title"
 msgstr "ចំណងជើង"
@@ -683,7 +683,7 @@ msgstr "ទំនាក់ទំនងទៅមូលដ្ឋានទិន្
 msgid "Database Configuration"
 msgstr "ការកំណត់មុខងារ"
 
-#: cps/admin.py:2820 cps/web.py:2530
+#: cps/admin.py:2820 cps/web.py:2535
 msgid "Oops! Please complete all fields."
 msgstr "សូមបំពេញចន្លោះទាំងអស់!"
 
@@ -717,7 +717,7 @@ msgstr ""
 msgid "No admin user remaining, can't delete user"
 msgstr ""
 
-#: cps/admin.py:3078 cps/web.py:2866
+#: cps/admin.py:3078 cps/web.py:2871
 msgid "Email can't be empty and has to be a valid Email"
 msgstr ""
 
@@ -984,12 +984,11 @@ msgstr "មិនបានតម្លើង"
 msgid "Execution permissions missing"
 msgstr ""
 
-#: cps/cover_picker.py:121 cps/spa_strings.py:385
-#, fuzzy
+#: cps/cover_picker.py:121 cps/spa_strings.py:407
 msgid "Back to edit metadata"
-msgstr "កែប្រែទិន្នន័យមេតា"
+msgstr ""
 
-#: cps/cover_picker.py:124 cps/spa_strings.py:124
+#: cps/cover_picker.py:124 cps/spa_strings.py:146
 #: cps/templates/book_edit.html:39
 msgid "Back to book"
 msgstr ""
@@ -1032,7 +1031,7 @@ msgstr ""
 msgid "Could not load a source image to preview."
 msgstr ""
 
-#: cps/cover_picker.py:573 cps/cover_picker.py:587 cps/spa_strings.py:448
+#: cps/cover_picker.py:573 cps/cover_picker.py:587 cps/spa_strings.py:477
 msgid "Cover save failed."
 msgstr ""
 
@@ -1188,10 +1187,9 @@ msgstr ""
 msgid "Invalid book selection."
 msgstr ""
 
-#: cps/cwa_functions.py:2260 cps/spa_strings.py:401
-#, fuzzy
+#: cps/cwa_functions.py:2260 cps/spa_strings.py:414
 msgid "Book not found."
-msgstr "រកមិនឃើញវត្ថុតាង"
+msgstr ""
 
 #: cps/cwa_functions.py:2266
 msgid "Selected book has no EPUB format."
@@ -1249,12 +1247,12 @@ msgstr ""
 msgid "Calibre-Web NextGen Profile Picture Management (WIP)"
 msgstr ""
 
-#: cps/db.py:1776 cps/spa_strings.py:613 cps/templates/config_edit.html:359
-#: cps/templates/config_view_edit.html:79
+#: cps/db.py:1776 cps/spa_strings.py:57 cps/spa_strings.py:667
+#: cps/templates/config_edit.html:359 cps/templates/config_view_edit.html:79
 #: cps/templates/config_view_edit.html:90 cps/templates/email_edit.html:41
 #: cps/web.py:816 cps/web.py:850 cps/web.py:895 cps/web.py:935 cps/web.py:964
-#: cps/web.py:2025 cps/web.py:2062 cps/web.py:2113 cps/web.py:2145
-#: cps/web.py:2184
+#: cps/web.py:2030 cps/web.py:2067 cps/web.py:2118 cps/web.py:2150
+#: cps/web.py:2189
 msgid "None"
 msgstr "គ្មាន"
 
@@ -1346,8 +1344,8 @@ msgstr "ឯកសារប្រភេទ '%(ext)s' មិនត្រូវប�
 msgid "File to be uploaded must have an extension"
 msgstr "ឯកសារដែលត្រូវអាប់ឡូដត្រូវមានកន្ទុយឯកសារ"
 
-#: cps/editbooks.py:940 cps/editbooks.py:1679 cps/web.py:783 cps/web.py:3316
-#: cps/web.py:3498 cps/web.py:3648
+#: cps/editbooks.py:940 cps/editbooks.py:1679 cps/web.py:783 cps/web.py:3321
+#: cps/web.py:3503 cps/web.py:3653
 msgid ""
 "Oops! Selected book is unavailable. File does not exist or is not accessible"
 msgstr ""
@@ -1492,7 +1490,7 @@ msgstr ""
 "Callback domain មិនទាន់បានផ្ទៀងផ្ទាត់ឲប្រើទេ សូមធ្វើតាមជំហានដើម្បីផ្ទៀងផ្ទាត់ domain នៅក្នុង "
 "Google Developer Console"
 
-#: cps/helper.py:191 cps/spa_strings.py:78 cps/templates/email_edit.html:61
+#: cps/helper.py:191 cps/spa_strings.py:100 cps/templates/email_edit.html:61
 msgid "This Email has been sent via Calibre-Web NextGen."
 msgstr ""
 
@@ -1673,10 +1671,9 @@ msgstr ""
 msgid "Only jpg/jpeg files are supported as coverfile"
 msgstr ""
 
-#: cps/helper.py:1887 cps/helper.py:2139 cps/spa_strings.py:143
-#, fuzzy
+#: cps/helper.py:1887 cps/helper.py:2139 cps/spa_strings.py:165
 msgid "Cover"
-msgstr "ស្រាវជ្រាវ"
+msgstr ""
 
 #: cps/helper.py:1904
 msgid "UnRar binary file not found"
@@ -1731,6 +1728,26 @@ msgstr ""
 
 #: cps/kobo_auth.py:107
 msgid "Kobo Setup"
+msgstr ""
+
+#: cps/magic_shelf.py:161 cps/spa_strings.py:42
+msgid "Recently Added"
+msgstr ""
+
+#: cps/magic_shelf.py:180 cps/spa_strings.py:43
+msgid "Highly Rated"
+msgstr ""
+
+#: cps/magic_shelf.py:217 cps/opds.py:200 cps/spa_strings.py:44
+msgid "Currently Reading"
+msgstr ""
+
+#: cps/magic_shelf.py:234 cps/spa_strings.py:45
+msgid "Yet to Read"
+msgstr ""
+
+#: cps/magic_shelf.py:251 cps/spa_strings.py:46
+msgid "Recent Publications"
 msgstr ""
 
 #: cps/oauth_bb.py:287
@@ -1938,11 +1955,6 @@ msgstr "បង្ហាញសៀវភៅចៃដន្យ"
 msgid "Read Books"
 msgstr "សៀវភៅដែលបានអានរួច"
 
-#: cps/opds.py:200
-#, fuzzy
-msgid "Currently Reading"
-msgstr "លេខ version ដែលបានតម្លើង"
-
 #: cps/opds.py:201
 #, fuzzy
 msgid "Books currently being read"
@@ -1952,7 +1964,7 @@ msgstr "លេខ version ដែលបានតម្លើង"
 msgid "Unread Books"
 msgstr "សៀវភៅដែលមិនទាន់បានអាន"
 
-#: cps/opds.py:212 cps/render_template.py:110 cps/spa_strings.py:382
+#: cps/opds.py:212 cps/render_template.py:110 cps/spa_strings.py:404
 #: cps/templates/book_table.html:109 cps/templates/cwa_settings.html:334
 #: cps/templates/cwa_settings.html:336
 #: cps/templates/hardcover_review_matches.html:134
@@ -1964,8 +1976,8 @@ msgstr "អ្នកនិពន្ធ"
 msgid "Books ordered by Author"
 msgstr "អ្នកនិពន្ធ"
 
-#: cps/opds.py:218 cps/render_template.py:114 cps/spa_strings.py:638
-#: cps/templates/book_table.html:115 cps/web.py:2036
+#: cps/opds.py:218 cps/render_template.py:114 cps/spa_strings.py:696
+#: cps/templates/book_table.html:115 cps/web.py:2041
 msgid "Publishers"
 msgstr ""
 
@@ -1973,8 +1985,8 @@ msgstr ""
 msgid "Books ordered by publisher"
 msgstr ""
 
-#: cps/opds.py:224 cps/render_template.py:104 cps/spa_strings.py:414
-#: cps/templates/book_table.html:110 cps/web.py:2188
+#: cps/opds.py:224 cps/render_template.py:104 cps/spa_strings.py:428
+#: cps/templates/book_table.html:110 cps/web.py:2193
 msgid "Categories"
 msgstr "ប្រភេទនានា"
 
@@ -1982,12 +1994,12 @@ msgstr "ប្រភេទនានា"
 msgid "Books ordered by category"
 msgstr ""
 
-#: cps/opds.py:230 cps/render_template.py:107 cps/spa_strings.py:233
+#: cps/opds.py:230 cps/render_template.py:107 cps/spa_strings.py:255
 #: cps/templates/book_edit.html:143 cps/templates/book_table.html:111
 #: cps/templates/cwa_settings.html:362 cps/templates/cwa_settings.html:364
 #: cps/templates/cwa_settings.html:1133
 #: cps/templates/hardcover_review_matches.html:140
-#: cps/templates/search_form.html:70 cps/web.py:2068 cps/web.py:2080
+#: cps/templates/search_form.html:70 cps/web.py:2073 cps/web.py:2085
 msgid "Series"
 msgstr "ស៊េរី"
 
@@ -1995,9 +2007,9 @@ msgstr "ស៊េរី"
 msgid "Books ordered by series"
 msgstr ""
 
-#: cps/opds.py:236 cps/render_template.py:117 cps/spa_strings.py:550
+#: cps/opds.py:236 cps/render_template.py:117 cps/spa_strings.py:599
 #: cps/templates/book_table.html:113 cps/templates/detail.html:930
-#: cps/templates/search_form.html:108 cps/web.py:2160
+#: cps/templates/search_form.html:108 cps/web.py:2165
 msgid "Languages"
 msgstr "ភាសានានា"
 
@@ -2006,8 +2018,8 @@ msgstr "ភាសានានា"
 msgid "Books ordered by Languages"
 msgstr "ចំនួនសៀវភៅក្នុងមួយទំព័រ"
 
-#: cps/opds.py:242 cps/render_template.py:121 cps/spa_strings.py:642
-#: cps/web.py:2120
+#: cps/opds.py:242 cps/render_template.py:121 cps/spa_strings.py:700
+#: cps/web.py:2125
 msgid "Ratings"
 msgstr ""
 
@@ -2023,11 +2035,10 @@ msgstr ""
 msgid "Books ordered by file formats"
 msgstr ""
 
-#: cps/opds.py:254 cps/spa_strings.py:702 cps/templates/layout.html:639
+#: cps/opds.py:254 cps/spa_strings.py:766 cps/templates/layout.html:639
 #: cps/templates/search_form.html:88
-#, fuzzy
 msgid "Shelves"
-msgstr "លើកលែងស៊េរី"
+msgstr ""
 
 #: cps/opds.py:255
 msgid "Books organized in shelves"
@@ -2052,7 +2063,7 @@ msgstr "ពិពណ៌នា"
 msgid "{} Stars"
 msgstr ""
 
-#: cps/opds.py:1169 cps/search.py:53 cps/search.py:454 cps/spa_strings.py:218
+#: cps/opds.py:1169 cps/search.py:53 cps/search.py:454 cps/spa_strings.py:240
 #: cps/templates/book_edit.html:338 cps/templates/cwa_epub_fixer.html:25
 #: cps/templates/feed.xml:43 cps/templates/index.xml:12
 #: cps/templates/layout.html:313 cps/templates/layout.html:316
@@ -2060,9 +2071,9 @@ msgstr ""
 msgid "Search"
 msgstr "ស្វែងរក"
 
-#: cps/remotelogin.py:76 cps/spa_strings.py:560 cps/templates/layout.html:344
+#: cps/remotelogin.py:76 cps/spa_strings.py:610 cps/templates/layout.html:344
 #: cps/templates/layout.html:385 cps/templates/login.html:11
-#: cps/templates/login.html:39 cps/web.py:2638
+#: cps/templates/login.html:39 cps/web.py:2643
 msgid "Login"
 msgstr "ចូលប្រើប្រាស់"
 
@@ -2084,7 +2095,7 @@ msgid ""
 "can run after imports and metadata changes. "
 msgstr ""
 
-#: cps/render_template.py:74 cps/spa_strings.py:403
+#: cps/render_template.py:74 cps/spa_strings.py:416
 msgid "Books"
 msgstr ""
 
@@ -2118,7 +2129,7 @@ msgstr "បង្ហាញអានរួច និងមិនទាន់អ�
 msgid "Show unread"
 msgstr ""
 
-#: cps/render_template.py:101 cps/spa_strings.py:471
+#: cps/render_template.py:101 cps/spa_strings.py:512
 msgid "Discover"
 msgstr "ស្រាវជ្រាវ"
 
@@ -2166,7 +2177,7 @@ msgstr ""
 msgid "Show Archived Books"
 msgstr "បង្ហាញសៀវភៅមកថ្មី"
 
-#: cps/render_template.py:132 cps/spa_strings.py:502
+#: cps/render_template.py:132 cps/spa_strings.py:546
 msgid "Favorites"
 msgstr ""
 
@@ -2174,7 +2185,7 @@ msgstr ""
 msgid "Show Favorites"
 msgstr ""
 
-#: cps/render_template.py:137 cps/web.py:1842
+#: cps/render_template.py:137 cps/web.py:1847
 msgid "Books List"
 msgstr ""
 
@@ -2182,7 +2193,7 @@ msgstr ""
 msgid "Show Books List"
 msgstr ""
 
-#: cps/render_template.py:142 cps/spa_strings.py:481
+#: cps/render_template.py:142 cps/spa_strings.py:523
 msgid "Duplicates"
 msgstr ""
 
@@ -2423,9 +2434,8 @@ msgid "Manual (drag below)"
 msgstr ""
 
 #: cps/spa_strings.py:35 cps/templates/detail.html:634
-#, fuzzy
 msgid "Read now"
-msgstr "អានក្នុងកម្មវិធី browser"
+msgstr ""
 
 #: cps/spa_strings.py:36
 #, python-brace-format
@@ -2433,286 +2443,306 @@ msgid "Open details for {title}"
 msgstr ""
 
 #: cps/spa_strings.py:37
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Read {title}"
-msgstr "ឧបករណ៍ Kindle"
+msgstr ""
 
-#: cps/spa_strings.py:41
-#, fuzzy
+#: cps/spa_strings.py:51
+msgid "Standard (username / password)"
+msgstr ""
+
+#: cps/spa_strings.py:52 cps/spa_strings.py:597
+msgid "LDAP"
+msgstr ""
+
+#: cps/spa_strings.py:53 cps/spa_strings.py:669
+msgid "OAuth / OpenID Connect"
+msgstr ""
+
+#: cps/spa_strings.py:54 cps/templates/config_edit.html:390
+msgid "Anonymous"
+msgstr ""
+
+#: cps/spa_strings.py:55 cps/templates/config_edit.html:391
+msgid "Unauthenticated"
+msgstr ""
+
+#: cps/spa_strings.py:56
+msgid "Simple (service account)"
+msgstr ""
+
+#: cps/spa_strings.py:58 cps/templates/config_edit.html:360
+msgid "TLS"
+msgstr ""
+
+#: cps/spa_strings.py:59 cps/templates/config_edit.html:361
+msgid "SSL"
+msgstr ""
+
+#: cps/spa_strings.py:63
 msgid "Series order"
-msgstr "រកមិនឃើញវត្ថុតាង"
+msgstr ""
 
-#: cps/spa_strings.py:42
-#, fuzzy
+#: cps/spa_strings.py:64
 msgid "Series order (reverse)"
-msgstr "ស៊េរី៖ %(serie)s"
+msgstr ""
 
-#: cps/spa_strings.py:46 cps/templates/detail.html:965
+#: cps/spa_strings.py:68 cps/templates/detail.html:965
 #: cps/templates/detail.html:966 cps/templates/detail.html:1537
 msgid "Add tag"
 msgstr ""
 
-#: cps/spa_strings.py:47
+#: cps/spa_strings.py:69
 msgid "New tag"
 msgstr ""
 
-#: cps/spa_strings.py:48 cps/templates/detail.html:957
+#: cps/spa_strings.py:70 cps/templates/detail.html:957
 msgid "Remove tag"
 msgstr ""
 
-#: cps/spa_strings.py:52
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:74
+#, python-brace-format
 msgid "Remove tag {name}"
-msgstr "បន្ថែមទៅធ្នើ"
+msgstr ""
 
-#: cps/spa_strings.py:53
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:75
+#, python-brace-format
 msgid "Rename tag {name}"
-msgstr "បន្ថែមទៅធ្នើ"
+msgstr ""
 
-#: cps/spa_strings.py:54
-#, fuzzy
+
+#: cps/spa_strings.py:76
 msgid "Tag name"
-msgstr "បន្ថែមទៅធ្នើ"
+msgstr ""
 
-#: cps/api/browse.py:72 cps/spa_strings.py:55
+
+#: cps/api/browse.py:72 cps/spa_strings.py:77
 msgid "Tag name cannot be empty"
 msgstr ""
 
-#: cps/spa_strings.py:56
-#, fuzzy
+#: cps/spa_strings.py:78
 msgid "Save tag name"
-msgstr "បន្ថែមទៅធ្នើ"
+msgstr ""
 
-#: cps/spa_strings.py:57
-#, fuzzy
+
+#: cps/spa_strings.py:79
 msgid "Could not rename tag"
-msgstr "កែប្រែទិន្នន័យមេតា"
+msgstr ""
 
-#: cps/spa_strings.py:58
-#, fuzzy, python-brace-format
+
+#: cps/spa_strings.py:80
+#, python-brace-format
 msgid "Tag renamed to {name}"
-msgstr "បន្ថែមទៅធ្នើ"
+msgstr ""
 
-#: cps/api/browse.py:63 cps/spa_strings.py:59
+
+#: cps/api/browse.py:63 cps/spa_strings.py:81
 msgid "You must be signed in"
 msgstr ""
 
-#: cps/api/browse.py:65 cps/spa_strings.py:60
-#, fuzzy
+#: cps/api/browse.py:65 cps/spa_strings.py:82
 msgid "You are not allowed to edit metadata"
-msgstr "សូមអភ័យទោស អ្នកមិនមានសិទ្ធិដកសៀវភៅចេញពីធ្នើនេះទេ៖ %(sname)s"
+msgstr ""
 
-#: cps/api/browse.py:89 cps/api/browse.py:101 cps/spa_strings.py:62
+
+#: cps/api/browse.py:89 cps/api/browse.py:101 cps/spa_strings.py:84
 msgid "A tag with that name already exists"
 msgstr ""
 
-#: cps/api/browse.py:69 cps/spa_strings.py:63
+#: cps/api/browse.py:69 cps/spa_strings.py:85
 msgid "Tag name must be text"
 msgstr ""
 
-#: cps/api/browse.py:74 cps/spa_strings.py:64
+#: cps/api/browse.py:74 cps/spa_strings.py:86
 msgid "Tag name cannot contain commas"
 msgstr ""
 
-#: cps/spa_strings.py:65
-#, fuzzy
+#: cps/spa_strings.py:87
 msgid "Enter a valid tag name"
-msgstr "ជ្រើសរើសឈ្មោះអ្នកប្រើប្រាស់"
+msgstr ""
 
-#: cps/spa_strings.py:66
-#, fuzzy
+
+#: cps/spa_strings.py:88
 msgid "Could not load this page"
-msgstr "កែប្រែទិន្នន័យមេតា"
+msgstr ""
 
-#: cps/spa_strings.py:67
-#, fuzzy
+
+#: cps/spa_strings.py:89
 msgid "Page not found"
-msgstr "រកមិនឃើញវត្ថុតាង"
+msgstr ""
 
-#: cps/spa_strings.py:73
-#, fuzzy
+
+#: cps/spa_strings.py:95
 msgid "Clear rating"
-msgstr "ការកំណត់"
+msgstr ""
 
-#: cps/spa_strings.py:74
-#, fuzzy
+#: cps/spa_strings.py:96
 msgid "Not rated"
-msgstr "បង្កើតធ្នើ"
+msgstr ""
 
-#: cps/spa_strings.py:75 cps/templates/book_edit.html:220
+#: cps/spa_strings.py:97 cps/templates/book_edit.html:220
 #: cps/templates/search_form.html:46 cps/templates/search_form.html:167
 msgid "Yes"
 msgstr "បាទ/ចាស"
 
-#: cps/spa_strings.py:76 cps/templates/book_edit.html:221
+#: cps/spa_strings.py:98 cps/templates/book_edit.html:221
 #: cps/templates/search_form.html:47 cps/templates/search_form.html:168
 msgid "No"
 msgstr "ទេ"
 
-#: cps/spa_strings.py:77 cps/templates/email_edit.html:60
+#: cps/spa_strings.py:99 cps/templates/email_edit.html:60
 msgid "Email Message Body"
 msgstr ""
 
-#: cps/spa_strings.py:79
+#: cps/spa_strings.py:101
 #, python-brace-format
 msgid "Rated {rating} out of 5"
 msgstr ""
 
-#: cps/spa_strings.py:80
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:102
+#, python-brace-format
 msgid "More by {name}"
-msgstr "បន្ថែមទៅធ្នើ"
+msgstr ""
 
-#: cps/spa_strings.py:85
+#: cps/spa_strings.py:107
 #, python-brace-format
 msgid ""
 "Merge {n} books into the first selected? The others are removed after their "
 "formats are copied over."
 msgstr ""
 
-#: cps/spa_strings.py:86
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:108
+#, python-brace-format
 msgid "Apply to {n} books"
-msgstr "លុបសៀវភៅ"
+msgstr ""
 
-#: cps/spa_strings.py:90
+#: cps/spa_strings.py:112
 msgid "Match condition"
 msgstr ""
 
-#: cps/spa_strings.py:91
-#, fuzzy
+#: cps/spa_strings.py:113
 msgid "Rule field"
-msgstr "កែប្រែធ្នើ"
+msgstr ""
 
-#: cps/spa_strings.py:92
+#: cps/spa_strings.py:114
 msgid "Rule operator"
 msgstr ""
 
-#: cps/spa_strings.py:95
+#: cps/spa_strings.py:117
 msgid "Appearance"
 msgstr ""
 
-#: cps/spa_strings.py:96 cps/templates/read.html:106
+#: cps/spa_strings.py:118 cps/templates/read.html:106
 #: cps/templates/readcbr.html:102 cps/templates/user_edit.html:279
 msgid "Theme"
 msgstr "ការតុបតែង"
 
-#: cps/spa_strings.py:97
+#: cps/spa_strings.py:119
 msgid "System"
 msgstr ""
 
-#: cps/spa_strings.py:98 cps/spa_strings.py:183 cps/templates/read.html:108
+#: cps/spa_strings.py:120 cps/spa_strings.py:205 cps/templates/read.html:108
 #: cps/templates/readcbr.html:105
 msgid "Light"
 msgstr ""
 
-#: cps/spa_strings.py:99 cps/spa_strings.py:149 cps/templates/read.html:109
+#: cps/spa_strings.py:121 cps/spa_strings.py:171 cps/templates/read.html:109
 #: cps/templates/readcbr.html:106
 msgid "Dark"
 msgstr ""
 
-#: cps/spa_strings.py:100 cps/spa_strings.py:231 cps/templates/read.html:110
+#: cps/spa_strings.py:122 cps/spa_strings.py:253 cps/templates/read.html:110
 msgid "Sepia"
 msgstr ""
 
-#: cps/spa_strings.py:101
+#: cps/spa_strings.py:123
 msgid "High contrast"
 msgstr ""
 
-#: cps/spa_strings.py:102
+#: cps/spa_strings.py:124
 msgid "Midnight (AMOLED)"
 msgstr ""
 
-#: cps/spa_strings.py:103
+#: cps/spa_strings.py:125
 msgid "Match your device’s light or dark setting"
 msgstr ""
 
-#: cps/spa_strings.py:104
+#: cps/spa_strings.py:126
 msgid "Theme saved."
 msgstr ""
 
-#: cps/spa_strings.py:105
-#, fuzzy
+#: cps/spa_strings.py:127
 msgid "Could not save theme."
-msgstr "កែប្រែទិន្នន័យមេតា"
+msgstr ""
 
-#: cps/spa_strings.py:106
-#, fuzzy
+#: cps/spa_strings.py:128
 msgid "Default theme for new accounts"
-msgstr "ការកំណត់មកស្រាប់សម្រាប់អ្នកប្រើប្រាស់ថ្មី"
+msgstr ""
 
-#: cps/spa_strings.py:107
+#: cps/spa_strings.py:129
 msgid ""
 "Applies to accounts created from now on. Everyone picks their own under "
 "Account → Theme."
 msgstr ""
 
-#: cps/spa_strings.py:116
-#, fuzzy
+#: cps/spa_strings.py:138
 msgid "Add a format"
-msgstr "បន្ថែមទៅធ្នើ"
+msgstr ""
 
-#: cps/spa_strings.py:117
-#, fuzzy
+#: cps/spa_strings.py:139
 msgid "Add rule"
-msgstr "បន្ថែមអ្នកប្រើប្រាស់ថ្មី"
+msgstr ""
 
-#: cps/spa_strings.py:118 cps/templates/detail.html:786
+#: cps/spa_strings.py:140 cps/templates/detail.html:786
 #: cps/templates/detail.html:997 cps/templates/detail.html:998
 #: cps/templates/detail.html:1659 cps/templates/listenmp3.html:190
 #: cps/templates/search.html:17
 msgid "Add to shelf"
 msgstr "បន្ថែមទៅធ្នើ"
 
-#: cps/spa_strings.py:119
+#: cps/spa_strings.py:141
 msgid "Add your own"
 msgstr ""
 
-#: cps/spa_strings.py:120
-#, fuzzy
+#: cps/spa_strings.py:142
 msgid "App password label"
-msgstr "អនុញ្ញាតឲប្តូរលេខសម្ងាត់"
+msgstr ""
 
-#: cps/spa_strings.py:121
-#, fuzzy
+#: cps/spa_strings.py:143
 msgid "App passwords"
-msgstr "អនុញ្ញាតឲប្តូរលេខសម្ងាត់"
+msgstr ""
 
-#: cps/spa_strings.py:122 cps/templates/book_edit.html:135
+#: cps/spa_strings.py:144 cps/templates/book_edit.html:135
 #: cps/templates/book_edit.html:459 cps/templates/cwa_settings.html:1121
 #: cps/templates/search_form.html:12
 msgid "Author"
 msgstr "អ្នកនិពន្ធ"
 
-#: cps/spa_strings.py:123
+#: cps/spa_strings.py:145
 msgid "Authors (separate with &)"
 msgstr ""
 
-#: cps/spa_strings.py:125
-#, fuzzy
+#: cps/spa_strings.py:147
 msgid "Back to sign in"
-msgstr "ការស្វែងរកមានកំហុស!"
+msgstr ""
 
-#: cps/spa_strings.py:126 cps/templates/read.html:197
+#: cps/spa_strings.py:148 cps/templates/read.html:197
 msgid "Blue"
 msgstr ""
 
-#: cps/spa_strings.py:127
-#, fuzzy
+#: cps/spa_strings.py:149
 msgid "Book content"
-msgstr "ចំណងជើងសៀវភៅ"
+msgstr ""
 
-#: cps/spa_strings.py:128 cps/templates/layout.html:622
+#: cps/spa_strings.py:150 cps/templates/layout.html:622
 msgid "Browse"
 msgstr "រុករក"
 
-#: cps/spa_strings.py:129
-#, fuzzy
+#: cps/spa_strings.py:151
 msgid "Change password"
-msgstr "អនុញ្ញាតឲប្តូរលេខសម្ងាត់"
+msgstr ""
 
-#: cps/spa_strings.py:130 cps/templates/book_edit.html:94
+#: cps/spa_strings.py:152 cps/templates/book_edit.html:94
 #: cps/templates/book_edit.html:378 cps/templates/book_table.html:346
 #: cps/templates/cwng_feedback_popup.html:63
 #: cps/templates/cwng_feedback_popup.html:72 cps/templates/duplicates.html:766
@@ -2723,96 +2753,83 @@ msgstr "អនុញ្ញាតឲប្តូរលេខសម្ងាត់
 msgid "Close"
 msgstr "បិទ"
 
-#: cps/spa_strings.py:131
-#, fuzzy
+#: cps/spa_strings.py:153
 msgid "Close menu"
-msgstr "បិទ"
+msgstr ""
 
-#: cps/spa_strings.py:132
+#: cps/spa_strings.py:154
 msgid "Contents"
 msgstr ""
 
-#: cps/spa_strings.py:133
-#, fuzzy
+#: cps/spa_strings.py:155
 msgid "Convert failed."
-msgstr "នៅក្នុងបណ្ណាល័យ"
+msgstr ""
 
-#: cps/spa_strings.py:134
-#, fuzzy
+#: cps/spa_strings.py:156
 msgid "Convert to format"
-msgstr "នៅក្នុងបណ្ណាល័យ"
+msgstr ""
 
-#: cps/spa_strings.py:135 cps/templates/cwa_settings.html:770
+#: cps/spa_strings.py:157 cps/templates/cwa_settings.html:770
 #: cps/templates/update_now_modal.html:36
 #: cps/templates/update_now_modal.html:45
 #: cps/templates/update_now_modal.html:63 cps/templates/user_edit.html:618
 msgid "Copy"
 msgstr ""
 
-#: cps/spa_strings.py:136
-#, fuzzy
+#: cps/spa_strings.py:158
 msgid "Could not change password."
-msgstr "អនុញ្ញាតឲប្តូរលេខសម្ងាត់"
+msgstr ""
 
-#: cps/spa_strings.py:137
-#, fuzzy
+#: cps/spa_strings.py:159
 msgid "Could not create."
-msgstr "កែប្រែទិន្នន័យមេតា"
+msgstr ""
 
-#: cps/spa_strings.py:138
+#: cps/spa_strings.py:160
 msgid "Could not fetch cover."
 msgstr ""
 
-#: cps/spa_strings.py:139
-#, fuzzy
+#: cps/spa_strings.py:161
 msgid "Could not load metadata."
-msgstr "កែប្រែទិន្នន័យមេតា"
+msgstr ""
 
-#: cps/spa_strings.py:140
+#: cps/spa_strings.py:162
 #, python-brace-format
 msgid "Could not load the book file ({status})"
 msgstr ""
 
-#: cps/spa_strings.py:141
-#, fuzzy
+#: cps/spa_strings.py:163
 msgid "Could not load your account."
-msgstr "កែប្រែទិន្នន័យមេតា"
+msgstr ""
 
-#: cps/spa_strings.py:142
-#, fuzzy
+#: cps/spa_strings.py:164
 msgid "Could not save."
-msgstr "កែប្រែទិន្នន័យមេតា"
+msgstr ""
 
-#: cps/spa_strings.py:144
-#, fuzzy
+#: cps/spa_strings.py:166
 msgid "Cover image URL"
-msgstr "ស្រាវជ្រាវ"
+msgstr ""
 
-#: cps/spa_strings.py:145
-#, fuzzy
+#: cps/spa_strings.py:167
 msgid "Cover update failed."
-msgstr "ស្រាវជ្រាវ"
+msgstr ""
 
-#: cps/spa_strings.py:146 cps/templates/cover_picker.html:225
-#, fuzzy
+#: cps/spa_strings.py:168 cps/templates/cover_picker.html:225
 msgid "Cover updated."
-msgstr "ស្រាវជ្រាវ"
+msgstr ""
 
-#: cps/spa_strings.py:147
-#, fuzzy
+#: cps/spa_strings.py:169
 msgid "Create smart shelf"
-msgstr "បង្កើតធ្នើ"
+msgstr ""
 
-#: cps/spa_strings.py:148
+#: cps/spa_strings.py:170
 msgid "Create your account"
 msgstr ""
 
-#: cps/spa_strings.py:150
-#, fuzzy
+#: cps/spa_strings.py:172
 msgid "Dark theme"
-msgstr "លុប"
+msgstr ""
 
-#: cps/spa_strings.py:151 cps/templates/_book_organizer.html:155
+#: cps/spa_strings.py:173 cps/templates/_book_organizer.html:155
 #: cps/templates/admin.html:27 cps/templates/book_edit.html:59
 #: cps/templates/book_table.html:66 cps/templates/book_table.html:145
 #: cps/templates/book_table.html:194 cps/templates/duplicates.html:718
@@ -2822,224 +2839,208 @@ msgstr "លុប"
 msgid "Delete"
 msgstr "លុប"
 
-#: cps/spa_strings.py:153
-#, fuzzy
+#: cps/spa_strings.py:175
 msgid "Delete book"
-msgstr "លុបសៀវភៅ"
+msgstr ""
 
-#: cps/spa_strings.py:154
+#: cps/spa_strings.py:176
 #, python-brace-format
 msgid ""
 "Delete \"{title}\"? This permanently removes the book and all its files from "
 "your library. This cannot be undone."
 msgstr ""
 
-#: cps/spa_strings.py:155
-#, fuzzy
+#: cps/spa_strings.py:177
 msgid "Deleting…"
-msgstr "ស្វែងរក"
+msgstr ""
 
-#: cps/spa_strings.py:156
-#, fuzzy
+#: cps/spa_strings.py:178
 msgid "Could not delete this book."
-msgstr "កែប្រែទិន្នន័យមេតា"
+msgstr ""
 
-#: cps/spa_strings.py:157
+#: cps/spa_strings.py:179
 #, python-brace-format
 msgid "Delete the {fmt} file? The book stays; only this format is removed."
 msgstr ""
 
-#: cps/spa_strings.py:158
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:180
+#, python-brace-format
 msgid "Delete {fmt}"
-msgstr "លុបឯកសារទម្រង់៖"
+msgstr ""
 
-#: cps/spa_strings.py:159
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:181
+#, python-brace-format
 msgid "Delete {n} book(s)? This cannot be undone."
-msgstr "តើអ្នកពិតជាចង់លុបធ្នើនេះមែនទេ?"
+msgstr ""
 
-#: cps/spa_strings.py:160
-#, fuzzy
+#: cps/spa_strings.py:182
 msgid "Description contains"
-msgstr "ពិពណ៌នា"
+msgstr ""
 
-#: cps/spa_strings.py:161
+#: cps/spa_strings.py:183
 #, python-brace-format
 msgid "Deselect {title}"
 msgstr ""
 
-#: cps/spa_strings.py:162
-#, fuzzy
+#: cps/spa_strings.py:184
 msgid "Edit metadata"
-msgstr "កែប្រែទិន្នន័យមេតា"
+msgstr ""
 
-#: cps/spa_strings.py:163
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:185
+#, python-brace-format
 msgid "Edit {title}"
-msgstr "ឧបករណ៍ Kindle"
+msgstr ""
 
-#: cps/spa_strings.py:164
+#: cps/spa_strings.py:186
 msgid "Failed to load books."
 msgstr ""
 
-#: cps/spa_strings.py:165
-#, fuzzy
+#: cps/spa_strings.py:187
 msgid "Failed to open the book."
-msgstr "មិនអាចរក្សាទុកឯកសារ %(file)s ។"
+msgstr ""
 
-#: cps/spa_strings.py:166
+#: cps/spa_strings.py:188
 msgid "Generate"
 msgstr ""
 
-#: cps/spa_strings.py:167 cps/templates/read.html:196
+#: cps/spa_strings.py:189 cps/templates/read.html:196
 msgid "Green"
 msgstr ""
 
-#: cps/spa_strings.py:168
+#: cps/spa_strings.py:190
 msgid "Help"
 msgstr ""
 
-#: cps/spa_strings.py:169
+#: cps/spa_strings.py:191
 msgid "Highlight color"
 msgstr ""
 
-#: cps/spa_strings.py:170 cps/templates/annotations_view.html:46
+#: cps/spa_strings.py:192 cps/templates/annotations_view.html:46
 msgid "Import from Kobo"
 msgstr ""
 
-#: cps/spa_strings.py:171
-#, fuzzy
+#: cps/spa_strings.py:193
 msgid "Interface language"
-msgstr "លើកលែងភាសា"
+msgstr ""
 
-#: cps/spa_strings.py:172
-#, fuzzy
+#: cps/spa_strings.py:194
 msgid "Invalid username or password."
-msgstr "ខុសឈ្មោះអ្នកប្រើប្រាស់ ឬលេខសម្ងាត់"
+msgstr ""
 
-#: cps/spa_strings.py:174
+#: cps/spa_strings.py:196
 msgid "UI body font"
 msgstr ""
 
-#: cps/spa_strings.py:175
+#: cps/spa_strings.py:197
 msgid "UI display font"
 msgstr ""
 
-#: cps/spa_strings.py:176
+#: cps/spa_strings.py:198
 msgid "Default (Optima / Sans-Serif)"
 msgstr ""
 
-#: cps/spa_strings.py:177
+#: cps/spa_strings.py:199
 msgid "Default (Bookish Serif)"
 msgstr ""
 
-#: cps/spa_strings.py:178
-#, fuzzy
+#: cps/spa_strings.py:200
 msgid "System Sans-Serif"
-msgstr "ស្ថិតិ"
+msgstr ""
 
-#: cps/spa_strings.py:179
+#: cps/spa_strings.py:201
 msgid "Bookish Serif"
 msgstr ""
 
-#: cps/spa_strings.py:180
+#: cps/spa_strings.py:202
 msgid "Monospace"
 msgstr ""
 
-#: cps/spa_strings.py:181
+#: cps/spa_strings.py:203
 msgid "Label (e.g. KOReader on phone)"
 msgstr ""
 
-#: cps/spa_strings.py:182
+#: cps/spa_strings.py:204
 msgid "Languages (comma separated)"
 msgstr ""
 
-#: cps/spa_strings.py:184
-#, fuzzy
+#: cps/spa_strings.py:206
 msgid "Light theme"
-msgstr "ការតុបតែងសម្រាប់ប្រើ"
+msgstr ""
 
-#: cps/spa_strings.py:185
-#, fuzzy
+#: cps/spa_strings.py:207
 msgid "Login failed."
-msgstr "ចូលប្រើប្រាស់"
+msgstr ""
 
-#: cps/spa_strings.py:186
+#: cps/spa_strings.py:208
 msgid "Mark read"
 msgstr ""
 
-#: cps/spa_strings.py:187
+#: cps/spa_strings.py:209
 msgid "Mark unread"
 msgstr ""
 
-#: cps/spa_strings.py:188 cps/templates/book_table.html:48
+#: cps/spa_strings.py:210 cps/templates/book_table.html:48
 #: cps/templates/book_table.html:175 cps/templates/duplicates.html:745
 msgid "Merge"
 msgstr ""
 
-#: cps/spa_strings.py:189
+#: cps/spa_strings.py:211
 #, python-brace-format
 msgid "Metadata applied to {n} book(s)."
 msgstr ""
 
-#: cps/spa_strings.py:190
+#: cps/spa_strings.py:212
 #, python-brace-format
 msgid "New password for “{label}” — copy it now, it won’t be shown again:"
 msgstr ""
 
-#: cps/spa_strings.py:191
+#: cps/spa_strings.py:213
 msgid "New passwords do not match."
 msgstr ""
 
-#: cps/spa_strings.py:192
-#, fuzzy
+#: cps/spa_strings.py:214
 msgid "No books here."
-msgstr "រកមិនឃើញវត្ថុតាង"
+msgstr ""
 
-#: cps/spa_strings.py:193
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:215
+#, python-brace-format
 msgid "No results for \"{q}\"."
-msgstr "លទ្ធផលសម្រាប់៖"
+msgstr ""
 
-#: cps/spa_strings.py:194
+#: cps/spa_strings.py:216
 msgid "No suggestions"
 msgstr ""
 
-#: cps/spa_strings.py:195
+#: cps/spa_strings.py:217
 #, python-brace-format
 msgid "No {filter} books here."
 msgstr ""
 
-#: cps/spa_strings.py:196
-#, fuzzy
+#: cps/spa_strings.py:218
 msgid "Password changed."
-msgstr "លេខសម្ងាត់"
+msgstr ""
 
-#: cps/spa_strings.py:197
+#: cps/spa_strings.py:219
 msgid "Paste URL"
 msgstr ""
 
-#: cps/spa_strings.py:198
-#, fuzzy
+#: cps/spa_strings.py:220
 msgid "Private shelf"
-msgstr "បង្កើតធ្នើ"
+msgstr ""
 
-#: cps/spa_strings.py:199
-#, fuzzy
+#: cps/spa_strings.py:221
 msgid "Profile"
-msgstr "អាសយដ្ឋានអ៊ីមែលរបស់អ្នក"
+msgstr ""
 
-#: cps/spa_strings.py:200
+#: cps/spa_strings.py:222
 msgid "Profile saved."
 msgstr ""
 
-#: cps/spa_strings.py:201
-#, fuzzy
+#: cps/spa_strings.py:223
 msgid "Public shelf"
-msgstr "កែប្រែធ្នើ"
+msgstr ""
 
-#: cps/spa_strings.py:202 cps/templates/book_edit.html:159
+#: cps/spa_strings.py:224 cps/templates/book_edit.html:159
 #: cps/templates/book_edit.html:460 cps/templates/cwa_settings.html:348
 #: cps/templates/cwa_settings.html:350 cps/templates/cwa_settings.html:1139
 #: cps/templates/detail.html:1005
@@ -3048,167 +3049,153 @@ msgstr "កែប្រែធ្នើ"
 msgid "Publisher"
 msgstr "អ្នកបោះពុម្ភ"
 
-#: cps/spa_strings.py:203
+#: cps/spa_strings.py:225
 msgid "Publishers (comma separated)"
 msgstr ""
 
-#: cps/spa_strings.py:204 cps/templates/image.html:26
+#: cps/spa_strings.py:226 cps/templates/image.html:26
 #: cps/templates/listenmp3.html:159
 msgid "Read"
 msgstr "អាន"
 
-#: cps/spa_strings.py:205
-#, fuzzy
+#: cps/spa_strings.py:227
 msgid "Reading progress"
-msgstr "ដំណើរការ"
+msgstr ""
 
-#: cps/spa_strings.py:206 cps/templates/read.html:195
-#, fuzzy
+#: cps/spa_strings.py:228 cps/templates/read.html:195
 msgid "Red"
-msgstr "អាន"
+msgstr ""
 
-#: cps/spa_strings.py:207
-#, fuzzy
+#: cps/spa_strings.py:229
 msgid "Registration failed."
-msgstr "ការចុះឈ្មាះសាធារណៈ"
+msgstr ""
 
-#: cps/spa_strings.py:208
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:230
+#, python-brace-format
 msgid "Remove {name}"
-msgstr "បន្ថែមទៅធ្នើ"
+msgstr ""
 
-#: cps/spa_strings.py:209
-#, fuzzy
+#: cps/spa_strings.py:231
 msgid "Request failed."
-msgstr "Ebook-converter បានបរាជ័យ៖ %(error)s"
+msgstr ""
 
-#: cps/spa_strings.py:210
+#: cps/spa_strings.py:232
 msgid "Reset"
 msgstr ""
 
-#: cps/spa_strings.py:211
-#, fuzzy
+#: cps/spa_strings.py:233
 msgid "Reset your password"
-msgstr "អនុញ្ញាតឲប្តូរលេខសម្ងាត់"
+msgstr ""
 
-#: cps/spa_strings.py:212
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:234
+#, python-brace-format
 msgid "Revoke {label}"
-msgstr "ដកសិទ្ធិ"
+msgstr ""
 
-#: cps/spa_strings.py:213
+#: cps/spa_strings.py:235
 msgid "Save changes"
 msgstr ""
 
-#: cps/spa_strings.py:214
+#: cps/spa_strings.py:236
 msgid "Save failed."
 msgstr ""
 
-#: cps/spa_strings.py:215
+#: cps/spa_strings.py:237
 msgid "Save profile"
 msgstr ""
 
-#: cps/spa_strings.py:216
+#: cps/spa_strings.py:238
 msgid "Saved."
 msgstr ""
 
-#: cps/spa_strings.py:217 cps/templates/shelf_order.html:33
-#, fuzzy
+#: cps/spa_strings.py:239 cps/templates/shelf_order.html:33
 msgid "Saving…"
-msgstr "ស្វែងរក"
+msgstr ""
 
-#: cps/spa_strings.py:219
-#, fuzzy
+#: cps/spa_strings.py:241
 msgid "Search failed."
-msgstr "ស្វែងរកពាក្យគន្លឹះ"
+msgstr ""
 
-#: cps/spa_strings.py:220
-#, fuzzy
+#: cps/spa_strings.py:242
 msgid "Search for metadata"
-msgstr "មើលទិន្នន័យមេតា"
+msgstr ""
 
-#: cps/spa_strings.py:221
+#: cps/spa_strings.py:243
 msgid "Metadata providers"
 msgstr ""
 
-#: cps/spa_strings.py:222
-#, fuzzy
+#: cps/spa_strings.py:244
 msgid "Loading providers…"
-msgstr "កំពុងដំណើរការ..."
+msgstr ""
 
-#: cps/spa_strings.py:223
-#, fuzzy
+#: cps/spa_strings.py:245
 msgid "Could not load providers."
-msgstr "កែប្រែទិន្នន័យមេតា"
+msgstr ""
 
-#: cps/spa_strings.py:224
-#, fuzzy
+#: cps/spa_strings.py:246
 msgid "Could not update provider."
-msgstr "កែប្រែទិន្នន័យមេតា"
+msgstr ""
 
-#: cps/spa_strings.py:225
+#: cps/spa_strings.py:247
 #, python-brace-format
 msgid "{provider}: {state}"
 msgstr ""
 
-#: cps/spa_strings.py:226
+#: cps/spa_strings.py:248
 msgid "On"
 msgstr ""
 
-#: cps/spa_strings.py:227
+#: cps/spa_strings.py:249
 msgid "Off"
 msgstr ""
 
-#: cps/spa_strings.py:228 cps/templates/shelf.html:119
-#, fuzzy
+#: cps/spa_strings.py:250 cps/templates/shelf.html:119
 msgid "Search results"
-msgstr "ការស្វែងរកមានកំហុស!"
+msgstr ""
 
-#: cps/spa_strings.py:229
-#, fuzzy
+#: cps/spa_strings.py:251
 msgid "Search the library"
-msgstr "នៅក្នុងបណ្ណាល័យ"
+msgstr ""
 
-#: cps/spa_strings.py:230
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:252
+#, python-brace-format
 msgid "Select {title}"
-msgstr "បង្កើតធ្នើ"
+msgstr ""
 
-#: cps/spa_strings.py:232
-#, fuzzy
+#: cps/spa_strings.py:254
 msgid "Sepia theme"
-msgstr "ការតុបតែងសម្រាប់ប្រើ"
+msgstr ""
 
-#: cps/spa_strings.py:234
+#: cps/spa_strings.py:256
 #, python-brace-format
 msgid "Series position {n}"
 msgstr ""
 
-#: cps/spa_strings.py:235
+#: cps/spa_strings.py:257
 msgid "Sign in"
 msgstr ""
 
-#: cps/spa_strings.py:236
+#: cps/spa_strings.py:258
 msgid "Sign in failed. Please try again."
 msgstr ""
 
-#: cps/spa_strings.py:237
+#: cps/spa_strings.py:259
 msgid "Skip to content"
 msgstr ""
 
-#: cps/spa_strings.py:238
+#: cps/spa_strings.py:260
 msgid "Some fields could not be saved."
 msgstr ""
 
-#: cps/spa_strings.py:239
+#: cps/spa_strings.py:261
 msgid "Table of contents"
 msgstr ""
 
-#: cps/spa_strings.py:240
+#: cps/spa_strings.py:262
 msgid "Tags (comma separated)"
 msgstr ""
 
-#: cps/spa_strings.py:241 cps/templates/book_table.html:106
+#: cps/spa_strings.py:263 cps/templates/book_table.html:106
 #: cps/templates/config_view_edit.html:39 cps/templates/cwa_settings.html:327
 #: cps/templates/cwa_settings.html:329 cps/templates/cwa_settings.html:1115
 #: cps/templates/shelf_edit.html:8 cps/templates/tasks.html:41
@@ -3216,653 +3203,555 @@ msgstr ""
 msgid "Title"
 msgstr "ចំណងជើង"
 
-#: cps/spa_strings.py:242
-#, fuzzy
+#: cps/spa_strings.py:264
 msgid "Unread"
-msgstr "សៀវភៅដែលមិនទាន់បានអាន"
+msgstr ""
 
-#: cps/spa_strings.py:243
-#, fuzzy
+#: cps/spa_strings.py:265
 msgid "Update password"
-msgstr "អនុញ្ញាតឲប្តូរលេខសម្ងាត់"
+msgstr ""
 
-#: cps/spa_strings.py:244 cps/tasks/upload.py:28 cps/templates/admin.html:22
+#: cps/spa_strings.py:266 cps/tasks/upload.py:28 cps/templates/admin.html:22
 #: cps/templates/layout.html:363 cps/templates/user_table.html:146
 msgid "Upload"
 msgstr "អាប់ឡូដ"
 
-#: cps/spa_strings.py:245
-#, fuzzy
+#: cps/spa_strings.py:267
 msgid "Choose books to upload"
-msgstr "ជ្រើសរើសឈ្មោះអ្នកប្រើប្រាស់"
+msgstr ""
 
-#: cps/spa_strings.py:246
-#, fuzzy
+#: cps/spa_strings.py:268
 msgid "Upload failed."
-msgstr "អាប់ឡូដ"
+msgstr ""
 
-#: cps/spa_strings.py:247
-#, fuzzy
+#: cps/spa_strings.py:269
 msgid "Upload image"
-msgstr "ទម្រង់អាប់ឡូដ"
+msgstr ""
 
-#: cps/spa_strings.py:248
-#, fuzzy
+#: cps/spa_strings.py:270
 msgid "Uploading…"
-msgstr "កំពុងដំណើរការ..."
+msgstr ""
 
-#: cps/spa_strings.py:249 cps/templates/read.html:194
+#: cps/spa_strings.py:271 cps/templates/read.html:194
 msgid "Yellow"
 msgstr ""
 
-#: cps/spa_strings.py:250
+#: cps/spa_strings.py:272
 msgid "e.g. MOBI"
 msgstr ""
 
-#: cps/spa_strings.py:251
+#: cps/spa_strings.py:273
 #, python-brace-format
 msgid "{format} reader"
 msgstr ""
 
-#: cps/spa_strings.py:252
+#: cps/spa_strings.py:274
 #, python-brace-format
 msgid "{name} API key"
 msgstr ""
 
-#: cps/spa_strings.py:253
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:275
+#, python-brace-format
 msgid "{n} book(s) added to the shelf."
-msgstr "បន្ថែមទៅធ្នើ"
+msgstr ""
 
-#: cps/spa_strings.py:254
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:276
+#, python-brace-format
 msgid "{n} book(s) deleted."
-msgstr "លុបសៀវភៅ"
+msgstr ""
 
-#: cps/spa_strings.py:255
+#: cps/spa_strings.py:277
 #, python-brace-format
 msgid "{n} marked as read."
 msgstr ""
 
-#: cps/spa_strings.py:256
+#: cps/spa_strings.py:278
 #, python-brace-format
 msgid "{n} marked as unread."
 msgstr ""
 
-#: cps/spa_strings.py:257 cps/templates/_book_organizer.html:162
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:279 cps/templates/_book_organizer.html:162
+#, python-brace-format
 msgid "{n} selected"
-msgstr "លុបសៀវភៅ"
+msgstr ""
 
-#: cps/spa_strings.py:258
+#: cps/spa_strings.py:280
 #, python-format, python-brace-format
 msgid "{pct}% read"
 msgstr ""
 
-#: cps/spa_strings.py:264
+#: cps/spa_strings.py:286
 msgid "What's new"
 msgstr ""
 
-#: cps/spa_strings.py:265
+#: cps/spa_strings.py:287
 msgid "Help — new updates available"
 msgstr ""
 
-#: cps/spa_strings.py:266
-#, fuzzy
+#: cps/spa_strings.py:288
 msgid "The latest features and fixes in Calibre-Web NextGen — newest first."
-msgstr "រក្សាទុកការកំណត់រួចផ្ញើអ៊ីមែលសាកល្បង"
+msgstr ""
 
-#: cps/spa_strings.py:267
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:289
+#, python-brace-format
 msgid "{n} update"
-msgstr "ទំនាក់ទំនងទៅមូលដ្ឋានទិន្នន័យត្រូវបានផ្តាច់"
+msgstr ""
 
-#: cps/spa_strings.py:268
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:290
+#, python-brace-format
 msgid "{n} updates"
-msgstr "ទំនាក់ទំនងទៅមូលដ្ឋានទិន្នន័យត្រូវបានផ្តាច់"
+msgstr ""
 
-#: cps/spa_strings.py:269
+#: cps/spa_strings.py:291
 msgid "No release notes yet — check back after the next update."
 msgstr ""
 
-#: cps/spa_strings.py:270
+#: cps/spa_strings.py:292
 msgid ""
 "The interface is translated into your language; these update notes are "
 "written in English."
 msgstr ""
 
-#: cps/spa_strings.py:272 cps/templates/image.html:27
-#, fuzzy
+#: cps/spa_strings.py:294 cps/templates/image.html:27
 msgid "Reading"
-msgstr "អាន"
+msgstr ""
 
-#: cps/spa_strings.py:273
-#, fuzzy
+#: cps/spa_strings.py:295
 msgid "Grid view"
-msgstr "មុន"
+msgstr ""
 
-#: cps/spa_strings.py:274
-#, fuzzy
+#: cps/spa_strings.py:296
 msgid "Library"
-msgstr "នៅក្នុងបណ្ណាល័យ"
+msgstr ""
 
-#: cps/spa_strings.py:275
+#: cps/spa_strings.py:297
 msgid "List view"
 msgstr ""
 
-#: cps/spa_strings.py:276
+#: cps/spa_strings.py:298
 msgid "Sync"
 msgstr ""
 
-#: cps/spa_strings.py:277 cps/templates/layout.html:342
+#: cps/spa_strings.py:299 cps/templates/layout.html:342
 #: cps/templates/layout.html:378 cps/templates/user_edit.html:312
 #: cps/templates/user_edit.html:314
 msgid "Account"
 msgstr ""
 
-#: cps/spa_strings.py:278 cps/templates/admin.html:19
+#: cps/spa_strings.py:300 cps/templates/admin.html:19
 #: cps/templates/layout.html:374 cps/templates/user_table.html:144
 msgid "Admin"
 msgstr "រដ្ឋបាល"
 
-#: cps/spa_strings.py:279
+#: cps/spa_strings.py:301
 msgid "Under the hood"
 msgstr ""
 
-#: cps/spa_strings.py:282
-#, fuzzy
+#: cps/spa_strings.py:304
 msgid "Open your library"
-msgstr "នៅក្នុងបណ្ណាល័យ"
+msgstr ""
 
-#: cps/spa_strings.py:283
+#: cps/spa_strings.py:305
 msgid "Open the table view"
 msgstr ""
 
-#: cps/spa_strings.py:284
-#, fuzzy
+#: cps/spa_strings.py:306
 msgid "Review duplicates"
-msgstr "លុបសៀវភៅ"
+msgstr ""
 
-#: cps/spa_strings.py:285
-#, fuzzy
+#: cps/spa_strings.py:307
 msgid "Open your shelves"
-msgstr "លើកលែងស៊េរី"
+msgstr ""
 
-#: cps/spa_strings.py:286
-#, fuzzy
+#: cps/spa_strings.py:308
 msgid "Manage sync & app passwords"
-msgstr "អនុញ្ញាតឲប្តូរលេខសម្ងាត់"
+msgstr ""
 
-#: cps/spa_strings.py:287
-#, fuzzy
+#: cps/spa_strings.py:309
 msgid "Check your e-reader address"
-msgstr "ឧបករណ៍ Kindle"
+msgstr ""
 
-#: cps/spa_strings.py:288
-#, fuzzy
+#: cps/spa_strings.py:310
 msgid "Create an app password"
-msgstr "អនុញ្ញាតឲប្តូរលេខសម្ងាត់"
-
-#: cps/spa_strings.py:289
-#, fuzzy
-msgid "Browse series"
-msgstr "រុករក"
-
-#: cps/spa_strings.py:290
-#, fuzzy
-msgid "Browse authors"
-msgstr "រុករក"
-
-#: cps/spa_strings.py:291
-msgid "Open Table view"
 msgstr ""
-
-#: cps/spa_strings.py:292
-#, fuzzy
-msgid "Open Admin"
-msgstr "រដ្ឋបាល"
-
-#: cps/spa_strings.py:293
-#, fuzzy
-msgid "Open account settings"
-msgstr "ការកំណត់"
-
-#: cps/spa_strings.py:294
-#, fuzzy
-msgid "Browse Discover"
-msgstr "ស្រាវជ្រាវ"
-
-#: cps/spa_strings.py:295
-#, fuzzy
-msgid "Explore your library"
-msgstr "នៅក្នុងបណ្ណាល័យ"
-
-#: cps/spa_strings.py:296
-#, fuzzy
-msgid "Go to Upload"
-msgstr "អាប់ឡូដ"
-
-#: cps/spa_strings.py:297
-#, fuzzy
-msgid "Open search"
-msgstr "កម្មវិធីមើល txt សាមញ្ញ"
-
-#: cps/spa_strings.py:299
-#, fuzzy
-msgid "Editions"
-msgstr "កែប្រែ"
-
-#: cps/spa_strings.py:300 cps/templates/layout.html:335
-#, fuzzy
-msgid "Back to New UI"
-msgstr "ការស្វែងរកមានកំហុស!"
-
-#: cps/spa_strings.py:301
-#, fuzzy
-msgid "Back to results"
-msgstr "ការស្វែងរកមានកំហុស!"
-
-#: cps/spa_strings.py:302
-msgid "No editions found for this book."
-msgstr ""
-
-#: cps/spa_strings.py:304
-#, fuzzy
-msgid "View all details"
-msgstr "ព័ត៌មានលម្អិតរបស់សៀវភៅ"
-
-#: cps/spa_strings.py:305
-msgid "Result details"
-msgstr ""
-
-#: cps/spa_strings.py:306 cps/templates/detail.html:1011
-#: cps/templates/listenmp3.html:111
-#, fuzzy
-msgid "Published"
-msgstr "អ្នកបោះពុម្ភ"
-
-#: cps/spa_strings.py:307 cps/templates/cwa_settings.html:1145
-#, fuzzy
-msgid "Format"
-msgstr "ទម្រង់អាប់ឡូដ"
-
-#: cps/spa_strings.py:308 cps/templates/book_edit.html:462
-msgid "Source"
-msgstr "ប្រភព"
 
 #: cps/spa_strings.py:311
-msgid "Customize"
+msgid "Browse series"
 msgstr ""
 
 #: cps/spa_strings.py:312
-msgid "Customize sidebar"
+msgid "Browse authors"
 msgstr ""
 
 #: cps/spa_strings.py:313
-#, fuzzy
-msgid "Customize navigation"
-msgstr "បិទ/បើកការរុករក"
+msgid "Open Table view"
+msgstr ""
 
-#: cps/spa_strings.py:314 cps/templates/_book_organizer.html:164
-msgid "Done"
+#: cps/spa_strings.py:314
+msgid "Open Admin"
 msgstr ""
 
 #: cps/spa_strings.py:315
-msgid "Reset to default"
+msgid "Open account settings"
 msgstr ""
 
 #: cps/spa_strings.py:316
-msgid "Always shown"
+msgid "Browse Discover"
 msgstr ""
 
 #: cps/spa_strings.py:317
-msgid "Editing sidebar. Reorder or hide sections, then tap Done."
+msgid "Explore your library"
 msgstr ""
 
 #: cps/spa_strings.py:318
-msgid "Editing cancelled."
+msgid "Go to Upload"
 msgstr ""
 
 #: cps/spa_strings.py:319
+msgid "Open search"
+msgstr ""
+
+#: cps/spa_strings.py:321
+msgid "Editions"
+msgstr ""
+
+#: cps/spa_strings.py:322 cps/templates/layout.html:335
+msgid "Back to New UI"
+msgstr ""
+
+#: cps/spa_strings.py:323
+msgid "Back to results"
+msgstr ""
+
+#: cps/spa_strings.py:324
+msgid "No editions found for this book."
+msgstr ""
+
+#: cps/spa_strings.py:326
+msgid "View all details"
+msgstr ""
+
+#: cps/spa_strings.py:327
+msgid "Result details"
+msgstr ""
+
+#: cps/spa_strings.py:328 cps/templates/detail.html:1011
+#: cps/templates/listenmp3.html:111
+msgid "Published"
+msgstr ""
+
+#: cps/spa_strings.py:329 cps/templates/cwa_settings.html:1145
+msgid "Format"
+msgstr ""
+
+#: cps/spa_strings.py:330 cps/templates/book_edit.html:462
+msgid "Source"
+msgstr "ប្រភព"
+
+#: cps/spa_strings.py:333
+msgid "Customize"
+msgstr ""
+
+#: cps/spa_strings.py:334
+msgid "Customize sidebar"
+msgstr ""
+
+#: cps/spa_strings.py:335
+msgid "Customize navigation"
+msgstr ""
+
+#: cps/spa_strings.py:336 cps/templates/_book_organizer.html:164
+msgid "Done"
+msgstr ""
+
+#: cps/spa_strings.py:337
+msgid "Reset to default"
+msgstr ""
+
+#: cps/spa_strings.py:338
+msgid "Always shown"
+msgstr ""
+
+#: cps/spa_strings.py:339
+msgid "Editing sidebar. Reorder or hide sections, then tap Done."
+msgstr ""
+
+#: cps/spa_strings.py:340
+msgid "Editing cancelled."
+msgstr ""
+
+#: cps/spa_strings.py:341
 msgid ""
 "Drag to reorder. Tap ✕ to hide a section. Arrow keys move the focused handle."
 msgstr ""
 
-#: cps/spa_strings.py:320
+#: cps/spa_strings.py:342
 msgid "Sidebar saved."
 msgstr ""
 
-#: cps/spa_strings.py:321
+#: cps/spa_strings.py:343
 msgid "Sidebar reset to default."
 msgstr ""
 
-#: cps/spa_strings.py:322
+#: cps/spa_strings.py:344
 #, python-brace-format
 msgid "{label} moved to position {pos} of {total}"
 msgstr ""
 
-#: cps/spa_strings.py:323
+#: cps/spa_strings.py:345
 #, python-brace-format
 msgid "Reorder {label} (position {pos} of {total}). Use arrow keys to move."
 msgstr ""
 
-#: cps/spa_strings.py:324
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:346
+#, python-brace-format
 msgid "Delete {label}"
-msgstr "ដកសិទ្ធិ"
+msgstr ""
 
-#: cps/spa_strings.py:325
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:347
+#, python-brace-format
 msgid "Restore {label}"
-msgstr "ដកសិទ្ធិ"
+msgstr ""
 
-#: cps/spa_strings.py:326
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:348
+#, python-brace-format
 msgid "{label} hidden"
-msgstr "ដកសិទ្ធិ"
+msgstr ""
 
-#: cps/spa_strings.py:327
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:349
+#, python-brace-format
 msgid "{label} restored"
-msgstr "លុបសៀវភៅ"
+msgstr ""
 
-#: cps/spa_strings.py:328
+#: cps/spa_strings.py:350
 msgid "Could not save sidebar. Please try again."
 msgstr ""
 
-#: cps/spa_strings.py:335
-#, fuzzy
+#: cps/spa_strings.py:357
 msgid "Refresh library"
-msgstr "ស៊េរីនានាក្នុងបណ្ណាល័យនេះ"
+msgstr ""
 
-#: cps/spa_strings.py:345
-#, fuzzy
+#: cps/spa_strings.py:367
 msgid "(replace cover)"
-msgstr "ទម្រង់អាប់ឡូដ"
+msgstr ""
 
-#: cps/spa_strings.py:346
+#: cps/spa_strings.py:368
 msgid "2:3 (publisher cover — no padding for typical covers)"
 msgstr ""
 
-#: cps/spa_strings.py:347 cps/templates/config_edit.html:235
+#: cps/spa_strings.py:369 cps/templates/config_edit.html:235
 #: cps/templates/cover_picker.html:108
 msgid "3:4 (generic)"
 msgstr ""
 
-#: cps/spa_strings.py:348
+#: cps/spa_strings.py:370
 msgid "<"
 msgstr ""
 
-#: cps/spa_strings.py:349
+#: cps/spa_strings.py:371
 msgid "="
 msgstr ""
 
-#: cps/spa_strings.py:350
+#: cps/spa_strings.py:372
 msgid ">"
 msgstr ""
 
-#: cps/spa_strings.py:351
-#, fuzzy
+#: cps/spa_strings.py:373
 msgid "A few random picks from your library"
-msgstr "នៅក្នុងបណ្ណាល័យ"
+msgstr ""
 
-#: cps/spa_strings.py:352
+#: cps/spa_strings.py:374
 msgid ""
 "A one-time full duplicate scan is needed. Run it from CWA settings, then "
 "return here."
 msgstr ""
 
-#: cps/spa_strings.py:353 cps/templates/cover_picker.html:81
+#: cps/spa_strings.py:375 cps/templates/cover_picker.html:81
 msgid "API keys"
 msgstr ""
 
-#: cps/spa_strings.py:354 cps/templates/layout.html:662
+#: cps/spa_strings.py:376 cps/templates/layout.html:662
 #: cps/templates/stats.html:3
 msgid "About"
 msgstr "អំពី"
 
-#: cps/spa_strings.py:355
+#: cps/spa_strings.py:377
 #, python-brace-format
 msgid "Account: {name}"
 msgstr ""
 
-#: cps/spa_strings.py:356
+#: cps/spa_strings.py:378
 msgid "Add identifier"
 msgstr ""
 
-#: cps/spa_strings.py:357 cps/templates/detail.html:700
+#: cps/spa_strings.py:379 cps/templates/detail.html:700
 #: cps/templates/detail.html:701 cps/templates/detail.html:703
-#, fuzzy
 msgid "Add to favorites"
-msgstr "បន្ថែមទៅធ្នើ"
+msgstr ""
 
-#: cps/spa_strings.py:358
-#, fuzzy
+#: cps/spa_strings.py:380
 msgid "Admin group"
-msgstr "ទំព័ររដ្ឋបាល"
+msgstr ""
 
-#: cps/spa_strings.py:359
-#, fuzzy
+#: cps/spa_strings.py:381
 msgid "Advanced"
-msgstr "ស្វែងរកកម្រិតខ្ពស់"
+msgstr ""
 
-#: cps/spa_strings.py:360
-#, fuzzy
+#: cps/spa_strings.py:382
 msgid "Advanced search"
-msgstr "ស្វែងរកកម្រិតខ្ពស់"
+msgstr ""
 
-#: cps/spa_strings.py:362
-#, fuzzy
+#: cps/spa_strings.py:384
 msgid "All shelves"
-msgstr "លើកលែងស៊េរី"
+msgstr ""
 
-#: cps/spa_strings.py:363
+#: cps/spa_strings.py:385
 msgid "Allow remote (magic-link) login"
 msgstr ""
 
-#: cps/spa_strings.py:364
+#: cps/spa_strings.py:386
 msgid "Allowed groups (comma-separated)"
 msgstr ""
 
-#: cps/spa_strings.py:365 cps/templates/search_form.html:44
+#: cps/spa_strings.py:387 cps/templates/search_form.html:44
 #: cps/templates/search_form.html:165
 msgid "Any"
 msgstr ""
 
-#: cps/spa_strings.py:366
-#, fuzzy
+#: cps/spa_strings.py:388
 msgid "Any format"
-msgstr "បន្ថែមទៅធ្នើ"
+msgstr ""
 
-#: cps/spa_strings.py:367
-#, fuzzy
+#: cps/spa_strings.py:389
 msgid "Any language"
-msgstr "ភាសា"
+msgstr ""
 
-#: cps/spa_strings.py:368
-#, fuzzy
+#: cps/spa_strings.py:390
 msgid "Any series"
-msgstr "លើកលែងស៊េរី"
+msgstr ""
 
-#: cps/spa_strings.py:369
+#: cps/spa_strings.py:391
 msgid "Any tags"
 msgstr ""
 
-#: cps/spa_strings.py:370
-#, fuzzy
+#: cps/spa_strings.py:392
 msgid "Apply selected"
-msgstr "លុបសៀវភៅ"
+msgstr ""
 
-#: cps/spa_strings.py:371
+#: cps/spa_strings.py:393
 msgid ""
 "Apply to all selected (only filled fields change; replaces existing values):"
 msgstr ""
 
-#: cps/spa_strings.py:372 cps/templates/cover_picker.html:224
+#: cps/spa_strings.py:394 cps/templates/cover_picker.html:224
 msgid "Applying…"
 msgstr ""
 
-#: cps/spa_strings.py:373 cps/templates/book_table.html:54
+#: cps/spa_strings.py:395 cps/templates/book_table.html:54
 #: cps/templates/book_table.html:214 cps/templates/duplicates.html:660
-#, fuzzy
 msgid "Archive"
-msgstr "ស្វែងរក"
+msgstr ""
 
-#: cps/spa_strings.py:374 cps/templates/detail.html:712
+#: cps/spa_strings.py:396 cps/templates/detail.html:712
 #: cps/templates/listenmp3.html:167
-#, fuzzy
 msgid "Archived"
-msgstr "ស្វែងរក"
-
-#: cps/spa_strings.py:375
-msgid "Ask in Discord"
-msgstr ""
-
-#: cps/spa_strings.py:376
-#, fuzzy
-msgid "Authentication"
-msgstr "ការកំណត់"
-
-#: cps/spa_strings.py:377
-#, fuzzy
-msgid "Authentication & security"
-msgstr "វាយបញ្ចូលគណនី Google Drive"
-
-#: cps/spa_strings.py:378
-#, fuzzy
-msgid "Author A–Z"
-msgstr "អ្នកនិពន្ធ"
-
-#: cps/spa_strings.py:379
-#, fuzzy
-msgid "Author Z–A"
-msgstr "អ្នកនិពន្ធ"
-
-#: cps/spa_strings.py:380
-msgid "Authorised — signing you in…"
-msgstr ""
-
-#: cps/spa_strings.py:381
-#, fuzzy
-msgid "Authorize URL"
-msgstr "អ្នកនិពន្ធ"
-
-#: cps/spa_strings.py:383
-msgid "Auto-create users"
-msgstr ""
-
-#: cps/spa_strings.py:384
-msgid "Auto-create users on first login"
-msgstr ""
-
-#: cps/spa_strings.py:386
-#, fuzzy
-msgid "Back to library"
-msgstr "នៅក្នុងបណ្ណាល័យ"
-
-#: cps/spa_strings.py:387
-#, fuzzy
-msgid "Back to the classic view"
-msgstr "ការស្វែងរកមានកំហុស!"
-
-#: cps/spa_strings.py:388
-msgid "Base DN"
-msgstr ""
-
-#: cps/spa_strings.py:389
-#, fuzzy
-msgid "Basic configuration"
-msgstr "ការកំណត់សាមញ្ញ"
-
-#: cps/spa_strings.py:390
-#, fuzzy
-msgid "Book density"
-msgstr "ចំណងជើងសៀវភៅ"
-
-#: cps/spa_strings.py:391
-#, fuzzy
-msgid "Rows per load"
-msgstr "អនុញ្ញាតឲអាប់ឡូត"
-
-#: cps/spa_strings.py:392 cps/templates/cwa_settings.html:376
-#: cps/templates/cwa_settings.html:378
-#, fuzzy
-msgid "Publication Date"
-msgstr "ថ្ងៃបោះពុម្ភ"
-
-#: cps/spa_strings.py:393
-msgid "Date Added"
-msgstr ""
-
-#: cps/spa_strings.py:394
-msgid "in the past N days"
-msgstr ""
-
-#: cps/spa_strings.py:395
-msgid "not in the past N days"
-msgstr ""
-
-#: cps/spa_strings.py:396
-msgid "on or after"
 msgstr ""
 
 #: cps/spa_strings.py:397
-msgid "on or before"
+msgid "Ask in Discord"
 msgstr ""
 
-#: cps/spa_strings.py:398 cps/templates/detail.html:739
-#: cps/templates/detail.html:740
-msgid "Reload metadata from disk"
+#: cps/spa_strings.py:398
+msgid "Authentication"
 msgstr ""
 
 #: cps/spa_strings.py:399
-#, fuzzy
-msgid "Reloading…"
-msgstr "កំពុងដំណើរការ..."
+msgid "Authentication & security"
+msgstr ""
 
-#: cps/spa_strings.py:400 cps/templates/detail.html:738
-#, fuzzy
-msgid "Could not reload metadata"
-msgstr "កែប្រែទិន្នន័យមេតា"
+#: cps/spa_strings.py:400
+msgid "Author A–Z"
+msgstr ""
+
+#: cps/spa_strings.py:401
+msgid "Author Z–A"
+msgstr ""
 
 #: cps/spa_strings.py:402
+msgid "Authorised — signing you in…"
+msgstr ""
+
+#: cps/spa_strings.py:403
+msgid "Authorize URL"
+msgstr ""
+
+#: cps/spa_strings.py:405
+msgid "Auto-create users"
+msgstr ""
+
+#: cps/spa_strings.py:406
+msgid "Auto-create users on first login"
+msgstr ""
+
+#: cps/spa_strings.py:408
+msgid "Back to library"
+msgstr ""
+
+#: cps/spa_strings.py:409
+msgid "Back to the classic view"
+msgstr ""
+
+#: cps/spa_strings.py:410
+msgid "Base DN"
+msgstr ""
+
+#: cps/spa_strings.py:411
+msgid "Basic configuration"
+msgstr ""
+
+#: cps/spa_strings.py:412
+msgid "Book default"
+msgstr ""
+
+#: cps/spa_strings.py:413
+msgid "Book density"
+msgstr ""
+
+#: cps/spa_strings.py:415
 #, python-brace-format
 msgid "Book {number}"
 msgstr ""
 
-#: cps/spa_strings.py:404
-#, fuzzy
+#: cps/spa_strings.py:417
 msgid "Books per page"
-msgstr "ចំនួនសៀវភៅក្នុងមួយទំព័រ"
+msgstr ""
 
-#: cps/spa_strings.py:405 cps/templates/config_edit.html:240
+#: cps/spa_strings.py:418 cps/templates/config_edit.html:240
 #: cps/templates/cover_picker.html:114
 msgid "Border fill style"
 msgstr ""
 
-#: cps/spa_strings.py:406
+#: cps/spa_strings.py:419
 msgid "Built-in providers (leave blank to disable):"
 msgstr ""
 
-#: cps/spa_strings.py:407
-#, fuzzy
+#: cps/spa_strings.py:420
 msgid "Bulk actions"
-msgstr "បង្កើតធ្នើ"
+msgstr ""
 
-#: cps/spa_strings.py:408
+#: cps/spa_strings.py:421
 msgid "CA certificate path"
 msgstr ""
 
-#: cps/spa_strings.py:409
+#: cps/spa_strings.py:422
 msgid "CWA settings (ingest/convert)"
 msgstr ""
 
-#: cps/spa_strings.py:410
+#: cps/spa_strings.py:423
 msgid "Can upload books"
 msgstr ""
 
-#: cps/spa_strings.py:411 cps/templates/admin.html:304
+#: cps/spa_strings.py:424 cps/templates/admin.html:304
 #: cps/templates/admin.html:318 cps/templates/book_edit.html:312
 #: cps/templates/book_table.html:176 cps/templates/book_table.html:195
 #: cps/templates/book_table.html:215 cps/templates/book_table.html:235
@@ -3884,1143 +3773,1249 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: cps/spa_strings.py:412
-msgid "Cancel title edit"
-msgstr ""
-
-#: cps/spa_strings.py:413
+#: cps/spa_strings.py:425
 msgid "Cancel rename"
 msgstr ""
 
-#: cps/spa_strings.py:415
-msgid "Certificate file path"
-msgstr ""
-
-#: cps/spa_strings.py:416
-msgid "Certificate path"
-msgstr ""
-
-#: cps/spa_strings.py:417 cps/templates/book_edit.html:192
-#: cps/templates/cover_picker.html:12 cps/templates/detail.html:619
-#: cps/templates/detail.html:622 cps/templates/detail.html:744
-#, fuzzy
-msgid "Change cover"
-msgstr "អនុញ្ញាតឲប្តូរលេខសម្ងាត់"
-
-#: cps/spa_strings.py:418
-#, fuzzy
-msgid "Checking…"
-msgstr "ស្វែងរក"
-
-#: cps/spa_strings.py:419
-#, fuzzy
-msgid "Choose a cover"
-msgstr "ជ្រើសរើសឈ្មោះអ្នកប្រើប្រាស់"
-
-#: cps/spa_strings.py:420
-#, fuzzy
-msgid "Choose a cover image to upload"
-msgstr "ជ្រើសរើសឈ្មោះអ្នកប្រើប្រាស់"
-
-#: cps/spa_strings.py:421
-#, fuzzy
-msgid "Choose an image…"
-msgstr "ជ្រើសរើសឈ្មោះអ្នកប្រើប្រាស់"
-
-#: cps/spa_strings.py:422
-#, fuzzy
-msgid "Choose fields"
-msgstr "ឧបករណ៍ Kindle"
-
-#: cps/spa_strings.py:423
-#, fuzzy
-msgid "Choose your theme"
-msgstr "ជ្រើសរើសឈ្មោះអ្នកប្រើប្រាស់"
-
-#: cps/spa_strings.py:424
-msgid "Clear selection"
-msgstr ""
-
-#: cps/spa_strings.py:425
-msgid "Client ID"
-msgstr ""
-
 #: cps/spa_strings.py:426
-msgid "Client secret"
+msgid "Cancel title edit"
 msgstr ""
 
 #: cps/spa_strings.py:427
-msgid "Client secret (leave blank to keep)"
+#, python-brace-format
+msgid "Cancel {task}"
 msgstr ""
 
-#: cps/spa_strings.py:428
-#, fuzzy
-msgid "Close reader"
-msgstr "កម្មវិធីមើល txt សាមញ្ញ"
-
 #: cps/spa_strings.py:429
-msgid "Columns"
+msgid "Certificate file path"
 msgstr ""
 
 #: cps/spa_strings.py:430
-#, fuzzy
-msgid "Configured"
-msgstr "ការកំណត់ផ្ទាំងប្រើប្រាស់"
+msgid "Certificate path"
+msgstr ""
 
-#: cps/spa_strings.py:431
-#, fuzzy
-msgid "Confirm new password"
-msgstr "អនុញ្ញាតឲប្តូរលេខសម្ងាត់"
+#: cps/spa_strings.py:431 cps/templates/book_edit.html:192
+#: cps/templates/cover_picker.html:12 cps/templates/detail.html:619
+#: cps/templates/detail.html:622 cps/templates/detail.html:744
+msgid "Change cover"
+msgstr ""
 
-#: cps/spa_strings.py:432 cps/tasks/convert.py:358
-msgid "Convert"
+#: cps/spa_strings.py:432
+msgid "Checking…"
 msgstr ""
 
 #: cps/spa_strings.py:433
-msgid "Convert before sending"
+msgid "Choose a cover"
 msgstr ""
 
 #: cps/spa_strings.py:434
-#, fuzzy
-msgid "Convert from"
-msgstr "នៅក្នុងបណ្ណាល័យ"
+msgid "Choose a cover image to upload"
+msgstr ""
 
 #: cps/spa_strings.py:435
-#, fuzzy
-msgid "Copied to clipboard"
-msgstr "នៅក្នុងបណ្ណាល័យ"
+msgid "Choose an image…"
+msgstr ""
 
 #: cps/spa_strings.py:436
-msgid "Copy link"
+msgid "Choose fields"
 msgstr ""
 
 #: cps/spa_strings.py:437
-#, fuzzy
-msgid "Could not create the shelf."
-msgstr "កែប្រែទិន្នន័យមេតា"
+msgid "Choose your theme"
+msgstr ""
 
 #: cps/spa_strings.py:438
-#, fuzzy
-msgid "Could not load candidates."
-msgstr "កែប្រែទិន្នន័យមេតា"
+msgid "Clear default"
+msgstr ""
 
 #: cps/spa_strings.py:439
-#, fuzzy
-msgid "Could not load duplicates."
-msgstr "កែប្រែទិន្នន័យមេតា"
+msgid "Clear selection"
+msgstr ""
 
 #: cps/spa_strings.py:440
-#, fuzzy
-msgid "Could not load highlights."
-msgstr "កែប្រែទិន្នន័យមេតា"
+msgid "Client ID"
+msgstr ""
 
 #: cps/spa_strings.py:441
-#, fuzzy
-msgid "Could not load this text file."
-msgstr "កែប្រែទិន្នន័យមេតា"
+msgid "Client secret"
+msgstr ""
 
 #: cps/spa_strings.py:442
-#, fuzzy
-msgid "Could not read this comic archive."
-msgstr "កែប្រែទិន្នន័យមេតា"
+msgid "Client secret (leave blank to keep)"
+msgstr ""
 
 #: cps/spa_strings.py:443
-#, fuzzy
-msgid "Could not reset password."
-msgstr "អនុញ្ញាតឲប្តូរលេខសម្ងាត់"
+msgid "Close reader"
+msgstr ""
 
 #: cps/spa_strings.py:444
-#, fuzzy
-msgid "Could not save the shelf."
-msgstr "កែប្រែទិន្នន័យមេតា"
+msgid "Columns"
+msgstr ""
 
 #: cps/spa_strings.py:445
-msgid "Couldn’t start a magic link. Please try again."
+msgid "Comfortable"
 msgstr ""
 
 #: cps/spa_strings.py:446
-#, fuzzy
-msgid "Cover locked"
-msgstr "ស្រាវជ្រាវ"
+msgid "Compact"
+msgstr ""
 
 #: cps/spa_strings.py:447
-#, fuzzy
-msgid "Cover not reachable"
-msgstr "កែប្រែទិន្នន័យមេតា"
+msgid "Configured"
+msgstr ""
 
-#: cps/spa_strings.py:449
-#, fuzzy
-msgid "Cover updated from the selected result."
-msgstr "ស្រាវជ្រាវ"
+#: cps/spa_strings.py:448
+msgid "Confirm new password"
+msgstr ""
+
+#: cps/spa_strings.py:449 cps/tasks/convert.py:358
+msgid "Convert"
+msgstr ""
 
 #: cps/spa_strings.py:450
-#, fuzzy
-msgid "Create"
-msgstr "បង្កើតធ្នើ"
+msgid "Convert before sending"
+msgstr ""
 
 #: cps/spa_strings.py:451
-#, fuzzy
-msgid "Create account"
-msgstr "បង្កើតធ្នើ"
+msgid "Convert from"
+msgstr ""
 
 #: cps/spa_strings.py:452
-#, fuzzy
-msgid "Create an account"
-msgstr "អនុញ្ញាតឲប្តូរលេខសម្ងាត់"
+msgid "Copied to clipboard"
+msgstr ""
 
 #: cps/spa_strings.py:453
-msgid "Create shelf and add book"
+msgid "Copy link"
 msgstr ""
 
 #: cps/spa_strings.py:454
-#, fuzzy
-msgid "Create user"
-msgstr "បង្កើតធ្នើ"
+msgid "Could not create shelf."
+msgstr ""
 
 #: cps/spa_strings.py:455
-#, fuzzy
-msgid "Creating…"
-msgstr "ស្វែងរក"
+msgid "Could not create the shelf."
+msgstr ""
 
-#: cps/spa_strings.py:456 cps/templates/cover_picker.html:178
-#, fuzzy
-msgid "Current"
-msgstr "លេខ version ដែលបានតម្លើង"
+#: cps/spa_strings.py:456
+msgid "Could not delete shelf."
+msgstr ""
 
-#: cps/spa_strings.py:457 cps/templates/cover_picker.html:23
-#, fuzzy
-msgid "Current cover"
-msgstr "លេខ version ដែលបានតម្លើង"
+#: cps/spa_strings.py:457
+msgid "Could not load candidates."
+msgstr ""
 
 #: cps/spa_strings.py:458
-#, fuzzy
-msgid "Current password"
-msgstr "អនុញ្ញាតឲប្តូរលេខសម្ងាត់"
+msgid "Could not load duplicates."
+msgstr ""
 
-#: cps/spa_strings.py:459 cps/templates/detail.html:849
-#: cps/templates/image.html:27 cps/templates/index.html:45
-#, fuzzy
-msgid "Currently reading"
-msgstr "លេខ version ដែលបានតម្លើង"
+#: cps/spa_strings.py:459
+msgid "Could not load highlights."
+msgstr ""
 
 #: cps/spa_strings.py:460
-msgid "Custom border colour"
+msgid "Could not load stats."
 msgstr ""
 
 #: cps/spa_strings.py:461
-msgid "Database & library path"
+msgid "Could not load tasks."
 msgstr ""
 
 #: cps/spa_strings.py:462
-#, fuzzy
-msgid "Default (System Sans-Serif)"
-msgstr "ស្ថិតិ"
+msgid "Could not load this text file."
+msgstr ""
 
 #: cps/spa_strings.py:463
-#, fuzzy
-msgid "Default book language"
-msgstr "លើកលែងភាសា"
+msgid "Could not load users."
+msgstr ""
 
 #: cps/spa_strings.py:464
-#, fuzzy
-msgid "Default interface language"
-msgstr "ការកំណត់មកស្រាប់សម្រាប់អ្នកប្រើប្រាស់ថ្មី"
+msgid "Could not read this comic archive."
+msgstr ""
 
-#: cps/spa_strings.py:465
-#, fuzzy
-msgid "Default roles for new OAuth users:"
-msgstr "ការកំណត់មកស្រាប់សម្រាប់អ្នកប្រើប្រាស់ថ្មី"
+#: cps/spa_strings.py:465 cps/templates/detail.html:738
+msgid "Could not reload metadata"
+msgstr ""
 
 #: cps/spa_strings.py:466
-msgid "Defaults live in Admin → Configuration → Kobo sync."
+msgid "Could not rename shelf."
 msgstr ""
 
 #: cps/spa_strings.py:467
-#, fuzzy
-msgid "Delete books"
-msgstr "លុបសៀវភៅ"
+msgid "Could not reset password."
+msgstr ""
 
-#: cps/spa_strings.py:468
+#: cps/spa_strings.py:468 cps/templates/shelf_reorder.html:88
+msgid "Could not save order."
+msgstr ""
+
+#: cps/spa_strings.py:469
+msgid "Could not save reader settings."
+msgstr ""
+
+#: cps/spa_strings.py:470
+msgid "Could not save the default library filter."
+msgstr ""
+
+#: cps/spa_strings.py:471
+msgid "Could not save the shelf."
+msgstr ""
+
+#: cps/spa_strings.py:472
+msgid "Could not save title."
+msgstr ""
+
+#: cps/spa_strings.py:473
+msgid "Could not update shelf."
+msgstr ""
+
+#: cps/spa_strings.py:474
+msgid "Couldn’t start a magic link. Please try again."
+msgstr ""
+
+#: cps/spa_strings.py:475
+msgid "Cover locked"
+msgstr ""
+
+#: cps/spa_strings.py:476
+msgid "Cover not reachable"
+msgstr ""
+
+#: cps/spa_strings.py:478
+msgid "Cover updated from the selected result."
+msgstr ""
+
+#: cps/spa_strings.py:479
+msgid "Create"
+msgstr ""
+
+#: cps/spa_strings.py:480
+msgid "Create account"
+msgstr ""
+
+#: cps/spa_strings.py:481
+msgid "Create an account"
+msgstr ""
+
+#: cps/spa_strings.py:482
+msgid "Create failed."
+msgstr ""
+
+#: cps/spa_strings.py:483
+msgid "Create shelf and add book"
+msgstr ""
+
+#: cps/spa_strings.py:484
+msgid "Create user"
+msgstr ""
+
+#: cps/spa_strings.py:485
+#, python-brace-format
+msgid "Created {name}."
+msgstr ""
+
+#: cps/spa_strings.py:486
+msgid "Creating…"
+msgstr ""
+
+#: cps/spa_strings.py:487 cps/templates/cover_picker.html:178
+msgid "Current"
+msgstr ""
+
+#: cps/spa_strings.py:488 cps/templates/cover_picker.html:23
+msgid "Current cover"
+msgstr ""
+
+#: cps/spa_strings.py:489
+msgid "Current password"
+msgstr ""
+
+#: cps/spa_strings.py:490 cps/templates/detail.html:849
+#: cps/templates/image.html:27 cps/templates/index.html:45
+msgid "Currently reading"
+msgstr ""
+
+#: cps/spa_strings.py:491
+msgid "Custom border colour"
+msgstr ""
+
+#: cps/spa_strings.py:492
+msgid "Database & library path"
+msgstr ""
+
+#: cps/spa_strings.py:493
+msgid "Date Added"
+msgstr ""
+
+#: cps/spa_strings.py:494 cps/templates/detail.html:904
+msgid "Date added"
+msgstr ""
+
+#: cps/spa_strings.py:495
+msgid "Default (System Sans-Serif)"
+msgstr ""
+
+#: cps/spa_strings.py:496
+msgid "Default book language"
+msgstr ""
+
+#: cps/spa_strings.py:497
+msgid "Default interface language"
+msgstr ""
+
+#: cps/spa_strings.py:498
+msgid "Default library filter cleared."
+msgstr ""
+
+#: cps/spa_strings.py:499
+msgid "Default library filter saved."
+msgstr ""
+
+#: cps/spa_strings.py:500
+msgid "Default roles for new OAuth users:"
+msgstr ""
+
+#: cps/spa_strings.py:501
+msgid "Defaults live in Admin → Configuration → Kobo sync."
+msgstr ""
+
+#: cps/spa_strings.py:502
+msgid "Delete books"
+msgstr ""
+
+#: cps/spa_strings.py:503
+msgid "Delete failed."
+msgstr ""
+
+#: cps/spa_strings.py:504
+#, python-brace-format
+msgid "Delete shelf \"{name}\"? This cannot be undone."
+msgstr ""
+
+#: cps/spa_strings.py:505
 msgid "Delete this smart shelf? Your books are not affected."
 msgstr ""
 
-#: cps/spa_strings.py:469 cps/templates/book_edit.html:171
+#: cps/spa_strings.py:506
+#, python-brace-format
+msgid "Delete user \"{name}\"? Their shelves and reading data are removed too."
+msgstr ""
+
+#: cps/spa_strings.py:507
+#, python-brace-format
+msgid "Delete {name}"
+msgstr ""
+
+#: cps/spa_strings.py:508
+#, python-brace-format
+msgid "Deleted {name}."
+msgstr ""
+
+#: cps/spa_strings.py:509
+msgid "Dense"
+msgstr ""
+
+#: cps/spa_strings.py:510 cps/templates/book_edit.html:171
 #: cps/templates/book_edit.html:461 cps/templates/cwa_settings.html:341
 #: cps/templates/cwa_settings.html:343 cps/templates/search_form.html:154
 msgid "Description"
 msgstr "ពិពណ៌នា"
 
-#: cps/spa_strings.py:470
+#: cps/spa_strings.py:511
 msgid "Disable standard password login"
 msgstr ""
 
-#: cps/spa_strings.py:472
-#, fuzzy
+#: cps/spa_strings.py:513
 msgid "Discover picks updated."
-msgstr "ស្រាវជ្រាវ"
+msgstr ""
 
-#: cps/spa_strings.py:473 cps/templates/cwng_feedback_popup.html:24
+#: cps/spa_strings.py:514
+msgid "Discover — Random Picks"
+msgstr ""
+
+#: cps/spa_strings.py:515 cps/templates/cwng_feedback_popup.html:24
 #: cps/templates/duplicates.html:618 cps/templates/layout.html:404
 #: cps/templates/layout.html:586
 msgid "Dismiss"
 msgstr ""
 
-#: cps/spa_strings.py:474
+#: cps/spa_strings.py:516
 msgid "Dismiss this group"
 msgstr ""
 
-#: cps/spa_strings.py:475
+#: cps/spa_strings.py:517
 msgid "Documentation"
 msgstr ""
 
-#: cps/spa_strings.py:476
+#: cps/spa_strings.py:518
 msgid "Done reordering"
 msgstr ""
 
-#: cps/spa_strings.py:477 cps/templates/admin.html:24
+#: cps/spa_strings.py:519 cps/templates/admin.html:24
 #: cps/templates/detail.html:647 cps/templates/shelf.html:9
 #: cps/templates/user_table.html:147
 msgid "Download"
 msgstr "ទាញយក"
 
-#: cps/spa_strings.py:478
+#: cps/spa_strings.py:520
 msgid "Drop files here, or click to choose"
 msgstr ""
 
-#: cps/spa_strings.py:479
-#, fuzzy
+#: cps/spa_strings.py:521
 msgid "Duplicate"
-msgstr "លុបសៀវភៅ"
+msgstr ""
 
-#: cps/spa_strings.py:480
-#, fuzzy
+#: cps/spa_strings.py:522
 msgid "Duplicate books"
-msgstr "លុបសៀវភៅ"
+msgstr ""
 
-#: cps/spa_strings.py:482 cps/templates/cover_picker.html:94
+#: cps/spa_strings.py:524 cps/templates/cover_picker.html:94
 msgid "E-reader preview"
 msgstr ""
 
-#: cps/spa_strings.py:483
+#: cps/spa_strings.py:525
 msgid "Each type (isbn, amazon, google, doi…) may appear once."
 msgstr ""
 
-#: cps/spa_strings.py:484 cps/templates/config_edit.html:243
+#: cps/spa_strings.py:526 cps/templates/config_edit.html:243
 #: cps/templates/cover_picker.html:117
 msgid "Edge blur — soft bokeh border"
 msgstr ""
 
-#: cps/spa_strings.py:485 cps/templates/config_edit.html:242
+#: cps/spa_strings.py:527 cps/templates/config_edit.html:242
 #: cps/templates/cover_picker.html:116
 msgid "Edge mirror — extend the artwork (recommended)"
 msgstr ""
 
-#: cps/spa_strings.py:486 cps/templates/admin.html:26
+#: cps/spa_strings.py:528 cps/templates/admin.html:26
 #: cps/templates/book_table.html:51 cps/templates/book_table.html:332
 #: cps/templates/duplicates.html:657 cps/templates/index.html:131
 #: cps/templates/user_table.html:131 cps/templates/user_table.html:149
 msgid "Edit"
 msgstr "កែប្រែ"
 
-#: cps/spa_strings.py:487
-#, fuzzy
+#: cps/spa_strings.py:529
 msgid "Edit public shelves"
-msgstr "អនុញ្ញាតឲកែប្រែធ្នើសាធារណៈ"
+msgstr ""
 
-#: cps/spa_strings.py:488
-#, fuzzy
+#: cps/spa_strings.py:530
 msgid "Edit smart shelf"
-msgstr "កែប្រែធ្នើ"
+msgstr ""
 
-#: cps/spa_strings.py:489 cps/templates/admin.html:15
+#: cps/spa_strings.py:531
+#, python-brace-format
+msgid "Edit title for {title}"
+msgstr ""
+
+#: cps/spa_strings.py:532 cps/templates/admin.html:15
 #: cps/templates/register.html:14 cps/templates/user_edit.html:200
 #: cps/templates/user_table.html:135
-#, fuzzy
 msgid "Email"
-msgstr "ពីអ៊ីមែល"
+msgstr ""
 
-#: cps/spa_strings.py:490
+#: cps/spa_strings.py:533
 msgid "Email (SMTP) server"
 msgstr ""
 
-#: cps/spa_strings.py:491
+#: cps/spa_strings.py:534
 msgid "Email (optional)"
 msgstr ""
 
-#: cps/spa_strings.py:492
-#, fuzzy
+#: cps/spa_strings.py:535
 msgid "Email claim"
-msgstr "ពីអ៊ីមែល"
+msgstr ""
 
-#: cps/spa_strings.py:493
+#: cps/spa_strings.py:536
 msgid "Email me a reset"
 msgstr ""
 
-#: cps/spa_strings.py:494
+#: cps/spa_strings.py:537
 msgid "Email settings saved."
 msgstr ""
 
-#: cps/spa_strings.py:495 cps/templates/config_edit.html:208
+#: cps/spa_strings.py:538 cps/templates/config_edit.html:208
 msgid "Enable Kobo sync"
 msgstr ""
 
-#: cps/spa_strings.py:496 cps/templates/admin.html:80
+#: cps/spa_strings.py:539 cps/templates/admin.html:80
 #: cps/templates/email_edit.html:39
 msgid "Encryption"
 msgstr "SSL"
 
-#: cps/spa_strings.py:497
+#: cps/spa_strings.py:540
 msgid "Expires in"
 msgstr ""
 
-#: cps/spa_strings.py:498
+#: cps/spa_strings.py:541
 msgid "Expose only selected shelves over OPDS"
 msgstr ""
 
-#: cps/spa_strings.py:499
-#, fuzzy
-msgid "Failed to load."
-msgstr "មិនអាចរក្សាទុកឯកសារ %(file)s ។"
+#: cps/spa_strings.py:542
+msgid "Failed to load shelves."
+msgstr ""
 
-#: cps/spa_strings.py:500 cps/templates/image.html:25
+#: cps/spa_strings.py:543
+msgid "Failed to load."
+msgstr ""
+
+#: cps/spa_strings.py:544 cps/templates/image.html:25
 msgid "Favorite"
 msgstr ""
 
-#: cps/spa_strings.py:501
-#, fuzzy
+#: cps/spa_strings.py:545
 msgid "Favorited"
-msgstr "សៀវភៅដែលមានប្រជាប្រិយភាព"
+msgstr ""
 
-#: cps/spa_strings.py:503
+#: cps/spa_strings.py:547
 msgid "Fetch"
 msgstr ""
 
-#: cps/spa_strings.py:504
-#, fuzzy
+#: cps/spa_strings.py:548
 msgid "Fetch metadata from web"
-msgstr "មើលទិន្នន័យមេតា"
+msgstr ""
 
-#: cps/spa_strings.py:505
-#, fuzzy
+#: cps/spa_strings.py:549
 msgid "Files"
-msgstr "ឈ្មោះហៅក្រៅ"
+msgstr ""
 
-#: cps/spa_strings.py:506
+#: cps/spa_strings.py:550
 msgid ""
 "Files are queued for the library's ingest process and appear once imported."
 msgstr ""
 
-#: cps/spa_strings.py:507
-#, fuzzy
-msgid "Forgot password?"
-msgstr "លេខសម្ងាត់"
+#: cps/spa_strings.py:551
+#, python-brace-format
+msgid "Filter {items}"
+msgstr ""
 
-#: cps/spa_strings.py:508
+#: cps/spa_strings.py:552
+#, python-brace-format
+msgid "Filter {items}…"
+msgstr ""
+
+#: cps/spa_strings.py:553
+msgid "Font family"
+msgstr ""
+
+#: cps/spa_strings.py:554
+msgid "Font size"
+msgstr ""
+
+#: cps/spa_strings.py:555
+msgid "Forgot password?"
+msgstr ""
+
+#: cps/spa_strings.py:556
 msgid "Format queued — it will appear once processed."
 msgstr ""
 
-#: cps/spa_strings.py:509
-#, fuzzy
+#: cps/spa_strings.py:557
 msgid "Formats"
-msgstr "ទម្រង់អាប់ឡូដ"
+msgstr ""
 
-#: cps/spa_strings.py:510
+#: cps/spa_strings.py:558
 msgid "Formats — exclude"
 msgstr ""
 
-#: cps/spa_strings.py:511
+#: cps/spa_strings.py:559
 msgid "Formats — include"
 msgstr ""
 
-#: cps/spa_strings.py:512
-#, fuzzy
+#: cps/spa_strings.py:560
 msgid "From address"
-msgstr "ដំណើរការ"
+msgstr ""
 
-#: cps/spa_strings.py:513
+#: cps/spa_strings.py:561
 msgid "Full user table & restrictions"
 msgstr ""
 
-#: cps/spa_strings.py:514
+#: cps/spa_strings.py:562
 msgid "Generate a new link"
 msgstr ""
 
-#: cps/spa_strings.py:515
+#: cps/spa_strings.py:563
 msgid "Give your smart shelf a name."
 msgstr ""
 
-#: cps/spa_strings.py:516
-#, fuzzy
+#: cps/spa_strings.py:564
 msgid "Go to your library"
-msgstr "នៅក្នុងបណ្ណាល័យ"
+msgstr ""
 
-#: cps/spa_strings.py:517 cps/templates/config_edit.html:244
+#: cps/spa_strings.py:565 cps/templates/config_edit.html:244
 #: cps/templates/cover_picker.html:118
 msgid "Gradient — palette-matched top/bottom blend"
 msgstr ""
 
-#: cps/spa_strings.py:518
+#: cps/spa_strings.py:566
 msgid "Group claim"
 msgstr ""
 
-#: cps/spa_strings.py:519
+#: cps/spa_strings.py:567
 msgid "Group members field"
 msgstr ""
 
-#: cps/spa_strings.py:520
+#: cps/spa_strings.py:568
 msgid "Group name"
 msgstr ""
 
-#: cps/spa_strings.py:521
+#: cps/spa_strings.py:569
 msgid "Group object filter"
 msgstr ""
 
-#: cps/spa_strings.py:522
+#: cps/spa_strings.py:570
 msgid "HTML is allowed and sanitized on display."
 msgstr ""
 
-#: cps/spa_strings.py:523
-#, fuzzy
+#: cps/spa_strings.py:571
 msgid "Header name"
-msgstr "ឈ្មោះហៅក្រៅ"
+msgstr ""
 
-#: cps/spa_strings.py:524
+#: cps/spa_strings.py:572
 msgid "Help & support"
 msgstr ""
 
-#: cps/spa_strings.py:525
-#, fuzzy
+#: cps/spa_strings.py:573
 msgid "Help menu"
-msgstr "បិទ"
+msgstr ""
 
-#: cps/spa_strings.py:526 cps/templates/readcbr.html:173
+#: cps/spa_strings.py:574 cps/templates/readcbr.html:173
 msgid "Hide"
 msgstr ""
 
-#: cps/spa_strings.py:527
-#, fuzzy
+#: cps/spa_strings.py:575
 msgid "Hide Discover section"
-msgstr "ពិពណ៌នា"
+msgstr ""
 
-#: cps/spa_strings.py:528
-#, fuzzy
+#: cps/spa_strings.py:576
 msgid "Hide fields"
-msgstr "កែប្រែធ្នើ"
+msgstr ""
 
-#: cps/spa_strings.py:529
-#, fuzzy
+#: cps/spa_strings.py:577
 msgid "Hide password"
-msgstr "អនុញ្ញាតឲប្តូរលេខសម្ងាត់"
+msgstr ""
 
-#: cps/spa_strings.py:530
+#: cps/spa_strings.py:578
 msgid "Highlight"
 msgstr ""
 
-#: cps/spa_strings.py:531
+#: cps/spa_strings.py:579
 msgid "Highlights"
 msgstr ""
 
-#: cps/spa_strings.py:532
+#: cps/spa_strings.py:580
 msgid "Hot"
 msgstr ""
 
-#: cps/spa_strings.py:533
+#: cps/spa_strings.py:581
+msgid "Hot — Most Downloaded"
+msgstr ""
+
+#: cps/spa_strings.py:582
 msgid "Icon"
 msgstr ""
 
-#: cps/spa_strings.py:534
+#: cps/spa_strings.py:583
 msgid "Identifier type"
 msgstr ""
 
-#: cps/spa_strings.py:535
+#: cps/spa_strings.py:584
 msgid "Identifier value"
 msgstr ""
 
-#: cps/spa_strings.py:536 cps/templates/book_edit.html:175
+#: cps/spa_strings.py:585 cps/templates/book_edit.html:175
 msgid "Identifiers"
 msgstr ""
 
-#: cps/spa_strings.py:537 cps/templates/book_edit.html:128
+#: cps/spa_strings.py:586 cps/templates/book_edit.html:128
 #: cps/templates/detail.html:899
 msgid "Imported as"
 msgstr ""
 
-#: cps/spa_strings.py:538
+#: cps/spa_strings.py:587
 msgid "In your book"
 msgstr ""
 
-#: cps/spa_strings.py:539
+#: cps/spa_strings.py:588
 msgid ""
 "In-browser reading currently supports EPUB. Use download or the classic "
 "reader for other formats."
 msgstr ""
 
-#: cps/spa_strings.py:540
+#: cps/spa_strings.py:589
 msgid "Issuer / base URL"
 msgstr ""
 
-#: cps/spa_strings.py:541
+#: cps/spa_strings.py:590
 msgid "It may have moved, or it might still live in the classic interface."
 msgstr ""
 
-#: cps/spa_strings.py:542 cps/templates/detail.html:1017
-#, fuzzy
+#: cps/spa_strings.py:591 cps/templates/detail.html:1017
 msgid "KOReader Progress"
-msgstr "ដំណើរការ"
+msgstr ""
 
-#: cps/spa_strings.py:543
+#: cps/spa_strings.py:592
 msgid "Key file path"
 msgstr ""
 
-#: cps/spa_strings.py:544
+#: cps/spa_strings.py:593
 msgid "Key path"
 msgstr ""
 
-#: cps/spa_strings.py:545
+#: cps/spa_strings.py:594
 msgid "Kobo Clara HD / 2E / BW / Colour (1072×1448)"
 msgstr ""
 
-#: cps/spa_strings.py:546
+#: cps/spa_strings.py:595
 msgid "Kobo Libra Color / Libra 2 (1264×1680)"
 msgstr ""
 
-#: cps/spa_strings.py:547
+#: cps/spa_strings.py:596
 msgid "Kobo sync on"
 msgstr ""
 
-#: cps/spa_strings.py:548
-msgid "LDAP"
-msgstr ""
-
-#: cps/spa_strings.py:549 cps/templates/book_edit.html:163
+#: cps/spa_strings.py:598 cps/templates/book_edit.html:163
 #: cps/templates/cwa_settings.html:1127 cps/templates/listenmp3.html:69
 msgid "Language"
 msgstr "ភាសា"
 
-#: cps/spa_strings.py:551
-#, fuzzy
+#: cps/spa_strings.py:600
 msgid "Languages — include"
-msgstr "ទំព័ររដ្ឋបាល"
-
-#: cps/spa_strings.py:552
-msgid "Larger"
 msgstr ""
 
-#: cps/spa_strings.py:553
-msgid "Larger text"
+#: cps/spa_strings.py:601 cps/templates/detail.html:908
+msgid "Last modified"
 msgstr ""
 
-#: cps/spa_strings.py:554 cps/templates/detail.html:1029
+#: cps/spa_strings.py:602 cps/templates/detail.html:1029
 msgid "Last synced"
 msgstr ""
 
-#: cps/spa_strings.py:555
-#, fuzzy
+#: cps/spa_strings.py:603
 msgid "Library settings"
-msgstr "ការកំណត់"
+msgstr ""
 
-#: cps/spa_strings.py:556
+#: cps/spa_strings.py:604 cps/templates/read.html:132
+msgid "Line height"
+msgstr ""
+
+#: cps/spa_strings.py:605
 msgid "Load more"
 msgstr ""
 
-#: cps/spa_strings.py:557
+#: cps/spa_strings.py:606 cps/templates/admin.html:300
+#: cps/templates/admin.html:332 cps/templates/config_db.html:4
+#: cps/templates/config_edit.html:4 cps/templates/cwa_settings.html:4
+#: cps/templates/read.html:74
+msgid "Loading"
+msgstr ""
+
+#: cps/spa_strings.py:607
 msgid "Loading new Discover picks."
 msgstr ""
 
-#: cps/spa_strings.py:558 cps/templates/cover_picker.html:87
-#, fuzzy
+#: cps/spa_strings.py:608 cps/templates/cover_picker.html:87
 msgid "Loading…"
-msgstr "កំពុងដំណើរការ..."
+msgstr ""
 
-#: cps/spa_strings.py:559 cps/templates/cover_picker.html:37
+#: cps/spa_strings.py:609 cps/templates/cover_picker.html:37
 msgid "Lock cover"
 msgstr ""
 
-#: cps/spa_strings.py:561
+#: cps/spa_strings.py:611
 msgid "Login button text"
 msgstr ""
 
-#: cps/spa_strings.py:562
-#, fuzzy
+#: cps/spa_strings.py:612
 msgid "Login method"
-msgstr "ចូលប្រើប្រាស់"
+msgstr ""
 
-#: cps/spa_strings.py:563
+#: cps/spa_strings.py:613
+msgid "Login with"
+msgstr ""
+
+#: cps/spa_strings.py:614
 msgid "Logs"
 msgstr ""
 
-#: cps/spa_strings.py:564
-#, fuzzy
-msgid "Login with"
-msgstr "ចូលប្រើប្រាស់ដោយ magic link"
-
-#: cps/spa_strings.py:565
+#: cps/spa_strings.py:615
 msgid "Looks good"
 msgstr ""
 
-#: cps/spa_strings.py:566
+#: cps/spa_strings.py:616
 msgid "Low-res"
 msgstr ""
 
-#: cps/spa_strings.py:567
-#, fuzzy
+#: cps/spa_strings.py:617
 msgid "Magic link"
-msgstr "ការចូលប្រើប្រាស់ពីចម្ងាយ"
+msgstr ""
 
-#: cps/spa_strings.py:568
-#, fuzzy
+#: cps/spa_strings.py:618
 msgid "Magic link QR code"
-msgstr "ការចូលប្រើប្រាស់ពីចម្ងាយ"
+msgstr ""
 
-#: cps/spa_strings.py:569
+#: cps/spa_strings.py:619
 msgid "Make private"
 msgstr ""
 
-#: cps/spa_strings.py:570
+#: cps/spa_strings.py:620
 msgid "Make public"
 msgstr ""
 
-#: cps/spa_strings.py:571
+#: cps/spa_strings.py:621
+msgid "Make this my default library view"
+msgstr ""
+
+#: cps/spa_strings.py:622
 msgid "Manage admin role from OAuth group"
 msgstr ""
 
-#: cps/spa_strings.py:572
-#, fuzzy
+#: cps/spa_strings.py:623
 msgid "Manage shelves"
-msgstr "កែប្រែធ្នើ"
+msgstr ""
 
-#: cps/spa_strings.py:573 cps/templates/_book_organizer.html:139
+#: cps/spa_strings.py:624 cps/templates/_book_organizer.html:139
 #: cps/templates/book_table.html:60 cps/templates/book_table.html:254
 msgid "Mark as read"
 msgstr ""
 
-#: cps/spa_strings.py:574 cps/templates/_book_organizer.html:145
+#: cps/spa_strings.py:625 cps/templates/_book_organizer.html:145
 #: cps/templates/book_table.html:63 cps/templates/book_table.html:274
 msgid "Mark as unread"
 msgstr ""
 
-#: cps/spa_strings.py:575
+#: cps/spa_strings.py:626
 msgid "Match"
 msgstr ""
 
-#: cps/spa_strings.py:576
+#: cps/spa_strings.py:627
 msgid "Max"
 msgstr ""
 
-#: cps/spa_strings.py:577
+#: cps/spa_strings.py:628
 msgid "Max authors shown"
 msgstr ""
 
-#: cps/spa_strings.py:578
+#: cps/spa_strings.py:629
 msgid "Maximum rating"
 msgstr ""
 
-#: cps/spa_strings.py:579
+#: cps/spa_strings.py:630
 msgid "Member user filter"
 msgstr ""
 
-#: cps/spa_strings.py:580
+#: cps/spa_strings.py:631
 msgid "Metadata URL (OIDC auto-discovery)"
 msgstr ""
 
-#: cps/spa_strings.py:581
+#: cps/spa_strings.py:632
 msgid "Min"
 msgstr ""
 
-#: cps/spa_strings.py:582
+#: cps/spa_strings.py:633
 msgid "Minimum rating"
 msgstr ""
 
-#: cps/spa_strings.py:583
+#: cps/spa_strings.py:634
 msgid "More cover options (search providers, e-reader preview)"
 msgstr ""
 
-#: cps/spa_strings.py:584
-#, fuzzy
+#: cps/spa_strings.py:635
 msgid "More server configuration"
-msgstr "ការកំណត់ម៉ាស៊ីន server"
+msgstr ""
 
-#: cps/spa_strings.py:585
+#: cps/spa_strings.py:636
 msgid ""
 "Pages marked below open in the classic view. Changes there apply to the "
 "whole server."
 msgstr ""
 
-#: cps/spa_strings.py:586
-#, fuzzy
+#: cps/spa_strings.py:637
 msgid "Opens in classic view"
-msgstr "ការស្វែងរកមានកំហុស!"
+msgstr ""
 
-#: cps/spa_strings.py:587
+
+#: cps/spa_strings.py:638
 msgid "Move down"
 msgstr ""
 
-#: cps/spa_strings.py:588
-#, fuzzy
+#: cps/spa_strings.py:639
 msgid "Move up"
-msgstr "ដកសិទ្ធិ"
+msgstr ""
 
-#: cps/spa_strings.py:589
+#: cps/spa_strings.py:640
 msgid "My account"
 msgstr ""
 
-#: cps/spa_strings.py:590
+#: cps/spa_strings.py:641
 msgid "Name"
 msgstr ""
 
-#: cps/spa_strings.py:591
+#: cps/spa_strings.py:642
 msgid "Need to report an issue? Try the new"
 msgstr ""
 
-#: cps/spa_strings.py:592 cps/templates/cover_picker.html:182
+#: cps/spa_strings.py:643 cps/templates/cover_picker.html:182
 msgid "New"
 msgstr ""
 
-#: cps/spa_strings.py:593
-#, fuzzy
+#: cps/spa_strings.py:644
 msgid "New password"
-msgstr "អនុញ្ញាតឲប្តូរលេខសម្ងាត់"
+msgstr ""
 
-#: cps/spa_strings.py:594
+#: cps/spa_strings.py:645
 msgid "New shelf name"
 msgstr ""
 
-#: cps/spa_strings.py:595
+#: cps/spa_strings.py:646
 msgid "New shelf name…"
 msgstr ""
 
-#: cps/spa_strings.py:596
+#: cps/spa_strings.py:647
 msgid "New shelf…"
 msgstr ""
 
-#: cps/spa_strings.py:597
-#, fuzzy
+#: cps/spa_strings.py:648
 msgid "New smart shelf"
-msgstr "បង្កើតធ្នើ"
+msgstr ""
 
-#: cps/spa_strings.py:598
-#, fuzzy
+#: cps/spa_strings.py:649
 msgid "New user"
-msgstr "បន្ថែមអ្នកប្រើប្រាស់ថ្មី"
+msgstr ""
 
-#: cps/spa_strings.py:599
+#: cps/spa_strings.py:650
 msgid "Newest"
 msgstr ""
 
-#: cps/spa_strings.py:600
-#, fuzzy
+#: cps/spa_strings.py:651
 msgid "Newest published"
-msgstr "អ្នកបោះពុម្ភ"
+msgstr ""
 
-#: cps/spa_strings.py:601
-#, fuzzy
+#: cps/spa_strings.py:652
 msgid "Next page"
-msgstr "បន្ទាប់"
+msgstr ""
 
-#: cps/spa_strings.py:602
+#: cps/spa_strings.py:653
 msgid "No books match this smart shelf right now."
 msgstr ""
 
-#: cps/spa_strings.py:603
-#, fuzzy
+#: cps/spa_strings.py:654
 msgid "No books match those criteria."
-msgstr "រកមិនឃើញវត្ថុតាង"
+msgstr ""
 
-#: cps/spa_strings.py:604 cps/templates/cover_picker.html:223
+#: cps/spa_strings.py:655 cps/templates/cover_picker.html:223
 msgid "No candidates found yet. Try a different search or refresh."
 msgstr ""
 
-#: cps/spa_strings.py:605
-#, fuzzy
+#: cps/spa_strings.py:656
 msgid "No contents found."
-msgstr "រកមិនឃើញវត្ថុតាង"
+msgstr ""
 
-#: cps/spa_strings.py:606
-#, fuzzy
+#: cps/spa_strings.py:657
 msgid "No duplicate groups found."
-msgstr "លទ្ធផលសម្រាប់៖"
+msgstr ""
 
-#: cps/spa_strings.py:607
-#, fuzzy
+#: cps/spa_strings.py:658
 msgid "No excluded tags"
-msgstr "លើកលែង tag"
+msgstr ""
 
-#: cps/spa_strings.py:608
+#: cps/spa_strings.py:659
 msgid ""
 "No highlights yet. Highlight while reading, or import from a Kobo device."
 msgstr ""
 
-#: cps/spa_strings.py:609
+#: cps/spa_strings.py:660
+#, python-brace-format
+msgid "No matching {items} for \"{query}\"."
+msgstr ""
+
+#: cps/spa_strings.py:661
 msgid "No pages found in this comic."
 msgstr ""
 
-#: cps/spa_strings.py:610
+#: cps/spa_strings.py:662
 msgid "No shelves yet — create one below."
 msgstr ""
 
-#: cps/spa_strings.py:611
+#: cps/spa_strings.py:663
+msgid "No shelves yet. Create one above to start collecting books."
+msgstr ""
+
+#: cps/spa_strings.py:664
 msgid "No sources need a key."
 msgstr ""
 
-#: cps/spa_strings.py:612
+#: cps/spa_strings.py:665
 msgid "No tasks running."
 msgstr ""
 
-#: cps/spa_strings.py:614
+#: cps/spa_strings.py:666
+#, python-brace-format
+msgid "No {items} yet."
+msgstr ""
+
+#: cps/spa_strings.py:668
 msgid "Not configured"
 msgstr ""
 
-#: cps/spa_strings.py:615
-msgid "OAuth / OpenID Connect"
-msgstr ""
-
-#: cps/spa_strings.py:616
+#: cps/spa_strings.py:670
 msgid "Oldest"
 msgstr ""
 
-#: cps/spa_strings.py:617
-#, fuzzy
+#: cps/spa_strings.py:671
 msgid "Oldest published"
-msgstr "អ្នកបោះពុម្ភ"
+msgstr ""
 
-#: cps/spa_strings.py:618
+#: cps/spa_strings.py:672
 msgid ""
 "On another device where you’re already signed in, scan this code or open the "
 "link below to authorise this device."
 msgstr ""
 
-#: cps/spa_strings.py:619
-#, fuzzy
+#: cps/spa_strings.py:673
 msgid "Open Account"
-msgstr "ការកំណត់"
+msgstr ""
 
-#: cps/spa_strings.py:620
+#: cps/spa_strings.py:674
 msgid "Open classic reader"
 msgstr ""
 
-#: cps/spa_strings.py:621
-#, fuzzy
+#: cps/spa_strings.py:675
 msgid "Open navigation"
-msgstr "បិទ/បើកការរុករក"
+msgstr ""
 
-#: cps/spa_strings.py:622
-#, fuzzy
+#: cps/spa_strings.py:676
 msgid "Open reader"
-msgstr "កម្មវិធីមើល txt សាមញ្ញ"
+msgstr ""
 
-#: cps/spa_strings.py:623
+#: cps/spa_strings.py:677
 msgid "Open the classic interface"
 msgstr ""
 
-#: cps/spa_strings.py:624
+#: cps/spa_strings.py:678
 msgid "Open the link below on your signed-in device."
 msgstr ""
 
-#: cps/spa_strings.py:625
-#, fuzzy
+#: cps/spa_strings.py:679
 msgid "OpenLDAP server"
-msgstr "លេខ port របស់ម៉ាស៊ីន server"
+msgstr ""
 
-#: cps/spa_strings.py:626
-#, fuzzy
+#: cps/spa_strings.py:680
 msgid "PDF reader"
-msgstr "កម្មវិធីមើល txt សាមញ្ញ"
+msgstr ""
 
-#: cps/spa_strings.py:627 cps/templates/admin.html:20
+#: cps/spa_strings.py:681
+msgid "Page margins"
+msgstr ""
+
+#: cps/spa_strings.py:682
+msgid "Page theme"
+msgstr ""
+
+#: cps/spa_strings.py:683
+#, python-brace-format
+msgid "Page {number}"
+msgstr ""
+
+#: cps/spa_strings.py:684 cps/templates/admin.html:20
 #: cps/templates/login.html:22 cps/templates/login.html:23
 #: cps/templates/user_edit.html:211
 msgid "Password"
 msgstr "លេខសម្ងាត់"
 
-#: cps/spa_strings.py:628
+#: cps/spa_strings.py:685
 msgid "Password (leave blank to keep)"
 msgstr ""
 
-#: cps/spa_strings.py:629 cps/templates/cover_picker.html:14
+#: cps/spa_strings.py:686 cps/templates/cover_picker.html:14
 msgid ""
 "Pick a cover from any source we support, paste a URL, upload a file, or use "
 "the cover embedded in the book itself."
 msgstr ""
 
-#: cps/spa_strings.py:630
+#: cps/spa_strings.py:687
 #, python-brace-format
 msgid "Picked up {label}. Drag to reorder, release to drop."
 msgstr ""
 
-#: cps/spa_strings.py:631 cps/templates/admin.html:123
+#: cps/spa_strings.py:688 cps/templates/admin.html:123
 msgid "Port"
 msgstr "លេខ port"
 
-#: cps/spa_strings.py:632
+#: cps/spa_strings.py:689
 msgid "Preparing your magic link…"
 msgstr ""
 
-#: cps/spa_strings.py:633
-#, fuzzy
+#: cps/spa_strings.py:690
 msgid "Previous page"
-msgstr "មុន"
+msgstr ""
 
-#: cps/spa_strings.py:634 cps/templates/duplicates.html:545
+#: cps/spa_strings.py:691 cps/templates/duplicates.html:545
 #: cps/templates/tasks.html:17
 msgid "Progress"
 msgstr "ដំណើរការ"
 
-#: cps/spa_strings.py:635
-#, fuzzy
+#: cps/spa_strings.py:692
 msgid "Public"
-msgstr "កែប្រែធ្នើ"
+msgstr ""
 
-#: cps/spa_strings.py:636
-#, fuzzy
+#: cps/spa_strings.py:693 cps/templates/cwa_settings.html:376
+#: cps/templates/cwa_settings.html:378
+msgid "Publication Date"
+msgstr ""
+
+#: cps/spa_strings.py:694
 msgid "Published after"
-msgstr "បានបោះពុម្ភក្រោយ  "
+msgstr ""
 
-#: cps/spa_strings.py:637
-#, fuzzy
+#: cps/spa_strings.py:695
 msgid "Published before"
-msgstr "បានបោះពុម្ភមុន  "
+msgstr ""
 
-#: cps/spa_strings.py:639
-#, fuzzy
+#: cps/spa_strings.py:697
 msgid "Random books shown"
-msgstr "បង្ហាញសៀវភៅចៃដន្យ"
+msgstr ""
 
-#: cps/spa_strings.py:640 cps/templates/book_edit.html:167
+#: cps/spa_strings.py:698 cps/templates/book_edit.html:167
 #: cps/templates/cwa_settings.html:369 cps/templates/cwa_settings.html:371
 msgid "Rating"
 msgstr "ការវាយតម្លៃ"
 
-#: cps/spa_strings.py:641
-#, fuzzy
+#: cps/spa_strings.py:699
 msgid "Rating (stars)"
-msgstr "ការវាយតម្លៃលើសពី"
+msgstr ""
 
-#: cps/spa_strings.py:643
-#, fuzzy
+#: cps/spa_strings.py:701
 msgid "Read status"
-msgstr "ស្ថានភាព"
+msgstr ""
 
-#: cps/spa_strings.py:644
-#, fuzzy
+#: cps/spa_strings.py:702
 msgid "Read status filter"
-msgstr "ស្ថានភាព"
+msgstr ""
 
-#: cps/spa_strings.py:645
+#: cps/spa_strings.py:703
+msgid "Reader settings saved."
+msgstr ""
+
+#: cps/spa_strings.py:704
+msgid "Reading appearance"
+msgstr ""
+
+#: cps/spa_strings.py:705
 msgid "Recipient(s)"
 msgstr ""
 
-#: cps/spa_strings.py:646
+#: cps/spa_strings.py:706
 msgid "Redirect host (full URL)"
 msgstr ""
 
-#: cps/spa_strings.py:647 cps/templates/cover_picker.html:152
+#: cps/spa_strings.py:707 cps/templates/cover_picker.html:152
 #: cps/templates/index.html:120
-#, fuzzy
 msgid "Refresh"
-msgstr "ស៊េរីនានាក្នុងបណ្ណាល័យនេះ"
+msgstr ""
 
-#: cps/spa_strings.py:648
-#, fuzzy
+#: cps/spa_strings.py:708
 msgid "Registering…"
-msgstr "ចុះឈ្មោះ"
+msgstr ""
 
-#: cps/spa_strings.py:649
-#, fuzzy
+#: cps/spa_strings.py:709 cps/templates/detail.html:739
+#: cps/templates/detail.html:740
+msgid "Reload metadata from disk"
+msgstr ""
+
+#: cps/spa_strings.py:710
+msgid "Reloading…"
+msgstr ""
+
+#: cps/spa_strings.py:711
 msgid "Remember me"
-msgstr "ចងចាំខ្ញុំ"
+msgstr ""
 
-#: cps/spa_strings.py:650 cps/templates/detail.html:700
+#: cps/spa_strings.py:712 cps/templates/detail.html:700
 #: cps/templates/detail.html:701 cps/templates/detail.html:702
-#, fuzzy
 msgid "Remove from favorites"
-msgstr "បន្ថែមទៅធ្នើ"
+msgstr ""
 
-#: cps/spa_strings.py:651 cps/templates/detail.html:809
+#: cps/spa_strings.py:713 cps/templates/detail.html:809
 #: cps/templates/detail.html:991
-#, fuzzy
 msgid "Remove from shelf"
-msgstr "បន្ថែមទៅធ្នើ"
+msgstr ""
 
-#: cps/spa_strings.py:652
+#: cps/spa_strings.py:714
 msgid "Remove highlight"
 msgstr ""
 
-#: cps/spa_strings.py:653
-#, fuzzy
+#: cps/spa_strings.py:715
 msgid "Remove identifier"
-msgstr "បន្ថែមទៅធ្នើ"
+msgstr ""
 
-#: cps/spa_strings.py:654
-#, fuzzy
+#: cps/spa_strings.py:716
 msgid "Remove rule"
-msgstr "បន្ថែមទៅធ្នើ"
+msgstr ""
 
-#: cps/spa_strings.py:655
-#, fuzzy
+#: cps/spa_strings.py:717
 msgid "Rename"
-msgstr "ឈ្មោះហៅក្រៅ"
+msgstr ""
 
-#: cps/spa_strings.py:656
-#, fuzzy
+#: cps/spa_strings.py:718
 msgid "Reorder"
-msgstr "រកមិនឃើញវត្ថុតាង"
+msgstr ""
 
-#: cps/spa_strings.py:657
+#: cps/spa_strings.py:719
 msgid "Replace cover with this one?"
 msgstr ""
 
-#: cps/spa_strings.py:658
-#, fuzzy
+#: cps/spa_strings.py:720
 msgid "Replace cover?"
-msgstr "ទម្រង់អាប់ឡូដ"
+msgstr ""
 
-#: cps/spa_strings.py:659
+#: cps/spa_strings.py:721
 msgid "Report Issue on Discord"
 msgstr ""
 
-#: cps/spa_strings.py:660
+#: cps/spa_strings.py:722
 msgid "Report Issue on GitHub"
 msgstr ""
 
-#: cps/spa_strings.py:661
+#: cps/spa_strings.py:723
 msgid "Require group membership"
 msgstr ""
 
-#: cps/spa_strings.py:662
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:724
+#, python-brace-format
 msgid "Reset password for {name}"
-msgstr "អនុញ្ញាតឲប្តូរលេខសម្ងាត់"
+msgstr ""
 
-#: cps/spa_strings.py:663
+#: cps/spa_strings.py:725
 #, python-brace-format
 msgid ""
 "Reset password for {name}? Their current password will stop working and a "
 "replacement will be emailed."
 msgstr ""
 
-#: cps/spa_strings.py:664
+#: cps/spa_strings.py:726
 msgid "Reverse-proxy header login"
 msgstr ""
 
-#: cps/spa_strings.py:665
-#, fuzzy
+#: cps/spa_strings.py:727
+msgid "Rows per load"
+msgstr ""
+
+#: cps/spa_strings.py:728
 msgid "Run time"
-msgstr "រយៈពេលដែលបានចាប់ផ្តើម"
+msgstr ""
 
-#: cps/spa_strings.py:666
-#, fuzzy
+#: cps/spa_strings.py:729
 msgid "SMTP server"
-msgstr "លេខ port SMTP"
+msgstr ""
 
-#: cps/spa_strings.py:667 cps/templates/email_edit.html:43
+#: cps/spa_strings.py:730 cps/templates/email_edit.html:43
 msgid "SSL/TLS"
 msgstr "SSL/TLS"
 
-#: cps/spa_strings.py:668 cps/templates/email_edit.html:42
+#: cps/spa_strings.py:731 cps/templates/email_edit.html:42
 msgid "STARTTLS"
 msgstr "STARTTLS"
 
-#: cps/spa_strings.py:669 cps/templates/book_edit.html:313
+#: cps/spa_strings.py:732 cps/templates/book_edit.html:313
 #: cps/templates/config_db.html:111 cps/templates/config_edit.html:734
 #: cps/templates/config_view_edit.html:237 cps/templates/email_edit.html:71
 #: cps/templates/read.html:186 cps/templates/schedule_edit.html:47
@@ -5029,701 +5024,619 @@ msgstr "STARTTLS"
 msgid "Save"
 msgstr ""
 
-#: cps/spa_strings.py:670
-#, fuzzy
+#: cps/spa_strings.py:733
 msgid "Save email settings"
-msgstr "ការកំណត់"
+msgstr ""
 
-#: cps/spa_strings.py:671
-#, fuzzy
+#: cps/spa_strings.py:734
 msgid "Save name"
-msgstr "បន្ថែមទៅធ្នើ"
+msgstr ""
 
-#: cps/spa_strings.py:672
-#, fuzzy
+#: cps/spa_strings.py:735
 msgid "Save security settings"
-msgstr "ការកំណត់"
+msgstr ""
 
-#: cps/spa_strings.py:673
-#, fuzzy
+#: cps/spa_strings.py:736
 msgid "Save settings"
-msgstr "ការកំណត់"
+msgstr ""
 
-#: cps/spa_strings.py:674
+#: cps/spa_strings.py:737
 msgid "Saved. Restart the server for the login changes to take effect."
 msgstr ""
 
-#: cps/spa_strings.py:675
+#: cps/spa_strings.py:738
 msgid "Scheduled tasks"
 msgstr ""
 
-#: cps/spa_strings.py:676
-#, fuzzy
+#: cps/spa_strings.py:739
 msgid "Scopes"
-msgstr "ការកំណត់"
+msgstr ""
 
-#: cps/spa_strings.py:677
+#: cps/spa_strings.py:740
 msgid "Search title, author…"
 msgstr ""
 
-#: cps/spa_strings.py:678
-#, fuzzy
+#: cps/spa_strings.py:741
 msgid "Searching every source…"
-msgstr "ស្វែងរក"
+msgstr ""
 
-#: cps/spa_strings.py:679 cps/templates/cover_picker.html:147
+#: cps/spa_strings.py:742 cps/templates/cover_picker.html:147
 #: cps/templates/cover_picker.html:222
-#, fuzzy
 msgid "Searching…"
-msgstr "ស្វែងរក"
+msgstr ""
 
-#: cps/spa_strings.py:680
-#, fuzzy
+#: cps/spa_strings.py:743
 msgid "Security settings saved."
-msgstr "ការកំណត់"
+msgstr ""
 
-#: cps/spa_strings.py:681
+#: cps/spa_strings.py:744
 msgid "See how each cover looks padded for your device"
 msgstr ""
 
-#: cps/spa_strings.py:682 cps/templates/modal_dialogs.html:98
+#: cps/spa_strings.py:745 cps/templates/modal_dialogs.html:98
 msgid "Select"
 msgstr ""
 
-#: cps/spa_strings.py:683
-#, fuzzy
+#: cps/spa_strings.py:746
 msgid "Select multiple"
-msgstr "បង្កើតធ្នើ"
+msgstr ""
 
-#: cps/spa_strings.py:684 cps/templates/detail.html:1191
+#: cps/spa_strings.py:747 cps/templates/detail.html:1191
 msgid "Send"
 msgstr ""
 
-#: cps/spa_strings.py:685
-#, fuzzy
+#: cps/spa_strings.py:748
+msgid "Send failed."
+msgstr ""
+
+#: cps/spa_strings.py:749
 msgid "Send to e-reader"
-msgstr "ផ្ញើទៅ Kindle"
+msgstr ""
 
-#: cps/spa_strings.py:686
-#, fuzzy
+#: cps/spa_strings.py:750
 msgid "Send-to-eReader email"
-msgstr "ឧបករណ៍ Kindle"
+msgstr ""
 
-#: cps/spa_strings.py:687
-#, fuzzy
+#: cps/spa_strings.py:751
 msgid "Sending…"
-msgstr "ស្វែងរក"
+msgstr ""
 
-#: cps/spa_strings.py:688
-#, fuzzy
+#: cps/spa_strings.py:752
 msgid "Series index"
-msgstr "រកមិនឃើញវត្ថុតាង"
+msgstr ""
 
-#: cps/spa_strings.py:689
-#, fuzzy
+#: cps/spa_strings.py:753
 msgid "Series view"
-msgstr "រកមិនឃើញវត្ថុតាង"
+msgstr ""
 
-#: cps/spa_strings.py:690
-#, fuzzy
+#: cps/spa_strings.py:754
 msgid "Series — include"
-msgstr "រកមិនឃើញវត្ថុតាង"
+msgstr ""
 
-#: cps/spa_strings.py:691
+#: cps/spa_strings.py:755
 msgid "Serve over HTTPS"
 msgstr ""
 
-#: cps/spa_strings.py:692
+#: cps/spa_strings.py:756
 msgid "Server SSL / HTTPS"
 msgstr ""
 
-#: cps/spa_strings.py:693
+#: cps/spa_strings.py:757
 msgid "Server announcement (shown to all users)"
 msgstr ""
 
-#: cps/spa_strings.py:694
-#, fuzzy
+#: cps/spa_strings.py:758
 msgid "Server host"
-msgstr "លេខ port របស់ម៉ាស៊ីន server"
+msgstr ""
 
-#: cps/spa_strings.py:695
+#: cps/spa_strings.py:759
 msgid "Service account (DN)"
 msgstr ""
 
-#: cps/spa_strings.py:696
-#, fuzzy
+#: cps/spa_strings.py:760
 msgid "Service password"
-msgstr "អនុញ្ញាតឲប្តូរលេខសម្ងាត់"
+msgstr ""
 
-#: cps/spa_strings.py:697
+#: cps/spa_strings.py:761
 msgid "Service password (leave blank to keep)"
 msgstr ""
 
-#: cps/spa_strings.py:698
+#: cps/spa_strings.py:762
 msgid ""
 "Set a metadata URL to auto-fill the endpoints below, or enter them manually."
 msgstr ""
 
-#: cps/spa_strings.py:699
-#, fuzzy
+#: cps/spa_strings.py:763
 msgid "Settings saved."
-msgstr "ការកំណត់"
+msgstr ""
 
-#: cps/spa_strings.py:700
-#, fuzzy
+#: cps/spa_strings.py:764
 msgid "Shelf name"
-msgstr "ធ្នើ៖ ‘%(name)s’"
+msgstr ""
 
-#: cps/spa_strings.py:701
-#, fuzzy
+#: cps/spa_strings.py:765
 msgid "Shelf not found."
-msgstr "រកមិនឃើញវត្ថុតាង"
+msgstr ""
 
-#: cps/spa_strings.py:703
-#, fuzzy
+#: cps/spa_strings.py:767
 msgid "Show Discover section"
-msgstr "បង្ហាញជម្រើសស៊េរី"
-
-#: cps/spa_strings.py:704
-#, fuzzy
-msgid "Clear default"
-msgstr "ចំណងជើងសៀវភៅ"
-
-#: cps/spa_strings.py:705
-#, fuzzy
-msgid "Could not save the default library filter."
-msgstr "កែប្រែទិន្នន័យមេតា"
-
-#: cps/spa_strings.py:706
-#, fuzzy
-msgid "Could not save title."
-msgstr "កែប្រែទិន្នន័យមេតា"
-
-#: cps/spa_strings.py:707
-#, fuzzy, python-brace-format
-msgid "Edit title for {title}"
-msgstr "ឧបករណ៍ Kindle"
-
-#: cps/spa_strings.py:708
-msgid "Default library filter cleared."
 msgstr ""
 
-#: cps/spa_strings.py:709
-msgid "Default library filter saved."
-msgstr ""
-
-#: cps/spa_strings.py:710 cps/templates/detail.html:904
-msgid "Date added"
-msgstr ""
-
-#: cps/spa_strings.py:711
-msgid "Make this my default library view"
-msgstr ""
-
-#: cps/spa_strings.py:712
+#: cps/spa_strings.py:768
 msgid "Show Table view"
 msgstr ""
 
-#: cps/spa_strings.py:713
+#: cps/spa_strings.py:769
 #, python-brace-format
 msgid "Show all {count} tags"
 msgstr ""
 
-#: cps/spa_strings.py:714
+#: cps/spa_strings.py:770
+#, python-brace-format
+msgid "Show all {items}"
+msgstr ""
+
+#: cps/spa_strings.py:771
 msgid "Show books in language"
 msgstr ""
 
-#: cps/spa_strings.py:715
+#: cps/spa_strings.py:772
 msgid "Show e-reader previews on each candidate"
 msgstr ""
 
-#: cps/spa_strings.py:716
-#, fuzzy
+#: cps/spa_strings.py:773
 msgid "Show fewer tags"
-msgstr "ការកំណត់"
+msgstr ""
 
-#: cps/spa_strings.py:717
-#, fuzzy
+#: cps/spa_strings.py:774
 msgid "Show password"
-msgstr "លេខសម្ងាត់ SMTP"
+msgstr ""
 
-#: cps/spa_strings.py:718
+#: cps/spa_strings.py:775
 msgid "Shuffle picks"
 msgstr ""
 
-#: cps/spa_strings.py:719
-#, fuzzy
+#: cps/spa_strings.py:776
 msgid "Sign in with a magic link"
-msgstr "ចូលប្រើប្រាស់ដោយ magic link"
+msgstr ""
 
-#: cps/spa_strings.py:720
+#: cps/spa_strings.py:777
 msgid "Sign out"
 msgstr ""
 
-#: cps/spa_strings.py:721
+#: cps/spa_strings.py:778
 msgid "Signing in…"
 msgstr ""
 
-#: cps/spa_strings.py:722
-#, fuzzy
+#: cps/spa_strings.py:779
 msgid "Site title"
-msgstr "ឧបករណ៍ Kindle"
-
-#: cps/spa_strings.py:723
-msgid "Smaller"
 msgstr ""
 
-#: cps/spa_strings.py:724
-msgid "Smaller text"
-msgstr ""
-
-#: cps/spa_strings.py:725
-#, fuzzy
+#: cps/spa_strings.py:780
 msgid "Smart shelf not found."
-msgstr "រកមិនឃើញវត្ថុតាង"
+msgstr ""
 
-#: cps/spa_strings.py:726
-#, fuzzy
+#: cps/spa_strings.py:781
 msgid "Smart shelves"
-msgstr "លើកលែងស៊េរី"
+msgstr ""
 
-#: cps/spa_strings.py:727
+#: cps/spa_strings.py:782
 msgid "Solid: average colour of the cover"
 msgstr ""
 
-#: cps/spa_strings.py:728
+#: cps/spa_strings.py:783
 msgid "Solid: custom colour"
 msgstr ""
 
-#: cps/spa_strings.py:729
+#: cps/spa_strings.py:784
 msgid "Solid: most-common colour in the cover"
 msgstr ""
 
-#: cps/spa_strings.py:730
+#: cps/spa_strings.py:785
 msgid "Some sources need a key for better covers"
 msgstr ""
 
-#: cps/spa_strings.py:731 cps/templates/cover_picker.html:226
+#: cps/spa_strings.py:786 cps/templates/cover_picker.html:226
 msgid "Something went wrong. Try again."
 msgstr ""
 
-#: cps/spa_strings.py:732
-#, fuzzy
+#: cps/spa_strings.py:787
 msgid "Sort order"
-msgstr "រកមិនឃើញវត្ថុតាង"
+msgstr ""
 
-#: cps/spa_strings.py:733
-#, fuzzy
+#: cps/spa_strings.py:788
 msgid "Source details"
-msgstr "ព័ត៌មានលម្អិតរបស់សៀវភៅ"
+msgstr ""
 
-#: cps/spa_strings.py:734 cps/templates/detail.html:1023
-#, fuzzy
+#: cps/spa_strings.py:789 cps/templates/detail.html:1023
 msgid "Started reading"
-msgstr "បានចាប់ផ្តើម"
+msgstr ""
 
-#: cps/spa_strings.py:736
-#, fuzzy
+#: cps/spa_strings.py:791
 msgid "Statistics dashboard"
-msgstr "ស្ថិតិ"
+msgstr ""
 
-#: cps/spa_strings.py:737 cps/templates/tasks.html:16
+#: cps/spa_strings.py:792 cps/templates/tasks.html:16
 msgid "Status"
 msgstr "ស្ថានភាព"
 
-#: cps/spa_strings.py:738
+#: cps/spa_strings.py:793
 msgid "Sync only selected shelves to Kobo"
 msgstr ""
 
-#: cps/spa_strings.py:739
+#: cps/spa_strings.py:794
 msgid "Table view"
 msgstr ""
 
-#: cps/spa_strings.py:740
-#, fuzzy
+#: cps/spa_strings.py:795
 msgid "Tag"
-msgstr "Tag"
+msgstr ""
 
-#: cps/spa_strings.py:741 cps/templates/book_edit.html:139
+#: cps/spa_strings.py:796 cps/templates/book_edit.html:139
 #: cps/templates/search_form.html:52
 msgid "Tags"
 msgstr "Tag"
 
-#: cps/spa_strings.py:742
+#: cps/spa_strings.py:797
 msgid "Tags — exclude"
 msgstr ""
 
-#: cps/spa_strings.py:743
+#: cps/spa_strings.py:798
 msgid "Tags — include"
 msgstr ""
 
-#: cps/spa_strings.py:744 cps/templates/config_edit.html:231
+#: cps/spa_strings.py:799 cps/templates/config_edit.html:231
 #: cps/templates/cover_picker.html:104
 msgid "Target aspect ratio"
 msgstr ""
 
-#: cps/spa_strings.py:745 cps/templates/tasks.html:15
+#: cps/spa_strings.py:800 cps/templates/tasks.html:15
 msgid "Task"
 msgstr "ការងារ"
 
-#: cps/spa_strings.py:746 cps/tasks_status.py:37 cps/templates/layout.html:371
+#: cps/spa_strings.py:801 cps/tasks_status.py:37 cps/templates/layout.html:371
 #: cps/templates/tasks.html:7
 msgid "Tasks"
 msgstr "កិច្ចការនានា"
 
-#: cps/spa_strings.py:747
+#: cps/spa_strings.py:802
 msgid "That URL is not a usable image."
 msgstr ""
 
-#: cps/spa_strings.py:748
+#: cps/spa_strings.py:803
 msgid ""
 "These open the full configuration pages. Changes there apply to the whole "
 "server."
 msgstr ""
 
-#: cps/spa_strings.py:749
+#: cps/spa_strings.py:804
 msgid "This format opens in the full-screen reader."
 msgstr ""
 
-#: cps/spa_strings.py:750
+#: cps/spa_strings.py:805
 msgid "This magic link expired. Generate a new one to try again."
 msgstr ""
 
-#: cps/spa_strings.py:751
+#: cps/spa_strings.py:806
 msgid "This page doesn't exist here."
 msgstr ""
 
-#: cps/spa_strings.py:752
-#, fuzzy
+#: cps/spa_strings.py:807
+msgid "This shelf is empty. Add books from any book's page."
+msgstr ""
+
+#: cps/spa_strings.py:808
 msgid "Title A–Z"
-msgstr "ចំណងជើង"
+msgstr ""
 
-#: cps/spa_strings.py:753
-#, fuzzy
+#: cps/spa_strings.py:809
 msgid "Title Z–A"
-msgstr "ចំណងជើង"
+msgstr ""
 
-#: cps/spa_strings.py:754
+#: cps/spa_strings.py:810
 msgid "Title, author, or ISBN"
 msgstr ""
 
-#: cps/spa_strings.py:755
+#: cps/spa_strings.py:811
 msgid "Token URL"
 msgstr ""
 
-#: cps/spa_strings.py:756
-#, fuzzy
+#: cps/spa_strings.py:812
 msgid "Top Rated"
-msgstr "សៀវភៅដែលមានការវាយតម្លៃល្អជាងគេ"
+msgstr ""
 
-#: cps/spa_strings.py:757
+#: cps/spa_strings.py:813
 msgid "Trust authentication header"
 msgstr ""
 
-#: cps/spa_strings.py:758
-#, fuzzy
+#: cps/spa_strings.py:814
 msgid "UI / display configuration"
-msgstr "ការកំណត់ផ្ទាំងប្រើប្រាស់"
+msgstr ""
 
-#: cps/spa_strings.py:759 cps/templates/book_table.html:57
+#: cps/spa_strings.py:815 cps/templates/book_table.html:57
 #: cps/templates/book_table.html:234
-#, fuzzy
 msgid "Unarchive"
-msgstr "ស្វែងរក"
+msgstr ""
 
-#: cps/spa_strings.py:760
+#: cps/spa_strings.py:816
 msgid "Unhide"
 msgstr ""
 
-#: cps/spa_strings.py:761
+#: cps/spa_strings.py:817
 msgid "Unlock the cover above to apply a new one."
 msgstr ""
 
-#: cps/spa_strings.py:762
+#: cps/spa_strings.py:818
 msgid "Unlock the cover to change it"
 msgstr ""
 
-#: cps/spa_strings.py:763
-#, fuzzy
+#: cps/spa_strings.py:819
 msgid "Untitled"
-msgstr "ចំណងជើង"
+msgstr ""
 
-#: cps/spa_strings.py:764 cps/templates/cover_picker.html:74
-#, fuzzy
+#: cps/spa_strings.py:820
+msgid "Update failed."
+msgstr ""
+
+#: cps/spa_strings.py:821 cps/templates/cover_picker.html:74
 msgid "Upload as cover"
-msgstr "ទម្រង់អាប់ឡូដ"
+msgstr ""
 
-#: cps/spa_strings.py:765
-#, fuzzy
+#: cps/spa_strings.py:822
 msgid "Upload books"
-msgstr "កំពុងអាប់ឡូដ"
+msgstr ""
 
-#: cps/spa_strings.py:766
+#: cps/spa_strings.py:823
 msgid ""
 "Use these to connect OPDS readers or KOReader sync without your main "
 "password."
 msgstr ""
 
-#: cps/spa_strings.py:767 cps/templates/cover_picker.html:62
+#: cps/spa_strings.py:824 cps/templates/cover_picker.html:62
 #: cps/templates/cover_picker.html:191
-#, fuzzy
 msgid "Use this cover"
-msgstr "ស្រាវជ្រាវ"
+msgstr ""
 
-#: cps/spa_strings.py:768 cps/templates/tasks.html:13
+#: cps/spa_strings.py:825 cps/templates/tasks.html:13
 #: cps/templates/tasks.html:42 cps/templates/tasks.html:65
 msgid "User"
 msgstr "អ្នកប្រើប្រាស់"
 
-#: cps/spa_strings.py:769
-#, fuzzy
+#: cps/spa_strings.py:826
 msgid "User administration"
-msgstr "ការកំណត់"
+msgstr ""
 
-#: cps/spa_strings.py:770
+#: cps/spa_strings.py:827
 msgid "User object filter"
 msgstr ""
 
-#: cps/spa_strings.py:771
+#: cps/spa_strings.py:828
 msgid "Userinfo URL"
 msgstr ""
 
-#: cps/spa_strings.py:772 cps/templates/admin.html:14
+#: cps/spa_strings.py:829 cps/templates/admin.html:14
 #: cps/templates/login.html:17 cps/templates/login.html:19
 #: cps/templates/register.html:9 cps/templates/user_edit.html:192
 #: cps/templates/user_table.html:134
 msgid "Username"
 msgstr "ឈ្មោះហៅក្រៅ"
 
-#: cps/spa_strings.py:773
-#, fuzzy
+#: cps/spa_strings.py:830
 msgid "Username claim"
-msgstr "ឈ្មោះហៅក្រៅ"
+msgstr ""
 
-#: cps/spa_strings.py:774
-#, fuzzy
+#: cps/spa_strings.py:831
 msgid "Versions"
-msgstr "លេខ version ដែលបានតម្លើង"
+msgstr ""
 
-#: cps/spa_strings.py:775 cps/templates/user_table.html:148
+#: cps/spa_strings.py:832 cps/templates/user_table.html:148
 msgid "View"
 msgstr ""
 
-#: cps/spa_strings.py:776
-#, fuzzy
+#: cps/spa_strings.py:833
 msgid "View settings"
-msgstr "ការកំណត់"
+msgstr ""
 
-#: cps/spa_strings.py:777
+#: cps/spa_strings.py:834
 msgid "Viewer"
 msgstr ""
 
-#: cps/spa_strings.py:778
+#: cps/spa_strings.py:835
 msgid "Waiting for you to authorise…"
 msgstr ""
 
-#: cps/spa_strings.py:779 cps/templates/cover_picker.html:40
+#: cps/spa_strings.py:836 cps/templates/cover_picker.html:40
 msgid "When locked, fetching metadata will not overwrite this cover."
 msgstr ""
 
-#: cps/spa_strings.py:780 cps/templates/detail.html:1023
+#: cps/spa_strings.py:837 cps/templates/detail.html:1023
 msgid "When reading progress was first synced"
 msgstr ""
 
-#: cps/spa_strings.py:781
-#, fuzzy
+#: cps/spa_strings.py:838
 msgid "Your Library"
-msgstr "នៅក្នុងបណ្ណាល័យ"
+msgstr ""
 
-#: cps/spa_strings.py:782
+#: cps/spa_strings.py:839
 msgid "Your browser cannot play this audio format."
 msgstr ""
 
-#: cps/spa_strings.py:783
+#: cps/spa_strings.py:840
 msgid "Your personal digital library"
 msgstr ""
 
-#: cps/spa_strings.py:784
+#: cps/spa_strings.py:841
 msgid "Your saved e-reader address is shown — change it for this send only."
 msgstr ""
 
-#: cps/spa_strings.py:785
-#, fuzzy
-msgid "Book default"
-msgstr "ចំណងជើងសៀវភៅ"
-
-#: cps/spa_strings.py:786
-#, fuzzy
-msgid "Could not save reader settings."
-msgstr "កែប្រែទិន្នន័យមេតា"
-
-#: cps/spa_strings.py:787
-#, fuzzy
-msgid "Font family"
-msgstr "នៅក្នុងបណ្ណាល័យ"
-
-#: cps/spa_strings.py:788
-msgid "Font size"
-msgstr ""
-
-#: cps/spa_strings.py:789 cps/templates/read.html:132
-msgid "Line height"
-msgstr ""
-
-#: cps/spa_strings.py:790 cps/templates/detail.html:908
-msgid "Last modified"
-msgstr ""
-
-#: cps/spa_strings.py:791
-#, fuzzy
-msgid "Page margins"
-msgstr "បន្ទាប់"
-
-#: cps/spa_strings.py:792
-#, fuzzy
-msgid "Page theme"
-msgstr "លុប"
-
-#: cps/spa_strings.py:793
-#, fuzzy
-msgid "Reader settings saved."
-msgstr "ការកំណត់"
-
-#: cps/spa_strings.py:794
-#, fuzzy
-msgid "Reading appearance"
-msgstr "ដំណើរការ"
-
-#: cps/spa_strings.py:795
+#: cps/spa_strings.py:842
 msgid "all rules"
 msgstr ""
 
-#: cps/spa_strings.py:796
-#, fuzzy
+#: cps/spa_strings.py:843
 msgid "any rule"
-msgstr "បន្ថែមអ្នកប្រើប្រាស់ថ្មី"
+msgstr ""
 
-#: cps/spa_strings.py:797
-#, fuzzy
+#: cps/spa_strings.py:844
 msgid "begins with"
-msgstr "ចូលប្រើប្រាស់ដោយ magic link"
+msgstr ""
 
-#: cps/spa_strings.py:798
+#: cps/spa_strings.py:845
 msgid "books"
 msgstr ""
 
-#: cps/spa_strings.py:799
-#, fuzzy
+#: cps/spa_strings.py:846
 msgid "books match"
-msgstr "បន្ថែមទៅធ្នើ"
+msgstr ""
 
-#: cps/spa_strings.py:800
+#: cps/spa_strings.py:847
 msgid "contains"
 msgstr ""
 
-#: cps/spa_strings.py:801
+#: cps/spa_strings.py:848
 msgid "copies"
 msgstr ""
 
-#: cps/spa_strings.py:802
-#, fuzzy
+#: cps/spa_strings.py:849
 msgid "does not contain"
-msgstr "ពិពណ៌នា"
+msgstr ""
 
-#: cps/spa_strings.py:803
-#, fuzzy
+#: cps/spa_strings.py:850
 msgid "e-reader"
-msgstr "កម្មវិធីមើល txt សាមញ្ញ"
+msgstr ""
 
-#: cps/spa_strings.py:804
+#: cps/spa_strings.py:851
 msgid "e.g. Unread sci-fi"
 msgstr ""
 
-#: cps/spa_strings.py:805
-#, fuzzy
+#: cps/spa_strings.py:852
 msgid "eReader email subject"
-msgstr "ផ្ញើទៅ Kindle"
+msgstr ""
 
-#: cps/spa_strings.py:806
+#: cps/spa_strings.py:853
 msgid "ends with"
 msgstr ""
 
-#: cps/spa_strings.py:807
+#: cps/spa_strings.py:854
+msgid "in the past N days"
+msgstr ""
+
+#: cps/spa_strings.py:855
 msgid "is"
 msgstr ""
 
-#: cps/spa_strings.py:808
+#: cps/spa_strings.py:856
 msgid "is not"
 msgstr ""
 
-#: cps/spa_strings.py:809
-msgid "or continue with"
+#: cps/spa_strings.py:857
+msgid "not in the past N days"
 msgstr ""
 
-#: cps/spa_strings.py:810
+#: cps/spa_strings.py:858
+msgid "on or after"
+msgstr ""
+
+#: cps/spa_strings.py:859
+msgid "on or before"
+msgstr ""
+
+#: cps/spa_strings.py:860
 msgid "shared"
 msgstr ""
 
-#: cps/spa_strings.py:811
+#: cps/spa_strings.py:861
 msgid "to"
 msgstr ""
 
-#: cps/spa_strings.py:812
+#: cps/spa_strings.py:862
 msgid "type (isbn, amazon, doi…)"
 msgstr ""
 
-#: cps/spa_strings.py:813
+#: cps/spa_strings.py:863
 msgid "value"
 msgstr ""
 
-#: cps/spa_strings.py:814
+#: cps/spa_strings.py:864
 msgid "you"
 msgstr ""
 
-#: cps/spa_strings.py:815
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:865
+#, python-brace-format
+msgid "{count} book"
+msgstr ""
+
+#: cps/spa_strings.py:866
+#, python-brace-format
 msgid "{count} books"
-msgstr "សៀវភៅដែលមានប្រជាប្រិយភាព"
+msgstr ""
 
-#: cps/spa_strings.py:816
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:867
+#, python-brace-format
+msgid "{count} file queued for import"
+msgstr ""
+
+#: cps/spa_strings.py:868
+#, python-brace-format
+msgid "{count} file rejected"
+msgstr ""
+
+#: cps/spa_strings.py:869
+#, python-brace-format
+msgid "{count} files queued for import"
+msgstr ""
+
+#: cps/spa_strings.py:870
+#, python-brace-format
+msgid "{count} files rejected"
+msgstr ""
+
+#: cps/spa_strings.py:871
+#, python-brace-format
+msgid "{count} result"
+msgstr ""
+
+#: cps/spa_strings.py:872
+#, python-brace-format
+msgid "{count} results"
+msgstr ""
+
+#: cps/spa_strings.py:873
+#, python-brace-format
 msgid "{count} results for \"{query}\""
-msgstr "លទ្ធផលសម្រាប់៖"
+msgstr ""
 
-#: cps/spa_strings.py:817
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:874
+#, python-brace-format
 msgid "{n} found"
-msgstr "ទំនាក់ទំនងទៅមូលដ្ឋានទិន្នន័យត្រូវបានផ្តាច់"
+msgstr ""
 
-#: cps/spa_strings.py:818
+#: cps/spa_strings.py:875
 #, python-brace-format
 msgid "{ok} of {total} sources answered"
 msgstr ""
 
-#: cps/spa_strings.py:819
-#, fuzzy
+#: cps/spa_strings.py:876
 msgid "…or paste an image URL"
-msgstr "ស្រាវជ្រាវ"
+msgstr ""
 
-#: cps/spa_strings.py:820
+#: cps/spa_strings.py:877
 msgid "← Back to book"
 msgstr ""
 
-#: cps/spa_strings.py:821
-#, fuzzy
+#: cps/spa_strings.py:878
 msgid "← Back to sign in"
-msgstr "ការស្វែងរកមានកំហុស!"
+msgstr ""
 
-#: cps/spa_strings.py:822
-#, fuzzy
+#: cps/spa_strings.py:879
 msgid "← Library"
-msgstr "នៅក្នុងបណ្ណាល័យ"
+msgstr ""
 
-#: cps/spa_strings.py:823
+#: cps/spa_strings.py:880
 msgid "≤"
 msgstr ""
 
-#: cps/spa_strings.py:824
+#: cps/spa_strings.py:881
 msgid "≥"
 msgstr ""
 
@@ -5884,7 +5797,7 @@ msgstr ""
 msgid "Shelf name too long (max 100 characters)"
 msgstr ""
 
-#: cps/web.py:1507 cps/web.py:1642
+#: cps/web.py:1507 cps/web.py:1647
 msgid ""
 "Kobo sync for Magic Shelves is disabled globally — this shelf won't reach "
 "your Kobo until 'Sync Magic Shelves to Kobo' is enabled in CWA Settings."
@@ -5907,241 +5820,241 @@ msgstr ""
 msgid "Shelf name is required"
 msgstr ""
 
-#: cps/web.py:1650
+#: cps/web.py:1655
 msgid "Error updating shelf"
 msgstr ""
 
-#: cps/web.py:1667
+#: cps/web.py:1672
 #, fuzzy
 msgid "Edit Magic Shelf"
 msgstr "កែប្រែធ្នើ"
 
-#: cps/web.py:1684
+#: cps/web.py:1689
 #, fuzzy
 msgid "Shelf not found"
 msgstr "រកមិនឃើញវត្ថុតាង"
 
-#: cps/web.py:1689
+#: cps/web.py:1694
 msgid "Permission denied"
 msgstr ""
 
-#: cps/web.py:1720
+#: cps/web.py:1725
 msgid "Shelf duplicated successfully"
 msgstr ""
 
-#: cps/web.py:1726
+#: cps/web.py:1731
 msgid "Error duplicating shelf"
 msgstr ""
 
-#: cps/templates/magic_shelf_edit.html:506 cps/web.py:1753
+#: cps/templates/magic_shelf_edit.html:506 cps/web.py:1758
 msgid ""
 "System shelves cannot be deleted. You can hide them in your user profile "
 "settings."
 msgstr ""
 
-#: cps/web.py:1771
+#: cps/web.py:1776
 msgid "Error deleting shelf"
 msgstr ""
 
-#: cps/web.py:1787
+#: cps/web.py:1792
 msgid ""
 "You cannot hide your own shelves. Delete them instead if you don't want them."
 msgstr ""
 
-#: cps/web.py:1797
+#: cps/web.py:1802
 msgid "Shelf already hidden"
 msgstr ""
 
-#: cps/web.py:1811
+#: cps/web.py:1816
 #, fuzzy
 msgid "Error hiding shelf"
 msgstr "កែប្រែធ្នើ"
 
-#: cps/web.py:1825
+#: cps/web.py:1830
 msgid "Shelf was not hidden"
 msgstr ""
 
-#: cps/web.py:1834
+#: cps/web.py:1839
 msgid "Error unhiding shelf"
 msgstr ""
 
-#: cps/templates/admin.html:18 cps/web.py:1995
+#: cps/templates/admin.html:18 cps/web.py:2000
 msgid "Downloads"
 msgstr "ឯកសារ DLS"
 
-#: cps/web.py:2147
+#: cps/web.py:2152
 msgid "File formats list"
 msgstr ""
 
-#: cps/web.py:2394 cps/web.py:2432
+#: cps/web.py:2399 cps/web.py:2437
 #, fuzzy
 msgid "Please configure the SMTP mail settings first..."
 msgstr "សូមកំណត់អ៊ីមែល SMTP ជាមុនសិន"
 
-#: cps/web.py:2398
+#: cps/web.py:2403
 msgid "Oops! Please update your profile with a valid eReader Email."
 msgstr ""
 
-#: cps/web.py:2420
+#: cps/web.py:2425
 #, python-format
 msgid "Success! Book queued for sending to %(eReadermail)s"
 msgstr "សៀវភៅបានចូលជួរសម្រាប់ផ្ញើទៅ %(eReadermail)s ដោយជោគជ័យ"
 
-#: cps/web.py:2423 cps/web.py:2500
+#: cps/web.py:2428 cps/web.py:2505
 #, python-format
 msgid "Oops! There was an error sending book: %(res)s"
 msgstr "មានបញ្ហានៅពេលផ្ញើសៀវភៅនេះ៖ %(res)s"
 
-#: cps/web.py:2440 cps/web.py:2450
+#: cps/web.py:2445 cps/web.py:2455
 msgid "No email addresses selected"
 msgstr ""
 
-#: cps/web.py:2471
+#: cps/web.py:2476
 msgid "Additional email addresses are disabled for your account."
 msgstr ""
 
-#: cps/web.py:2498
+#: cps/web.py:2503
 #, fuzzy
 msgid "Success! Book queued for sending to the selected address(es)!"
 msgstr "សៀវភៅបានចូលជួរសម្រាប់ផ្ញើទៅ %(eReadermail)s ដោយជោគជ័យ"
 
-#: cps/web.py:2517
+#: cps/web.py:2522
 msgid "Please wait one minute to register next user"
 msgstr ""
 
 #: cps/templates/layout.html:345 cps/templates/layout.html:386
-#: cps/templates/login.html:48 cps/templates/register.html:17 cps/web.py:2518
-#: cps/web.py:2522 cps/web.py:2527 cps/web.py:2531 cps/web.py:2537
-#: cps/web.py:2566 cps/web.py:2570 cps/web.py:2583 cps/web.py:2586
+#: cps/templates/login.html:48 cps/templates/register.html:17 cps/web.py:2523
+#: cps/web.py:2527 cps/web.py:2532 cps/web.py:2536 cps/web.py:2542
+#: cps/web.py:2571 cps/web.py:2575 cps/web.py:2588 cps/web.py:2591
 msgid "Register"
 msgstr "ចុះឈ្មោះ"
 
-#: cps/web.py:2521 cps/web.py:2694
+#: cps/web.py:2526 cps/web.py:2699
 msgid "Connection error to limiter backend, please contact your administrator"
 msgstr ""
 
-#: cps/web.py:2526 cps/web.py:2582
+#: cps/web.py:2531 cps/web.py:2587
 msgid ""
 "Oops! Email server is not configured, please contact your administrator."
 msgstr ""
 
-#: cps/web.py:2568
+#: cps/web.py:2573
 msgid "Oops! Your Email is not allowed."
 msgstr ""
 
-#: cps/web.py:2571
+#: cps/web.py:2576
 msgid "Success! Confirmation Email has been sent."
 msgstr ""
 
-#: cps/web.py:2619
+#: cps/web.py:2624
 #, fuzzy
 msgid ""
 "Authentication loop detected. If you're experiencing login issues, please "
 "contact your administrator."
 msgstr "ទីតាំង database Calibre"
 
-#: cps/web.py:2668
+#: cps/web.py:2673
 #, fuzzy
 msgid ""
 "OAuth authentication is not properly configured. Please contact "
 "administrator."
 msgstr "ទីតាំង database Calibre"
 
-#: cps/web.py:2673 cps/web.py:2700
+#: cps/web.py:2678 cps/web.py:2705
 msgid "Cannot activate LDAP authentication"
 msgstr ""
 
-#: cps/web.py:2682
+#: cps/web.py:2687
 msgid "Standard login is disabled."
 msgstr ""
 
-#: cps/web.py:2690
+#: cps/web.py:2695
 msgid "Please wait one minute before next login"
 msgstr ""
 
-#: cps/web.py:2708
+#: cps/web.py:2713
 msgid "Username cannot be empty"
 msgstr ""
 
-#: cps/web.py:2720
+#: cps/web.py:2725
 #, fuzzy, python-format
 msgid "you are now logged in as: '%(nickname)s'"
 msgstr "ឥឡូវអ្នកបានចូលដោយមានឈ្មោះថា៖ ‘%(nickname)s’"
 
-#: cps/web.py:2739
+#: cps/web.py:2744
 #, fuzzy, python-format
 msgid ""
 "Welcome! Your account has been automatically created. You are now logged in "
 "as: '%(nickname)s'"
 msgstr "ឥឡូវអ្នកបានចូលដោយមានឈ្មោះថា៖ ‘%(nickname)s’"
 
-#: cps/web.py:2744 cps/web.py:2747
+#: cps/web.py:2749 cps/web.py:2752
 #, fuzzy
 msgid ""
 "Authentication successful, but account creation failed. Please contact your "
 "administrator."
 msgstr "ទីតាំង database Calibre"
 
-#: cps/web.py:2751
+#: cps/web.py:2756
 msgid ""
 "Authentication successful, but no local account found. Please contact your "
 "administrator to create your account."
 msgstr ""
 
-#: cps/web.py:2759
+#: cps/web.py:2764
 #, python-format
 msgid ""
 "Fallback Login as: '%(nickname)s', LDAP Server not reachable, or user not "
 "known"
 msgstr ""
 
-#: cps/web.py:2765
+#: cps/web.py:2770
 #, python-format
 msgid "Could not login: %(message)s"
 msgstr ""
 
-#: cps/web.py:2788 cps/web.py:2789 cps/web.py:2832
+#: cps/web.py:2793 cps/web.py:2794 cps/web.py:2837
 #, fuzzy
 msgid "Wrong Username or Password"
 msgstr "ខុសឈ្មោះអ្នកប្រើប្រាស់ ឬលេខសម្ងាត់"
 
-#: cps/web.py:2797
+#: cps/web.py:2802
 msgid "New Password was sent to your email address"
 msgstr ""
 
-#: cps/web.py:2801
+#: cps/web.py:2806
 msgid "An unknown error occurred. Please try again later."
 msgstr ""
 
-#: cps/web.py:2803
+#: cps/web.py:2808
 #, fuzzy
 msgid "Please enter valid username to reset password"
 msgstr "ខុសឈ្មោះអ្នកប្រើប្រាស់ ឬលេខសម្ងាត់"
 
-#: cps/web.py:2811
+#: cps/web.py:2816
 #, fuzzy, python-format
 msgid "You are now logged in as: '%(nickname)s'"
 msgstr "ឥឡូវអ្នកបានចូលដោយមានឈ្មោះថា៖ ‘%(nickname)s’"
 
-#: cps/web.py:3124
+#: cps/web.py:3129
 #, fuzzy
 msgid "Success! Profile Updated"
 msgstr "ព័ត៌មានសង្ខេបបានកែប្រែ"
 
-#: cps/web.py:3130
+#: cps/web.py:3135
 msgid "Oops! An account already exists for this Email."
 msgstr ""
 
-#: cps/web.py:3264
+#: cps/web.py:3269
 msgid "App-password label must be 1-64 characters."
 msgstr ""
 
-#: cps/web.py:3299
+#: cps/web.py:3304
 #, python-format
 msgid "App password '%(label)s' revoked."
 msgstr ""
 
-#: cps/web.py:3511
+#: cps/web.py:3516
 msgid "Invalid book ID."
 msgstr ""
 
@@ -6754,13 +6667,6 @@ msgstr "ធ្វើបច្ចុប្បន្នភាព"
 #, fuzzy
 msgid "Are you sure you want to restart?"
 msgstr "តើអ្នកពិតជាចង់លុបធ្នើនេះមែនទេ?"
-
-#: cps/templates/admin.html:300 cps/templates/admin.html:332
-#: cps/templates/config_db.html:4 cps/templates/config_edit.html:4
-#: cps/templates/cwa_settings.html:4 cps/templates/read.html:74
-#, fuzzy
-msgid "Loading"
-msgstr "កំពុងដំណើរការ..."
 
 #: cps/templates/admin.html:303 cps/templates/admin.html:317
 #: cps/templates/admin.html:337 cps/templates/config_db.html:139
@@ -7812,16 +7718,6 @@ msgstr "លេខ port របស់ម៉ាស៊ីន server"
 msgid "LDAP Encryption"
 msgstr "SSL"
 
-#: cps/templates/config_edit.html:360
-#, fuzzy
-msgid "TLS"
-msgstr "SSL/TLS"
-
-#: cps/templates/config_edit.html:361
-#, fuzzy
-msgid "SSL"
-msgstr "SSL/TLS"
-
 #: cps/templates/config_edit.html:365
 msgid ""
 "LDAP CACertificate Path (Only needed for Client Certificate Authentication)"
@@ -7838,14 +7734,6 @@ msgstr ""
 
 #: cps/templates/config_edit.html:388
 msgid "LDAP Authentication"
-msgstr ""
-
-#: cps/templates/config_edit.html:390
-msgid "Anonymous"
-msgstr ""
-
-#: cps/templates/config_edit.html:391
-msgid "Unauthenticated"
 msgstr ""
 
 #: cps/templates/config_edit.html:392
@@ -11154,10 +11042,6 @@ msgstr ""
 
 #: cps/templates/shelf_reorder.html:83
 msgid "Order saved. The sidebar reflects the new order on next page load."
-msgstr ""
-
-#: cps/templates/shelf_reorder.html:88
-msgid "Could not save order."
 msgstr ""
 
 #: cps/templates/stats.html:8

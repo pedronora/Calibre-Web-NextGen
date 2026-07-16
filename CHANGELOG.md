@@ -18,6 +18,14 @@ is for things you can see or feel when running the app.
 
 ### Fixed
 
+- New UI translation updates no longer manufacture fuzzy guesses that look
+  complete but disappear at runtime. Legacy SPA guesses are now an explicit
+  untranslated review queue, an all-locale gate prevents fuzzy entries from
+  returning, and reviewed French, Russian, German, and Hungarian navigation,
+  shelf, status, error, and accessibility text now renders in those languages.
+  Built-in smart-shelf names also follow the signed-in user's language without
+  renaming the shelf (#879, #886).
+
 - Hardcover setup no longer hides token status behind a disabled sync switch,
   points secret-file users at the wrong environment variable, or shows two
   conflicting enable checkboxes. One server-wide switch now controls both
@@ -67,7 +75,6 @@ is for things you can see or feel when running the app.
   and the deleted highlight stayed in your library. Update the plugin to
   4.1.14 (Highlight sync → the plugin ships with this release) for device
   deletions to sync (#905, #906).
-
 - Admin → Theme no longer says "Settings saved." and then changes nothing. The
   picker stored its choice in an old numbering the theme system stopped reading,
   so "Light" always came back dark. It is now the default theme for **new

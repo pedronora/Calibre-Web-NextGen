@@ -19,12 +19,12 @@ import { useT } from '../lib/i18n';
 import { useAnnouncer } from '../lib/a11y/announcer';
 import styles from './Catalog.module.css';
 
-const VIEW_LABEL: Record<DiscoveryView, string> = {
-  hot: 'Hot — Most Downloaded',
-  discover: 'Discover — Random Picks',
-  rated: 'Top Rated',
-  favorites: 'Favorites',
-  archived: 'Archived',
+const VIEW_OPTIONS: Record<DiscoveryView, { label: string }> = {
+  hot: { label: 'Hot — Most Downloaded' },
+  discover: { label: 'Discover — Random Picks' },
+  rated: { label: 'Top Rated' },
+  favorites: { label: 'Favorites' },
+  archived: { label: 'Archived' },
 };
 
 const SORT_OPTIONS = [
@@ -53,15 +53,21 @@ const READ_FILTERS: { label: string; value: ReadFilter }[] = [
   { label: 'Read', value: 'read' },
 ];
 
-const KIND_LABEL: Record<EntityKind, string> = {
-  author: 'Author',
-  series: 'Series',
-  tag: 'Tag',
-  publisher: 'Publisher',
-  language: 'Language',
-  rating: 'Rating',
-  format: 'Format',
+const KIND_OPTIONS: Record<EntityKind, { label: string }> = {
+  author: { label: 'Author' },
+  series: { label: 'Series' },
+  tag: { label: 'Tag' },
+  publisher: { label: 'Publisher' },
+  language: { label: 'Language' },
+  rating: { label: 'Rating' },
+  format: { label: 'Format' },
 };
+
+const DENSITY_OPTIONS = [
+  { value: 'comfortable', label: 'Comfortable' },
+  { value: 'compact', label: 'Compact' },
+  { value: 'dense', label: 'Dense' },
+] as const;
 
 interface CatalogProps {
   /** When set, the catalog is scoped to books linked to this entity. */
@@ -398,7 +404,7 @@ export function Catalog({ entityKind, entityId, view }: CatalogProps) {
   });
 
   const heading = isView
-    ? t(VIEW_LABEL[view!])
+    ? t(VIEW_OPTIONS[view!].label)
     : filtered
       ? entityFailed
         ? t('Could not load this page')
@@ -452,12 +458,12 @@ export function Catalog({ entityKind, entityId, view }: CatalogProps) {
       {filtered && (
         <Link href={`/${ENTITY_PLURAL[entityKind!]}`} className={styles.back}>
           <ChevronLeft size={16} />
-          All {ENTITY_PLURAL[entityKind!]}
+          {t('Show all {items}', { items: t(ENTITY_PLURAL[entityKind!]) })}
         </Link>
       )}
 
       <div className={styles.header}>
-        {filtered && <span className={styles.kindLabel}>{t(KIND_LABEL[entityKind!])}</span>}
+        {filtered && <span className={styles.kindLabel}>{t(KIND_OPTIONS[entityKind!].label)}</span>}
         <h1 className={renamingTag ? 'sr-only' : styles.title}>{heading}</h1>
         {renamingTag ? (
           <form className={styles.renameForm} onSubmit={submitTagRename}>
@@ -602,11 +608,11 @@ export function Catalog({ entityKind, entityId, view }: CatalogProps) {
                 </label>
                 <fieldset className={styles.densityField}>
                   <legend>{t('Book density')}</legend>
-                  {(['comfortable', 'compact', 'dense'] as const).map((choice) => (
-                    <label key={choice} className={styles.settingsItem}>
-                      <input type="radio" name="book-density" value={choice}
-                        checked={density === choice} onChange={() => setDensity(choice)} />
-                      <span>{t(choice === 'comfortable' ? 'Comfortable' : choice === 'compact' ? 'Compact' : 'Dense')}</span>
+                  {DENSITY_OPTIONS.map((option) => (
+                    <label key={option.value} className={styles.settingsItem}>
+                      <input type="radio" name="book-density" value={option.value}
+                        checked={density === option.value} onChange={() => setDensity(option.value)} />
+                      <span>{t(option.label)}</span>
                     </label>
                   ))}
                 </fieldset>

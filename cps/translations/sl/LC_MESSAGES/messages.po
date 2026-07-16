@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web NextGen\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-16 00:52+0000\n"
+"POT-Creation-Date: 2026-07-15 20:54-0400\n"
 "PO-Revision-Date: 2025-08-11 07:03+0000\n"
 "Last-Translator: Andrej Kralj\n"
 "Language-Team: Slovenian\n"
@@ -23,7 +23,7 @@ msgstr ""
 "X-Loco-Parser: loco_parse_po\n"
 "X-Loco-Source-Locale: sl_SI\n"
 
-#: cps/about.py:65 cps/spa_strings.py:735
+#: cps/about.py:65 cps/spa_strings.py:790
 msgid "Statistics"
 msgstr "Statistika"
 
@@ -154,7 +154,7 @@ msgstr "Stolpec po meri št. %(column)d ne obstaja v zbirki podatkov Calibre"
 msgid "Edit Users"
 msgstr "Urejanje uporabnikov"
 
-#: cps/admin.py:748 cps/opds.py:1311 cps/spa_strings.py:361
+#: cps/admin.py:748 cps/opds.py:1311 cps/spa_strings.py:383
 #: cps/templates/grid.html:14 cps/templates/list.html:19
 msgid "All"
 msgstr "Vse"
@@ -358,7 +358,7 @@ msgid ""
 "the device will receive on next sync"
 msgstr ""
 
-#: cps/admin.py:1424 cps/api/browse.py:79 cps/spa_strings.py:61
+#: cps/admin.py:1424 cps/api/browse.py:79 cps/spa_strings.py:83
 msgid "Tag not found"
 msgstr "Oznaka ni bila najdena"
 
@@ -445,7 +445,7 @@ msgstr "Uspeh! Račun Gmail je potrjen."
 #: cps/admin.py:2865 cps/admin.py:3127 cps/editbooks.py:1157
 #: cps/editbooks.py:2059 cps/shelf.py:148 cps/shelf.py:226 cps/shelf.py:297
 #: cps/shelf.py:332 cps/shelf.py:389 cps/shelf.py:464 cps/shelf.py:547
-#: cps/shelf.py:672 cps/tasks/convert.py:145 cps/web.py:3135
+#: cps/shelf.py:672 cps/tasks/convert.py:145 cps/web.py:3140
 #, python-format
 msgid "Oops! Database Error: %(error)s."
 msgstr "Ups! Napaka podatkovne baze: %(error)s."
@@ -543,7 +543,7 @@ msgstr "Nepravilno trajanje za določeno nalogo"
 msgid "Scheduled tasks settings updated"
 msgstr "Posodobljene nastavitve načrtovanih opravil"
 
-#: cps/admin.py:2082 cps/admin.py:2226 cps/admin.py:3123 cps/web.py:2565
+#: cps/admin.py:2082 cps/admin.py:2226 cps/admin.py:3123 cps/web.py:2570
 msgid "Oops! An unknown error occurred. Please try again later."
 msgstr "Ups! Zgodila se je neznana napaka. Prosimo, poskusite znova pozneje."
 
@@ -552,7 +552,7 @@ msgid "Settings DB is not Writeable"
 msgstr "DB nastavitev ni mogoče zapisati"
 
 #: cps/admin.py:2105 cps/opds.py:316 cps/opds.py:354 cps/opds.py:357
-#: cps/web.py:3051 cps/web.py:3186
+#: cps/web.py:3056 cps/web.py:3191
 #, fuzzy
 msgid "title"
 msgstr "Naslov"
@@ -720,7 +720,7 @@ msgstr "Posodobljene nastavitve zbirke podatkov"
 msgid "Database Configuration"
 msgstr "Nastavitev zbirke podatkov"
 
-#: cps/admin.py:2820 cps/web.py:2530
+#: cps/admin.py:2820 cps/web.py:2535
 msgid "Oops! Please complete all fields."
 msgstr "Ups! Izpolnite vsa polja."
 
@@ -755,7 +755,7 @@ msgid "No admin user remaining, can't delete user"
 msgstr ""
 "Ni preostalega uporabnika administratorja, uporabnika ni mogoče izbrisati"
 
-#: cps/admin.py:3078 cps/web.py:2866
+#: cps/admin.py:3078 cps/web.py:2871
 msgid "Email can't be empty and has to be a valid Email"
 msgstr "E-pošta ne sme biti prazna in mora biti veljavna."
 
@@ -1040,12 +1040,11 @@ msgstr "ni nameščen"
 msgid "Execution permissions missing"
 msgstr "Manjkajo dovoljenja za izvajanje"
 
-#: cps/cover_picker.py:121 cps/spa_strings.py:385
-#, fuzzy
+#: cps/cover_picker.py:121 cps/spa_strings.py:407
 msgid "Back to edit metadata"
-msgstr "urejanje metapodatkov"
+msgstr ""
 
-#: cps/cover_picker.py:124 cps/spa_strings.py:124
+#: cps/cover_picker.py:124 cps/spa_strings.py:146
 #: cps/templates/book_edit.html:39
 msgid "Back to book"
 msgstr ""
@@ -1089,7 +1088,7 @@ msgstr "Ni bilo mogoče najti določenega imenika"
 msgid "Could not load a source image to preview."
 msgstr ""
 
-#: cps/cover_picker.py:573 cps/cover_picker.py:587 cps/spa_strings.py:448
+#: cps/cover_picker.py:573 cps/cover_picker.py:587 cps/spa_strings.py:477
 msgid "Cover save failed."
 msgstr ""
 
@@ -1252,10 +1251,9 @@ msgstr ""
 msgid "Invalid book selection."
 msgstr "Neveljavna vloga"
 
-#: cps/cwa_functions.py:2260 cps/spa_strings.py:401
-#, fuzzy
+#: cps/cwa_functions.py:2260 cps/spa_strings.py:414
 msgid "Book not found."
-msgstr "ne najdem žetona"
+msgstr ""
 
 #: cps/cwa_functions.py:2266
 #, fuzzy
@@ -1318,12 +1316,12 @@ msgstr "{} uporabnikov uspešno izbrisanih"
 msgid "Calibre-Web NextGen Profile Picture Management (WIP)"
 msgstr ""
 
-#: cps/db.py:1776 cps/spa_strings.py:613 cps/templates/config_edit.html:359
-#: cps/templates/config_view_edit.html:79
+#: cps/db.py:1776 cps/spa_strings.py:57 cps/spa_strings.py:667
+#: cps/templates/config_edit.html:359 cps/templates/config_view_edit.html:79
 #: cps/templates/config_view_edit.html:90 cps/templates/email_edit.html:41
 #: cps/web.py:816 cps/web.py:850 cps/web.py:895 cps/web.py:935 cps/web.py:964
-#: cps/web.py:2025 cps/web.py:2062 cps/web.py:2113 cps/web.py:2145
-#: cps/web.py:2184
+#: cps/web.py:2030 cps/web.py:2067 cps/web.py:2118 cps/web.py:2150
+#: cps/web.py:2189
 msgid "None"
 msgstr "Nobeno"
 
@@ -1418,8 +1416,8 @@ msgstr "Datoteke s končnico '%(ext)s' ni dovoljeno naložiti na ta strežnik"
 msgid "File to be uploaded must have an extension"
 msgstr "Datoteka, ki jo želite naložiti, mora imeti končnico"
 
-#: cps/editbooks.py:940 cps/editbooks.py:1679 cps/web.py:783 cps/web.py:3316
-#: cps/web.py:3498 cps/web.py:3648
+#: cps/editbooks.py:940 cps/editbooks.py:1679 cps/web.py:783 cps/web.py:3321
+#: cps/web.py:3503 cps/web.py:3653
 msgid ""
 "Oops! Selected book is unavailable. File does not exist or is not accessible"
 msgstr "Ups! Izbrana knjiga ni na voljo. Datoteka ne obstaja ali ni dostopna"
@@ -1570,7 +1568,7 @@ msgstr ""
 "Povratna domena ni preverjena, sledite korakom za preverjanje domene v "
 "konzoli za razvijalce Google"
 
-#: cps/helper.py:191 cps/spa_strings.py:78 cps/templates/email_edit.html:61
+#: cps/helper.py:191 cps/spa_strings.py:100 cps/templates/email_edit.html:61
 msgid "This Email has been sent via Calibre-Web NextGen."
 msgstr ""
 
@@ -1763,7 +1761,7 @@ msgstr "Nepravilna vsebina datoteke z naslovnico"
 msgid "Only jpg/jpeg files are supported as coverfile"
 msgstr "Samo datoteke jpg/jpeg so podprte kot datoteke naslovnic"
 
-#: cps/helper.py:1887 cps/helper.py:2139 cps/spa_strings.py:143
+#: cps/helper.py:1887 cps/helper.py:2139 cps/spa_strings.py:165
 msgid "Cover"
 msgstr "Naslovnica"
 
@@ -1821,6 +1819,26 @@ msgstr ""
 #: cps/kobo_auth.py:107
 msgid "Kobo Setup"
 msgstr "Nastavitev za Kobo"
+
+#: cps/magic_shelf.py:161 cps/spa_strings.py:42
+msgid "Recently Added"
+msgstr ""
+
+#: cps/magic_shelf.py:180 cps/spa_strings.py:43
+msgid "Highly Rated"
+msgstr ""
+
+#: cps/magic_shelf.py:217 cps/opds.py:200 cps/spa_strings.py:44
+msgid "Currently Reading"
+msgstr ""
+
+#: cps/magic_shelf.py:234 cps/spa_strings.py:45
+msgid "Yet to Read"
+msgstr ""
+
+#: cps/magic_shelf.py:251 cps/spa_strings.py:46
+msgid "Recent Publications"
+msgstr ""
 
 #: cps/oauth_bb.py:287
 #, python-format
@@ -2046,11 +2064,6 @@ msgstr "Prikaži naključne knjige"
 msgid "Read Books"
 msgstr "Prebrane knjige"
 
-#: cps/opds.py:200
-#, fuzzy
-msgid "Currently Reading"
-msgstr "Trenutna različica"
-
 #: cps/opds.py:201
 #, fuzzy
 msgid "Books currently being read"
@@ -2060,7 +2073,7 @@ msgstr "Trenutna različica"
 msgid "Unread Books"
 msgstr "Neprebrane knjige"
 
-#: cps/opds.py:212 cps/render_template.py:110 cps/spa_strings.py:382
+#: cps/opds.py:212 cps/render_template.py:110 cps/spa_strings.py:404
 #: cps/templates/book_table.html:109 cps/templates/cwa_settings.html:334
 #: cps/templates/cwa_settings.html:336
 #: cps/templates/hardcover_review_matches.html:134
@@ -2071,8 +2084,8 @@ msgstr "Avtorji"
 msgid "Books ordered by Author"
 msgstr "Knjige, razvrščene po avtorju"
 
-#: cps/opds.py:218 cps/render_template.py:114 cps/spa_strings.py:638
-#: cps/templates/book_table.html:115 cps/web.py:2036
+#: cps/opds.py:218 cps/render_template.py:114 cps/spa_strings.py:696
+#: cps/templates/book_table.html:115 cps/web.py:2041
 msgid "Publishers"
 msgstr "Založniki"
 
@@ -2080,8 +2093,8 @@ msgstr "Založniki"
 msgid "Books ordered by publisher"
 msgstr "Knjige, razvrščene po založniku"
 
-#: cps/opds.py:224 cps/render_template.py:104 cps/spa_strings.py:414
-#: cps/templates/book_table.html:110 cps/web.py:2188
+#: cps/opds.py:224 cps/render_template.py:104 cps/spa_strings.py:428
+#: cps/templates/book_table.html:110 cps/web.py:2193
 msgid "Categories"
 msgstr "Kategorije"
 
@@ -2089,12 +2102,12 @@ msgstr "Kategorije"
 msgid "Books ordered by category"
 msgstr "Knjige, razvrščene po kategorijah"
 
-#: cps/opds.py:230 cps/render_template.py:107 cps/spa_strings.py:233
+#: cps/opds.py:230 cps/render_template.py:107 cps/spa_strings.py:255
 #: cps/templates/book_edit.html:143 cps/templates/book_table.html:111
 #: cps/templates/cwa_settings.html:362 cps/templates/cwa_settings.html:364
 #: cps/templates/cwa_settings.html:1133
 #: cps/templates/hardcover_review_matches.html:140
-#: cps/templates/search_form.html:70 cps/web.py:2068 cps/web.py:2080
+#: cps/templates/search_form.html:70 cps/web.py:2073 cps/web.py:2085
 msgid "Series"
 msgstr "Serije"
 
@@ -2102,9 +2115,9 @@ msgstr "Serije"
 msgid "Books ordered by series"
 msgstr "Knjige, razvrščene po serijah"
 
-#: cps/opds.py:236 cps/render_template.py:117 cps/spa_strings.py:550
+#: cps/opds.py:236 cps/render_template.py:117 cps/spa_strings.py:599
 #: cps/templates/book_table.html:113 cps/templates/detail.html:930
-#: cps/templates/search_form.html:108 cps/web.py:2160
+#: cps/templates/search_form.html:108 cps/web.py:2165
 msgid "Languages"
 msgstr "Jeziki"
 
@@ -2112,8 +2125,8 @@ msgstr "Jeziki"
 msgid "Books ordered by Languages"
 msgstr "Knjige, razvrščene po jezikih"
 
-#: cps/opds.py:242 cps/render_template.py:121 cps/spa_strings.py:642
-#: cps/web.py:2120
+#: cps/opds.py:242 cps/render_template.py:121 cps/spa_strings.py:700
+#: cps/web.py:2125
 msgid "Ratings"
 msgstr "Ocene"
 
@@ -2129,7 +2142,7 @@ msgstr "Vrste datotek"
 msgid "Books ordered by file formats"
 msgstr "Knjige, razvrščene po vrstah datotek"
 
-#: cps/opds.py:254 cps/spa_strings.py:702 cps/templates/layout.html:639
+#: cps/opds.py:254 cps/spa_strings.py:766 cps/templates/layout.html:639
 #: cps/templates/search_form.html:88
 msgid "Shelves"
 msgstr "Police"
@@ -2158,7 +2171,7 @@ msgstr "Opis"
 msgid "{} Stars"
 msgstr "{} zvezdic"
 
-#: cps/opds.py:1169 cps/search.py:53 cps/search.py:454 cps/spa_strings.py:218
+#: cps/opds.py:1169 cps/search.py:53 cps/search.py:454 cps/spa_strings.py:240
 #: cps/templates/book_edit.html:338 cps/templates/cwa_epub_fixer.html:25
 #: cps/templates/feed.xml:43 cps/templates/index.xml:12
 #: cps/templates/layout.html:313 cps/templates/layout.html:316
@@ -2166,9 +2179,9 @@ msgstr "{} zvezdic"
 msgid "Search"
 msgstr "Iskanje"
 
-#: cps/remotelogin.py:76 cps/spa_strings.py:560 cps/templates/layout.html:344
+#: cps/remotelogin.py:76 cps/spa_strings.py:610 cps/templates/layout.html:344
 #: cps/templates/layout.html:385 cps/templates/login.html:11
-#: cps/templates/login.html:39 cps/web.py:2638
+#: cps/templates/login.html:39 cps/web.py:2643
 msgid "Login"
 msgstr "Prijava"
 
@@ -2190,7 +2203,7 @@ msgid ""
 "can run after imports and metadata changes. "
 msgstr ""
 
-#: cps/render_template.py:74 cps/spa_strings.py:403
+#: cps/render_template.py:74 cps/spa_strings.py:416
 msgid "Books"
 msgstr "Knjige"
 
@@ -2223,7 +2236,7 @@ msgstr "Prikaži prebrano in neprebrano"
 msgid "Show unread"
 msgstr "Prikaži neprebrane"
 
-#: cps/render_template.py:101 cps/spa_strings.py:471
+#: cps/render_template.py:101 cps/spa_strings.py:512
 msgid "Discover"
 msgstr "Odkrivanje"
 
@@ -2263,7 +2276,7 @@ msgstr "Arhivirane knjige"
 msgid "Show Archived Books"
 msgstr "Prikaži arhivirane knjige"
 
-#: cps/render_template.py:132 cps/spa_strings.py:502
+#: cps/render_template.py:132 cps/spa_strings.py:546
 msgid "Favorites"
 msgstr ""
 
@@ -2271,7 +2284,7 @@ msgstr ""
 msgid "Show Favorites"
 msgstr ""
 
-#: cps/render_template.py:137 cps/web.py:1842
+#: cps/render_template.py:137 cps/web.py:1847
 msgid "Books List"
 msgstr "Seznam knjig"
 
@@ -2279,7 +2292,7 @@ msgstr "Seznam knjig"
 msgid "Show Books List"
 msgstr "Prikaži seznam knjig"
 
-#: cps/render_template.py:142 cps/spa_strings.py:481
+#: cps/render_template.py:142 cps/spa_strings.py:523
 msgid "Duplicates"
 msgstr "Dvojniki"
 
@@ -2520,9 +2533,8 @@ msgid "Manual (drag below)"
 msgstr ""
 
 #: cps/spa_strings.py:35 cps/templates/detail.html:634
-#, fuzzy
 msgid "Read now"
-msgstr "Preberi v brskalniku"
+msgstr ""
 
 #: cps/spa_strings.py:36
 #, python-brace-format
@@ -2530,291 +2542,308 @@ msgid "Open details for {title}"
 msgstr ""
 
 #: cps/spa_strings.py:37
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Read {title}"
-msgstr "Vnesi naslov"
+msgstr ""
 
-#: cps/spa_strings.py:41
-#, fuzzy
+#: cps/spa_strings.py:51
+msgid "Standard (username / password)"
+msgstr ""
+
+#: cps/spa_strings.py:52 cps/spa_strings.py:597
+msgid "LDAP"
+msgstr ""
+
+#: cps/spa_strings.py:53 cps/spa_strings.py:669
+msgid "OAuth / OpenID Connect"
+msgstr ""
+
+#: cps/spa_strings.py:54 cps/templates/config_edit.html:390
+msgid "Anonymous"
+msgstr "Anonimno"
+
+#: cps/spa_strings.py:55 cps/templates/config_edit.html:391
+msgid "Unauthenticated"
+msgstr "Neavtentificirano"
+
+#: cps/spa_strings.py:56
+msgid "Simple (service account)"
+msgstr ""
+
+#: cps/spa_strings.py:58 cps/templates/config_edit.html:360
+msgid "TLS"
+msgstr "TLS"
+
+#: cps/spa_strings.py:59 cps/templates/config_edit.html:361
+msgid "SSL"
+msgstr "SSL"
+
+#: cps/spa_strings.py:63
 msgid "Series order"
-msgstr "Ne najdem uporabnika"
+msgstr ""
 
-#: cps/spa_strings.py:42
-#, fuzzy
+#: cps/spa_strings.py:64
 msgid "Series order (reverse)"
-msgstr "Serija: %(serie)s"
+msgstr ""
 
-#: cps/spa_strings.py:46 cps/templates/detail.html:965
+#: cps/spa_strings.py:68 cps/templates/detail.html:965
 #: cps/templates/detail.html:966 cps/templates/detail.html:1537
 msgid "Add tag"
 msgstr "Dodaj oznako"
 
-#: cps/spa_strings.py:47
+#: cps/spa_strings.py:69
 msgid "New tag"
 msgstr ""
 
-#: cps/spa_strings.py:48 cps/templates/detail.html:957
-#, fuzzy
+#: cps/spa_strings.py:70 cps/templates/detail.html:957
 msgid "Remove tag"
-msgstr "Odstrani"
+msgstr ""
 
-#: cps/spa_strings.py:52
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:74
+#, python-brace-format
 msgid "Remove tag {name}"
-msgstr "Odstrani"
+msgstr ""
 
-#: cps/spa_strings.py:53
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:75
+#, python-brace-format
 msgid "Rename tag {name}"
-msgstr "Odstrani"
+msgstr ""
 
-#: cps/spa_strings.py:54
-#, fuzzy
+
+#: cps/spa_strings.py:76
 msgid "Tag name"
-msgstr "Poglej dnevnik sprememb"
+msgstr ""
 
-#: cps/api/browse.py:72 cps/spa_strings.py:55
-#, fuzzy
+
+#: cps/api/browse.py:72 cps/spa_strings.py:77
 msgid "Tag name cannot be empty"
-msgstr "Uporabniško ime ne more biti prazno"
+msgstr ""
 
-#: cps/spa_strings.py:56
-#, fuzzy
+
+#: cps/spa_strings.py:78
 msgid "Save tag name"
-msgstr "Poglej dnevnik sprememb"
+msgstr ""
 
-#: cps/spa_strings.py:57
-#, fuzzy
+
+#: cps/spa_strings.py:79
 msgid "Could not rename tag"
-msgstr "urejanje metapodatkov"
+msgstr ""
 
-#: cps/spa_strings.py:58
-#, fuzzy, python-brace-format
+
+#: cps/spa_strings.py:80
+#, python-brace-format
 msgid "Tag renamed to {name}"
-msgstr "Odstrani"
+msgstr ""
 
-#: cps/api/browse.py:63 cps/spa_strings.py:59
+
+#: cps/api/browse.py:63 cps/spa_strings.py:81
 msgid "You must be signed in"
 msgstr ""
 
-#: cps/api/browse.py:65 cps/spa_strings.py:60
-#, fuzzy
+#: cps/api/browse.py:65 cps/spa_strings.py:82
 msgid "You are not allowed to edit metadata"
-msgstr "Žal vam ni dovoljeno urejati te police"
+msgstr ""
 
-#: cps/api/browse.py:89 cps/api/browse.py:101 cps/spa_strings.py:62
-#, fuzzy
+
+#: cps/api/browse.py:89 cps/api/browse.py:101 cps/spa_strings.py:84
 msgid "A tag with that name already exists"
-msgstr "Zasebna polica z imenom '%(title)s' že obstaja."
+msgstr ""
 
-#: cps/api/browse.py:69 cps/spa_strings.py:63
+
+#: cps/api/browse.py:69 cps/spa_strings.py:85
 msgid "Tag name must be text"
 msgstr ""
 
-#: cps/api/browse.py:74 cps/spa_strings.py:64
+#: cps/api/browse.py:74 cps/spa_strings.py:86
 msgid "Tag name cannot contain commas"
 msgstr ""
 
-#: cps/spa_strings.py:65
-#, fuzzy
+#: cps/spa_strings.py:87
 msgid "Enter a valid tag name"
-msgstr "Vnesi ime domene"
+msgstr ""
 
-#: cps/spa_strings.py:66
-#, fuzzy
+
+#: cps/spa_strings.py:88
 msgid "Could not load this page"
-msgstr "Povezovanje računa OAuth ni uspelo. Prosimo, poskusite znova."
+msgstr ""
 
-#: cps/spa_strings.py:67
-#, fuzzy
+
+#: cps/spa_strings.py:89
 msgid "Page not found"
-msgstr "Oznaka ni bila najdena"
+msgstr ""
 
-#: cps/spa_strings.py:73
-#, fuzzy
+
+#: cps/spa_strings.py:95
 msgid "Clear rating"
-msgstr "Odstranjevanje izbire"
+msgstr ""
 
-#: cps/spa_strings.py:74
-#, fuzzy
+#: cps/spa_strings.py:96
 msgid "Not rated"
-msgstr "Ustvari/pogled"
+msgstr ""
 
-#: cps/spa_strings.py:75 cps/templates/book_edit.html:220
+#: cps/spa_strings.py:97 cps/templates/book_edit.html:220
 #: cps/templates/search_form.html:46 cps/templates/search_form.html:167
 msgid "Yes"
 msgstr "Da"
 
-#: cps/spa_strings.py:76 cps/templates/book_edit.html:221
+#: cps/spa_strings.py:98 cps/templates/book_edit.html:221
 #: cps/templates/search_form.html:47 cps/templates/search_form.html:168
 msgid "No"
 msgstr "Ne"
 
-#: cps/spa_strings.py:77 cps/templates/email_edit.html:60
+#: cps/spa_strings.py:99 cps/templates/email_edit.html:60
 msgid "Email Message Body"
 msgstr ""
 
-#: cps/spa_strings.py:79
+#: cps/spa_strings.py:101
 #, python-brace-format
 msgid "Rated {rating} out of 5"
 msgstr ""
 
-#: cps/spa_strings.py:80
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:102
+#, python-brace-format
 msgid "More by {name}"
-msgstr "Odstrani"
+msgstr ""
 
-#: cps/spa_strings.py:85
+#: cps/spa_strings.py:107
 #, python-brace-format
 msgid ""
 "Merge {n} books into the first selected? The others are removed after their "
 "formats are copied over."
 msgstr ""
 
-#: cps/spa_strings.py:86
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:108
+#, python-brace-format
 msgid "Apply to {n} books"
-msgstr "Izbriši knjigo"
+msgstr ""
 
-#: cps/spa_strings.py:90
-#, fuzzy
+#: cps/spa_strings.py:112
 msgid "Match condition"
-msgstr "Ujemanje %(action)s"
+msgstr ""
 
-#: cps/spa_strings.py:91
-#, fuzzy
+#: cps/spa_strings.py:113
 msgid "Rule field"
-msgstr "Javna polica"
+msgstr ""
 
-#: cps/spa_strings.py:92
+#: cps/spa_strings.py:114
 msgid "Rule operator"
 msgstr ""
 
-#: cps/spa_strings.py:95
+#: cps/spa_strings.py:117
 msgid "Appearance"
 msgstr ""
 
-#: cps/spa_strings.py:96 cps/templates/read.html:106
+#: cps/spa_strings.py:118 cps/templates/read.html:106
 #: cps/templates/readcbr.html:102 cps/templates/user_edit.html:279
 msgid "Theme"
 msgstr "Tema"
 
-#: cps/spa_strings.py:97
+#: cps/spa_strings.py:119
 msgid "System"
 msgstr ""
 
-#: cps/spa_strings.py:98 cps/spa_strings.py:183 cps/templates/read.html:108
+#: cps/spa_strings.py:120 cps/spa_strings.py:205 cps/templates/read.html:108
 #: cps/templates/readcbr.html:105
 msgid "Light"
 msgstr "Svetlo"
 
-#: cps/spa_strings.py:99 cps/spa_strings.py:149 cps/templates/read.html:109
+#: cps/spa_strings.py:121 cps/spa_strings.py:171 cps/templates/read.html:109
 #: cps/templates/readcbr.html:106
 msgid "Dark"
 msgstr "Temno"
 
-#: cps/spa_strings.py:100 cps/spa_strings.py:231 cps/templates/read.html:110
+#: cps/spa_strings.py:122 cps/spa_strings.py:253 cps/templates/read.html:110
 msgid "Sepia"
 msgstr "Sepia"
 
-#: cps/spa_strings.py:101
+#: cps/spa_strings.py:123
 msgid "High contrast"
 msgstr ""
 
-#: cps/spa_strings.py:102
+#: cps/spa_strings.py:124
 msgid "Midnight (AMOLED)"
 msgstr ""
 
-#: cps/spa_strings.py:103
+#: cps/spa_strings.py:125
 msgid "Match your device’s light or dark setting"
 msgstr ""
 
-#: cps/spa_strings.py:104
-#, fuzzy
+#: cps/spa_strings.py:126
 msgid "Theme saved."
-msgstr "Prenesena datoteka %(file)s"
+msgstr ""
 
-#: cps/spa_strings.py:105
-#, fuzzy
+#: cps/spa_strings.py:127
 msgid "Could not save theme."
-msgstr "Ni se mogel prijaviti: %(message)s"
+msgstr ""
 
-#: cps/spa_strings.py:106
-#, fuzzy
+#: cps/spa_strings.py:128
 msgid "Default theme for new accounts"
-msgstr "Privzete nastavitve za nove uporabnike"
+msgstr ""
 
-#: cps/spa_strings.py:107
+#: cps/spa_strings.py:129
 msgid ""
 "Applies to accounts created from now on. Everyone picks their own under "
 "Account → Theme."
 msgstr ""
 
-#: cps/spa_strings.py:116
-#, fuzzy
+#: cps/spa_strings.py:138
 msgid "Add a format"
-msgstr "Dodaj v arhiv"
+msgstr ""
 
-#: cps/spa_strings.py:117
-#, fuzzy
+#: cps/spa_strings.py:139
 msgid "Add rule"
-msgstr "Dodajanje novega uporabnika"
+msgstr ""
 
-#: cps/spa_strings.py:118 cps/templates/detail.html:786
+#: cps/spa_strings.py:140 cps/templates/detail.html:786
 #: cps/templates/detail.html:997 cps/templates/detail.html:998
 #: cps/templates/detail.html:1659 cps/templates/listenmp3.html:190
 #: cps/templates/search.html:17
 msgid "Add to shelf"
 msgstr "Dodaj na polico"
 
-#: cps/spa_strings.py:119
+#: cps/spa_strings.py:141
 msgid "Add your own"
 msgstr ""
 
-#: cps/spa_strings.py:120
-#, fuzzy
+#: cps/spa_strings.py:142
 msgid "App password label"
-msgstr "Sprememba gesla"
+msgstr ""
 
-#: cps/spa_strings.py:121
-#, fuzzy
+#: cps/spa_strings.py:143
 msgid "App passwords"
-msgstr "Sprememba gesla"
+msgstr ""
 
-#: cps/spa_strings.py:122 cps/templates/book_edit.html:135
+#: cps/spa_strings.py:144 cps/templates/book_edit.html:135
 #: cps/templates/book_edit.html:459 cps/templates/cwa_settings.html:1121
 #: cps/templates/search_form.html:12
 msgid "Author"
 msgstr "Avtor"
 
-#: cps/spa_strings.py:123
+#: cps/spa_strings.py:145
 msgid "Authors (separate with &)"
 msgstr ""
 
-#: cps/spa_strings.py:125
-#, fuzzy
+#: cps/spa_strings.py:147
 msgid "Back to sign in"
-msgstr "Nazaj na skrbniško ploščo"
+msgstr ""
 
-#: cps/spa_strings.py:126 cps/templates/read.html:197
+#: cps/spa_strings.py:148 cps/templates/read.html:197
 msgid "Blue"
 msgstr ""
 
-#: cps/spa_strings.py:127
-#, fuzzy
+#: cps/spa_strings.py:149
 msgid "Book content"
-msgstr "Naslov knjige"
+msgstr ""
 
-#: cps/spa_strings.py:128 cps/templates/layout.html:622
+#: cps/spa_strings.py:150 cps/templates/layout.html:622
 msgid "Browse"
 msgstr "Brskaj"
 
-#: cps/spa_strings.py:129
-#, fuzzy
+#: cps/spa_strings.py:151
 msgid "Change password"
-msgstr "Sprememba gesla"
+msgstr ""
 
-#: cps/spa_strings.py:130 cps/templates/book_edit.html:94
+#: cps/spa_strings.py:152 cps/templates/book_edit.html:94
 #: cps/templates/book_edit.html:378 cps/templates/book_table.html:346
 #: cps/templates/cwng_feedback_popup.html:63
 #: cps/templates/cwng_feedback_popup.html:72 cps/templates/duplicates.html:766
@@ -2825,99 +2854,83 @@ msgstr "Sprememba gesla"
 msgid "Close"
 msgstr "Zapri"
 
-#: cps/spa_strings.py:131
-#, fuzzy
+#: cps/spa_strings.py:153
 msgid "Close menu"
-msgstr "Zapri"
+msgstr ""
 
-#: cps/spa_strings.py:132
-#, fuzzy
+#: cps/spa_strings.py:154
 msgid "Contents"
-msgstr "Komentarji"
+msgstr ""
 
-#: cps/spa_strings.py:133
-#, fuzzy
+#: cps/spa_strings.py:155
 msgid "Convert failed."
-msgstr "Posodobitev ni uspela:"
+msgstr ""
 
-#: cps/spa_strings.py:134
-#, fuzzy
+#: cps/spa_strings.py:156
 msgid "Convert to format"
-msgstr "Pretvori vrsto knjige:"
+msgstr ""
 
-#: cps/spa_strings.py:135 cps/templates/cwa_settings.html:770
+#: cps/spa_strings.py:157 cps/templates/cwa_settings.html:770
 #: cps/templates/update_now_modal.html:36
 #: cps/templates/update_now_modal.html:45
 #: cps/templates/update_now_modal.html:63 cps/templates/user_edit.html:618
-#, fuzzy
 msgid "Copy"
-msgstr "Kopiraj UUID"
+msgstr ""
 
-#: cps/spa_strings.py:136
-#, fuzzy
+#: cps/spa_strings.py:158
 msgid "Could not change password."
-msgstr "Sprememba gesla"
+msgstr ""
 
-#: cps/spa_strings.py:137
-#, fuzzy
+#: cps/spa_strings.py:159
 msgid "Could not create."
-msgstr "urejanje metapodatkov"
+msgstr ""
 
-#: cps/spa_strings.py:138
-#, fuzzy
+#: cps/spa_strings.py:160
 msgid "Could not fetch cover."
-msgstr "Ni bilo mogoče pridobiti informacij o posodobitvi"
+msgstr ""
 
-#: cps/spa_strings.py:139
-#, fuzzy
+#: cps/spa_strings.py:161
 msgid "Could not load metadata."
-msgstr "urejanje metapodatkov"
+msgstr ""
 
-#: cps/spa_strings.py:140
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:162
+#, python-brace-format
 msgid "Could not load the book file ({status})"
-msgstr "Povezovanje računa OAuth ni uspelo. Prosimo, poskusite znova."
+msgstr ""
 
-#: cps/spa_strings.py:141
-#, fuzzy
+#: cps/spa_strings.py:163
 msgid "Could not load your account."
-msgstr "urejanje metapodatkov"
+msgstr ""
 
-#: cps/spa_strings.py:142
-#, fuzzy
+#: cps/spa_strings.py:164
 msgid "Could not save."
-msgstr "Ni se mogel prijaviti: %(message)s"
+msgstr ""
 
-#: cps/spa_strings.py:144
-#, fuzzy
+#: cps/spa_strings.py:166
 msgid "Cover image URL"
-msgstr "Naslovnica"
+msgstr ""
 
-#: cps/spa_strings.py:145
-#, fuzzy
+#: cps/spa_strings.py:167
 msgid "Cover update failed."
-msgstr "Naslovnica"
+msgstr ""
 
-#: cps/spa_strings.py:146 cps/templates/cover_picker.html:225
-#, fuzzy
+#: cps/spa_strings.py:168 cps/templates/cover_picker.html:225
 msgid "Cover updated."
-msgstr "Naslovnica"
+msgstr ""
 
-#: cps/spa_strings.py:147
-#, fuzzy
+#: cps/spa_strings.py:169
 msgid "Create smart shelf"
-msgstr "Ustvari polico"
+msgstr ""
 
-#: cps/spa_strings.py:148
+#: cps/spa_strings.py:170
 msgid "Create your account"
 msgstr ""
 
-#: cps/spa_strings.py:150
-#, fuzzy
+#: cps/spa_strings.py:172
 msgid "Dark theme"
-msgstr "Privzeto"
+msgstr ""
 
-#: cps/spa_strings.py:151 cps/templates/_book_organizer.html:155
+#: cps/spa_strings.py:173 cps/templates/_book_organizer.html:155
 #: cps/templates/admin.html:27 cps/templates/book_edit.html:59
 #: cps/templates/book_table.html:66 cps/templates/book_table.html:145
 #: cps/templates/book_table.html:194 cps/templates/duplicates.html:718
@@ -2927,234 +2940,208 @@ msgstr "Privzeto"
 msgid "Delete"
 msgstr "Izbriši"
 
-#: cps/spa_strings.py:153
-#, fuzzy
+#: cps/spa_strings.py:175
 msgid "Delete book"
-msgstr "Izbriši knjigo"
+msgstr ""
 
-#: cps/spa_strings.py:154
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:176
+#, python-brace-format
 msgid ""
 "Delete \"{title}\"? This permanently removes the book and all its files from "
 "your library. This cannot be undone."
 msgstr ""
-"To bo trajno izbrisalo knjige. Izvirne datoteke bodo varnostno kopirane v"
 
-#: cps/spa_strings.py:155
-#, fuzzy
+#: cps/spa_strings.py:177
 msgid "Deleting…"
-msgstr "Iskanje"
+msgstr ""
 
-#: cps/spa_strings.py:156
-#, fuzzy
+#: cps/spa_strings.py:178
 msgid "Could not delete this book."
-msgstr "urejanje metapodatkov"
+msgstr ""
 
-#: cps/spa_strings.py:157
+#: cps/spa_strings.py:179
 #, python-brace-format
 msgid "Delete the {fmt} file? The book stays; only this format is removed."
 msgstr ""
 
-#: cps/spa_strings.py:158
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:180
+#, python-brace-format
 msgid "Delete {fmt}"
-msgstr "Brisanje vrste:"
+msgstr ""
 
-#: cps/spa_strings.py:159
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:181
+#, python-brace-format
 msgid "Delete {n} book(s)? This cannot be undone."
-msgstr "Ste prepričani, da želite izklopiti?"
+msgstr ""
 
-#: cps/spa_strings.py:160
-#, fuzzy
+#: cps/spa_strings.py:182
 msgid "Description contains"
-msgstr "Opis"
+msgstr ""
 
-#: cps/spa_strings.py:161
+#: cps/spa_strings.py:183
 #, python-brace-format
 msgid "Deselect {title}"
 msgstr ""
 
-#: cps/spa_strings.py:162
-#, fuzzy
+#: cps/spa_strings.py:184
 msgid "Edit metadata"
-msgstr "urejanje metapodatkov"
+msgstr ""
 
-#: cps/spa_strings.py:163
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:185
+#, python-brace-format
 msgid "Edit {title}"
-msgstr "Vnesi naslov"
+msgstr ""
 
-#: cps/spa_strings.py:164
-#, fuzzy
+#: cps/spa_strings.py:186
 msgid "Failed to load books."
-msgstr "Neuspešna prijava v Google."
+msgstr ""
 
-#: cps/spa_strings.py:165
-#, fuzzy
+#: cps/spa_strings.py:187
 msgid "Failed to open the book."
-msgstr "Neuspešna prijava v Google."
+msgstr ""
 
-#: cps/spa_strings.py:166
-#, fuzzy
+#: cps/spa_strings.py:188
 msgid "Generate"
-msgstr "Splošna napaka"
+msgstr ""
 
-#: cps/spa_strings.py:167 cps/templates/read.html:196
-#, fuzzy
+#: cps/spa_strings.py:189 cps/templates/read.html:196
 msgid "Green"
-msgstr "Grščina"
+msgstr ""
 
-#: cps/spa_strings.py:168
+#: cps/spa_strings.py:190
 msgid "Help"
 msgstr ""
 
-#: cps/spa_strings.py:169
+#: cps/spa_strings.py:191
 msgid "Highlight color"
 msgstr ""
 
-#: cps/spa_strings.py:170 cps/templates/annotations_view.html:46
+#: cps/spa_strings.py:192 cps/templates/annotations_view.html:46
 msgid "Import from Kobo"
 msgstr ""
 
-#: cps/spa_strings.py:171
-#, fuzzy
+#: cps/spa_strings.py:193
 msgid "Interface language"
-msgstr "Vnesi jezike"
+msgstr ""
 
-#: cps/spa_strings.py:172
-#, fuzzy
+#: cps/spa_strings.py:194
 msgid "Invalid username or password."
-msgstr "Za ponastavitev gesla vnesite veljavno uporabniško ime"
+msgstr ""
 
-#: cps/spa_strings.py:174
+#: cps/spa_strings.py:196
 msgid "UI body font"
 msgstr ""
 
-#: cps/spa_strings.py:175
+#: cps/spa_strings.py:197
 msgid "UI display font"
 msgstr ""
 
-#: cps/spa_strings.py:176
+#: cps/spa_strings.py:198
 msgid "Default (Optima / Sans-Serif)"
 msgstr ""
 
-#: cps/spa_strings.py:177
+#: cps/spa_strings.py:199
 msgid "Default (Bookish Serif)"
 msgstr ""
 
-#: cps/spa_strings.py:178
-#, fuzzy
+#: cps/spa_strings.py:200
 msgid "System Sans-Serif"
-msgstr "Sistemske statistike"
+msgstr ""
 
-#: cps/spa_strings.py:179
-#, fuzzy
+#: cps/spa_strings.py:201
 msgid "Bookish Serif"
-msgstr "Seznam knjig"
+msgstr ""
 
-#: cps/spa_strings.py:180
+#: cps/spa_strings.py:202
 msgid "Monospace"
 msgstr ""
 
-#: cps/spa_strings.py:181
+#: cps/spa_strings.py:203
 msgid "Label (e.g. KOReader on phone)"
 msgstr ""
 
-#: cps/spa_strings.py:182
-#, fuzzy
+#: cps/spa_strings.py:204
 msgid "Languages (comma separated)"
-msgstr "Zaupanja vredni gostitelji (ločeni z vejico)"
+msgstr ""
 
-#: cps/spa_strings.py:184
-#, fuzzy
+#: cps/spa_strings.py:206
 msgid "Light theme"
-msgstr "Svetlo"
+msgstr ""
 
-#: cps/spa_strings.py:185
-#, fuzzy
+#: cps/spa_strings.py:207
 msgid "Login failed."
-msgstr "Posodobitev ni uspela:"
+msgstr ""
 
-#: cps/spa_strings.py:186
-#, fuzzy
+#: cps/spa_strings.py:208
 msgid "Mark read"
-msgstr "Označi kot prebrano"
+msgstr ""
 
-#: cps/spa_strings.py:187
-#, fuzzy
+#: cps/spa_strings.py:209
 msgid "Mark unread"
-msgstr "Označi kot neprebrano"
+msgstr ""
 
-#: cps/spa_strings.py:188 cps/templates/book_table.html:48
+#: cps/spa_strings.py:210 cps/templates/book_table.html:48
 #: cps/templates/book_table.html:175 cps/templates/duplicates.html:745
 msgid "Merge"
 msgstr "Združitev"
 
-#: cps/spa_strings.py:189
+#: cps/spa_strings.py:211
 #, python-brace-format
 msgid "Metadata applied to {n} book(s)."
 msgstr ""
 
-#: cps/spa_strings.py:190
+#: cps/spa_strings.py:212
 #, python-brace-format
 msgid "New password for “{label}” — copy it now, it won’t be shown again:"
 msgstr ""
 
-#: cps/spa_strings.py:191
+#: cps/spa_strings.py:213
 msgid "New passwords do not match."
 msgstr ""
 
-#: cps/spa_strings.py:192
-#, fuzzy
+#: cps/spa_strings.py:214
 msgid "No books here."
-msgstr "ne najdem žetona"
+msgstr ""
 
-#: cps/spa_strings.py:193
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:215
+#, python-brace-format
 msgid "No results for \"{q}\"."
-msgstr "Rezultati za:"
+msgstr ""
 
-#: cps/spa_strings.py:194
+#: cps/spa_strings.py:216
 msgid "No suggestions"
 msgstr ""
 
-#: cps/spa_strings.py:195
+#: cps/spa_strings.py:217
 #, python-brace-format
 msgid "No {filter} books here."
 msgstr ""
 
-#: cps/spa_strings.py:196
-#, fuzzy
+#: cps/spa_strings.py:218
 msgid "Password changed."
-msgstr "Geslo"
+msgstr ""
 
-#: cps/spa_strings.py:197
-#, fuzzy
+#: cps/spa_strings.py:219
 msgid "Paste URL"
-msgstr "Osnovni URL OAuth"
+msgstr ""
 
-#: cps/spa_strings.py:198
-#, fuzzy
+#: cps/spa_strings.py:220
 msgid "Private shelf"
-msgstr "Ustvari polico"
+msgstr ""
 
-#: cps/spa_strings.py:199
-#, fuzzy
+#: cps/spa_strings.py:221
 msgid "Profile"
-msgstr "Vaš e-poštni naslov"
+msgstr ""
 
-#: cps/spa_strings.py:200
-#, fuzzy
+#: cps/spa_strings.py:222
 msgid "Profile saved."
-msgstr "Prenesena datoteka %(file)s"
+msgstr ""
 
-#: cps/spa_strings.py:201
-#, fuzzy
+#: cps/spa_strings.py:223
 msgid "Public shelf"
-msgstr "Javna polica"
+msgstr ""
 
-#: cps/spa_strings.py:202 cps/templates/book_edit.html:159
+#: cps/spa_strings.py:224 cps/templates/book_edit.html:159
 #: cps/templates/book_edit.html:460 cps/templates/cwa_settings.html:348
 #: cps/templates/cwa_settings.html:350 cps/templates/cwa_settings.html:1139
 #: cps/templates/detail.html:1005
@@ -3163,177 +3150,153 @@ msgstr "Javna polica"
 msgid "Publisher"
 msgstr "Založnik"
 
-#: cps/spa_strings.py:203
-#, fuzzy
+#: cps/spa_strings.py:225
 msgid "Publishers (comma separated)"
-msgstr "Zaupanja vredni gostitelji (ločeni z vejico)"
+msgstr ""
 
-#: cps/spa_strings.py:204 cps/templates/image.html:26
+#: cps/spa_strings.py:226 cps/templates/image.html:26
 #: cps/templates/listenmp3.html:159
 msgid "Read"
 msgstr "Prebrano"
 
-#: cps/spa_strings.py:205
-#, fuzzy
+#: cps/spa_strings.py:227
 msgid "Reading progress"
-msgstr "Napredek"
+msgstr ""
 
-#: cps/spa_strings.py:206 cps/templates/read.html:195
-#, fuzzy
+#: cps/spa_strings.py:228 cps/templates/read.html:195
 msgid "Red"
-msgstr "Prebrano"
+msgstr ""
 
-#: cps/spa_strings.py:207
-#, fuzzy
+#: cps/spa_strings.py:229
 msgid "Registration failed."
-msgstr "Javna registracija"
+msgstr ""
 
-#: cps/spa_strings.py:208
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:230
+#, python-brace-format
 msgid "Remove {name}"
-msgstr "Odstrani"
+msgstr ""
 
-#: cps/spa_strings.py:209
-#, fuzzy
+#: cps/spa_strings.py:231
 msgid "Request failed."
-msgstr "Napaka povezave"
+msgstr ""
 
-#: cps/spa_strings.py:210
+#: cps/spa_strings.py:232
 msgid "Reset"
 msgstr ""
 
-#: cps/spa_strings.py:211
-#, fuzzy
+#: cps/spa_strings.py:233
 msgid "Reset your password"
-msgstr "Ponastavitev uporabniškega gesla"
+msgstr ""
 
-#: cps/spa_strings.py:212
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:234
+#, python-brace-format
 msgid "Revoke {label}"
-msgstr "Preklic"
+msgstr ""
 
-#: cps/spa_strings.py:213
-#, fuzzy
+#: cps/spa_strings.py:235
 msgid "Save changes"
-msgstr "Poglej dnevnik sprememb"
+msgstr ""
 
-#: cps/spa_strings.py:214
-#, fuzzy
+#: cps/spa_strings.py:236
 msgid "Save failed."
-msgstr "Posodobitev ni uspela:"
+msgstr ""
 
-#: cps/spa_strings.py:215
-#, fuzzy
+#: cps/spa_strings.py:237
 msgid "Save profile"
-msgstr "%(name)s profil"
+msgstr ""
 
-#: cps/spa_strings.py:216
-#, fuzzy
+#: cps/spa_strings.py:238
 msgid "Saved."
-msgstr "Shrani"
+msgstr ""
 
-#: cps/spa_strings.py:217 cps/templates/shelf_order.html:33
-#, fuzzy
+#: cps/spa_strings.py:239 cps/templates/shelf_order.html:33
 msgid "Saving…"
-msgstr "Iskanje"
+msgstr ""
 
-#: cps/spa_strings.py:219
-#, fuzzy
+#: cps/spa_strings.py:241
 msgid "Search failed."
-msgstr "Posodobitev ni uspela:"
+msgstr ""
 
-#: cps/spa_strings.py:220
-#, fuzzy
+#: cps/spa_strings.py:242
 msgid "Search for metadata"
-msgstr "Pridobivanje metapodatkov"
+msgstr ""
 
-#: cps/spa_strings.py:221
-#, fuzzy
+#: cps/spa_strings.py:243
 msgid "Metadata providers"
-msgstr "Omogočeni ponudniki metapodatkov"
+msgstr ""
 
-#: cps/spa_strings.py:222
-#, fuzzy
+#: cps/spa_strings.py:244
 msgid "Loading providers…"
-msgstr "Nalaganje..."
+msgstr ""
 
-#: cps/spa_strings.py:223
-#, fuzzy
+#: cps/spa_strings.py:245
 msgid "Could not load providers."
-msgstr "urejanje metapodatkov"
+msgstr ""
 
-#: cps/spa_strings.py:224
-#, fuzzy
+#: cps/spa_strings.py:246
 msgid "Could not update provider."
-msgstr "Ni bilo mogoče pridobiti informacij o posodobitvi"
+msgstr ""
 
-#: cps/spa_strings.py:225
+#: cps/spa_strings.py:247
 #, python-brace-format
 msgid "{provider}: {state}"
 msgstr ""
 
-#: cps/spa_strings.py:226
+#: cps/spa_strings.py:248
 msgid "On"
 msgstr ""
 
-#: cps/spa_strings.py:227
+#: cps/spa_strings.py:249
 msgid "Off"
 msgstr ""
 
-#: cps/spa_strings.py:228 cps/templates/shelf.html:119
-#, fuzzy
+#: cps/spa_strings.py:250 cps/templates/shelf.html:119
 msgid "Search results"
-msgstr "Iskalni izraz:"
+msgstr ""
 
-#: cps/spa_strings.py:229
-#, fuzzy
+#: cps/spa_strings.py:251
 msgid "Search the library"
-msgstr "Iskanje po knjižnici"
+msgstr ""
 
-#: cps/spa_strings.py:230
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:252
+#, python-brace-format
 msgid "Select {title}"
-msgstr "Ustvari polico"
+msgstr ""
 
-#: cps/spa_strings.py:232
-#, fuzzy
+#: cps/spa_strings.py:254
 msgid "Sepia theme"
-msgstr "Sepia"
+msgstr ""
 
-#: cps/spa_strings.py:234
+#: cps/spa_strings.py:256
 #, python-brace-format
 msgid "Series position {n}"
 msgstr ""
 
-#: cps/spa_strings.py:235
+#: cps/spa_strings.py:257
 msgid "Sign in"
 msgstr ""
 
-#: cps/spa_strings.py:236
-#, fuzzy
+#: cps/spa_strings.py:258
 msgid "Sign in failed. Please try again."
-msgstr "Povezovanje računa OAuth ni uspelo. Prosimo, poskusite znova."
+msgstr ""
 
-#: cps/spa_strings.py:237
+#: cps/spa_strings.py:259
 msgid "Skip to content"
 msgstr ""
 
-#: cps/spa_strings.py:238
-#, fuzzy
+#: cps/spa_strings.py:260
 msgid "Some fields could not be saved."
-msgstr "Datoteke posodobitve ni bilo mogoče shraniti v začasno mapo"
+msgstr ""
 
-#: cps/spa_strings.py:239
-#, fuzzy
+#: cps/spa_strings.py:261
 msgid "Table of contents"
-msgstr "Nepravilna vsebina datoteke z naslovnico"
+msgstr ""
 
-#: cps/spa_strings.py:240
-#, fuzzy
+#: cps/spa_strings.py:262
 msgid "Tags (comma separated)"
-msgstr "Zaupanja vredni gostitelji (ločeni z vejico)"
+msgstr ""
 
-#: cps/spa_strings.py:241 cps/templates/book_table.html:106
+#: cps/spa_strings.py:263 cps/templates/book_table.html:106
 #: cps/templates/config_view_edit.html:39 cps/templates/cwa_settings.html:327
 #: cps/templates/cwa_settings.html:329 cps/templates/cwa_settings.html:1115
 #: cps/templates/shelf_edit.html:8 cps/templates/tasks.html:41
@@ -3341,666 +3304,555 @@ msgstr "Zaupanja vredni gostitelji (ločeni z vejico)"
 msgid "Title"
 msgstr "Naslov"
 
-#: cps/spa_strings.py:242
-#, fuzzy
+#: cps/spa_strings.py:264
 msgid "Unread"
-msgstr "Neprebrane knjige"
+msgstr ""
 
-#: cps/spa_strings.py:243
-#, fuzzy
+#: cps/spa_strings.py:265
 msgid "Update password"
-msgstr "Sprememba gesla"
+msgstr ""
 
-#: cps/spa_strings.py:244 cps/tasks/upload.py:28 cps/templates/admin.html:22
+#: cps/spa_strings.py:266 cps/tasks/upload.py:28 cps/templates/admin.html:22
 #: cps/templates/layout.html:363 cps/templates/user_table.html:146
 msgid "Upload"
 msgstr "Naloži"
 
-#: cps/spa_strings.py:245
-#, fuzzy
+#: cps/spa_strings.py:267
 msgid "Choose books to upload"
-msgstr "Pretvori vrsto knjige:"
+msgstr ""
 
-#: cps/spa_strings.py:246
-#, fuzzy
+#: cps/spa_strings.py:268
 msgid "Upload failed."
-msgstr "Naloži"
+msgstr ""
 
-#: cps/spa_strings.py:247
-#, fuzzy
+#: cps/spa_strings.py:269
 msgid "Upload image"
-msgstr "Nalaganje vrsta"
+msgstr ""
 
-#: cps/spa_strings.py:248
-#, fuzzy
+#: cps/spa_strings.py:270
 msgid "Uploading…"
-msgstr "Nalaganje..."
+msgstr ""
 
-#: cps/spa_strings.py:249 cps/templates/read.html:194
-#, fuzzy
+#: cps/spa_strings.py:271 cps/templates/read.html:194
 msgid "Yellow"
-msgstr "Omogoči"
+msgstr ""
 
-#: cps/spa_strings.py:250
+#: cps/spa_strings.py:272
 msgid "e.g. MOBI"
 msgstr ""
 
-#: cps/spa_strings.py:251
+#: cps/spa_strings.py:273
 #, python-brace-format
 msgid "{format} reader"
 msgstr ""
 
-#: cps/spa_strings.py:252
+#: cps/spa_strings.py:274
 #, python-brace-format
 msgid "{name} API key"
 msgstr ""
 
-#: cps/spa_strings.py:253
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:275
+#, python-brace-format
 msgid "{n} book(s) added to the shelf."
-msgstr "Dodaj na polico"
+msgstr ""
 
-#: cps/spa_strings.py:254
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:276
+#, python-brace-format
 msgid "{n} book(s) deleted."
-msgstr "Združevanje izbranih knjig"
+msgstr ""
 
-#: cps/spa_strings.py:255
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:277
+#, python-brace-format
 msgid "{n} marked as read."
-msgstr "Označi kot neprebrano"
+msgstr ""
 
-#: cps/spa_strings.py:256
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:278
+#, python-brace-format
 msgid "{n} marked as unread."
-msgstr "Označi kot neprebrano"
+msgstr ""
 
-#: cps/spa_strings.py:257 cps/templates/_book_organizer.html:162
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:279 cps/templates/_book_organizer.html:162
+#, python-brace-format
 msgid "{n} selected"
-msgstr "Združevanje izbranih knjig"
+msgstr ""
 
-#: cps/spa_strings.py:258
+#: cps/spa_strings.py:280
 #, python-format, python-brace-format
 msgid "{pct}% read"
 msgstr ""
 
-#: cps/spa_strings.py:264
+#: cps/spa_strings.py:286
 msgid "What's new"
 msgstr ""
 
-#: cps/spa_strings.py:265
-#, fuzzy
+#: cps/spa_strings.py:287
 msgid "Help — new updates available"
-msgstr "Posodobitev ni uspela:"
+msgstr ""
 
-#: cps/spa_strings.py:266
-#, fuzzy
+#: cps/spa_strings.py:288
 msgid "The latest features and fixes in Calibre-Web NextGen — newest first."
-msgstr "Katalog e-knjig Calibre-Web"
+msgstr ""
 
-#: cps/spa_strings.py:267
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:289
+#, python-brace-format
 msgid "{n} update"
-msgstr "Posodobljene nastavitve zbirke podatkov"
+msgstr ""
 
-#: cps/spa_strings.py:268
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:290
+#, python-brace-format
 msgid "{n} updates"
-msgstr "Posodobljene nastavitve zbirke podatkov"
+msgstr ""
 
-#: cps/spa_strings.py:269
+#: cps/spa_strings.py:291
 msgid "No release notes yet — check back after the next update."
 msgstr ""
 
-#: cps/spa_strings.py:270
+#: cps/spa_strings.py:292
 msgid ""
 "The interface is translated into your language; these update notes are "
 "written in English."
 msgstr ""
 
-#: cps/spa_strings.py:272 cps/templates/image.html:27
-#, fuzzy
+#: cps/spa_strings.py:294 cps/templates/image.html:27
 msgid "Reading"
-msgstr "Prebrano"
+msgstr ""
 
-#: cps/spa_strings.py:273
-#, fuzzy
+#: cps/spa_strings.py:295
 msgid "Grid view"
-msgstr "Nepravilen pogled"
+msgstr ""
 
-#: cps/spa_strings.py:274
-#, fuzzy
+#: cps/spa_strings.py:296
 msgid "Library"
-msgstr "V knjižnici"
+msgstr ""
 
-#: cps/spa_strings.py:275
-#, fuzzy
+#: cps/spa_strings.py:297
 msgid "List view"
-msgstr "Seznam"
+msgstr ""
 
-#: cps/spa_strings.py:276
+#: cps/spa_strings.py:298
 msgid "Sync"
 msgstr ""
 
-#: cps/spa_strings.py:277 cps/templates/layout.html:342
+#: cps/spa_strings.py:299 cps/templates/layout.html:342
 #: cps/templates/layout.html:378 cps/templates/user_edit.html:312
 #: cps/templates/user_edit.html:314
 msgid "Account"
 msgstr "Račun"
 
-#: cps/spa_strings.py:278 cps/templates/admin.html:19
+#: cps/spa_strings.py:300 cps/templates/admin.html:19
 #: cps/templates/layout.html:374 cps/templates/user_table.html:144
 msgid "Admin"
 msgstr "Administator"
 
-#: cps/spa_strings.py:279
+#: cps/spa_strings.py:301
 msgid "Under the hood"
 msgstr ""
 
-#: cps/spa_strings.py:282
-#, fuzzy
+#: cps/spa_strings.py:304
 msgid "Open your library"
-msgstr "Iskanje po knjižnici"
+msgstr ""
 
-#: cps/spa_strings.py:283
-#, fuzzy
+#: cps/spa_strings.py:305
 msgid "Open the table view"
-msgstr "Nepravilen pogled"
+msgstr ""
 
-#: cps/spa_strings.py:284
-#, fuzzy
+#: cps/spa_strings.py:306
 msgid "Review duplicates"
-msgstr "Izberi dvojnike"
+msgstr ""
 
-#: cps/spa_strings.py:285
-#, fuzzy
+#: cps/spa_strings.py:307
 msgid "Open your shelves"
-msgstr "Izključi police"
+msgstr ""
 
-#: cps/spa_strings.py:286
-#, fuzzy
+#: cps/spa_strings.py:308
 msgid "Manage sync & app passwords"
-msgstr "Sprememba gesla"
+msgstr ""
 
-#: cps/spa_strings.py:287
-#, fuzzy
+#: cps/spa_strings.py:309
 msgid "Check your e-reader address"
-msgstr "Pošlji v e-pošto e-bralnika"
+msgstr ""
 
-#: cps/spa_strings.py:288
-#, fuzzy
+#: cps/spa_strings.py:310
 msgid "Create an app password"
-msgstr "Sprememba gesla"
+msgstr ""
 
-#: cps/spa_strings.py:289
-#, fuzzy
+#: cps/spa_strings.py:311
 msgid "Browse series"
-msgstr "Brskaj"
+msgstr ""
 
-#: cps/spa_strings.py:290
-#, fuzzy
+#: cps/spa_strings.py:312
 msgid "Browse authors"
-msgstr "Brskaj"
+msgstr ""
 
-#: cps/spa_strings.py:291
+#: cps/spa_strings.py:313
 msgid "Open Table view"
 msgstr ""
 
-#: cps/spa_strings.py:292
-#, fuzzy
+#: cps/spa_strings.py:314
 msgid "Open Admin"
-msgstr "Administator"
+msgstr ""
 
-#: cps/spa_strings.py:293
-#, fuzzy
+#: cps/spa_strings.py:315
 msgid "Open account settings"
-msgstr "Nastavitve"
+msgstr ""
 
-#: cps/spa_strings.py:294
-#, fuzzy
+#: cps/spa_strings.py:316
 msgid "Browse Discover"
-msgstr "Odkrivanje"
+msgstr ""
 
-#: cps/spa_strings.py:295
-#, fuzzy
+#: cps/spa_strings.py:317
 msgid "Explore your library"
-msgstr "Iskanje po knjižnici"
+msgstr ""
 
-#: cps/spa_strings.py:296
-#, fuzzy
+#: cps/spa_strings.py:318
 msgid "Go to Upload"
-msgstr "Naloži"
+msgstr ""
 
-#: cps/spa_strings.py:297
-#, fuzzy
+#: cps/spa_strings.py:319
 msgid "Open search"
-msgstr "epub bralnik"
+msgstr ""
 
-#: cps/spa_strings.py:299
-#, fuzzy
+#: cps/spa_strings.py:321
 msgid "Editions"
-msgstr "Dejanja"
+msgstr ""
 
-#: cps/spa_strings.py:300 cps/templates/layout.html:335
-#, fuzzy
+#: cps/spa_strings.py:322 cps/templates/layout.html:335
 msgid "Back to New UI"
-msgstr "Nazaj na skrbniško ploščo"
+msgstr ""
 
-#: cps/spa_strings.py:301
-#, fuzzy
+#: cps/spa_strings.py:323
 msgid "Back to results"
-msgstr "Iskalni izraz:"
+msgstr ""
 
-#: cps/spa_strings.py:302
+#: cps/spa_strings.py:324
 msgid "No editions found for this book."
 msgstr ""
 
-#: cps/spa_strings.py:304
-#, fuzzy
+#: cps/spa_strings.py:326
 msgid "View all details"
-msgstr "Podrobnosti o knjigi"
+msgstr ""
 
-#: cps/spa_strings.py:305
+#: cps/spa_strings.py:327
 msgid "Result details"
 msgstr ""
 
-#: cps/spa_strings.py:306 cps/templates/detail.html:1011
+#: cps/spa_strings.py:328 cps/templates/detail.html:1011
 #: cps/templates/listenmp3.html:111
 msgid "Published"
 msgstr "Objavljeno"
 
-#: cps/spa_strings.py:307 cps/templates/cwa_settings.html:1145
-#, fuzzy
+#: cps/spa_strings.py:329 cps/templates/cwa_settings.html:1145
 msgid "Format"
-msgstr "Nalaganje vrsta"
+msgstr ""
 
-#: cps/spa_strings.py:308 cps/templates/book_edit.html:462
+#: cps/spa_strings.py:330 cps/templates/book_edit.html:462
 msgid "Source"
 msgstr "Vir:"
 
-#: cps/spa_strings.py:311
-#, fuzzy
+#: cps/spa_strings.py:333
 msgid "Customize"
-msgstr "Filter po meri"
+msgstr ""
 
-#: cps/spa_strings.py:312
-#, fuzzy
+#: cps/spa_strings.py:334
 msgid "Customize sidebar"
-msgstr "Filter po meri"
+msgstr ""
 
-#: cps/spa_strings.py:313
-#, fuzzy
+#: cps/spa_strings.py:335
 msgid "Customize navigation"
-msgstr "Preklopi navigacijo"
+msgstr ""
 
-#: cps/spa_strings.py:314 cps/templates/_book_organizer.html:164
+#: cps/spa_strings.py:336 cps/templates/_book_organizer.html:164
 msgid "Done"
 msgstr ""
 
-#: cps/spa_strings.py:315
-#, fuzzy
+#: cps/spa_strings.py:337
 msgid "Reset to default"
-msgstr "Ponastavitev na vrh"
+msgstr ""
 
-#: cps/spa_strings.py:316
+#: cps/spa_strings.py:338
 msgid "Always shown"
 msgstr ""
 
-#: cps/spa_strings.py:317
+#: cps/spa_strings.py:339
 msgid "Editing sidebar. Reorder or hide sections, then tap Done."
 msgstr ""
 
-#: cps/spa_strings.py:318
+#: cps/spa_strings.py:340
 msgid "Editing cancelled."
 msgstr ""
 
-#: cps/spa_strings.py:319
+#: cps/spa_strings.py:341
 msgid ""
 "Drag to reorder. Tap ✕ to hide a section. Arrow keys move the focused handle."
 msgstr ""
 
-#: cps/spa_strings.py:320
-#, fuzzy
+#: cps/spa_strings.py:342
 msgid "Sidebar saved."
-msgstr "Prenesena datoteka %(file)s"
+msgstr ""
 
-#: cps/spa_strings.py:321
+#: cps/spa_strings.py:343
 msgid "Sidebar reset to default."
 msgstr ""
 
-#: cps/spa_strings.py:322
+#: cps/spa_strings.py:344
 #, python-brace-format
 msgid "{label} moved to position {pos} of {total}"
 msgstr ""
 
-#: cps/spa_strings.py:323
+#: cps/spa_strings.py:345
 #, python-brace-format
 msgid "Reorder {label} (position {pos} of {total}). Use arrow keys to move."
 msgstr ""
 
-#: cps/spa_strings.py:324
-#, fuzzy, python-brace-format
-msgid "Delete {label}"
-msgstr "Preklic"
-
-#: cps/spa_strings.py:325
-#, fuzzy, python-brace-format
-msgid "Restore {label}"
-msgstr "Preklic"
-
-#: cps/spa_strings.py:326
-#, fuzzy, python-brace-format
-msgid "{label} hidden"
-msgstr "Preklic"
-
-#: cps/spa_strings.py:327
-#, fuzzy, python-brace-format
-msgid "{label} restored"
-msgstr "Izbriši knjigo"
-
-#: cps/spa_strings.py:328
-#, fuzzy
-msgid "Could not save sidebar. Please try again."
-msgstr "Povezovanje računa OAuth ni uspelo. Prosimo, poskusite znova."
-
-#: cps/spa_strings.py:335
-#, fuzzy
-msgid "Refresh library"
-msgstr "Iskanje po knjižnici"
-
-#: cps/spa_strings.py:345
-#, fuzzy
-msgid "(replace cover)"
-msgstr "Nalaganje vrsta"
-
 #: cps/spa_strings.py:346
+#, python-brace-format
+msgid "Delete {label}"
+msgstr ""
+
+#: cps/spa_strings.py:347
+#, python-brace-format
+msgid "Restore {label}"
+msgstr ""
+
+#: cps/spa_strings.py:348
+#, python-brace-format
+msgid "{label} hidden"
+msgstr ""
+
+#: cps/spa_strings.py:349
+#, python-brace-format
+msgid "{label} restored"
+msgstr ""
+
+#: cps/spa_strings.py:350
+msgid "Could not save sidebar. Please try again."
+msgstr ""
+
+#: cps/spa_strings.py:357
+msgid "Refresh library"
+msgstr ""
+
+#: cps/spa_strings.py:367
+msgid "(replace cover)"
+msgstr ""
+
+#: cps/spa_strings.py:368
 msgid "2:3 (publisher cover — no padding for typical covers)"
 msgstr ""
 
-#: cps/spa_strings.py:347 cps/templates/config_edit.html:235
+#: cps/spa_strings.py:369 cps/templates/config_edit.html:235
 #: cps/templates/cover_picker.html:108
 msgid "3:4 (generic)"
 msgstr ""
 
-#: cps/spa_strings.py:348
+#: cps/spa_strings.py:370
 msgid "<"
 msgstr ""
 
-#: cps/spa_strings.py:349
+#: cps/spa_strings.py:371
 msgid "="
 msgstr ""
 
-#: cps/spa_strings.py:350
+#: cps/spa_strings.py:372
 msgid ">"
 msgstr ""
 
-#: cps/spa_strings.py:351
-#, fuzzy
+#: cps/spa_strings.py:373
 msgid "A few random picks from your library"
-msgstr "Skrij to polico iz stranske vrstice"
+msgstr ""
 
-#: cps/spa_strings.py:352
+#: cps/spa_strings.py:374
 msgid ""
 "A one-time full duplicate scan is needed. Run it from CWA settings, then "
 "return here."
 msgstr ""
 
-#: cps/spa_strings.py:353 cps/templates/cover_picker.html:81
+#: cps/spa_strings.py:375 cps/templates/cover_picker.html:81
 msgid "API keys"
 msgstr ""
 
-#: cps/spa_strings.py:354 cps/templates/layout.html:662
+#: cps/spa_strings.py:376 cps/templates/layout.html:662
 #: cps/templates/stats.html:3
 msgid "About"
 msgstr "O programu"
 
-#: cps/spa_strings.py:355
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:377
+#, python-brace-format
 msgid "Account: {name}"
-msgstr "Račun"
+msgstr ""
 
-#: cps/spa_strings.py:356
-#, fuzzy
+#: cps/spa_strings.py:378
 msgid "Add identifier"
-msgstr "Dodaj identifikator"
+msgstr ""
 
-#: cps/spa_strings.py:357 cps/templates/detail.html:700
+#: cps/spa_strings.py:379 cps/templates/detail.html:700
 #: cps/templates/detail.html:701 cps/templates/detail.html:703
-#, fuzzy
 msgid "Add to favorites"
-msgstr "Dodaj v arhiv"
+msgstr ""
 
-#: cps/spa_strings.py:358
-#, fuzzy
+#: cps/spa_strings.py:380
 msgid "Admin group"
-msgstr "Administrativna stran"
+msgstr ""
 
-#: cps/spa_strings.py:359
-#, fuzzy
+#: cps/spa_strings.py:381
 msgid "Advanced"
-msgstr "Napredno iskanje"
+msgstr ""
 
-#: cps/spa_strings.py:360
-#, fuzzy
+#: cps/spa_strings.py:382
 msgid "Advanced search"
-msgstr "Napredno iskanje"
+msgstr ""
 
-#: cps/spa_strings.py:362
-#, fuzzy
+#: cps/spa_strings.py:384
 msgid "All shelves"
-msgstr "Police"
+msgstr ""
 
-#: cps/spa_strings.py:363
+#: cps/spa_strings.py:385
 msgid "Allow remote (magic-link) login"
 msgstr ""
 
-#: cps/spa_strings.py:364
-#, fuzzy
+#: cps/spa_strings.py:386
 msgid "Allowed groups (comma-separated)"
-msgstr "Zaupanja vredni gostitelji (ločeni z vejico)"
+msgstr ""
 
-#: cps/spa_strings.py:365 cps/templates/search_form.html:44
+#: cps/spa_strings.py:387 cps/templates/search_form.html:44
 #: cps/templates/search_form.html:165
 msgid "Any"
 msgstr "Vse"
 
-#: cps/spa_strings.py:366
-#, fuzzy
+#: cps/spa_strings.py:388
 msgid "Any format"
-msgstr "Dodaj v arhiv"
+msgstr ""
 
-#: cps/spa_strings.py:367
-#, fuzzy
+#: cps/spa_strings.py:389
 msgid "Any language"
-msgstr "Jezik"
+msgstr ""
 
-#: cps/spa_strings.py:368
-#, fuzzy
+#: cps/spa_strings.py:390
 msgid "Any series"
-msgstr "Vnesi serijo"
+msgstr ""
 
-#: cps/spa_strings.py:369
-#, fuzzy
+#: cps/spa_strings.py:391
 msgid "Any tags"
-msgstr "Dodaj oznako"
+msgstr ""
 
-#: cps/spa_strings.py:370
-#, fuzzy
+#: cps/spa_strings.py:392
 msgid "Apply selected"
-msgstr "Združevanje izbranih knjig"
+msgstr ""
 
-#: cps/spa_strings.py:371
+#: cps/spa_strings.py:393
 msgid ""
 "Apply to all selected (only filled fields change; replaces existing values):"
 msgstr ""
 
-#: cps/spa_strings.py:372 cps/templates/cover_picker.html:224
+#: cps/spa_strings.py:394 cps/templates/cover_picker.html:224
 msgid "Applying…"
 msgstr ""
 
-#: cps/spa_strings.py:373 cps/templates/book_table.html:54
+#: cps/spa_strings.py:395 cps/templates/book_table.html:54
 #: cps/templates/book_table.html:214 cps/templates/duplicates.html:660
 msgid "Archive"
 msgstr "Arhiv"
 
-#: cps/spa_strings.py:374 cps/templates/detail.html:712
+#: cps/spa_strings.py:396 cps/templates/detail.html:712
 #: cps/templates/listenmp3.html:167
 msgid "Archived"
 msgstr "Arhivirano"
 
-#: cps/spa_strings.py:375
+#: cps/spa_strings.py:397
 msgid "Ask in Discord"
 msgstr ""
 
-#: cps/spa_strings.py:376
-#, fuzzy
+#: cps/spa_strings.py:398
 msgid "Authentication"
-msgstr "Preverjanje pristnosti LDAP"
-
-#: cps/spa_strings.py:377
-#, fuzzy
-msgid "Authentication & security"
-msgstr "Preverjanje pristnosti LDAP"
-
-#: cps/spa_strings.py:378
-#, fuzzy
-msgid "Author A–Z"
-msgstr "Avtor"
-
-#: cps/spa_strings.py:379
-#, fuzzy
-msgid "Author Z–A"
-msgstr "Avtor"
-
-#: cps/spa_strings.py:380
-msgid "Authorised — signing you in…"
-msgstr ""
-
-#: cps/spa_strings.py:381
-#, fuzzy
-msgid "Authorize URL"
-msgstr "Osnovni URL OAuth"
-
-#: cps/spa_strings.py:383
-#, fuzzy
-msgid "Auto-create users"
-msgstr "Samodejno ustvari uporabnike iz LDAP"
-
-#: cps/spa_strings.py:384
-#, fuzzy
-msgid "Auto-create users on first login"
-msgstr "Samodejno ustvari uporabnike iz LDAP"
-
-#: cps/spa_strings.py:386
-#, fuzzy
-msgid "Back to library"
-msgstr "Iskanje po knjižnici"
-
-#: cps/spa_strings.py:387
-#, fuzzy
-msgid "Back to the classic view"
-msgstr "Nazaj na skrbniško ploščo"
-
-#: cps/spa_strings.py:388
-msgid "Base DN"
-msgstr ""
-
-#: cps/spa_strings.py:389
-#, fuzzy
-msgid "Basic configuration"
-msgstr "Osnovne nastavitve"
-
-#: cps/spa_strings.py:390
-#, fuzzy
-msgid "Book density"
-msgstr "Naslov knjige"
-
-#: cps/spa_strings.py:391
-#, fuzzy
-msgid "Rows per load"
-msgstr "Dovoli nalaganje"
-
-#: cps/spa_strings.py:392 cps/templates/cwa_settings.html:376
-#: cps/templates/cwa_settings.html:378
-#, fuzzy
-msgid "Publication Date"
-msgstr "Datum objave"
-
-#: cps/spa_strings.py:393
-#, fuzzy
-msgid "Date Added"
-msgstr "Datum dodajanja"
-
-#: cps/spa_strings.py:394
-msgid "in the past N days"
-msgstr ""
-
-#: cps/spa_strings.py:395
-msgid "not in the past N days"
-msgstr ""
-
-#: cps/spa_strings.py:396
-msgid "on or after"
-msgstr ""
-
-#: cps/spa_strings.py:397
-msgid "on or before"
-msgstr ""
-
-#: cps/spa_strings.py:398 cps/templates/detail.html:739
-#: cps/templates/detail.html:740
-msgid "Reload metadata from disk"
 msgstr ""
 
 #: cps/spa_strings.py:399
-#, fuzzy
-msgid "Reloading…"
-msgstr "Nalaganje..."
+msgid "Authentication & security"
+msgstr ""
 
-#: cps/spa_strings.py:400 cps/templates/detail.html:738
-#, fuzzy
-msgid "Could not reload metadata"
-msgstr "urejanje metapodatkov"
+#: cps/spa_strings.py:400
+msgid "Author A–Z"
+msgstr ""
+
+#: cps/spa_strings.py:401
+msgid "Author Z–A"
+msgstr ""
 
 #: cps/spa_strings.py:402
+msgid "Authorised — signing you in…"
+msgstr ""
+
+#: cps/spa_strings.py:403
+msgid "Authorize URL"
+msgstr ""
+
+#: cps/spa_strings.py:405
+msgid "Auto-create users"
+msgstr ""
+
+#: cps/spa_strings.py:406
+msgid "Auto-create users on first login"
+msgstr ""
+
+#: cps/spa_strings.py:408
+msgid "Back to library"
+msgstr ""
+
+#: cps/spa_strings.py:409
+msgid "Back to the classic view"
+msgstr ""
+
+#: cps/spa_strings.py:410
+msgid "Base DN"
+msgstr ""
+
+#: cps/spa_strings.py:411
+msgid "Basic configuration"
+msgstr ""
+
+#: cps/spa_strings.py:412
+msgid "Book default"
+msgstr ""
+
+#: cps/spa_strings.py:413
+msgid "Book density"
+msgstr ""
+
+#: cps/spa_strings.py:415
 #, python-brace-format
 msgid "Book {number}"
 msgstr ""
 
-#: cps/spa_strings.py:404
-#, fuzzy
+#: cps/spa_strings.py:417
 msgid "Books per page"
-msgstr "Število knjig na stran"
+msgstr ""
 
-#: cps/spa_strings.py:405 cps/templates/config_edit.html:240
+#: cps/spa_strings.py:418 cps/templates/config_edit.html:240
 #: cps/templates/cover_picker.html:114
 msgid "Border fill style"
 msgstr ""
 
-#: cps/spa_strings.py:406
+#: cps/spa_strings.py:419
 msgid "Built-in providers (leave blank to disable):"
 msgstr ""
 
-#: cps/spa_strings.py:407
-#, fuzzy
+#: cps/spa_strings.py:420
 msgid "Bulk actions"
-msgstr "Dejanja"
+msgstr ""
 
-#: cps/spa_strings.py:408
+#: cps/spa_strings.py:421
 msgid "CA certificate path"
 msgstr ""
 
-#: cps/spa_strings.py:409
+#: cps/spa_strings.py:422
 msgid "CWA settings (ingest/convert)"
 msgstr ""
 
-#: cps/spa_strings.py:410
-#, fuzzy
+#: cps/spa_strings.py:423
 msgid "Can upload books"
-msgstr "Neuspešna prijava v Google."
+msgstr ""
 
-#: cps/spa_strings.py:411 cps/templates/admin.html:304
+#: cps/spa_strings.py:424 cps/templates/admin.html:304
 #: cps/templates/admin.html:318 cps/templates/book_edit.html:312
 #: cps/templates/book_table.html:176 cps/templates/book_table.html:195
 #: cps/templates/book_table.html:215 cps/templates/book_table.html:235
@@ -4022,1183 +3874,1249 @@ msgstr "Neuspešna prijava v Google."
 msgid "Cancel"
 msgstr "Prekliči"
 
-#: cps/spa_strings.py:412
-#, fuzzy
-msgid "Cancel title edit"
-msgstr "Preklicano"
-
-#: cps/spa_strings.py:413
-#, fuzzy
+#: cps/spa_strings.py:425
 msgid "Cancel rename"
-msgstr "Prekliči"
+msgstr ""
 
-#: cps/spa_strings.py:415
+#: cps/spa_strings.py:426
+msgid "Cancel title edit"
+msgstr ""
+
+#: cps/spa_strings.py:427
+#, python-brace-format
+msgid "Cancel {task}"
+msgstr ""
+
+#: cps/spa_strings.py:429
 msgid "Certificate file path"
 msgstr ""
 
-#: cps/spa_strings.py:416
+#: cps/spa_strings.py:430
 msgid "Certificate path"
 msgstr ""
 
-#: cps/spa_strings.py:417 cps/templates/book_edit.html:192
+#: cps/spa_strings.py:431 cps/templates/book_edit.html:192
 #: cps/templates/cover_picker.html:12 cps/templates/detail.html:619
 #: cps/templates/detail.html:622 cps/templates/detail.html:744
-#, fuzzy
 msgid "Change cover"
-msgstr "Sprememba gesla"
-
-#: cps/spa_strings.py:418
-#, fuzzy
-msgid "Checking…"
-msgstr "Iskanje"
-
-#: cps/spa_strings.py:419
-#, fuzzy
-msgid "Choose a cover"
-msgstr "Izberite uporabniško ime"
-
-#: cps/spa_strings.py:420
-#, fuzzy
-msgid "Choose a cover image to upload"
-msgstr "Pretvori vrsto knjige:"
-
-#: cps/spa_strings.py:421
-#, fuzzy
-msgid "Choose an image…"
-msgstr "Izberite uporabniško ime"
-
-#: cps/spa_strings.py:422
-#, fuzzy
-msgid "Choose fields"
-msgstr "Pošlji v e-pošto e-bralnika"
-
-#: cps/spa_strings.py:423
-#, fuzzy
-msgid "Choose your theme"
-msgstr "Izberite uporabniško ime"
-
-#: cps/spa_strings.py:424
-#, fuzzy
-msgid "Clear selection"
-msgstr "Odstranjevanje izbire"
-
-#: cps/spa_strings.py:425
-#, fuzzy
-msgid "Client ID"
-msgstr "%(provider)s Id odjemalca OAuth"
-
-#: cps/spa_strings.py:426
-#, fuzzy
-msgid "Client secret"
-msgstr "%(provider)s skrivnost odjemalca OAuth"
-
-#: cps/spa_strings.py:427
-msgid "Client secret (leave blank to keep)"
 msgstr ""
 
-#: cps/spa_strings.py:428
-#, fuzzy
-msgid "Close reader"
-msgstr "Bralnik stripov"
-
-#: cps/spa_strings.py:429
-#, fuzzy
-msgid "Columns"
-msgstr "Dva stolpca"
-
-#: cps/spa_strings.py:430
-#, fuzzy
-msgid "Configured"
-msgstr "Nastavitve uporabniškega vmesnika"
-
-#: cps/spa_strings.py:431
-#, fuzzy
-msgid "Confirm new password"
-msgstr "Sprememba gesla"
-
-#: cps/spa_strings.py:432 cps/tasks/convert.py:358
-msgid "Convert"
-msgstr "Pretvori"
+#: cps/spa_strings.py:432
+msgid "Checking…"
+msgstr ""
 
 #: cps/spa_strings.py:433
-msgid "Convert before sending"
+msgid "Choose a cover"
 msgstr ""
 
 #: cps/spa_strings.py:434
-#, fuzzy
-msgid "Convert from"
-msgstr "Pretvori iz:"
+msgid "Choose a cover image to upload"
+msgstr ""
 
 #: cps/spa_strings.py:435
-#, fuzzy
-msgid "Copied to clipboard"
-msgstr "UUID kopiran v odložišče"
+msgid "Choose an image…"
+msgstr ""
 
 #: cps/spa_strings.py:436
-#, fuzzy
-msgid "Copy link"
-msgstr "Kopiraj UUID"
+msgid "Choose fields"
+msgstr ""
 
 #: cps/spa_strings.py:437
-#, fuzzy
-msgid "Could not create the shelf."
-msgstr "urejanje metapodatkov"
+msgid "Choose your theme"
+msgstr ""
 
 #: cps/spa_strings.py:438
-#, fuzzy
-msgid "Could not load candidates."
-msgstr "urejanje metapodatkov"
+msgid "Clear default"
+msgstr ""
 
 #: cps/spa_strings.py:439
-#, fuzzy
-msgid "Could not load duplicates."
-msgstr "urejanje metapodatkov"
+msgid "Clear selection"
+msgstr ""
 
 #: cps/spa_strings.py:440
-#, fuzzy
-msgid "Could not load highlights."
-msgstr "urejanje metapodatkov"
+msgid "Client ID"
+msgstr ""
 
 #: cps/spa_strings.py:441
-#, fuzzy
-msgid "Could not load this text file."
-msgstr "Povezovanje računa OAuth ni uspelo. Prosimo, poskusite znova."
+msgid "Client secret"
+msgstr ""
 
 #: cps/spa_strings.py:442
-#, fuzzy
-msgid "Could not read this comic archive."
-msgstr "Ni bilo mogoče pridobiti informacij o posodobitvi"
+msgid "Client secret (leave blank to keep)"
+msgstr ""
 
 #: cps/spa_strings.py:443
-#, fuzzy
-msgid "Could not reset password."
-msgstr "Sprememba gesla"
+msgid "Close reader"
+msgstr ""
 
 #: cps/spa_strings.py:444
-#, fuzzy
-msgid "Could not save the shelf."
-msgstr "Ni se mogel prijaviti: %(message)s"
+msgid "Columns"
+msgstr ""
 
 #: cps/spa_strings.py:445
-#, fuzzy
-msgid "Couldn’t start a magic link. Please try again."
-msgstr "Povezovanje računa OAuth ni uspelo. Prosimo, poskusite znova."
+msgid "Comfortable"
+msgstr ""
 
 #: cps/spa_strings.py:446
-#, fuzzy
-msgid "Cover locked"
-msgstr "Naslovnica"
+msgid "Compact"
+msgstr ""
 
 #: cps/spa_strings.py:447
-#, fuzzy
-msgid "Cover not reachable"
-msgstr "urejanje metapodatkov"
+msgid "Configured"
+msgstr ""
 
-#: cps/spa_strings.py:449
-#, fuzzy
-msgid "Cover updated from the selected result."
-msgstr "Naslovnica"
+#: cps/spa_strings.py:448
+msgid "Confirm new password"
+msgstr ""
+
+#: cps/spa_strings.py:449 cps/tasks/convert.py:358
+msgid "Convert"
+msgstr "Pretvori"
 
 #: cps/spa_strings.py:450
-#, fuzzy
-msgid "Create"
-msgstr "Ustvari/pogled"
+msgid "Convert before sending"
+msgstr ""
 
 #: cps/spa_strings.py:451
-#, fuzzy
-msgid "Create account"
-msgstr "Ustvarjanje poročila o težavi"
+msgid "Convert from"
+msgstr ""
 
 #: cps/spa_strings.py:452
-#, fuzzy
-msgid "Create an account"
-msgstr "Sprememba gesla"
+msgid "Copied to clipboard"
+msgstr ""
 
 #: cps/spa_strings.py:453
-msgid "Create shelf and add book"
+msgid "Copy link"
 msgstr ""
 
 #: cps/spa_strings.py:454
-#, fuzzy
-msgid "Create user"
-msgstr "Ustvarjanje poročila o težavi"
+msgid "Could not create shelf."
+msgstr ""
 
 #: cps/spa_strings.py:455
-#, fuzzy
-msgid "Creating…"
-msgstr "Iskanje"
+msgid "Could not create the shelf."
+msgstr ""
 
-#: cps/spa_strings.py:456 cps/templates/cover_picker.html:178
-#, fuzzy
-msgid "Current"
-msgstr "Trenutna različica"
+#: cps/spa_strings.py:456
+msgid "Could not delete shelf."
+msgstr ""
 
-#: cps/spa_strings.py:457 cps/templates/cover_picker.html:23
-#, fuzzy
-msgid "Current cover"
-msgstr "Trenutna različica"
+#: cps/spa_strings.py:457
+msgid "Could not load candidates."
+msgstr ""
 
 #: cps/spa_strings.py:458
-#, fuzzy
-msgid "Current password"
-msgstr "Sprememba gesla"
+msgid "Could not load duplicates."
+msgstr ""
 
-#: cps/spa_strings.py:459 cps/templates/detail.html:849
-#: cps/templates/image.html:27 cps/templates/index.html:45
-#, fuzzy
-msgid "Currently reading"
-msgstr "Trenutna različica"
+#: cps/spa_strings.py:459
+msgid "Could not load highlights."
+msgstr ""
 
 #: cps/spa_strings.py:460
-msgid "Custom border colour"
+msgid "Could not load stats."
 msgstr ""
 
 #: cps/spa_strings.py:461
-msgid "Database & library path"
+msgid "Could not load tasks."
 msgstr ""
 
 #: cps/spa_strings.py:462
-#, fuzzy
-msgid "Default (System Sans-Serif)"
-msgstr "Sistemske statistike"
+msgid "Could not load this text file."
+msgstr ""
 
 #: cps/spa_strings.py:463
-#, fuzzy
-msgid "Default book language"
-msgstr "Privzeti jezik"
+msgid "Could not load users."
+msgstr ""
 
 #: cps/spa_strings.py:464
-#, fuzzy
-msgid "Default interface language"
-msgstr "Privzete nastavitve za nove uporabnike"
+msgid "Could not read this comic archive."
+msgstr ""
 
-#: cps/spa_strings.py:465
-#, fuzzy
-msgid "Default roles for new OAuth users:"
-msgstr "Privzete nastavitve za nove uporabnike"
+#: cps/spa_strings.py:465 cps/templates/detail.html:738
+msgid "Could not reload metadata"
+msgstr ""
 
 #: cps/spa_strings.py:466
-msgid "Defaults live in Admin → Configuration → Kobo sync."
+msgid "Could not rename shelf."
 msgstr ""
 
 #: cps/spa_strings.py:467
-#, fuzzy
-msgid "Delete books"
-msgstr "Izbriši knjigo"
+msgid "Could not reset password."
+msgstr ""
 
-#: cps/spa_strings.py:468
+#: cps/spa_strings.py:468 cps/templates/shelf_reorder.html:88
+msgid "Could not save order."
+msgstr ""
+
+#: cps/spa_strings.py:469
+msgid "Could not save reader settings."
+msgstr ""
+
+#: cps/spa_strings.py:470
+msgid "Could not save the default library filter."
+msgstr ""
+
+#: cps/spa_strings.py:471
+msgid "Could not save the shelf."
+msgstr ""
+
+#: cps/spa_strings.py:472
+msgid "Could not save title."
+msgstr ""
+
+#: cps/spa_strings.py:473
+msgid "Could not update shelf."
+msgstr ""
+
+#: cps/spa_strings.py:474
+msgid "Couldn’t start a magic link. Please try again."
+msgstr ""
+
+#: cps/spa_strings.py:475
+msgid "Cover locked"
+msgstr ""
+
+#: cps/spa_strings.py:476
+msgid "Cover not reachable"
+msgstr ""
+
+#: cps/spa_strings.py:478
+msgid "Cover updated from the selected result."
+msgstr ""
+
+#: cps/spa_strings.py:479
+msgid "Create"
+msgstr ""
+
+#: cps/spa_strings.py:480
+msgid "Create account"
+msgstr ""
+
+#: cps/spa_strings.py:481
+msgid "Create an account"
+msgstr ""
+
+#: cps/spa_strings.py:482
+msgid "Create failed."
+msgstr ""
+
+#: cps/spa_strings.py:483
+msgid "Create shelf and add book"
+msgstr ""
+
+#: cps/spa_strings.py:484
+msgid "Create user"
+msgstr ""
+
+#: cps/spa_strings.py:485
+#, python-brace-format
+msgid "Created {name}."
+msgstr ""
+
+#: cps/spa_strings.py:486
+msgid "Creating…"
+msgstr ""
+
+#: cps/spa_strings.py:487 cps/templates/cover_picker.html:178
+msgid "Current"
+msgstr ""
+
+#: cps/spa_strings.py:488 cps/templates/cover_picker.html:23
+msgid "Current cover"
+msgstr ""
+
+#: cps/spa_strings.py:489
+msgid "Current password"
+msgstr ""
+
+#: cps/spa_strings.py:490 cps/templates/detail.html:849
+#: cps/templates/image.html:27 cps/templates/index.html:45
+msgid "Currently reading"
+msgstr ""
+
+#: cps/spa_strings.py:491
+msgid "Custom border colour"
+msgstr ""
+
+#: cps/spa_strings.py:492
+msgid "Database & library path"
+msgstr ""
+
+#: cps/spa_strings.py:493
+msgid "Date Added"
+msgstr ""
+
+#: cps/spa_strings.py:494 cps/templates/detail.html:904
+msgid "Date added"
+msgstr "Datum dodajanja"
+
+#: cps/spa_strings.py:495
+msgid "Default (System Sans-Serif)"
+msgstr ""
+
+#: cps/spa_strings.py:496
+msgid "Default book language"
+msgstr ""
+
+#: cps/spa_strings.py:497
+msgid "Default interface language"
+msgstr ""
+
+#: cps/spa_strings.py:498
+msgid "Default library filter cleared."
+msgstr ""
+
+#: cps/spa_strings.py:499
+msgid "Default library filter saved."
+msgstr ""
+
+#: cps/spa_strings.py:500
+msgid "Default roles for new OAuth users:"
+msgstr ""
+
+#: cps/spa_strings.py:501
+msgid "Defaults live in Admin → Configuration → Kobo sync."
+msgstr ""
+
+#: cps/spa_strings.py:502
+msgid "Delete books"
+msgstr ""
+
+#: cps/spa_strings.py:503
+msgid "Delete failed."
+msgstr ""
+
+#: cps/spa_strings.py:504
+#, python-brace-format
+msgid "Delete shelf \"{name}\"? This cannot be undone."
+msgstr ""
+
+#: cps/spa_strings.py:505
 msgid "Delete this smart shelf? Your books are not affected."
 msgstr ""
 
-#: cps/spa_strings.py:469 cps/templates/book_edit.html:171
+#: cps/spa_strings.py:506
+#, python-brace-format
+msgid "Delete user \"{name}\"? Their shelves and reading data are removed too."
+msgstr ""
+
+#: cps/spa_strings.py:507
+#, python-brace-format
+msgid "Delete {name}"
+msgstr ""
+
+#: cps/spa_strings.py:508
+#, python-brace-format
+msgid "Deleted {name}."
+msgstr ""
+
+#: cps/spa_strings.py:509
+msgid "Dense"
+msgstr ""
+
+#: cps/spa_strings.py:510 cps/templates/book_edit.html:171
 #: cps/templates/book_edit.html:461 cps/templates/cwa_settings.html:341
 #: cps/templates/cwa_settings.html:343 cps/templates/search_form.html:154
 msgid "Description"
 msgstr "Opis"
 
-#: cps/spa_strings.py:470
-#, fuzzy
+#: cps/spa_strings.py:511
 msgid "Disable standard password login"
-msgstr "Onemogoči standardno prijavo (uporabniško ime/geslo)"
+msgstr ""
 
-#: cps/spa_strings.py:472
-#, fuzzy
+#: cps/spa_strings.py:513
 msgid "Discover picks updated."
-msgstr "Naslovnica"
+msgstr ""
 
-#: cps/spa_strings.py:473 cps/templates/cwng_feedback_popup.html:24
+#: cps/spa_strings.py:514
+msgid "Discover — Random Picks"
+msgstr ""
+
+#: cps/spa_strings.py:515 cps/templates/cwng_feedback_popup.html:24
 #: cps/templates/duplicates.html:618 cps/templates/layout.html:404
 #: cps/templates/layout.html:586
 msgid "Dismiss"
 msgstr "Opusti"
 
-#: cps/spa_strings.py:474
-#, fuzzy
+#: cps/spa_strings.py:516
 msgid "Dismiss this group"
-msgstr "Opusti to skupino dvojnikov"
+msgstr ""
 
-#: cps/spa_strings.py:475
-#, fuzzy
+#: cps/spa_strings.py:517
 msgid "Documentation"
-msgstr "Preverjanje pristnosti LDAP"
+msgstr ""
 
-#: cps/spa_strings.py:476
+#: cps/spa_strings.py:518
 msgid "Done reordering"
 msgstr ""
 
-#: cps/spa_strings.py:477 cps/templates/admin.html:24
+#: cps/spa_strings.py:519 cps/templates/admin.html:24
 #: cps/templates/detail.html:647 cps/templates/shelf.html:9
 #: cps/templates/user_table.html:147
 msgid "Download"
 msgstr "Prenesi"
 
-#: cps/spa_strings.py:478
+#: cps/spa_strings.py:520
 msgid "Drop files here, or click to choose"
 msgstr ""
 
-#: cps/spa_strings.py:479
-#, fuzzy
+#: cps/spa_strings.py:521
 msgid "Duplicate"
-msgstr "Dvojniki"
+msgstr ""
 
-#: cps/spa_strings.py:480
-#, fuzzy
+#: cps/spa_strings.py:522
 msgid "Duplicate books"
-msgstr "Izbriši knjigo"
+msgstr ""
 
-#: cps/spa_strings.py:482 cps/templates/cover_picker.html:94
+#: cps/spa_strings.py:524 cps/templates/cover_picker.html:94
 msgid "E-reader preview"
 msgstr ""
 
-#: cps/spa_strings.py:483
+#: cps/spa_strings.py:525
 msgid "Each type (isbn, amazon, google, doi…) may appear once."
 msgstr ""
 
-#: cps/spa_strings.py:484 cps/templates/config_edit.html:243
+#: cps/spa_strings.py:526 cps/templates/config_edit.html:243
 #: cps/templates/cover_picker.html:117
 msgid "Edge blur — soft bokeh border"
 msgstr ""
 
-#: cps/spa_strings.py:485 cps/templates/config_edit.html:242
+#: cps/spa_strings.py:527 cps/templates/config_edit.html:242
 #: cps/templates/cover_picker.html:116
 msgid "Edge mirror — extend the artwork (recommended)"
 msgstr ""
 
-#: cps/spa_strings.py:486 cps/templates/admin.html:26
+#: cps/spa_strings.py:528 cps/templates/admin.html:26
 #: cps/templates/book_table.html:51 cps/templates/book_table.html:332
 #: cps/templates/duplicates.html:657 cps/templates/index.html:131
 #: cps/templates/user_table.html:131 cps/templates/user_table.html:149
 msgid "Edit"
 msgstr "Uredi"
 
-#: cps/spa_strings.py:487
-#, fuzzy
+#: cps/spa_strings.py:529
 msgid "Edit public shelves"
-msgstr "Urejanje javnih polic"
+msgstr ""
 
-#: cps/spa_strings.py:488
-#, fuzzy
+#: cps/spa_strings.py:530
 msgid "Edit smart shelf"
-msgstr "Urejanje police"
+msgstr ""
 
-#: cps/spa_strings.py:489 cps/templates/admin.html:15
+#: cps/spa_strings.py:531
+#, python-brace-format
+msgid "Edit title for {title}"
+msgstr ""
+
+#: cps/spa_strings.py:532 cps/templates/admin.html:15
 #: cps/templates/register.html:14 cps/templates/user_edit.html:200
 #: cps/templates/user_table.html:135
 msgid "Email"
 msgstr "E-pošta"
 
-#: cps/spa_strings.py:490
-#, fuzzy
+#: cps/spa_strings.py:533
 msgid "Email (SMTP) server"
-msgstr "Storitev e-pošte"
+msgstr ""
 
-#: cps/spa_strings.py:491
+#: cps/spa_strings.py:534
 msgid "Email (optional)"
 msgstr ""
 
-#: cps/spa_strings.py:492
-#, fuzzy
+#: cps/spa_strings.py:535
 msgid "Email claim"
-msgstr "Storitev e-pošte"
+msgstr ""
 
-#: cps/spa_strings.py:493
-#, fuzzy
+#: cps/spa_strings.py:536
 msgid "Email me a reset"
-msgstr "Storitev e-pošte"
+msgstr ""
 
-#: cps/spa_strings.py:494
-#, fuzzy
+#: cps/spa_strings.py:537
 msgid "Email settings saved."
-msgstr "Posodobljene nastavitve e-poštnega strežnika"
+msgstr ""
 
-#: cps/spa_strings.py:495 cps/templates/config_edit.html:208
+#: cps/spa_strings.py:538 cps/templates/config_edit.html:208
 msgid "Enable Kobo sync"
 msgstr "Omogoči sinhronizacijo s Kobo"
 
-#: cps/spa_strings.py:496 cps/templates/admin.html:80
+#: cps/spa_strings.py:539 cps/templates/admin.html:80
 #: cps/templates/email_edit.html:39
 msgid "Encryption"
 msgstr "Šifriranje"
 
-#: cps/spa_strings.py:497
+#: cps/spa_strings.py:540
 msgid "Expires in"
 msgstr ""
 
-#: cps/spa_strings.py:498
-#, fuzzy
+#: cps/spa_strings.py:541
 msgid "Expose only selected shelves over OPDS"
-msgstr "Sinhroniziranje samo knjig na izbranih policah s Kobo"
+msgstr ""
 
-#: cps/spa_strings.py:499
-#, fuzzy
+#: cps/spa_strings.py:542
+msgid "Failed to load shelves."
+msgstr ""
+
+#: cps/spa_strings.py:543
 msgid "Failed to load."
-msgstr "Neuspešna prijava v Google."
+msgstr ""
 
-#: cps/spa_strings.py:500 cps/templates/image.html:25
+#: cps/spa_strings.py:544 cps/templates/image.html:25
 msgid "Favorite"
 msgstr ""
 
-#: cps/spa_strings.py:501
-#, fuzzy
+#: cps/spa_strings.py:545
 msgid "Favorited"
-msgstr "Najbolj vroče knjige"
+msgstr ""
 
-#: cps/spa_strings.py:503
+#: cps/spa_strings.py:547
 msgid "Fetch"
 msgstr ""
 
-#: cps/spa_strings.py:504
-#, fuzzy
+#: cps/spa_strings.py:548
 msgid "Fetch metadata from web"
-msgstr "Pridobivanje metapodatkov"
+msgstr ""
 
-#: cps/spa_strings.py:505
-#, fuzzy
+#: cps/spa_strings.py:549
 msgid "Files"
-msgstr "Velikosti pisave"
+msgstr ""
 
-#: cps/spa_strings.py:506
+#: cps/spa_strings.py:550
 msgid ""
 "Files are queued for the library's ingest process and appear once imported."
 msgstr ""
 
-#: cps/spa_strings.py:507
-#, fuzzy
-msgid "Forgot password?"
-msgstr "Ste pozabili geslo?"
+#: cps/spa_strings.py:551
+#, python-brace-format
+msgid "Filter {items}"
+msgstr ""
 
-#: cps/spa_strings.py:508
+#: cps/spa_strings.py:552
+#, python-brace-format
+msgid "Filter {items}…"
+msgstr ""
+
+#: cps/spa_strings.py:553
+msgid "Font family"
+msgstr ""
+
+#: cps/spa_strings.py:554
+msgid "Font size"
+msgstr ""
+
+#: cps/spa_strings.py:555
+msgid "Forgot password?"
+msgstr ""
+
+#: cps/spa_strings.py:556
 msgid "Format queued — it will appear once processed."
 msgstr ""
 
-#: cps/spa_strings.py:509
-#, fuzzy
+#: cps/spa_strings.py:557
 msgid "Formats"
-msgstr "Nalaganje vrsta"
+msgstr ""
 
-#: cps/spa_strings.py:510
+#: cps/spa_strings.py:558
 msgid "Formats — exclude"
 msgstr ""
 
-#: cps/spa_strings.py:511
+#: cps/spa_strings.py:559
 msgid "Formats — include"
 msgstr ""
 
-#: cps/spa_strings.py:512
-#, fuzzy
+#: cps/spa_strings.py:560
 msgid "From address"
-msgstr "Napredek"
+msgstr ""
 
-#: cps/spa_strings.py:513
+#: cps/spa_strings.py:561
 msgid "Full user table & restrictions"
 msgstr ""
 
-#: cps/spa_strings.py:514
+#: cps/spa_strings.py:562
 msgid "Generate a new link"
 msgstr ""
 
-#: cps/spa_strings.py:515
+#: cps/spa_strings.py:563
 msgid "Give your smart shelf a name."
 msgstr ""
 
-#: cps/spa_strings.py:516
-#, fuzzy
+#: cps/spa_strings.py:564
 msgid "Go to your library"
-msgstr "Skrij to polico iz stranske vrstice"
+msgstr ""
 
-#: cps/spa_strings.py:517 cps/templates/config_edit.html:244
+#: cps/spa_strings.py:565 cps/templates/config_edit.html:244
 #: cps/templates/cover_picker.html:118
 msgid "Gradient — palette-matched top/bottom blend"
 msgstr ""
 
-#: cps/spa_strings.py:518
-#, fuzzy
+#: cps/spa_strings.py:566
 msgid "Group claim"
-msgstr "OAuth skupina za skrbnika"
+msgstr ""
 
-#: cps/spa_strings.py:519
-#, fuzzy
+#: cps/spa_strings.py:567
 msgid "Group members field"
-msgstr "Polje člani skupine LDAP"
+msgstr ""
 
-#: cps/spa_strings.py:520
-#, fuzzy
+#: cps/spa_strings.py:568
 msgid "Group name"
-msgstr "Ime skupine LDAP"
+msgstr ""
 
-#: cps/spa_strings.py:521
-#, fuzzy
+#: cps/spa_strings.py:569
 msgid "Group object filter"
-msgstr "Filter objektov skupine LDAP"
+msgstr ""
 
-#: cps/spa_strings.py:522
+#: cps/spa_strings.py:570
 msgid "HTML is allowed and sanitized on display."
 msgstr ""
 
-#: cps/spa_strings.py:523
-#, fuzzy
+#: cps/spa_strings.py:571
 msgid "Header name"
-msgstr "Uporabniško ime"
+msgstr ""
 
-#: cps/spa_strings.py:524
+#: cps/spa_strings.py:572
 msgid "Help & support"
 msgstr ""
 
-#: cps/spa_strings.py:525
-#, fuzzy
+#: cps/spa_strings.py:573
 msgid "Help menu"
-msgstr "Zapri"
+msgstr ""
 
-#: cps/spa_strings.py:526 cps/templates/readcbr.html:173
+#: cps/spa_strings.py:574 cps/templates/readcbr.html:173
 msgid "Hide"
 msgstr "Skrij"
 
-#: cps/spa_strings.py:527
-#, fuzzy
+#: cps/spa_strings.py:575
 msgid "Hide Discover section"
-msgstr "Opis"
+msgstr ""
 
-#: cps/spa_strings.py:528
-#, fuzzy
+#: cps/spa_strings.py:576
 msgid "Hide fields"
-msgstr "Javna polica"
+msgstr ""
 
-#: cps/spa_strings.py:529
-#, fuzzy
+#: cps/spa_strings.py:577
 msgid "Hide password"
-msgstr "Sprememba gesla"
+msgstr ""
 
-#: cps/spa_strings.py:530
-#, fuzzy
+#: cps/spa_strings.py:578
 msgid "Highlight"
-msgstr "Višina"
+msgstr ""
 
-#: cps/spa_strings.py:531
-#, fuzzy
+#: cps/spa_strings.py:579
 msgid "Highlights"
-msgstr "Višina"
+msgstr ""
 
-#: cps/spa_strings.py:532
+#: cps/spa_strings.py:580
 msgid "Hot"
 msgstr ""
 
-#: cps/spa_strings.py:533
+#: cps/spa_strings.py:581
+msgid "Hot — Most Downloaded"
+msgstr ""
+
+#: cps/spa_strings.py:582
 msgid "Icon"
 msgstr ""
 
-#: cps/spa_strings.py:534
-#, fuzzy
+#: cps/spa_strings.py:583
 msgid "Identifier type"
-msgstr "Vrsta identifikatorja"
+msgstr ""
 
-#: cps/spa_strings.py:535
-#, fuzzy
+#: cps/spa_strings.py:584
 msgid "Identifier value"
-msgstr "Vrednost identifikatorja"
+msgstr ""
 
-#: cps/spa_strings.py:536 cps/templates/book_edit.html:175
+#: cps/spa_strings.py:585 cps/templates/book_edit.html:175
 msgid "Identifiers"
 msgstr "Identifikatorji"
 
-#: cps/spa_strings.py:537 cps/templates/book_edit.html:128
+#: cps/spa_strings.py:586 cps/templates/book_edit.html:128
 #: cps/templates/detail.html:899
-#, fuzzy
 msgid "Imported as"
-msgstr "Pomembno:"
+msgstr ""
 
-#: cps/spa_strings.py:538
+#: cps/spa_strings.py:587
 msgid "In your book"
 msgstr ""
 
-#: cps/spa_strings.py:539
+#: cps/spa_strings.py:588
 msgid ""
 "In-browser reading currently supports EPUB. Use download or the classic "
 "reader for other formats."
 msgstr ""
 
-#: cps/spa_strings.py:540
+#: cps/spa_strings.py:589
 msgid "Issuer / base URL"
 msgstr ""
 
-#: cps/spa_strings.py:541
+#: cps/spa_strings.py:590
 msgid "It may have moved, or it might still live in the classic interface."
 msgstr ""
 
-#: cps/spa_strings.py:542 cps/templates/detail.html:1017
-#, fuzzy
+#: cps/spa_strings.py:591 cps/templates/detail.html:1017
 msgid "KOReader Progress"
-msgstr "Napredek"
+msgstr ""
 
-#: cps/spa_strings.py:543
-#, fuzzy
+#: cps/spa_strings.py:592
 msgid "Key file path"
-msgstr "Vrste datotek"
+msgstr ""
 
-#: cps/spa_strings.py:544
-#, fuzzy
+#: cps/spa_strings.py:593
 msgid "Key path"
-msgstr "Vrste datotek"
+msgstr ""
 
-#: cps/spa_strings.py:545
+#: cps/spa_strings.py:594
 msgid "Kobo Clara HD / 2E / BW / Colour (1072×1448)"
 msgstr ""
 
-#: cps/spa_strings.py:546
+#: cps/spa_strings.py:595
 msgid "Kobo Libra Color / Libra 2 (1264×1680)"
 msgstr ""
 
-#: cps/spa_strings.py:547
-#, fuzzy
+#: cps/spa_strings.py:596
 msgid "Kobo sync on"
-msgstr "Žeton za sinhronizacijo Kobo"
-
-#: cps/spa_strings.py:548
-msgid "LDAP"
 msgstr ""
 
-#: cps/spa_strings.py:549 cps/templates/book_edit.html:163
+#: cps/spa_strings.py:598 cps/templates/book_edit.html:163
 #: cps/templates/cwa_settings.html:1127 cps/templates/listenmp3.html:69
 msgid "Language"
 msgstr "Jezik"
 
-#: cps/spa_strings.py:551
-#, fuzzy
+#: cps/spa_strings.py:600
 msgid "Languages — include"
-msgstr "Prikaz ene strani"
-
-#: cps/spa_strings.py:552
-msgid "Larger"
 msgstr ""
 
-#: cps/spa_strings.py:553
-msgid "Larger text"
-msgstr ""
-
-#: cps/spa_strings.py:554 cps/templates/detail.html:1029
-#, fuzzy
-msgid "Last synced"
+#: cps/spa_strings.py:601 cps/templates/detail.html:908
+msgid "Last modified"
 msgstr "Zadnjič spremenjeno"
 
-#: cps/spa_strings.py:555
-#, fuzzy
-msgid "Library settings"
-msgstr "Varnostne nastavitve"
+#: cps/spa_strings.py:602 cps/templates/detail.html:1029
+msgid "Last synced"
+msgstr ""
 
-#: cps/spa_strings.py:556
+#: cps/spa_strings.py:603
+msgid "Library settings"
+msgstr ""
+
+#: cps/spa_strings.py:604 cps/templates/read.html:132
+msgid "Line height"
+msgstr ""
+
+#: cps/spa_strings.py:605
 msgid "Load more"
 msgstr ""
 
-#: cps/spa_strings.py:557
+#: cps/spa_strings.py:606 cps/templates/admin.html:300
+#: cps/templates/admin.html:332 cps/templates/config_db.html:4
+#: cps/templates/config_edit.html:4 cps/templates/cwa_settings.html:4
+#: cps/templates/read.html:74
+msgid "Loading"
+msgstr ""
+
+#: cps/spa_strings.py:607
 msgid "Loading new Discover picks."
 msgstr ""
 
-#: cps/spa_strings.py:558 cps/templates/cover_picker.html:87
-#, fuzzy
+#: cps/spa_strings.py:608 cps/templates/cover_picker.html:87
 msgid "Loading…"
-msgstr "Nalaganje..."
+msgstr ""
 
-#: cps/spa_strings.py:559 cps/templates/cover_picker.html:37
+#: cps/spa_strings.py:609 cps/templates/cover_picker.html:37
 msgid "Lock cover"
 msgstr ""
 
-#: cps/spa_strings.py:561
-#, fuzzy
+#: cps/spa_strings.py:611
 msgid "Login button text"
-msgstr "Besedilo gumba za prijavo"
+msgstr ""
 
-#: cps/spa_strings.py:562
-#, fuzzy
+#: cps/spa_strings.py:612
 msgid "Login method"
-msgstr "Posodobitev ni uspela:"
+msgstr ""
 
-#: cps/spa_strings.py:563
-#, fuzzy
-msgid "Logs"
-msgstr "Prikaži dnevnike"
-
-#: cps/spa_strings.py:564
-#, fuzzy
+#: cps/spa_strings.py:613
 msgid "Login with"
-msgstr "Prijavi se s povezavo Magic Link"
+msgstr ""
 
-#: cps/spa_strings.py:565
+#: cps/spa_strings.py:614
+msgid "Logs"
+msgstr ""
+
+#: cps/spa_strings.py:615
 msgid "Looks good"
 msgstr ""
 
-#: cps/spa_strings.py:566
+#: cps/spa_strings.py:616
 msgid "Low-res"
 msgstr ""
 
-#: cps/spa_strings.py:567
-#, fuzzy
+#: cps/spa_strings.py:617
 msgid "Magic link"
-msgstr "Prijava v oddaljeno prijavo Magic Link"
+msgstr ""
 
-#: cps/spa_strings.py:568
-#, fuzzy
+#: cps/spa_strings.py:618
 msgid "Magic link QR code"
-msgstr "Prijava v oddaljeno prijavo Magic Link"
+msgstr ""
 
-#: cps/spa_strings.py:569
+#: cps/spa_strings.py:619
 msgid "Make private"
 msgstr ""
 
-#: cps/spa_strings.py:570
+#: cps/spa_strings.py:620
 msgid "Make public"
 msgstr ""
 
-#: cps/spa_strings.py:571
+#: cps/spa_strings.py:621
+msgid "Make this my default library view"
+msgstr ""
+
+#: cps/spa_strings.py:622
 msgid "Manage admin role from OAuth group"
 msgstr ""
 
-#: cps/spa_strings.py:572
-#, fuzzy
+#: cps/spa_strings.py:623
 msgid "Manage shelves"
-msgstr "Čarobne police ✨"
+msgstr ""
 
-#: cps/spa_strings.py:573 cps/templates/_book_organizer.html:139
+#: cps/spa_strings.py:624 cps/templates/_book_organizer.html:139
 #: cps/templates/book_table.html:60 cps/templates/book_table.html:254
-#, fuzzy
 msgid "Mark as read"
-msgstr "Označi kot prebrano"
+msgstr ""
 
-#: cps/spa_strings.py:574 cps/templates/_book_organizer.html:145
+#: cps/spa_strings.py:625 cps/templates/_book_organizer.html:145
 #: cps/templates/book_table.html:63 cps/templates/book_table.html:274
-#, fuzzy
 msgid "Mark as unread"
-msgstr "Označi kot neprebrano"
+msgstr ""
 
-#: cps/spa_strings.py:575
+#: cps/spa_strings.py:626
 msgid "Match"
 msgstr ""
 
-#: cps/spa_strings.py:576
+#: cps/spa_strings.py:627
 msgid "Max"
 msgstr ""
 
-#: cps/spa_strings.py:577
+#: cps/spa_strings.py:628
 msgid "Max authors shown"
 msgstr ""
 
-#: cps/spa_strings.py:578
-#, fuzzy
+#: cps/spa_strings.py:629
 msgid "Maximum rating"
-msgstr "Najdaljše trajanje"
+msgstr ""
 
-#: cps/spa_strings.py:579
-#, fuzzy
+#: cps/spa_strings.py:630
 msgid "Member user filter"
-msgstr "Filtriranje uporabnikov članov LDAP"
+msgstr ""
 
-#: cps/spa_strings.py:580
-#, fuzzy
+#: cps/spa_strings.py:631
 msgid "Metadata URL (OIDC auto-discovery)"
-msgstr "URL metapodatkov OAuth (za samodejno odkrivanje)"
+msgstr ""
 
-#: cps/spa_strings.py:581
+#: cps/spa_strings.py:632
 msgid "Min"
 msgstr ""
 
-#: cps/spa_strings.py:582
-#, fuzzy
+#: cps/spa_strings.py:633
 msgid "Minimum rating"
-msgstr "Najdaljše trajanje"
+msgstr ""
 
-#: cps/spa_strings.py:583
+#: cps/spa_strings.py:634
 msgid "More cover options (search providers, e-reader preview)"
 msgstr ""
 
-#: cps/spa_strings.py:584
-#, fuzzy
+#: cps/spa_strings.py:635
 msgid "More server configuration"
-msgstr "Nastavitve strežnika"
+msgstr ""
 
-#: cps/spa_strings.py:585
+#: cps/spa_strings.py:636
 msgid ""
 "Pages marked below open in the classic view. Changes there apply to the "
 "whole server."
 msgstr ""
 
-#: cps/spa_strings.py:586
-#, fuzzy
+#: cps/spa_strings.py:637
 msgid "Opens in classic view"
-msgstr "Nazaj na skrbniško ploščo"
+msgstr ""
 
-#: cps/spa_strings.py:587
+
+#: cps/spa_strings.py:638
 msgid "Move down"
 msgstr ""
 
-#: cps/spa_strings.py:588
-#, fuzzy
+#: cps/spa_strings.py:639
 msgid "Move up"
-msgstr "Preklic"
+msgstr ""
 
-#: cps/spa_strings.py:589
-#, fuzzy
+#: cps/spa_strings.py:640
 msgid "My account"
-msgstr "Račun"
+msgstr ""
 
-#: cps/spa_strings.py:590
+#: cps/spa_strings.py:641
 msgid "Name"
 msgstr ""
 
-#: cps/spa_strings.py:591
+#: cps/spa_strings.py:642
 msgid "Need to report an issue? Try the new"
 msgstr ""
 
-#: cps/spa_strings.py:592 cps/templates/cover_picker.html:182
+#: cps/spa_strings.py:643 cps/templates/cover_picker.html:182
 msgid "New"
 msgstr ""
 
-#: cps/spa_strings.py:593
-#, fuzzy
+#: cps/spa_strings.py:644
 msgid "New password"
-msgstr "Sprememba gesla"
+msgstr ""
 
-#: cps/spa_strings.py:594
+#: cps/spa_strings.py:645
 msgid "New shelf name"
 msgstr ""
 
-#: cps/spa_strings.py:595
+#: cps/spa_strings.py:646
 msgid "New shelf name…"
 msgstr ""
 
-#: cps/spa_strings.py:596
+#: cps/spa_strings.py:647
 msgid "New shelf…"
 msgstr ""
 
-#: cps/spa_strings.py:597
-#, fuzzy
+#: cps/spa_strings.py:648
 msgid "New smart shelf"
-msgstr "Ustvari polico"
+msgstr ""
 
-#: cps/spa_strings.py:598
-#, fuzzy
+#: cps/spa_strings.py:649
 msgid "New user"
-msgstr "Dodajanje novega uporabnika"
+msgstr ""
 
-#: cps/spa_strings.py:599
-#, fuzzy
+#: cps/spa_strings.py:650
 msgid "Newest"
-msgstr "Ohrani najnovejšo"
+msgstr ""
 
-#: cps/spa_strings.py:600
-#, fuzzy
+#: cps/spa_strings.py:651
 msgid "Newest published"
-msgstr "Objavljeno"
+msgstr ""
 
-#: cps/spa_strings.py:601
-#, fuzzy
+#: cps/spa_strings.py:652
 msgid "Next page"
-msgstr "Naslednja stran"
+msgstr ""
 
-#: cps/spa_strings.py:602
+#: cps/spa_strings.py:653
 msgid "No books match this smart shelf right now."
 msgstr ""
 
-#: cps/spa_strings.py:603
-#, fuzzy
+#: cps/spa_strings.py:654
 msgid "No books match those criteria."
-msgstr "ne najdem žetona"
+msgstr ""
 
-#: cps/spa_strings.py:604 cps/templates/cover_picker.html:223
+#: cps/spa_strings.py:655 cps/templates/cover_picker.html:223
 msgid "No candidates found yet. Try a different search or refresh."
 msgstr ""
 
-#: cps/spa_strings.py:605
-#, fuzzy
+#: cps/spa_strings.py:656
 msgid "No contents found."
-msgstr "ne najdem žetona"
+msgstr ""
 
-#: cps/spa_strings.py:606
-#, fuzzy
+#: cps/spa_strings.py:657
 msgid "No duplicate groups found."
-msgstr "Ni bilo najdenih rezultatov"
+msgstr ""
 
-#: cps/spa_strings.py:607
-#, fuzzy
+#: cps/spa_strings.py:658
 msgid "No excluded tags"
-msgstr "Izključi oznake"
+msgstr ""
 
-#: cps/spa_strings.py:608
+#: cps/spa_strings.py:659
 msgid ""
 "No highlights yet. Highlight while reading, or import from a Kobo device."
 msgstr ""
 
-#: cps/spa_strings.py:609
+#: cps/spa_strings.py:660
+#, python-brace-format
+msgid "No matching {items} for \"{query}\"."
+msgstr ""
+
+#: cps/spa_strings.py:661
 msgid "No pages found in this comic."
 msgstr ""
 
-#: cps/spa_strings.py:610
+#: cps/spa_strings.py:662
 msgid "No shelves yet — create one below."
 msgstr ""
 
-#: cps/spa_strings.py:611
+#: cps/spa_strings.py:663
+msgid "No shelves yet. Create one above to start collecting books."
+msgstr ""
+
+#: cps/spa_strings.py:664
 msgid "No sources need a key."
 msgstr ""
 
-#: cps/spa_strings.py:612
+#: cps/spa_strings.py:665
 msgid "No tasks running."
 msgstr ""
 
-#: cps/spa_strings.py:614
+#: cps/spa_strings.py:666
+#, python-brace-format
+msgid "No {items} yet."
+msgstr ""
+
+#: cps/spa_strings.py:668
 msgid "Not configured"
 msgstr ""
 
-#: cps/spa_strings.py:615
-msgid "OAuth / OpenID Connect"
+#: cps/spa_strings.py:670
+msgid "Oldest"
 msgstr ""
 
-#: cps/spa_strings.py:616
-#, fuzzy
-msgid "Oldest"
-msgstr "Ohrani najstarejšo"
-
-#: cps/spa_strings.py:617
-#, fuzzy
+#: cps/spa_strings.py:671
 msgid "Oldest published"
-msgstr "Objavljeno"
+msgstr ""
 
-#: cps/spa_strings.py:618
+#: cps/spa_strings.py:672
 msgid ""
 "On another device where you’re already signed in, scan this code or open the "
 "link below to authorise this device."
 msgstr ""
 
-#: cps/spa_strings.py:619
-#, fuzzy
+#: cps/spa_strings.py:673
 msgid "Open Account"
-msgstr "Račun"
+msgstr ""
 
-#: cps/spa_strings.py:620
+#: cps/spa_strings.py:674
 msgid "Open classic reader"
 msgstr ""
 
-#: cps/spa_strings.py:621
-#, fuzzy
+#: cps/spa_strings.py:675
 msgid "Open navigation"
-msgstr "Preklopi navigacijo"
+msgstr ""
 
-#: cps/spa_strings.py:622
-#, fuzzy
+#: cps/spa_strings.py:676
 msgid "Open reader"
-msgstr "epub bralnik"
+msgstr ""
 
-#: cps/spa_strings.py:623
+#: cps/spa_strings.py:677
 msgid "Open the classic interface"
 msgstr ""
 
-#: cps/spa_strings.py:624
+#: cps/spa_strings.py:678
 msgid "Open the link below on your signed-in device."
 msgstr ""
 
-#: cps/spa_strings.py:625
-#, fuzzy
+#: cps/spa_strings.py:679
 msgid "OpenLDAP server"
-msgstr "Vrata strežnika LDAP"
+msgstr ""
 
-#: cps/spa_strings.py:626
-#, fuzzy
+#: cps/spa_strings.py:680
 msgid "PDF reader"
-msgstr "Bralnik PDF"
+msgstr ""
 
-#: cps/spa_strings.py:627 cps/templates/admin.html:20
+#: cps/spa_strings.py:681
+msgid "Page margins"
+msgstr ""
+
+#: cps/spa_strings.py:682
+msgid "Page theme"
+msgstr ""
+
+#: cps/spa_strings.py:683
+#, python-brace-format
+msgid "Page {number}"
+msgstr ""
+
+#: cps/spa_strings.py:684 cps/templates/admin.html:20
 #: cps/templates/login.html:22 cps/templates/login.html:23
 #: cps/templates/user_edit.html:211
 msgid "Password"
 msgstr "Geslo"
 
-#: cps/spa_strings.py:628
+#: cps/spa_strings.py:685
 msgid "Password (leave blank to keep)"
 msgstr ""
 
-#: cps/spa_strings.py:629 cps/templates/cover_picker.html:14
+#: cps/spa_strings.py:686 cps/templates/cover_picker.html:14
 msgid ""
 "Pick a cover from any source we support, paste a URL, upload a file, or use "
 "the cover embedded in the book itself."
 msgstr ""
 
-#: cps/spa_strings.py:630
+#: cps/spa_strings.py:687
 #, python-brace-format
 msgid "Picked up {label}. Drag to reorder, release to drop."
 msgstr ""
 
-#: cps/spa_strings.py:631 cps/templates/admin.html:123
+#: cps/spa_strings.py:688 cps/templates/admin.html:123
 msgid "Port"
 msgstr "Vrata"
 
-#: cps/spa_strings.py:632
+#: cps/spa_strings.py:689
 msgid "Preparing your magic link…"
 msgstr ""
 
-#: cps/spa_strings.py:633
-#, fuzzy
+#: cps/spa_strings.py:690
 msgid "Previous page"
-msgstr "Prejšnja stran"
+msgstr ""
 
-#: cps/spa_strings.py:634 cps/templates/duplicates.html:545
+#: cps/spa_strings.py:691 cps/templates/duplicates.html:545
 #: cps/templates/tasks.html:17
 msgid "Progress"
 msgstr "Napredek"
 
-#: cps/spa_strings.py:635
-#, fuzzy
+#: cps/spa_strings.py:692
 msgid "Public"
-msgstr "(Javno)"
+msgstr ""
 
-#: cps/spa_strings.py:636
-#, fuzzy
+#: cps/spa_strings.py:693 cps/templates/cwa_settings.html:376
+#: cps/templates/cwa_settings.html:378
+msgid "Publication Date"
+msgstr ""
+
+#: cps/spa_strings.py:694
 msgid "Published after"
-msgstr "Objavljeno po"
+msgstr ""
 
-#: cps/spa_strings.py:637
-#, fuzzy
+#: cps/spa_strings.py:695
 msgid "Published before"
-msgstr "Objavljeno pred"
+msgstr ""
 
-#: cps/spa_strings.py:639
-#, fuzzy
+#: cps/spa_strings.py:697
 msgid "Random books shown"
-msgstr "Naključne knjige"
+msgstr ""
 
-#: cps/spa_strings.py:640 cps/templates/book_edit.html:167
+#: cps/spa_strings.py:698 cps/templates/book_edit.html:167
 #: cps/templates/cwa_settings.html:369 cps/templates/cwa_settings.html:371
 msgid "Rating"
 msgstr "Ocena"
 
-#: cps/spa_strings.py:641
-#, fuzzy
+#: cps/spa_strings.py:699
 msgid "Rating (stars)"
-msgstr "Seznam ocen"
+msgstr ""
 
-#: cps/spa_strings.py:643
-#, fuzzy
+#: cps/spa_strings.py:701
 msgid "Read status"
-msgstr "Stanje branje"
+msgstr ""
 
-#: cps/spa_strings.py:644
-#, fuzzy
+#: cps/spa_strings.py:702
 msgid "Read status filter"
-msgstr "Stanje branje"
+msgstr ""
 
-#: cps/spa_strings.py:645
+#: cps/spa_strings.py:703
+msgid "Reader settings saved."
+msgstr ""
+
+#: cps/spa_strings.py:704
+msgid "Reading appearance"
+msgstr ""
+
+#: cps/spa_strings.py:705
 msgid "Recipient(s)"
 msgstr ""
 
-#: cps/spa_strings.py:646
+#: cps/spa_strings.py:706
 msgid "Redirect host (full URL)"
 msgstr ""
 
-#: cps/spa_strings.py:647 cps/templates/cover_picker.html:152
+#: cps/spa_strings.py:707 cps/templates/cover_picker.html:152
 #: cps/templates/index.html:120
-#, fuzzy
 msgid "Refresh"
-msgstr "Iskanje po knjižnici"
+msgstr ""
 
-#: cps/spa_strings.py:648
-#, fuzzy
+#: cps/spa_strings.py:708
 msgid "Registering…"
-msgstr "Registriraj"
+msgstr ""
 
-#: cps/spa_strings.py:649
-#, fuzzy
+#: cps/spa_strings.py:709 cps/templates/detail.html:739
+#: cps/templates/detail.html:740
+msgid "Reload metadata from disk"
+msgstr ""
+
+#: cps/spa_strings.py:710
+msgid "Reloading…"
+msgstr ""
+
+#: cps/spa_strings.py:711
 msgid "Remember me"
-msgstr "Zapomni si me"
+msgstr ""
 
-#: cps/spa_strings.py:650 cps/templates/detail.html:700
+#: cps/spa_strings.py:712 cps/templates/detail.html:700
 #: cps/templates/detail.html:701 cps/templates/detail.html:702
-#, fuzzy
 msgid "Remove from favorites"
-msgstr "Obnovi iz arhiva"
+msgstr ""
 
-#: cps/spa_strings.py:651 cps/templates/detail.html:809
+#: cps/spa_strings.py:713 cps/templates/detail.html:809
 #: cps/templates/detail.html:991
-#, fuzzy
 msgid "Remove from shelf"
-msgstr "Obnovi iz arhiva"
+msgstr ""
 
-#: cps/spa_strings.py:652
-#, fuzzy
+#: cps/spa_strings.py:714
 msgid "Remove highlight"
-msgstr "Višina"
+msgstr ""
 
-#: cps/spa_strings.py:653
-#, fuzzy
+#: cps/spa_strings.py:715
 msgid "Remove identifier"
-msgstr "Dodaj identifikator"
+msgstr ""
 
-#: cps/spa_strings.py:654
-#, fuzzy
+#: cps/spa_strings.py:716
 msgid "Remove rule"
-msgstr "Odstrani"
+msgstr ""
 
-#: cps/spa_strings.py:655
-#, fuzzy
+#: cps/spa_strings.py:717
 msgid "Rename"
-msgstr "ime"
+msgstr ""
 
-#: cps/spa_strings.py:656
-#, fuzzy
+#: cps/spa_strings.py:718
 msgid "Reorder"
-msgstr "Ne najdem uporabnika"
+msgstr ""
 
-#: cps/spa_strings.py:657
+#: cps/spa_strings.py:719
 msgid "Replace cover with this one?"
 msgstr ""
 
-#: cps/spa_strings.py:658
-#, fuzzy
+#: cps/spa_strings.py:720
 msgid "Replace cover?"
-msgstr "Nalaganje vrsta"
+msgstr ""
 
-#: cps/spa_strings.py:659
+#: cps/spa_strings.py:721
 msgid "Report Issue on Discord"
 msgstr ""
 
-#: cps/spa_strings.py:660
+#: cps/spa_strings.py:722
 msgid "Report Issue on GitHub"
 msgstr ""
 
-#: cps/spa_strings.py:661
+#: cps/spa_strings.py:723
 msgid "Require group membership"
 msgstr ""
 
-#: cps/spa_strings.py:662
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:724
+#, python-brace-format
 msgid "Reset password for {name}"
-msgstr "Ponastavitev uporabniškega gesla"
+msgstr ""
 
-#: cps/spa_strings.py:663
+#: cps/spa_strings.py:725
 #, python-brace-format
 msgid ""
 "Reset password for {name}? Their current password will stop working and a "
 "replacement will be emailed."
 msgstr ""
 
-#: cps/spa_strings.py:664
-#, fuzzy
+#: cps/spa_strings.py:726
 msgid "Reverse-proxy header login"
-msgstr "Prijava za povratni posredniški strežnik"
+msgstr ""
 
-#: cps/spa_strings.py:665
-#, fuzzy
+#: cps/spa_strings.py:727
+msgid "Rows per load"
+msgstr ""
+
+#: cps/spa_strings.py:728
 msgid "Run time"
-msgstr "Čas delovanja"
+msgstr ""
 
-#: cps/spa_strings.py:666
-#, fuzzy
+#: cps/spa_strings.py:729
 msgid "SMTP server"
-msgstr "Ustavitev strežnika"
+msgstr ""
 
-#: cps/spa_strings.py:667 cps/templates/email_edit.html:43
+#: cps/spa_strings.py:730 cps/templates/email_edit.html:43
 msgid "SSL/TLS"
 msgstr "SSL/TLS"
 
-#: cps/spa_strings.py:668 cps/templates/email_edit.html:42
+#: cps/spa_strings.py:731 cps/templates/email_edit.html:42
 msgid "STARTTLS"
 msgstr "STARTTLS"
 
-#: cps/spa_strings.py:669 cps/templates/book_edit.html:313
+#: cps/spa_strings.py:732 cps/templates/book_edit.html:313
 #: cps/templates/config_db.html:111 cps/templates/config_edit.html:734
 #: cps/templates/config_view_edit.html:237 cps/templates/email_edit.html:71
 #: cps/templates/read.html:186 cps/templates/schedule_edit.html:47
@@ -5207,714 +5125,619 @@ msgstr "STARTTLS"
 msgid "Save"
 msgstr "Shrani"
 
-#: cps/spa_strings.py:670
-#, fuzzy
+#: cps/spa_strings.py:733
 msgid "Save email settings"
-msgstr "Varnostne nastavitve"
+msgstr ""
 
-#: cps/spa_strings.py:671
-#, fuzzy
+#: cps/spa_strings.py:734
 msgid "Save name"
-msgstr "Poglej dnevnik sprememb"
+msgstr ""
 
-#: cps/spa_strings.py:672
-#, fuzzy
+#: cps/spa_strings.py:735
 msgid "Save security settings"
-msgstr "Varnostne nastavitve"
+msgstr ""
 
-#: cps/spa_strings.py:673
-#, fuzzy
+#: cps/spa_strings.py:736
 msgid "Save settings"
-msgstr "Nastavitve"
+msgstr ""
 
-#: cps/spa_strings.py:674
+#: cps/spa_strings.py:737
 msgid "Saved. Restart the server for the login changes to take effect."
 msgstr ""
 
-#: cps/spa_strings.py:675
-#, fuzzy
+#: cps/spa_strings.py:738
 msgid "Scheduled tasks"
-msgstr "Urnik 5 min"
+msgstr ""
 
-#: cps/spa_strings.py:676
-#, fuzzy
+#: cps/spa_strings.py:739
 msgid "Scopes"
-msgstr "Nastavitve OAuth"
+msgstr ""
 
-#: cps/spa_strings.py:677
-#, fuzzy
+#: cps/spa_strings.py:740
 msgid "Search title, author…"
-msgstr "Iskanje po naslovu/avtorju"
+msgstr ""
 
-#: cps/spa_strings.py:678
-#, fuzzy
+#: cps/spa_strings.py:741
 msgid "Searching every source…"
-msgstr "Iskanje"
+msgstr ""
 
-#: cps/spa_strings.py:679 cps/templates/cover_picker.html:147
+#: cps/spa_strings.py:742 cps/templates/cover_picker.html:147
 #: cps/templates/cover_picker.html:222
-#, fuzzy
 msgid "Searching…"
-msgstr "Iskanje"
+msgstr ""
 
-#: cps/spa_strings.py:680
-#, fuzzy
+#: cps/spa_strings.py:743
 msgid "Security settings saved."
-msgstr "Varnostne nastavitve"
+msgstr ""
 
-#: cps/spa_strings.py:681
+#: cps/spa_strings.py:744
 msgid "See how each cover looks padded for your device"
 msgstr ""
 
-#: cps/spa_strings.py:682 cps/templates/modal_dialogs.html:98
+#: cps/spa_strings.py:745 cps/templates/modal_dialogs.html:98
 msgid "Select"
 msgstr "Izberi"
 
-#: cps/spa_strings.py:683
-#, fuzzy
+#: cps/spa_strings.py:746
 msgid "Select multiple"
-msgstr "Ustvari polico"
+msgstr ""
 
-#: cps/spa_strings.py:684 cps/templates/detail.html:1191
+#: cps/spa_strings.py:747 cps/templates/detail.html:1191
 msgid "Send"
 msgstr "Pošlji"
 
-#: cps/spa_strings.py:685
-#, fuzzy
+#: cps/spa_strings.py:748
+msgid "Send failed."
+msgstr ""
+
+#: cps/spa_strings.py:749
 msgid "Send to e-reader"
-msgstr "Pošlji v e-bralnik"
+msgstr ""
 
-#: cps/spa_strings.py:686
-#, fuzzy
+#: cps/spa_strings.py:750
 msgid "Send-to-eReader email"
-msgstr "Pošlji v e-pošto e-bralnika"
+msgstr ""
 
-#: cps/spa_strings.py:687
-#, fuzzy
+#: cps/spa_strings.py:751
 msgid "Sending…"
-msgstr "Iskanje"
+msgstr ""
 
-#: cps/spa_strings.py:688
-#, fuzzy
+#: cps/spa_strings.py:752
 msgid "Series index"
-msgstr "Ne najdem uporabnika"
+msgstr ""
 
-#: cps/spa_strings.py:689
-#, fuzzy
+#: cps/spa_strings.py:753
 msgid "Series view"
-msgstr "Ne najdem uporabnika"
+msgstr ""
 
-#: cps/spa_strings.py:690
-#, fuzzy
+#: cps/spa_strings.py:754
 msgid "Series — include"
-msgstr "Ne najdem uporabnika"
+msgstr ""
 
-#: cps/spa_strings.py:691
-#, fuzzy
+#: cps/spa_strings.py:755
 msgid "Serve over HTTPS"
-msgstr "Uporaba preko HTTPS"
+msgstr ""
 
-#: cps/spa_strings.py:692
+#: cps/spa_strings.py:756
 msgid "Server SSL / HTTPS"
 msgstr ""
 
-#: cps/spa_strings.py:693
+#: cps/spa_strings.py:757
 msgid "Server announcement (shown to all users)"
 msgstr ""
 
-#: cps/spa_strings.py:694
-#, fuzzy
+#: cps/spa_strings.py:758
 msgid "Server host"
-msgstr "Vrata strežnika"
+msgstr ""
 
-#: cps/spa_strings.py:695
+#: cps/spa_strings.py:759
 msgid "Service account (DN)"
 msgstr ""
 
-#: cps/spa_strings.py:696
-#, fuzzy
+#: cps/spa_strings.py:760
 msgid "Service password"
-msgstr "Sprememba gesla"
+msgstr ""
 
-#: cps/spa_strings.py:697
+#: cps/spa_strings.py:761
 msgid "Service password (leave blank to keep)"
 msgstr ""
 
-#: cps/spa_strings.py:698
+#: cps/spa_strings.py:762
 msgid ""
 "Set a metadata URL to auto-fill the endpoints below, or enter them manually."
 msgstr ""
 
-#: cps/spa_strings.py:699
-#, fuzzy
+#: cps/spa_strings.py:763
 msgid "Settings saved."
-msgstr "Nastavitve"
+msgstr ""
 
-#: cps/spa_strings.py:700
-#, fuzzy
+#: cps/spa_strings.py:764
 msgid "Shelf name"
-msgstr "Polica: '%(name)s'"
+msgstr ""
 
-#: cps/spa_strings.py:701
-#, fuzzy
+#: cps/spa_strings.py:765
 msgid "Shelf not found."
-msgstr "Ne najdem uporabnika"
+msgstr ""
 
-#: cps/spa_strings.py:703
-#, fuzzy
+#: cps/spa_strings.py:767
 msgid "Show Discover section"
-msgstr "Prikaži razdelek založnikov"
-
-#: cps/spa_strings.py:704
-#, fuzzy
-msgid "Clear default"
-msgstr "Počisti vse"
-
-#: cps/spa_strings.py:705
-#, fuzzy
-msgid "Could not save the default library filter."
-msgstr "Ni se mogel prijaviti: %(message)s"
-
-#: cps/spa_strings.py:706
-#, fuzzy
-msgid "Could not save title."
-msgstr "Ni se mogel prijaviti: %(message)s"
-
-#: cps/spa_strings.py:707
-#, fuzzy, python-brace-format
-msgid "Edit title for {title}"
-msgstr "Vnesi naslov"
-
-#: cps/spa_strings.py:708
-msgid "Default library filter cleared."
 msgstr ""
 
-#: cps/spa_strings.py:709
-msgid "Default library filter saved."
-msgstr ""
-
-#: cps/spa_strings.py:710 cps/templates/detail.html:904
-msgid "Date added"
-msgstr "Datum dodajanja"
-
-#: cps/spa_strings.py:711
-msgid "Make this my default library view"
-msgstr ""
-
-#: cps/spa_strings.py:712
-#, fuzzy
+#: cps/spa_strings.py:768
 msgid "Show Table view"
-msgstr "Nepravilen pogled"
+msgstr ""
 
-#: cps/spa_strings.py:713
+#: cps/spa_strings.py:769
 #, python-brace-format
 msgid "Show all {count} tags"
 msgstr ""
 
-#: cps/spa_strings.py:714
+#: cps/spa_strings.py:770
+#, python-brace-format
+msgid "Show all {items}"
+msgstr ""
+
+#: cps/spa_strings.py:771
 msgid "Show books in language"
 msgstr ""
 
-#: cps/spa_strings.py:715
+#: cps/spa_strings.py:772
 msgid "Show e-reader previews on each candidate"
 msgstr ""
 
-#: cps/spa_strings.py:716
-#, fuzzy
+#: cps/spa_strings.py:773
 msgid "Show fewer tags"
-msgstr "Nastavitve"
+msgstr ""
 
-#: cps/spa_strings.py:717
-#, fuzzy
+#: cps/spa_strings.py:774
 msgid "Show password"
-msgstr "Geslo za SMTP"
+msgstr ""
 
-#: cps/spa_strings.py:718
+#: cps/spa_strings.py:775
 msgid "Shuffle picks"
 msgstr ""
 
-#: cps/spa_strings.py:719
-#, fuzzy
+#: cps/spa_strings.py:776
 msgid "Sign in with a magic link"
-msgstr "Prijavi se s povezavo Magic Link"
+msgstr ""
 
-#: cps/spa_strings.py:720
+#: cps/spa_strings.py:777
 msgid "Sign out"
 msgstr ""
 
-#: cps/spa_strings.py:721
+#: cps/spa_strings.py:778
 msgid "Signing in…"
 msgstr ""
 
-#: cps/spa_strings.py:722
-#, fuzzy
+#: cps/spa_strings.py:779
 msgid "Site title"
-msgstr "Vnesi naslov"
-
-#: cps/spa_strings.py:723
-msgid "Smaller"
 msgstr ""
 
-#: cps/spa_strings.py:724
-msgid "Smaller text"
-msgstr ""
-
-#: cps/spa_strings.py:725
-#, fuzzy
+#: cps/spa_strings.py:780
 msgid "Smart shelf not found."
-msgstr "Ne najdem uporabnika"
+msgstr ""
 
-#: cps/spa_strings.py:726
-#, fuzzy
+#: cps/spa_strings.py:781
 msgid "Smart shelves"
-msgstr "Police"
+msgstr ""
 
-#: cps/spa_strings.py:727
+#: cps/spa_strings.py:782
 msgid "Solid: average colour of the cover"
 msgstr ""
 
-#: cps/spa_strings.py:728
+#: cps/spa_strings.py:783
 msgid "Solid: custom colour"
 msgstr ""
 
-#: cps/spa_strings.py:729
+#: cps/spa_strings.py:784
 msgid "Solid: most-common colour in the cover"
 msgstr ""
 
-#: cps/spa_strings.py:730
+#: cps/spa_strings.py:785
 msgid "Some sources need a key for better covers"
 msgstr ""
 
-#: cps/spa_strings.py:731 cps/templates/cover_picker.html:226
+#: cps/spa_strings.py:786 cps/templates/cover_picker.html:226
 msgid "Something went wrong. Try again."
 msgstr ""
 
-#: cps/spa_strings.py:732
-#, fuzzy
+#: cps/spa_strings.py:787
 msgid "Sort order"
-msgstr "Ne najdem uporabnika"
+msgstr ""
 
-#: cps/spa_strings.py:733
-#, fuzzy
+#: cps/spa_strings.py:788
 msgid "Source details"
-msgstr "Podrobnosti o knjigi"
+msgstr ""
 
-#: cps/spa_strings.py:734 cps/templates/detail.html:1023
-#, fuzzy
+#: cps/spa_strings.py:789 cps/templates/detail.html:1023
 msgid "Started reading"
-msgstr "Začeto"
+msgstr ""
 
-#: cps/spa_strings.py:736
-#, fuzzy
+#: cps/spa_strings.py:791
 msgid "Statistics dashboard"
-msgstr "Statistika"
+msgstr ""
 
-#: cps/spa_strings.py:737 cps/templates/tasks.html:16
+#: cps/spa_strings.py:792 cps/templates/tasks.html:16
 msgid "Status"
 msgstr "Status"
 
-#: cps/spa_strings.py:738
-#, fuzzy
+#: cps/spa_strings.py:793
 msgid "Sync only selected shelves to Kobo"
-msgstr "Sinhroniziranje samo knjig na izbranih policah s Kobo"
+msgstr ""
 
-#: cps/spa_strings.py:739
-#, fuzzy
+#: cps/spa_strings.py:794
 msgid "Table view"
-msgstr "Nepravilen pogled"
+msgstr ""
 
-#: cps/spa_strings.py:740
-#, fuzzy
+#: cps/spa_strings.py:795
 msgid "Tag"
-msgstr "Oznake"
+msgstr ""
 
-#: cps/spa_strings.py:741 cps/templates/book_edit.html:139
+#: cps/spa_strings.py:796 cps/templates/book_edit.html:139
 #: cps/templates/search_form.html:52
 msgid "Tags"
 msgstr "Oznake"
 
-#: cps/spa_strings.py:742
+#: cps/spa_strings.py:797
 msgid "Tags — exclude"
 msgstr ""
 
-#: cps/spa_strings.py:743
+#: cps/spa_strings.py:798
 msgid "Tags — include"
 msgstr ""
 
-#: cps/spa_strings.py:744 cps/templates/config_edit.html:231
+#: cps/spa_strings.py:799 cps/templates/config_edit.html:231
 #: cps/templates/cover_picker.html:104
 msgid "Target aspect ratio"
 msgstr ""
 
-#: cps/spa_strings.py:745 cps/templates/tasks.html:15
+#: cps/spa_strings.py:800 cps/templates/tasks.html:15
 msgid "Task"
 msgstr "Opravilo"
 
-#: cps/spa_strings.py:746 cps/tasks_status.py:37 cps/templates/layout.html:371
+#: cps/spa_strings.py:801 cps/tasks_status.py:37 cps/templates/layout.html:371
 #: cps/templates/tasks.html:7
 msgid "Tasks"
 msgstr "Opravila"
 
-#: cps/spa_strings.py:747
+#: cps/spa_strings.py:802
 msgid "That URL is not a usable image."
 msgstr ""
 
-#: cps/spa_strings.py:748
+#: cps/spa_strings.py:803
 msgid ""
 "These open the full configuration pages. Changes there apply to the whole "
 "server."
 msgstr ""
 
-#: cps/spa_strings.py:749
+#: cps/spa_strings.py:804
 msgid "This format opens in the full-screen reader."
 msgstr ""
 
-#: cps/spa_strings.py:750
+#: cps/spa_strings.py:805
 msgid "This magic link expired. Generate a new one to try again."
 msgstr ""
 
-#: cps/spa_strings.py:751
+#: cps/spa_strings.py:806
 msgid "This page doesn't exist here."
 msgstr ""
 
-#: cps/spa_strings.py:752
-#, fuzzy
+#: cps/spa_strings.py:807
+msgid "This shelf is empty. Add books from any book's page."
+msgstr ""
+
+#: cps/spa_strings.py:808
 msgid "Title A–Z"
-msgstr "Naslov"
+msgstr ""
 
-#: cps/spa_strings.py:753
-#, fuzzy
+#: cps/spa_strings.py:809
 msgid "Title Z–A"
-msgstr "Naslov"
+msgstr ""
 
-#: cps/spa_strings.py:754
+#: cps/spa_strings.py:810
 msgid "Title, author, or ISBN"
 msgstr ""
 
-#: cps/spa_strings.py:755
+#: cps/spa_strings.py:811
 msgid "Token URL"
 msgstr ""
 
-#: cps/spa_strings.py:756
-#, fuzzy
+#: cps/spa_strings.py:812
 msgid "Top Rated"
-msgstr "Najbolje ocenjene knjige"
+msgstr ""
 
-#: cps/spa_strings.py:757
-#, fuzzy
+#: cps/spa_strings.py:813
 msgid "Trust authentication header"
-msgstr "Neavtentificirano"
+msgstr ""
 
-#: cps/spa_strings.py:758
-#, fuzzy
+#: cps/spa_strings.py:814
 msgid "UI / display configuration"
-msgstr "Nastavitve uporabniškega vmesnika"
+msgstr ""
 
-#: cps/spa_strings.py:759 cps/templates/book_table.html:57
+#: cps/spa_strings.py:815 cps/templates/book_table.html:57
 #: cps/templates/book_table.html:234
-#, fuzzy
 msgid "Unarchive"
-msgstr "Arhiv"
+msgstr ""
 
-#: cps/spa_strings.py:760
+#: cps/spa_strings.py:816
 msgid "Unhide"
 msgstr ""
 
-#: cps/spa_strings.py:761
+#: cps/spa_strings.py:817
 msgid "Unlock the cover above to apply a new one."
 msgstr ""
 
-#: cps/spa_strings.py:762
+#: cps/spa_strings.py:818
 msgid "Unlock the cover to change it"
 msgstr ""
 
-#: cps/spa_strings.py:763
-#, fuzzy
+#: cps/spa_strings.py:819
 msgid "Untitled"
-msgstr "Naslov"
+msgstr ""
 
-#: cps/spa_strings.py:764 cps/templates/cover_picker.html:74
-#, fuzzy
+#: cps/spa_strings.py:820
+msgid "Update failed."
+msgstr ""
+
+#: cps/spa_strings.py:821 cps/templates/cover_picker.html:74
 msgid "Upload as cover"
-msgstr "Nalaganje vrsta"
+msgstr ""
 
-#: cps/spa_strings.py:765
-#, fuzzy
+#: cps/spa_strings.py:822
 msgid "Upload books"
-msgstr "Nalaganje"
+msgstr ""
 
-#: cps/spa_strings.py:766
+#: cps/spa_strings.py:823
 msgid ""
 "Use these to connect OPDS readers or KOReader sync without your main "
 "password."
 msgstr ""
 
-#: cps/spa_strings.py:767 cps/templates/cover_picker.html:62
+#: cps/spa_strings.py:824 cps/templates/cover_picker.html:62
 #: cps/templates/cover_picker.html:191
-#, fuzzy
 msgid "Use this cover"
-msgstr "Odkrivanje"
+msgstr ""
 
-#: cps/spa_strings.py:768 cps/templates/tasks.html:13
+#: cps/spa_strings.py:825 cps/templates/tasks.html:13
 #: cps/templates/tasks.html:42 cps/templates/tasks.html:65
 msgid "User"
 msgstr "Uporabnik"
 
-#: cps/spa_strings.py:769
-#, fuzzy
+#: cps/spa_strings.py:826
 msgid "User administration"
-msgstr "Uporabniška dovoljenja"
+msgstr ""
 
-#: cps/spa_strings.py:770
-#, fuzzy
+#: cps/spa_strings.py:827
 msgid "User object filter"
-msgstr "Filtriranje predmeta uporabnika LDAP"
+msgstr ""
 
-#: cps/spa_strings.py:771
+#: cps/spa_strings.py:828
 msgid "Userinfo URL"
 msgstr ""
 
-#: cps/spa_strings.py:772 cps/templates/admin.html:14
+#: cps/spa_strings.py:829 cps/templates/admin.html:14
 #: cps/templates/login.html:17 cps/templates/login.html:19
 #: cps/templates/register.html:9 cps/templates/user_edit.html:192
 #: cps/templates/user_table.html:134
 msgid "Username"
 msgstr "Uporabniško ime"
 
-#: cps/spa_strings.py:773
-#, fuzzy
+#: cps/spa_strings.py:830
 msgid "Username claim"
-msgstr "Uporabniško ime"
+msgstr ""
 
-#: cps/spa_strings.py:774
-#, fuzzy
+#: cps/spa_strings.py:831
 msgid "Versions"
-msgstr "Različica"
+msgstr ""
 
-#: cps/spa_strings.py:775 cps/templates/user_table.html:148
+#: cps/spa_strings.py:832 cps/templates/user_table.html:148
 msgid "View"
 msgstr "Oglejte si"
 
-#: cps/spa_strings.py:776
-#, fuzzy
+#: cps/spa_strings.py:833
 msgid "View settings"
-msgstr "Nastavitve"
+msgstr ""
 
-#: cps/spa_strings.py:777
-#, fuzzy
+#: cps/spa_strings.py:834
 msgid "Viewer"
-msgstr "Oglejte si"
+msgstr ""
 
-#: cps/spa_strings.py:778
+#: cps/spa_strings.py:835
 msgid "Waiting for you to authorise…"
 msgstr ""
 
-#: cps/spa_strings.py:779 cps/templates/cover_picker.html:40
+#: cps/spa_strings.py:836 cps/templates/cover_picker.html:40
 msgid "When locked, fetching metadata will not overwrite this cover."
 msgstr ""
 
-#: cps/spa_strings.py:780 cps/templates/detail.html:1023
+#: cps/spa_strings.py:837 cps/templates/detail.html:1023
 msgid "When reading progress was first synced"
 msgstr ""
 
-#: cps/spa_strings.py:781
-#, fuzzy
+#: cps/spa_strings.py:838
 msgid "Your Library"
-msgstr "V knjižnici"
+msgstr ""
 
-#: cps/spa_strings.py:782
+#: cps/spa_strings.py:839
 msgid "Your browser cannot play this audio format."
 msgstr ""
 
-#: cps/spa_strings.py:783
+#: cps/spa_strings.py:840
 msgid "Your personal digital library"
 msgstr ""
 
-#: cps/spa_strings.py:784
+#: cps/spa_strings.py:841
 msgid "Your saved e-reader address is shown — change it for this send only."
 msgstr ""
 
-#: cps/spa_strings.py:785
-#, fuzzy
-msgid "Book default"
-msgstr "Naslov knjige"
-
-#: cps/spa_strings.py:786
-#, fuzzy
-msgid "Could not save reader settings."
-msgstr "Ni se mogel prijaviti: %(message)s"
-
-#: cps/spa_strings.py:787
-#, fuzzy
-msgid "Font family"
-msgstr "Posodobitev ni uspela:"
-
-#: cps/spa_strings.py:788
-#, fuzzy
-msgid "Font size"
-msgstr "Velikosti pisave"
-
-#: cps/spa_strings.py:789 cps/templates/read.html:132
-#, fuzzy
-msgid "Line height"
-msgstr "Svetlo"
-
-#: cps/spa_strings.py:790 cps/templates/detail.html:908
-msgid "Last modified"
-msgstr "Zadnjič spremenjeno"
-
-#: cps/spa_strings.py:791
-#, fuzzy
-msgid "Page margins"
-msgstr "Naslednja stran"
-
-#: cps/spa_strings.py:792
-#, fuzzy
-msgid "Page theme"
-msgstr "Privzeto"
-
-#: cps/spa_strings.py:793
-#, fuzzy
-msgid "Reader settings saved."
-msgstr "Posodobljene nastavitve e-poštnega strežnika"
-
-#: cps/spa_strings.py:794
-#, fuzzy
-msgid "Reading appearance"
-msgstr "Napredek"
-
-#: cps/spa_strings.py:795
+#: cps/spa_strings.py:842
 msgid "all rules"
 msgstr ""
 
-#: cps/spa_strings.py:796
-#, fuzzy
+#: cps/spa_strings.py:843
 msgid "any rule"
-msgstr "Dodajanje novega uporabnika"
+msgstr ""
 
-#: cps/spa_strings.py:797
-#, fuzzy
+#: cps/spa_strings.py:844
 msgid "begins with"
-msgstr "Prijavi se s povezavo Magic Link"
+msgstr ""
 
-#: cps/spa_strings.py:798
-#, fuzzy
+#: cps/spa_strings.py:845
 msgid "books"
-msgstr "Knjige"
+msgstr ""
 
-#: cps/spa_strings.py:799
-#, fuzzy
+#: cps/spa_strings.py:846
 msgid "books match"
-msgstr "Dodaj na polico"
+msgstr ""
 
-#: cps/spa_strings.py:800
+#: cps/spa_strings.py:847
 msgid "contains"
 msgstr ""
 
-#: cps/spa_strings.py:801
+#: cps/spa_strings.py:848
 msgid "copies"
 msgstr ""
 
-#: cps/spa_strings.py:802
-#, fuzzy
+#: cps/spa_strings.py:849
 msgid "does not contain"
-msgstr "Opis"
+msgstr ""
 
-#: cps/spa_strings.py:803
-#, fuzzy
+#: cps/spa_strings.py:850
 msgid "e-reader"
-msgstr "epub bralnik"
+msgstr ""
 
-#: cps/spa_strings.py:804
+#: cps/spa_strings.py:851
 msgid "e.g. Unread sci-fi"
 msgstr ""
 
-#: cps/spa_strings.py:805
-#, fuzzy
+#: cps/spa_strings.py:852
 msgid "eReader email subject"
-msgstr "E-pošta za e-bralnik"
+msgstr ""
 
-#: cps/spa_strings.py:806
+#: cps/spa_strings.py:853
 msgid "ends with"
 msgstr ""
 
-#: cps/spa_strings.py:807
-#, fuzzy
-msgid "is"
-msgstr "Seznam"
+#: cps/spa_strings.py:854
+msgid "in the past N days"
+msgstr ""
 
-#: cps/spa_strings.py:808
+#: cps/spa_strings.py:855
+msgid "is"
+msgstr ""
+
+#: cps/spa_strings.py:856
 msgid "is not"
 msgstr ""
 
-#: cps/spa_strings.py:809
-msgid "or continue with"
+#: cps/spa_strings.py:857
+msgid "not in the past N days"
 msgstr ""
 
-#: cps/spa_strings.py:810
+#: cps/spa_strings.py:858
+msgid "on or after"
+msgstr ""
+
+#: cps/spa_strings.py:859
+msgid "on or before"
+msgstr ""
+
+#: cps/spa_strings.py:860
 msgid "shared"
 msgstr ""
 
-#: cps/spa_strings.py:811
+#: cps/spa_strings.py:861
 msgid "to"
 msgstr ""
 
-#: cps/spa_strings.py:812
+#: cps/spa_strings.py:862
 msgid "type (isbn, amazon, doi…)"
 msgstr ""
 
-#: cps/spa_strings.py:813
+#: cps/spa_strings.py:863
 msgid "value"
 msgstr ""
 
-#: cps/spa_strings.py:814
+#: cps/spa_strings.py:864
 msgid "you"
 msgstr ""
 
-#: cps/spa_strings.py:815
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:865
+#, python-brace-format
+msgid "{count} book"
+msgstr ""
+
+#: cps/spa_strings.py:866
+#, python-brace-format
 msgid "{count} books"
-msgstr "Pretvori knjigo"
+msgstr ""
 
-#: cps/spa_strings.py:816
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:867
+#, python-brace-format
+msgid "{count} file queued for import"
+msgstr ""
+
+#: cps/spa_strings.py:868
+#, python-brace-format
+msgid "{count} file rejected"
+msgstr ""
+
+#: cps/spa_strings.py:869
+#, python-brace-format
+msgid "{count} files queued for import"
+msgstr ""
+
+#: cps/spa_strings.py:870
+#, python-brace-format
+msgid "{count} files rejected"
+msgstr ""
+
+#: cps/spa_strings.py:871
+#, python-brace-format
+msgid "{count} result"
+msgstr ""
+
+#: cps/spa_strings.py:872
+#, python-brace-format
+msgid "{count} results"
+msgstr ""
+
+#: cps/spa_strings.py:873
+#, python-brace-format
 msgid "{count} results for \"{query}\""
-msgstr "Rezultati za:"
+msgstr ""
 
-#: cps/spa_strings.py:817
-#, fuzzy, python-brace-format
+#: cps/spa_strings.py:874
+#, python-brace-format
 msgid "{n} found"
-msgstr "Oznaka ni bila najdena"
+msgstr ""
 
-#: cps/spa_strings.py:818
+#: cps/spa_strings.py:875
 #, python-brace-format
 msgid "{ok} of {total} sources answered"
 msgstr ""
 
-#: cps/spa_strings.py:819
-#, fuzzy
+#: cps/spa_strings.py:876
 msgid "…or paste an image URL"
-msgstr "Naslovnica"
+msgstr ""
 
-#: cps/spa_strings.py:820
+#: cps/spa_strings.py:877
 msgid "← Back to book"
 msgstr ""
 
-#: cps/spa_strings.py:821
-#, fuzzy
+#: cps/spa_strings.py:878
 msgid "← Back to sign in"
-msgstr "Nazaj na skrbniško ploščo"
+msgstr ""
 
-#: cps/spa_strings.py:822
-#, fuzzy
+#: cps/spa_strings.py:879
 msgid "← Library"
-msgstr "V knjižnici"
+msgstr ""
 
-#: cps/spa_strings.py:823
+#: cps/spa_strings.py:880
 msgid "≤"
 msgstr ""
 
-#: cps/spa_strings.py:824
+#: cps/spa_strings.py:881
 msgid "≥"
 msgstr ""
 
@@ -6083,7 +5906,7 @@ msgstr "Zahtevani so tako uporabniško ime kot podatki o sliki."
 msgid "Shelf name too long (max 100 characters)"
 msgstr "Ime police je predolgo (največ 100 znakov)"
 
-#: cps/web.py:1507 cps/web.py:1642
+#: cps/web.py:1507 cps/web.py:1647
 msgid ""
 "Kobo sync for Magic Shelves is disabled globally — this shelf won't reach "
 "your Kobo until 'Sync Magic Shelves to Kobo' is enabled in CWA Settings."
@@ -6108,36 +5931,36 @@ msgstr "Dovoljenje za spreminjanje javnega statusa je zavrnjeno"
 msgid "Shelf name is required"
 msgstr "To polje je obvezno"
 
-#: cps/web.py:1650
+#: cps/web.py:1655
 #, fuzzy
 msgid "Error updating shelf"
 msgstr "Napaka pri brisanju police"
 
-#: cps/web.py:1667
+#: cps/web.py:1672
 #, fuzzy
 msgid "Edit Magic Shelf"
 msgstr "Urejanje police"
 
-#: cps/web.py:1684
+#: cps/web.py:1689
 #, fuzzy
 msgid "Shelf not found"
 msgstr "Ne najdem uporabnika"
 
-#: cps/web.py:1689
+#: cps/web.py:1694
 msgid "Permission denied"
 msgstr "Dostop zavrnjen"
 
-#: cps/web.py:1720
+#: cps/web.py:1725
 #, fuzzy
 msgid "Shelf duplicated successfully"
 msgstr "{} uporabnikov uspešno izbrisanih"
 
-#: cps/web.py:1726
+#: cps/web.py:1731
 #, fuzzy
 msgid "Error duplicating shelf"
 msgstr "Napaka pri brisanju police"
 
-#: cps/templates/magic_shelf_edit.html:506 cps/web.py:1753
+#: cps/templates/magic_shelf_edit.html:506 cps/web.py:1758
 msgid ""
 "System shelves cannot be deleted. You can hide them in your user profile "
 "settings."
@@ -6145,154 +5968,154 @@ msgstr ""
 "Sistemskih polic ni mogoče izbrisati. Lahko jih skrijete v nastavitvah "
 "uporabniškega profila."
 
-#: cps/web.py:1771
+#: cps/web.py:1776
 #, fuzzy
 msgid "Error deleting shelf"
 msgstr "Napaka pri brisanju police"
 
-#: cps/web.py:1787
+#: cps/web.py:1792
 msgid ""
 "You cannot hide your own shelves. Delete them instead if you don't want them."
 msgstr ""
 "Svojih lastnih polic ne morete skriti. Če jih ne želite, jih raje izbrišite."
 
-#: cps/web.py:1797
+#: cps/web.py:1802
 msgid "Shelf already hidden"
 msgstr "Polica je že skrita"
 
-#: cps/web.py:1811
+#: cps/web.py:1816
 #, fuzzy
 msgid "Error hiding shelf"
 msgstr "Napaka pri brisanju police"
 
-#: cps/web.py:1825
+#: cps/web.py:1830
 msgid "Shelf was not hidden"
 msgstr "Polica ni bila skrita"
 
-#: cps/web.py:1834
+#: cps/web.py:1839
 #, fuzzy
 msgid "Error unhiding shelf"
 msgstr "Napaka pri brisanju police"
 
-#: cps/templates/admin.html:18 cps/web.py:1995
+#: cps/templates/admin.html:18 cps/web.py:2000
 msgid "Downloads"
 msgstr "Prenosi"
 
-#: cps/web.py:2147
+#: cps/web.py:2152
 msgid "File formats list"
 msgstr "Seznam vrste datotek"
 
-#: cps/web.py:2394 cps/web.py:2432
+#: cps/web.py:2399 cps/web.py:2437
 msgid "Please configure the SMTP mail settings first..."
 msgstr "Najprej nastavite nastavitve pošte SMTP..."
 
-#: cps/web.py:2398
+#: cps/web.py:2403
 msgid "Oops! Please update your profile with a valid eReader Email."
 msgstr "Ups! Posodobite svoj profil z veljavnim e-poštnim naslovom eReaderja."
 
-#: cps/web.py:2420
+#: cps/web.py:2425
 #, python-format
 msgid "Success! Book queued for sending to %(eReadermail)s"
 msgstr "Uspeh! Knjiga je v vrsti za pošiljanje v %(eReadermail)s"
 
-#: cps/web.py:2423 cps/web.py:2500
+#: cps/web.py:2428 cps/web.py:2505
 #, python-format
 msgid "Oops! There was an error sending book: %(res)s"
 msgstr "Ups! Pri pošiljanju knjige je prišlo do napake: %(res)s"
 
-#: cps/web.py:2440 cps/web.py:2450
+#: cps/web.py:2445 cps/web.py:2455
 msgid "No email addresses selected"
 msgstr "Noben e-poštni naslov ni bil izbran"
 
-#: cps/web.py:2471
+#: cps/web.py:2476
 #, fuzzy
 msgid "Additional email addresses are disabled for your account."
 msgstr "Vnesite dodatne e-poštne naslove (ločene z vejico):"
 
-#: cps/web.py:2498
+#: cps/web.py:2503
 #, fuzzy
 msgid "Success! Book queued for sending to the selected address(es)!"
 msgstr "Uspeh! Knjiga je v vrsti za pošiljanje v %(eReadermail)s"
 
-#: cps/web.py:2517
+#: cps/web.py:2522
 msgid "Please wait one minute to register next user"
 msgstr "Počakajte eno minuto za registracijo naslednjega uporabnika"
 
 #: cps/templates/layout.html:345 cps/templates/layout.html:386
-#: cps/templates/login.html:48 cps/templates/register.html:17 cps/web.py:2518
-#: cps/web.py:2522 cps/web.py:2527 cps/web.py:2531 cps/web.py:2537
-#: cps/web.py:2566 cps/web.py:2570 cps/web.py:2583 cps/web.py:2586
+#: cps/templates/login.html:48 cps/templates/register.html:17 cps/web.py:2523
+#: cps/web.py:2527 cps/web.py:2532 cps/web.py:2536 cps/web.py:2542
+#: cps/web.py:2571 cps/web.py:2575 cps/web.py:2588 cps/web.py:2591
 msgid "Register"
 msgstr "Registriraj"
 
-#: cps/web.py:2521 cps/web.py:2694
+#: cps/web.py:2526 cps/web.py:2699
 msgid "Connection error to limiter backend, please contact your administrator"
 msgstr ""
 "Napaka pri povezavi z zalednim strežnikom limiterja, obrnite se na skrbnika"
 
-#: cps/web.py:2526 cps/web.py:2582
+#: cps/web.py:2531 cps/web.py:2587
 msgid ""
 "Oops! Email server is not configured, please contact your administrator."
 msgstr "Ups! E-poštni strežnik ni nastavljen, obrnite se na skrbnika."
 
-#: cps/web.py:2568
+#: cps/web.py:2573
 msgid "Oops! Your Email is not allowed."
 msgstr "Ups! Vaša e-pošta ni dovoljena."
 
-#: cps/web.py:2571
+#: cps/web.py:2576
 msgid "Success! Confirmation Email has been sent."
 msgstr "Uspeh! Potrditveno e-poštno sporočilo je bilo poslano."
 
-#: cps/web.py:2619
+#: cps/web.py:2624
 #, fuzzy
 msgid ""
 "Authentication loop detected. If you're experiencing login issues, please "
 "contact your administrator."
 msgstr "Instanca Calibre-Web ni nastavljena, obrni se na skrbnika"
 
-#: cps/web.py:2668
+#: cps/web.py:2673
 #, fuzzy
 msgid ""
 "OAuth authentication is not properly configured. Please contact "
 "administrator."
 msgstr "Ups! E-poštni strežnik ni nastavljen, obrnite se na skrbnika."
 
-#: cps/web.py:2673 cps/web.py:2700
+#: cps/web.py:2678 cps/web.py:2705
 msgid "Cannot activate LDAP authentication"
 msgstr "Ni mogoče aktivirati avtentikacije LDAP"
 
-#: cps/web.py:2682
+#: cps/web.py:2687
 msgid "Standard login is disabled."
 msgstr "Standardna prijava je onemogočena."
 
-#: cps/web.py:2690
+#: cps/web.py:2695
 msgid "Please wait one minute before next login"
 msgstr "Pred naslednjo prijavo počakajte eno minuto"
 
-#: cps/web.py:2708
+#: cps/web.py:2713
 msgid "Username cannot be empty"
 msgstr "Uporabniško ime ne more biti prazno"
 
-#: cps/web.py:2720
+#: cps/web.py:2725
 #, python-format
 msgid "you are now logged in as: '%(nickname)s'"
 msgstr "prijavljeni ste kot: '%(nickname)s'"
 
-#: cps/web.py:2739
+#: cps/web.py:2744
 #, fuzzy, python-format
 msgid ""
 "Welcome! Your account has been automatically created. You are now logged in "
 "as: '%(nickname)s'"
 msgstr "Uspeh! Prijavljeni ste kot: %(nickname)s"
 
-#: cps/web.py:2744 cps/web.py:2747
+#: cps/web.py:2749 cps/web.py:2752
 #, fuzzy
 msgid ""
 "Authentication successful, but account creation failed. Please contact your "
 "administrator."
 msgstr "Instanca Calibre-Web ni nastavljena, obrni se na skrbnika"
 
-#: cps/web.py:2751
+#: cps/web.py:2756
 msgid ""
 "Authentication successful, but no local account found. Please contact your "
 "administrator to create your account."
@@ -6300,7 +6123,7 @@ msgstr ""
 "Prijava uspešna, vendar lokalni račun ni bil najden. Obrnite se na skrbnika "
 "za ustvarjanje računa."
 
-#: cps/web.py:2759
+#: cps/web.py:2764
 #, python-format
 msgid ""
 "Fallback Login as: '%(nickname)s', LDAP Server not reachable, or user not "
@@ -6309,50 +6132,50 @@ msgstr ""
 "Rezervna prijava kot: %(nickname)s, strežnik LDAP ni dosegljiv ali uporabnik "
 "ni znan"
 
-#: cps/web.py:2765
+#: cps/web.py:2770
 #, python-format
 msgid "Could not login: %(message)s"
 msgstr "Ni se mogel prijaviti: %(message)s"
 
-#: cps/web.py:2788 cps/web.py:2789 cps/web.py:2832
+#: cps/web.py:2793 cps/web.py:2794 cps/web.py:2837
 msgid "Wrong Username or Password"
 msgstr "Napačno uporabniško ime ali geslo"
 
-#: cps/web.py:2797
+#: cps/web.py:2802
 msgid "New Password was sent to your email address"
 msgstr "Novo geslo je bilo poslano na vaš e-poštni naslov"
 
-#: cps/web.py:2801
+#: cps/web.py:2806
 msgid "An unknown error occurred. Please try again later."
 msgstr "Zgodila se je neznana napaka. Prosimo, poskusite znova pozneje."
 
-#: cps/web.py:2803
+#: cps/web.py:2808
 msgid "Please enter valid username to reset password"
 msgstr "Za ponastavitev gesla vnesite veljavno uporabniško ime"
 
-#: cps/web.py:2811
+#: cps/web.py:2816
 #, python-format
 msgid "You are now logged in as: '%(nickname)s'"
 msgstr "Prijavljeni ste kot: '%(nickname)s'"
 
-#: cps/web.py:3124
+#: cps/web.py:3129
 msgid "Success! Profile Updated"
 msgstr "Uspeh! Profil posodobljen"
 
-#: cps/web.py:3130
+#: cps/web.py:3135
 msgid "Oops! An account already exists for this Email."
 msgstr "Ups! Račun za to e-pošto že obstaja."
 
-#: cps/web.py:3264
+#: cps/web.py:3269
 msgid "App-password label must be 1-64 characters."
 msgstr ""
 
-#: cps/web.py:3299
+#: cps/web.py:3304
 #, python-format
 msgid "App password '%(label)s' revoked."
 msgstr ""
 
-#: cps/web.py:3511
+#: cps/web.py:3516
 #, fuzzy
 msgid "Invalid book ID."
 msgstr "Neveljavna vloga"
@@ -6964,13 +6787,6 @@ msgstr "Izvedite posodobitev"
 #: cps/templates/admin.html:298
 msgid "Are you sure you want to restart?"
 msgstr "Ali ste prepričani, da želite znova zagnati računalnik?"
-
-#: cps/templates/admin.html:300 cps/templates/admin.html:332
-#: cps/templates/config_db.html:4 cps/templates/config_edit.html:4
-#: cps/templates/cwa_settings.html:4 cps/templates/read.html:74
-#, fuzzy
-msgid "Loading"
-msgstr "Nalaganje..."
 
 #: cps/templates/admin.html:303 cps/templates/admin.html:317
 #: cps/templates/admin.html:337 cps/templates/config_db.html:139
@@ -8039,14 +7855,6 @@ msgstr "Vrata strežnika LDAP"
 msgid "LDAP Encryption"
 msgstr "Šifriranje LDAP"
 
-#: cps/templates/config_edit.html:360
-msgid "TLS"
-msgstr "TLS"
-
-#: cps/templates/config_edit.html:361
-msgid "SSL"
-msgstr "SSL"
-
 #: cps/templates/config_edit.html:365
 msgid ""
 "LDAP CACertificate Path (Only needed for Client Certificate Authentication)"
@@ -8070,14 +7878,6 @@ msgstr ""
 #: cps/templates/config_edit.html:388
 msgid "LDAP Authentication"
 msgstr "Preverjanje pristnosti LDAP"
-
-#: cps/templates/config_edit.html:390
-msgid "Anonymous"
-msgstr "Anonimno"
-
-#: cps/templates/config_edit.html:391
-msgid "Unauthenticated"
-msgstr "Neavtentificirano"
 
 #: cps/templates/config_edit.html:392
 msgid "Simple"
@@ -8891,8 +8691,8 @@ msgid ""
 "\">kindle-epub-fix.netlify.app</a> tool made by <a href=\"https://github.com/"
 "innocenat\">innocenat</a>."
 msgstr ""
-"To orodje je bilo prilagojeno po orodju <a href=\"https://kindle-epub-fix."
-"netlify.app/\">kindle-epub-fix.netlify.app</a>, ki ga je izdelal <a "
+"To orodje je bilo prilagojeno po orodju <a href=\"https://kindle-epub-"
+"fix.netlify.app/\">kindle-epub-fix.netlify.app</a>, ki ga je izdelal <a "
 "href=\"https://github.com/innocenat\">innocenat</a>."
 
 #: cps/templates/cwa_settings.html:181
@@ -11553,10 +11353,6 @@ msgstr ""
 
 #: cps/templates/shelf_reorder.html:83
 msgid "Order saved. The sidebar reflects the new order on next page load."
-msgstr ""
-
-#: cps/templates/shelf_reorder.html:88
-msgid "Could not save order."
 msgstr ""
 
 #: cps/templates/stats.html:8

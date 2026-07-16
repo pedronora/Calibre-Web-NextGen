@@ -10910,9 +10910,9 @@ msgid "Published Date To"
 msgstr "Yayınlanma (sonra)"
 
 #: cps/templates/search_form.html:42
-#, fuzzy
 msgid "Read Status"
-msgstr "Durum"
+msgstr ""
+
 
 #: cps/templates/search_form.html:45 cps/templates/search_form.html:166
 msgid "Empty"

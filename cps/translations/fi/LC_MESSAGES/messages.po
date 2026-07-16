@@ -10916,9 +10916,9 @@ msgid "Published Date To"
 msgstr "Julkaisupäivään"
 
 #: cps/templates/search_form.html:42
-#, fuzzy
 msgid "Read Status"
-msgstr "Tila"
+msgstr ""
+
 
 #: cps/templates/search_form.html:45 cps/templates/search_form.html:166
 msgid "Empty"

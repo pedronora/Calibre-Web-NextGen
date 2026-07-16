@@ -10862,9 +10862,9 @@ msgid "Published Date To"
 msgstr "ថ្ងៃបោះពុម្ភរហូតដល់"
 
 #: cps/templates/search_form.html:42
-#, fuzzy
 msgid "Read Status"
-msgstr "ស្ថានភាព"
+msgstr ""
+
 
 #: cps/templates/search_form.html:45 cps/templates/search_form.html:166
 msgid "Empty"

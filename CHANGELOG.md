@@ -18,6 +18,30 @@ is for things you can see or feel when running the app.
 
 ### Fixed
 
+- **Classic catalog cards now use the same read checkbox state as book details:**
+  checked means read and empty means unread, while the tooltip still names the
+  action clicking will perform. Thanks @darkmatterpelican for the cache-free,
+  list-versus-detail reproduction (#771).
+
+- **Dismissing the classic-view “Try the new UI” banner now keeps it dismissed
+  after updates.** It is a one-time adoption cue, not a What's New notice, so a
+  previous version-specific dismissal is migrated to one durable browser choice.
+  Thanks @darkmatterpelican (#907).
+
+- **Advanced server settings now say before you click that they open in the
+  classic view.** Those deep configuration pages intentionally remain in the
+  proven server-rendered interface during the hybrid cutover; the New UI no
+  longer makes that transition look accidental. Thanks @HLRobius (#909).
+
+- **Series, tag, author, publisher, and language pages now put their real name
+  in the browser tab.** Direct links previously captured the `…` loading state
+  before the entity query finished and never refreshed it. Thanks
+  @chloeroform (#892).
+
+- **Tags can now be renamed from their New UI page.** Editors previously reached
+  a read-only tag page with no rename action; the corrected name now updates the
+  shared tag in the library and every linked book. Thanks @chloeroform (#914).
+
 - **Signing in through the new interface now opens the requested page instead of showing “This page doesn't exist here.”** Password and magic-link logins honor safe same-site destinations, fall back to the library when no destination was supplied, preserve reverse-proxy subpaths, and reject links that try to send the browser to another site.
 
 - **Syncing highlights from a second KOReader device no longer wipes the

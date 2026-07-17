@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Calibre-Web NextGen\n"
 "Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
 "Automated\n"
-"POT-Creation-Date: 2026-07-17 01:20-0400\n"
+"POT-Creation-Date: 2026-07-17 05:40+0000\n"
 "PO-Revision-Date: 2025-12-02 12:00+0000\n"
 "Last-Translator: Alex <298750+alexantao@users.noreply.github.com>\n"
 "Language-Team: pt_BR <LL@li.org>\n"
@@ -3002,7 +3002,8 @@ msgstr "Não foi possível apagar este livro."
 #: cps/spa_strings.py:196
 #, python-brace-format
 msgid "Delete the {fmt} file? The book stays; only this format is removed."
-msgstr "Apagar o arquivo {fmt}? O livro permanece; apenas este formato é removido."
+msgstr ""
+"Apagar o arquivo {fmt}? O livro permanece; apenas este formato é removido."
 
 #: cps/spa_strings.py:197
 #, python-brace-format
@@ -3633,7 +3634,8 @@ msgstr "Mostrar sempre"
 
 #: cps/spa_strings.py:362
 msgid "Editing sidebar. Reorder or hide sections, then tap Done."
-msgstr "Editando barra lateral. Reordene ou esconda seções, depois toque em Feito."
+msgstr ""
+"Editando barra lateral. Reordene ou esconda seções, depois toque em Feito."
 
 #: cps/spa_strings.py:363
 msgid "Editing cancelled."
@@ -3643,7 +3645,8 @@ msgstr "Edição cancelada."
 msgid ""
 "Drag to reorder. Tap ✕ to hide a section. Arrow keys move the focused handle."
 msgstr ""
-"Arraste para reordenar. Toque em ✕ para esconder uma seção. As teclas de seta movem o controle focalizado."
+"Arraste para reordenar. Toque em ✕ para esconder uma seção. As teclas de "
+"seta movem o controle focalizado."
 
 #: cps/spa_strings.py:365
 msgid "Sidebar saved."
@@ -4792,7 +4795,7 @@ msgid ""
 "whole server."
 msgstr ""
 
-#: cps/spa_strings.py:6
+#: cps/spa_strings.py:661
 msgid "Opens in classic view"
 msgstr "Abre na visualização clássica"
 

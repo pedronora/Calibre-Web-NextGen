@@ -8,11 +8,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Calibre-Web (GPLV3)\n"
-"Report-Msgid-Bugs-To: https://github.com/new-usemame/Calibre-Web-NextGen\n"
+"Report-Msgid-Bugs-To: https://github.com/crocodilestick/Calibre-Web-"
+"Automated\n"
 "POT-Creation-Date: 2026-07-17 21:21-0400\n"
 "PO-Revision-Date: 2026-04-26 13:31+0200\n"
-"Last-Translator: Michiel Cornelissen <michiel.cornelissen+gitbhun at "
-"proton.me>\n"
+"Last-Translator: Michiel Cornelissen <michiel.cornelissen+gitbhun at proton."
+"me>\n"
 "Language-Team: ed.driesen@telenet.be\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -1547,80 +1548,80 @@ msgstr ""
 msgid "Announcement Email to %(email)s"
 msgstr ""
 
-#: cps/helper.py:340
+#: cps/helper.py:342
 #, python-format
 msgid "%(format)s format not found for book id: %(book)d"
 msgstr "%(format)s formaat niet gevonden voor boek met id: %(book)d"
 
-#: cps/helper.py:346 cps/tasks/convert.py:77
+#: cps/helper.py:348 cps/tasks/convert.py:77
 #, python-format
 msgid "%(format)s not found on Google Drive: %(fn)s"
 msgstr "%(format)s niet aangetroffen op Google Drive: %(fn)s"
 
-#: cps/helper.py:351
+#: cps/helper.py:353
 #, python-format
 msgid "%(format)s not found: %(fn)s"
 msgstr "%(format)s niet gevonden %(fn)s"
 
-#: cps/helper.py:358 cps/helper.py:489 cps/templates/detail.html:669
+#: cps/helper.py:360 cps/helper.py:491 cps/templates/detail.html:669
 #: cps/templates/detail.html:673
 msgid "Send to eReader"
 msgstr "Versturen naar eReader"
 
-#: cps/helper.py:375
+#: cps/helper.py:377
 #, fuzzy, python-format
 msgid "Conversion timed out for book id: %(book)d"
 msgstr "%(format)s formaat niet gevonden voor boek met id: %(book)d"
 
-#: cps/helper.py:377
+#: cps/helper.py:379
 #, fuzzy, python-format
 msgid "Conversion failed for book id: %(book)d"
 msgstr "%(format)s formaat niet gevonden voor boek met id: %(book)d"
 
-#: cps/helper.py:385
+#: cps/helper.py:387
 msgid "Calibre-Web NextGen Test Email"
 msgstr ""
 
-#: cps/helper.py:386
+#: cps/helper.py:388
 #, fuzzy
 msgid "Test Email"
 msgstr "Test-e-mail"
 
-#: cps/helper.py:403
+#: cps/helper.py:405
 msgid "Get Started with Calibre-Web NextGen"
 msgstr ""
 
-#: cps/helper.py:408
+#: cps/helper.py:410
 #, python-format
 msgid "Registration Email for user: %(name)s"
 msgstr "Registratie-e-mailadres van gebruiker: %(name)s"
 
-#: cps/helper.py:419 cps/helper.py:425
+#: cps/helper.py:421 cps/helper.py:427
 #, python-format
 msgid "Convert %(orig)s to %(format)s and send to eReader"
 msgstr "%(orig)s converteren naar %(format)s en versturen naar eReader"
 
-#: cps/helper.py:444 cps/helper.py:448 cps/helper.py:452
+#: cps/helper.py:446 cps/helper.py:450 cps/helper.py:454
 #, python-format
 msgid "Send %(format)s to eReader"
 msgstr "%(format)s versturen naar eReader"
 
-#: cps/helper.py:495
+#: cps/helper.py:497
 #, python-format
 msgid "%(book)s send to eReader"
 msgstr "%(book)s verzonden naar eReader"
 
-#: cps/helper.py:502
+#: cps/helper.py:504
 msgid "The requested file could not be read. Maybe wrong permissions?"
 msgstr ""
 "Het opgevraagde bestand kan niet worden gelezen. Ben je hiertoe gemachtigd?"
 
-#: cps/helper.py:765
+#: cps/helper.py:767
 #, python-brace-format
 msgid "Read status could not set: {}"
 msgstr "Gelezen/ongelezen status kan niet aangepast worden: {}"
 
-#: cps/helper.py:793
+#: cps/helper.py:795
 #, python-format
 msgid ""
 "Deleting bookfolder for book %(id)s failed, path has subfolders: %(path)s"
@@ -1628,12 +1629,12 @@ msgstr ""
 "Het verwijderen van de boekenmap voor boek %(id)s is mislukt, het pad heeft "
 "submappen: %(path)s"
 
-#: cps/helper.py:805
+#: cps/helper.py:807
 #, python-format
 msgid "Deleting book %(id)s failed: %(message)s"
 msgstr "Verwijderen van boek %(id)s mislukt: %(message)s"
 
-#: cps/helper.py:816
+#: cps/helper.py:818
 #, fuzzy, python-format
 msgid ""
 "Deleting book %(id)s from database only, book path in database not valid: "
@@ -1641,68 +1642,68 @@ msgid ""
 msgstr ""
 "Verwijder boek %(id)s alleen uit database, boek pad is ongeldig: %(path)s"
 
-#: cps/helper.py:906
+#: cps/helper.py:908
 #, fuzzy, python-format
 msgid ""
 "Rename author from: '%(src)s' to '%(dest)s' failed with error: %(error)s"
 msgstr "Kan de titel '%(src)s' niet wijzigen in '%(dest)s': %(error)s"
 
-#: cps/helper.py:975 cps/helper.py:984
+#: cps/helper.py:977 cps/helper.py:986
 #, python-format
 msgid "File %(file)s not found on Google Drive"
 msgstr "Bestand '%(file)s' niet aangetroffen op Google Drive"
 
-#: cps/helper.py:1074
+#: cps/helper.py:1076
 #, python-format
 msgid "Rename title from: '%(src)s' to '%(dest)s' failed with error: %(error)s"
 msgstr "Kan de titel '%(src)s' niet wijzigen in '%(dest)s': %(error)s"
 
-#: cps/helper.py:1113
+#: cps/helper.py:1115
 #, python-format
 msgid "Book path %(path)s not found on Google Drive"
 msgstr "Boeken locatie '%(path)s' niet aangetroffen op Google Drive"
 
-#: cps/helper.py:1174
+#: cps/helper.py:1176
 msgid "Found an existing account for this Email address"
 msgstr "Bestaand account gevondne met dit e-mailadres"
 
-#: cps/helper.py:1182
+#: cps/helper.py:1184
 msgid "This username is already taken"
 msgstr "Deze gebruikersnaam is al in gebruik"
 
-#: cps/helper.py:1196
+#: cps/helper.py:1198
 #, fuzzy
 msgid "Invalid Email address format"
 msgstr "Ongeldig E-Mail adres"
 
-#: cps/helper.py:1218
+#: cps/helper.py:1220
 msgid "Password doesn't comply with password validation rules"
 msgstr "Het wachtwoord voldoet niet aan de validatieregels"
 
-#: cps/helper.py:1562
+#: cps/helper.py:1564
 msgid ""
 "Python module 'advocate' is not installed but is needed for cover uploads"
 msgstr ""
 "Pythonmodule 'advocate' is niet geïnstalleerd maar is nodig omslag uploads"
 
-#: cps/helper.py:1570 cps/helper.py:1605
+#: cps/helper.py:1572 cps/helper.py:1607
 msgid "Error Downloading Cover"
 msgstr "Fout bij downloaden omslag"
 
-#: cps/helper.py:1574 cps/helper.py:1582
+#: cps/helper.py:1576 cps/helper.py:1584
 #, python-format
 msgid "Cover image exceeds maximum size of %(size)s MB"
 msgstr ""
 
-#: cps/helper.py:1591 cps/helper.py:1638 cps/helper.py:1651 cps/helper.py:1654
+#: cps/helper.py:1593 cps/helper.py:1640 cps/helper.py:1653 cps/helper.py:1656
 msgid "Cover-file is not a valid image file, or could not be stored"
 msgstr "Omslag-bestand is geen afbeelding of kon niet opgeslagen worden"
 
-#: cps/helper.py:1608
+#: cps/helper.py:1610
 msgid "Cover Format Error"
 msgstr "Onjuist omslagformaat"
 
-#: cps/helper.py:1611
+#: cps/helper.py:1613
 msgid ""
 "You are not allowed to access localhost or the local network for cover "
 "uploads"
@@ -1710,70 +1711,70 @@ msgstr ""
 "Toegang tot localhost of het lokale netwerk niet toegestaant voor omslag "
 "uploaden"
 
-#: cps/helper.py:1627
+#: cps/helper.py:1629
 msgid "Failed to create path for cover"
 msgstr "Locatie aanmaken voor omslag mislukt"
 
-#: cps/helper.py:1671
+#: cps/helper.py:1673
 msgid "Only jpg/jpeg/png/webp/bmp files are supported as coverfile"
 msgstr "Alleen jpg/jpeg/png/webp/bmp bestanden worden ondersteund als omslag"
 
-#: cps/helper.py:1687 cps/helper.py:1692
+#: cps/helper.py:1689 cps/helper.py:1694
 msgid "Invalid cover file content"
 msgstr "Ongeldig omslagbestand"
 
-#: cps/helper.py:1696
+#: cps/helper.py:1698
 msgid "Only jpg/jpeg files are supported as coverfile"
 msgstr "Alleen jpg/jpeg bestanden zijn toegestaan als omslag"
 
-#: cps/helper.py:1918 cps/helper.py:2170 cps/spa_strings.py:184
+#: cps/helper.py:1920 cps/helper.py:2172 cps/spa_strings.py:184
 msgid "Cover"
 msgstr ""
 
-#: cps/helper.py:1935
+#: cps/helper.py:1937
 msgid "UnRar binary file not found"
 msgstr "UnRar executable niet gevonden"
 
-#: cps/helper.py:1946
+#: cps/helper.py:1948
 #, fuzzy
 msgid "Error executing UnRar"
 msgstr "Fout bij het uitvoeren van UnRar"
 
-#: cps/helper.py:1952
+#: cps/helper.py:1954
 #, python-format
 msgid ""
 "Unsupported architecture detected: %(arch)s. Calibre-Web NextGen is "
 "optimized for x86_64 and aarch64."
 msgstr ""
 
-#: cps/helper.py:1961
+#: cps/helper.py:1963
 msgid "Could not find the specified directory"
 msgstr "Kon de opgegeven map niet vinden"
 
-#: cps/helper.py:1964
+#: cps/helper.py:1966
 msgid "Please specify a directory, not a file"
 msgstr "Geef een map op, geen bestand"
 
-#: cps/helper.py:1978
+#: cps/helper.py:1980
 #, fuzzy
 msgid "Calibre binaries not viable"
 msgstr "Kan niet schrijven naar database"
 
-#: cps/helper.py:1987
+#: cps/helper.py:1989
 #, python-format
 msgid "Missing calibre binaries: %(missing)s"
 msgstr "Ontbrekende calibre programmabestanden: %(missing)s"
 
-#: cps/helper.py:1989
+#: cps/helper.py:1991
 #, fuzzy, python-format
 msgid "Missing executable permissions: %(missing)s"
 msgstr "Ontbrekende uitvoerende rechten: %(missing)s"
 
-#: cps/helper.py:1994
+#: cps/helper.py:1996
 msgid "Error executing Calibre"
 msgstr "Fout bij het uitvoeren van Calibre"
 
-#: cps/helper.py:2172 cps/templates/admin.html:242
+#: cps/helper.py:2174 cps/templates/admin.html:242
 msgid "Queue all books for metadata backup"
 msgstr ""
 "Voeg alle boeken toe aan de wachtrij voor het maken van een metagegevens "
@@ -6100,8 +6101,8 @@ msgstr "Kies e-mailadressen:"
 #, fuzzy
 msgid "Success! Book queued for sending to the selected address(es)!"
 msgstr ""
-"Het boek is in de wachtrij geplaatst om te worden verstuurd aan %"
-"(eReadermail)s"
+"Het boek is in de wachtrij geplaatst om te worden verstuurd aan "
+"%(eReadermail)s"
 
 #: cps/web.py:2472
 msgid "Please wait one minute to register next user"
@@ -12036,11 +12037,10 @@ msgstr "Toon gelezen/niet gelezen selectie"
 #~ msgstr ""
 #~ "Deze paden zijn alleen intern voor CWA, je kunt aan de linkerkant naar "
 #~ "hartenlust wijzigen waar ze aan gekoppeld zijn, maar er is geen reden om "
-#~ "de paden aan de rechterkant te wijzigen.<br><br>Als je je "
-#~ "<code>metadata.db</code> bestand op een andere locatie wilt dan de rest "
-#~ "van je bibliotheek, gebruik dan de <b>Scheid Boekbestanden van "
-#~ "Bibliotheek Optie hieronder en voer daar het pad naar de rest van de "
-#~ "bibliotheek in</b>"
+#~ "de paden aan de rechterkant te wijzigen.<br><br>Als je je <code>metadata."
+#~ "db</code> bestand op een andere locatie wilt dan de rest van je "
+#~ "bibliotheek, gebruik dan de <b>Scheid Boekbestanden van Bibliotheek Optie "
+#~ "hieronder en voer daar het pad naar de rest van de bibliotheek in</b>"
 
 #~ msgid "Enable CWA Auto-Convert"
 #~ msgstr "Schakel CWA Auto-Conversie in"

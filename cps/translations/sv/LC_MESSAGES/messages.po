@@ -1287,39 +1287,39 @@ msgstr ""
 msgid "None"
 msgstr "Ingen"
 
-#: cps/duplicates.py:595 cps/duplicates.py:606
+#: cps/duplicates.py:596 cps/duplicates.py:607
 #, fuzzy
 msgid "Duplicate Books"
 msgstr "Ta bort boken"
 
-#: cps/duplicates.py:1337
+#: cps/duplicates.py:1338
 msgid "Duplicate group already dismissed"
 msgstr ""
 
-#: cps/duplicates.py:1359
+#: cps/duplicates.py:1360
 #, fuzzy
 msgid "Duplicate group dismissed"
 msgstr "Ta bort boken"
 
-#: cps/duplicates.py:1402
+#: cps/duplicates.py:1403
 #, fuzzy
 msgid "Duplicate group restored"
 msgstr "Ta bort boken"
 
-#: cps/duplicates.py:1404
+#: cps/duplicates.py:1405
 msgid "Duplicate group was not dismissed"
 msgstr ""
 
-#: cps/duplicates.py:1476
+#: cps/duplicates.py:1477
 #, fuzzy
 msgid "Duplicate scan queued"
 msgstr "Inga resultat hittades"
 
-#: cps/duplicates.py:1545
+#: cps/duplicates.py:1546
 msgid "Duplicate scan completed (fallback)"
 msgstr ""
 
-#: cps/duplicates.py:1620
+#: cps/duplicates.py:1621
 #, fuzzy
 msgid "Invalid resolution strategy"
 msgstr "Ogiltig roll"
@@ -1966,7 +1966,7 @@ msgstr "Alfabetiska böcker"
 msgid "Books sorted alphabetically"
 msgstr "Böcker sorterade alfabetiskt"
 
-#: cps/opds.py:170 cps/render_template.py:77
+#: cps/opds.py:170 cps/render_template.py:76
 msgid "Hot Books"
 msgstr "Heta böcker"
 
@@ -1974,7 +1974,7 @@ msgstr "Heta böcker"
 msgid "Popular publications from this catalog based on Downloads."
 msgstr "Populära publikationer från den här katalogen baserad på hämtningar."
 
-#: cps/opds.py:176 cps/render_template.py:91 cps/web.py:658
+#: cps/opds.py:176 cps/render_template.py:90 cps/web.py:658
 msgid "Top Rated Books"
 msgstr "Bäst rankade böcker"
 
@@ -1995,12 +1995,12 @@ msgstr "De senaste böckerna"
 msgid "Random Books"
 msgstr "Slumpmässiga böcker"
 
-#: cps/opds.py:189 cps/render_template.py:103 cps/templates/user_table.html:161
+#: cps/opds.py:189 cps/render_template.py:102 cps/templates/user_table.html:161
 #: cps/templates/user_table.html:164
 msgid "Show Random Books"
 msgstr "Visa slumpmässiga böcker"
 
-#: cps/opds.py:194 cps/opds.py:195 cps/render_template.py:94 cps/web.py:1023
+#: cps/opds.py:194 cps/opds.py:195 cps/render_template.py:93 cps/web.py:1023
 msgid "Read Books"
 msgstr "Lästa böcker"
 
@@ -2009,11 +2009,11 @@ msgstr "Lästa böcker"
 msgid "Books currently being read"
 msgstr "Aktuell version"
 
-#: cps/opds.py:206 cps/opds.py:207 cps/render_template.py:98 cps/web.py:1026
+#: cps/opds.py:206 cps/opds.py:207 cps/render_template.py:97 cps/web.py:1026
 msgid "Unread Books"
 msgstr "Olästa böcker"
 
-#: cps/opds.py:212 cps/render_template.py:110 cps/spa_strings.py:431
+#: cps/opds.py:212 cps/render_template.py:109 cps/spa_strings.py:431
 #: cps/templates/book_table.html:109 cps/templates/cwa_settings.html:334
 #: cps/templates/cwa_settings.html:336
 #: cps/templates/hardcover_review_matches.html:134
@@ -2024,7 +2024,7 @@ msgstr "Författare"
 msgid "Books ordered by Author"
 msgstr "Böcker ordnade efter författare"
 
-#: cps/opds.py:218 cps/render_template.py:114 cps/spa_strings.py:729
+#: cps/opds.py:218 cps/render_template.py:113 cps/spa_strings.py:729
 #: cps/templates/book_table.html:115 cps/web.py:1991
 msgid "Publishers"
 msgstr "Förlag"
@@ -2033,7 +2033,7 @@ msgstr "Förlag"
 msgid "Books ordered by publisher"
 msgstr "Böcker ordnade efter förlag"
 
-#: cps/opds.py:224 cps/render_template.py:104 cps/spa_strings.py:455
+#: cps/opds.py:224 cps/render_template.py:103 cps/spa_strings.py:455
 #: cps/templates/book_table.html:110 cps/web.py:2143
 msgid "Categories"
 msgstr "Kategorier"
@@ -2042,7 +2042,7 @@ msgstr "Kategorier"
 msgid "Books ordered by category"
 msgstr "Böcker ordnade efter kategori"
 
-#: cps/opds.py:230 cps/render_template.py:107 cps/spa_strings.py:279
+#: cps/opds.py:230 cps/render_template.py:106 cps/spa_strings.py:279
 #: cps/templates/book_edit.html:143 cps/templates/book_table.html:111
 #: cps/templates/cwa_settings.html:362 cps/templates/cwa_settings.html:364
 #: cps/templates/cwa_settings.html:1133
@@ -2055,7 +2055,7 @@ msgstr "Serier"
 msgid "Books ordered by series"
 msgstr "Böcker ordnade efter serier"
 
-#: cps/opds.py:236 cps/render_template.py:117 cps/spa_strings.py:627
+#: cps/opds.py:236 cps/render_template.py:116 cps/spa_strings.py:627
 #: cps/templates/book_table.html:113 cps/templates/detail.html:930
 #: cps/templates/search_form.html:108 cps/web.py:2115
 msgid "Languages"
@@ -2065,7 +2065,7 @@ msgstr "Språk"
 msgid "Books ordered by Languages"
 msgstr "Böcker ordnade efter språk"
 
-#: cps/opds.py:242 cps/render_template.py:121 cps/spa_strings.py:733
+#: cps/opds.py:242 cps/render_template.py:120 cps/spa_strings.py:733
 #: cps/web.py:2075
 msgid "Ratings"
 msgstr "Betyg"
@@ -2074,7 +2074,7 @@ msgstr "Betyg"
 msgid "Books ordered by Rating"
 msgstr "Böcker sorterade efter Betyg"
 
-#: cps/opds.py:248 cps/render_template.py:124
+#: cps/opds.py:248 cps/render_template.py:123
 msgid "File formats"
 msgstr "Filformat"
 
@@ -2137,125 +2137,125 @@ msgstr "Token har löpt ut"
 msgid "Success! Please return to your device"
 msgstr "Lyckades! Vänligen återvänd till din enhet"
 
-#: cps/render_template.py:54
+#: cps/render_template.py:53
 msgid ""
 "Duplicate scanning needs a one-time full scan before fast duplicate checks "
 "can run after imports and metadata changes. "
 msgstr ""
 
-#: cps/render_template.py:74 cps/spa_strings.py:443
+#: cps/render_template.py:73 cps/spa_strings.py:443
 msgid "Books"
 msgstr "Böcker"
 
-#: cps/render_template.py:76
+#: cps/render_template.py:75
 msgid "Show recent books"
 msgstr "Visa senaste böcker"
 
-#: cps/render_template.py:79
+#: cps/render_template.py:78
 msgid "Show Hot Books"
 msgstr "Visa heta böcker"
 
-#: cps/render_template.py:81 cps/render_template.py:86
+#: cps/render_template.py:80 cps/render_template.py:85
 msgid "Downloaded Books"
 msgstr "Hämtade böcker"
 
-#: cps/render_template.py:83 cps/render_template.py:88
+#: cps/render_template.py:82 cps/render_template.py:87
 #: cps/templates/user_table.html:169
 msgid "Show Downloaded Books"
 msgstr "Visa hämtade böcker"
 
-#: cps/render_template.py:93 cps/templates/user_table.html:163
+#: cps/render_template.py:92 cps/templates/user_table.html:163
 msgid "Show Top Rated Books"
 msgstr "Visa böcker med bästa betyg"
 
-#: cps/render_template.py:96
+#: cps/render_template.py:95
 #, fuzzy
 msgid "Show Read and Unread"
 msgstr "Visa lästa och olästa"
 
-#: cps/render_template.py:100
+#: cps/render_template.py:99
 msgid "Show unread"
 msgstr "Visa olästa"
 
-#: cps/render_template.py:101 cps/spa_strings.py:539
+#: cps/render_template.py:100 cps/spa_strings.py:539
 msgid "Discover"
 msgstr "Upptäck"
 
-#: cps/render_template.py:106 cps/templates/user_table.html:160
+#: cps/render_template.py:105 cps/templates/user_table.html:160
 #, fuzzy
 msgid "Show Category Section"
 msgstr "Visa kategorival"
 
-#: cps/render_template.py:109 cps/templates/user_table.html:159
+#: cps/render_template.py:108 cps/templates/user_table.html:159
 #, fuzzy
 msgid "Show Series Section"
 msgstr "Visa serieval"
 
-#: cps/render_template.py:112 cps/templates/user_table.html:162
+#: cps/render_template.py:111 cps/templates/user_table.html:162
 #, fuzzy
 msgid "Show Author Section"
 msgstr "Visa författarval"
 
-#: cps/render_template.py:116 cps/templates/user_table.html:165
+#: cps/render_template.py:115 cps/templates/user_table.html:165
 #, fuzzy
 msgid "Show Publisher Section"
 msgstr "Visa urval av förlag"
 
-#: cps/render_template.py:120 cps/templates/user_table.html:157
+#: cps/render_template.py:119 cps/templates/user_table.html:157
 #, fuzzy
 msgid "Show Language Section"
 msgstr "Visa språkval"
 
-#: cps/render_template.py:123 cps/templates/user_table.html:166
+#: cps/render_template.py:122 cps/templates/user_table.html:166
 #, fuzzy
 msgid "Show Ratings Section"
 msgstr "Visa val av betyg"
 
-#: cps/render_template.py:126 cps/templates/user_table.html:167
+#: cps/render_template.py:125 cps/templates/user_table.html:167
 #, fuzzy
 msgid "Show File Formats Section"
 msgstr "Visa val av filformat"
 
-#: cps/render_template.py:128 cps/web.py:1049
+#: cps/render_template.py:127 cps/web.py:1049
 msgid "Archived Books"
 msgstr "Arkiverade böcker"
 
-#: cps/render_template.py:130 cps/templates/user_table.html:168
+#: cps/render_template.py:129 cps/templates/user_table.html:168
 #, fuzzy
 msgid "Show Archived Books"
 msgstr "Visa arkiverade böcker"
 
-#: cps/render_template.py:132 cps/spa_strings.py:573
+#: cps/render_template.py:131 cps/spa_strings.py:573
 msgid "Favorites"
 msgstr ""
 
-#: cps/render_template.py:134
+#: cps/render_template.py:133
 msgid "Show Favorites"
 msgstr ""
 
-#: cps/render_template.py:137 cps/web.py:1797
+#: cps/render_template.py:136 cps/web.py:1797
 msgid "Books List"
 msgstr "Boklista"
 
-#: cps/render_template.py:139 cps/templates/user_table.html:170
+#: cps/render_template.py:138 cps/templates/user_table.html:170
 msgid "Show Books List"
 msgstr "Visa boklista"
 
-#: cps/render_template.py:142 cps/spa_strings.py:550
+#: cps/render_template.py:141 cps/spa_strings.py:550
 msgid "Duplicates"
 msgstr ""
 
-#: cps/render_template.py:144
+#: cps/render_template.py:143
 #, fuzzy
 msgid "Show Duplicate Books"
 msgstr "Visa böcker med bästa betyg"
 
-#: cps/render_template.py:253
+#: cps/render_template.py:252
 #, python-format
 msgid "Calibre-Web NextGen %(latest)s is available — you're on %(current)s."
 msgstr ""
 
-#: cps/render_template.py:263
+#: cps/render_template.py:262
 #, python-format
 msgid ""
 "Help improve Calibre-Web NextGen's %(language)s translations — %(count)s "

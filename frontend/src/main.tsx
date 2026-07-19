@@ -5,7 +5,8 @@ import ReactDOM from 'react-dom/client';
 import { QueryClient, QueryClientProvider, QueryCache, MutationCache } from '@tanstack/react-query';
 import { App } from './App';
 import { AnnouncerProvider } from './lib/a11y/announcer';
-import { AuthTransitionError, navigateToLogout } from './lib/api';
+import { ErrorBoundary } from './components/ErrorBoundary';
+import { AuthTransitionError, navigateToLogout, BASE_PREFIX } from './lib/api';
 
 // Protected wrappers normalize every auth-loss shape and start the canonical
 // top-level logout navigation. Keep the cache transition here so no stale
@@ -22,12 +23,19 @@ const queryClient = new QueryClient({
   mutationCache: new MutationCache({ onError: onUnauthorized }),
 });
 
+// #855: last-resort render/lifecycle boundary for failures in the providers or
+// in App before the router-level boundary (App.tsx, which also resets on
+// navigation) mounts. React boundaries do not catch event-handler, async, or
+// bootstrap/module-load errors — this covers the render-time class that unmounts
+// the tree and empties #root.
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <AnnouncerProvider>
-        <App />
-      </AnnouncerProvider>
-    </QueryClientProvider>
+    <ErrorBoundary homeHref={BASE_PREFIX + '/app'}>
+      <QueryClientProvider client={queryClient}>
+        <AnnouncerProvider>
+          <App />
+        </AnnouncerProvider>
+      </QueryClientProvider>
+    </ErrorBoundary>
   </React.StrictMode>,
 );

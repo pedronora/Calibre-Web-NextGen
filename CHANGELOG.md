@@ -23,6 +23,7 @@ is for things you can see or feel when running the app.
 ### Changed
 
 - **Convert on the book edit page now offers a dropdown of valid target formats instead of a free-text box.** The control reads "Convert from [EPUB] to [MOBI]", the source list is limited to formats the configured converter can read, and the target list excludes the already-selected source.
+- **Faster container startup, less disk churn.** On every boot the container was re-setting ownership across the entire application tree — around 1,800 files — which took anywhere from a couple of seconds to half a minute depending on your hardware, and on some storage back-ends copied every one of those files into the container's writable layer. The application code is read-only and already readable by everyone, so almost none of that work was needed. Startup now re-owns only the handful of folders the app actually writes to (metadata change logs and export temp), leaving the static code untouched ([#941](https://github.com/new-usemame/Calibre-Web-NextGen/issues/941)). Reported by @auspex and @chloeroform.
 
 ### Fixed
 

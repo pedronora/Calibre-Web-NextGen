@@ -27,6 +27,8 @@ is for things you can see or feel when running the app.
 
 ### Fixed
 
+- **The Library remembers your sort order and read filter after a refresh.** In the new UI, changing the Library sort (for example to "Author A–Z") or the read-status filter (Unread/Read) no longer resets to the default when you reload the page — your choice is kept per browser and restored on the next visit. Series, author, and other scoped views keep their own natural ordering as before. Reported by @standhaftsohnsergius ([#640](https://github.com/new-usemame/Calibre-Web-NextGen/issues/640)).
+
 - **“Read now” actions now form a straight bottom row across New UI book cards on iPad and other touch devices.** Short titles reserve the same two-line space as long ones, while shelf removal and quick edit are no longer hidden behind hover on touch hardware. Desktop keeps its uncluttered hover treatment, with keyboard focus revealing the actions. Thanks @Andrew-H2O (#863).
 
 ## [v4.1.16] - 2026-07-17

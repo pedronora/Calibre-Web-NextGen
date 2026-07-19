@@ -82,8 +82,11 @@ jobs:
           fi
           echo "tag=${V}" >> "$GITHUB_OUTPUT"
 
+      # Runs on dry-runs too: the build COPYs Python/kepubify from the private
+      # pbs-cache mirror (PBS_SOURCE=ghcr below), so a dry-run without this login
+      # fails to pull before it can smoke-test. Pushing is gated separately, on
+      # the outputs: push= expression.
       - name: GHCR Login
-        if: ${{ inputs.dry_run != true }}
         uses: docker/login-action@af1e73f918a031802d376d3c8bbc3fe56130a9b0  # v4.4.0
         with:
           registry: ${{ env.REGISTRY }}
@@ -107,9 +110,13 @@ jobs:
           cache-to: type=gha,scope=${{ matrix.arch }},mode=max
           outputs: |
             type=image,name=${{ env.REGISTRY }}/${{ steps.img.outputs.name }},push-by-digest=true,name-canonical=true,push=${{ inputs.dry_run != true }}
+          # PBS_SOURCE=ghcr pulls Python/kepubify from our GHCR mirror rather
+          # than the release CDN, which intermittently 404s the Actions egress.
+          # Contributors build without it and fall back to the CDN (see Dockerfile).
           build-args: |
             BUILD_DATE=${{ github.event.release.created_at || github.event.repository.updated_at }}
             VERSION=${{ steps.ver.outputs.tag }}
+            PBS_SOURCE=ghcr
           labels: |
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
             org.opencontainers.image.revision=${{ github.sha }}

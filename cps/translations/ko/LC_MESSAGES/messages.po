@@ -6229,6 +6229,14 @@ msgstr "KOReader Sync 플러그인"
 msgid "Found no valid gmail.json file with OAuth information"
 msgstr "인증 정보가 포함된 유요한 gmail.json을 찾을 수 없습니다."
 
+#: cps/tasks/annotation_sync.py:39
+msgid "Syncing annotations to reading services"
+msgstr ""
+
+#: cps/tasks/annotation_sync.py:95
+msgid "Annotation Sync"
+msgstr ""
+
 #: cps/tasks/auto_hardcover_id.py:45
 msgid "Auto-fetching Hardcover IDs"
 msgstr ""

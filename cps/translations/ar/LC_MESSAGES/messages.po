@@ -6252,6 +6252,14 @@ msgstr ""
 msgid "Found no valid gmail.json file with OAuth information"
 msgstr "لم يتم العثور على ملف gmail.json صالح بمعلومات OAuth"
 
+#: cps/tasks/annotation_sync.py:39
+msgid "Syncing annotations to reading services"
+msgstr ""
+
+#: cps/tasks/annotation_sync.py:95
+msgid "Annotation Sync"
+msgstr ""
+
 #: cps/tasks/auto_hardcover_id.py:45
 msgid "Auto-fetching Hardcover IDs"
 msgstr ""

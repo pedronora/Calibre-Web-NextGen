@@ -143,7 +143,7 @@ msgstr "Основные настройки"
 msgid "UI Configuration"
 msgstr "Настройка интерфейса"
 
-#: cps/admin.py:686 cps/admin.py:1433 cps/db.py:1408 cps/search.py:153
+#: cps/admin.py:686 cps/admin.py:1458 cps/db.py:1408 cps/search.py:153
 #: cps/web.py:673 cps/web.py:1003
 #, python-format
 msgid "Custom Column No.%(column)d does not exist in calibre database"
@@ -158,7 +158,7 @@ msgstr "Редактировать пользователей"
 msgid "All"
 msgstr "Все"
 
-#: cps/admin.py:775 cps/admin.py:2155
+#: cps/admin.py:775 cps/admin.py:2180
 msgid "User not found"
 msgstr "Пользователь не найден"
 
@@ -173,57 +173,61 @@ msgstr "Успешно удалено пользователей: {}"
 msgid "Show All"
 msgstr "Показать всё"
 
-#: cps/admin.py:833 cps/admin.py:839
+#: cps/admin.py:836 cps/admin.py:842
 msgid "Malformed request"
 msgstr "Некорректный запрос"
 
-#: cps/admin.py:851 cps/admin.py:3088
+#: cps/admin.py:854 cps/admin.py:3112
 msgid "Guest Name can't be changed"
 msgstr "Имя гостевого пользователя нельзя изменить"
 
-#: cps/admin.py:867
+#: cps/admin.py:874
 msgid "Guest can't have this role"
 msgstr "Гостевому пользователю недоступна эта роль"
 
-#: cps/admin.py:879 cps/admin.py:2912
+#: cps/admin.py:886 cps/admin.py:2937
 msgid "No admin user remaining, can't remove admin role"
 msgstr "Не осталось администраторов, невозможно удалить роль администратора"
 
-#: cps/admin.py:883 cps/admin.py:897
+#: cps/admin.py:890 cps/admin.py:904
 msgid "Value has to be true or false"
 msgstr "Значение должно быть true или false"
 
-#: cps/admin.py:885
+#: cps/admin.py:892
 msgid "Invalid role"
 msgstr "Неверная роль"
 
-#: cps/admin.py:889
+#: cps/admin.py:896
 msgid "Guest can't have this view"
 msgstr "Гостевому пользователю недоступно это представление"
 
-#: cps/admin.py:899
+#: cps/admin.py:906
 msgid "Invalid view"
 msgstr "Неверное представление"
 
-#: cps/admin.py:902
+#: cps/admin.py:909
 msgid "Guest's Locale is determined automatically and can't be set"
 msgstr ""
 "Язык гостевого пользователя определяется автоматически и не может быть "
 "изменён"
 
-#: cps/admin.py:906
+#: cps/admin.py:913
 msgid "No Valid Locale Given"
 msgstr "Не указан допустимый язык/регион"
 
-#: cps/admin.py:917
+#: cps/admin.py:924
 msgid "No Valid Book Language Given"
 msgstr "Не указан допустимый язык книг"
 
-#: cps/admin.py:919 cps/editbooks.py:682
+#: cps/admin.py:926 cps/editbooks.py:682
 msgid "Parameter not found"
 msgstr "Параметр не найден"
 
-#: cps/admin.py:967
+#: cps/admin.py:946 cps/admin.py:2111
+msgid "Settings DB is not Writeable"
+msgstr "База данных настроек недоступна для записи"
+
+#: cps/admin.py:992
 msgid ""
 "The title-sort rule was saved, but reordering the existing library failed — "
 "books may keep their previous order until you retry or edit them."
@@ -232,53 +236,53 @@ msgstr ""
 "существующей библиотеки не удалось — книги могут сохранять свой прежний "
 "порядок до тех пор, пока вы не повторите попытку или не отредактируете их."
 
-#: cps/admin.py:972
+#: cps/admin.py:997
 msgid "Invalid Read Column"
 msgstr "Неверный столбец чтения"
 
-#: cps/admin.py:978
+#: cps/admin.py:1003
 msgid "Invalid Restricted Column"
 msgstr "Недопустимый столбец ограничений"
 
-#: cps/admin.py:1007 cps/admin.py:2768
+#: cps/admin.py:1032 cps/admin.py:2793
 msgid "Calibre-Web NextGen configuration updated"
 msgstr "Обновлена ​​конфигурация Calibre-Web NextGen"
 
-#: cps/admin.py:1019
+#: cps/admin.py:1044
 msgid "Do you really want to delete the Kobo Token?"
 msgstr "Вы действительно хотите удалить токен Kobo?"
 
-#: cps/admin.py:1021
+#: cps/admin.py:1046
 msgid "Do you really want to delete this domain?"
 msgstr "Вы действительно хотите удалить этот домен?"
 
-#: cps/admin.py:1023
+#: cps/admin.py:1048
 msgid "Do you really want to delete this user?"
 msgstr "Вы действительно хотите удалить этого пользователя?"
 
-#: cps/admin.py:1025
+#: cps/admin.py:1050
 msgid "Are you sure you want to delete this shelf?"
 msgstr "Вы уверены, что хотите удалить эту полку?"
 
-#: cps/admin.py:1027
+#: cps/admin.py:1052
 msgid "Are you sure you want to change locales of selected user(s)?"
 msgstr ""
 "Вы уверены, что хотите изменить языковые настройки выбранных пользователей?"
 
-#: cps/admin.py:1029
+#: cps/admin.py:1054
 msgid ""
 "Are you sure you want to change visible book languages for selected user(s)?"
 msgstr ""
 "Вы уверены, что хотите изменить видимые языки книг для выбранных "
 "пользователей?"
 
-#: cps/admin.py:1031
+#: cps/admin.py:1056
 msgid ""
 "Are you sure you want to change the selected role for the selected user(s)?"
 msgstr ""
 "Вы уверены, что хотите изменить выбранную роль для выбранных пользователей?"
 
-#: cps/admin.py:1033
+#: cps/admin.py:1058
 msgid ""
 "Are you sure you want to change the selected restrictions for the selected "
 "user(s)?"
@@ -286,7 +290,7 @@ msgstr ""
 "Вы уверены, что хотите изменить выбранные ограничения для выбранных "
 "пользователей?"
 
-#: cps/admin.py:1035
+#: cps/admin.py:1060
 msgid ""
 "Are you sure you want to change the selected visibility restrictions for the "
 "selected user(s)?"
@@ -294,25 +298,25 @@ msgstr ""
 "Вы уверены, что хотите изменить ограничения видимости для выбранных "
 "пользователей?"
 
-#: cps/admin.py:1038
+#: cps/admin.py:1063
 msgid ""
 "Are you sure you want to change shelf sync behavior for the selected user(s)?"
 msgstr ""
 "Вы уверены, что хотите изменить поведение синхронизации полок для выбранных "
 "пользователей?"
 
-#: cps/admin.py:1040
+#: cps/admin.py:1065
 msgid ""
 "Are you sure you want to change OPDS shelf exposure for the selected user(s)?"
 msgstr ""
 "Вы уверены, что хотите изменить доступность полок в OPDS для выбранных "
 "пользователей?"
 
-#: cps/admin.py:1042
+#: cps/admin.py:1067
 msgid "Are you sure you want to change Calibre library location?"
 msgstr "Вы уверены, что хотите изменить расположение библиотеки Calibre?"
 
-#: cps/admin.py:1044
+#: cps/admin.py:1069
 msgid ""
 "Calibre-Web NextGen will search for updated Covers and update Cover "
 "Thumbnails, this may take a while?"
@@ -320,7 +324,7 @@ msgstr ""
 "Calibre-Web NextGen выполнит поиск обновлённых обложек и обновит их "
 "миниатюры. Это может занять некоторое время. Продолжить?"
 
-#: cps/admin.py:1047
+#: cps/admin.py:1072
 msgid ""
 "Are you sure you want delete Calibre-Web NextGen's sync database to force a "
 "full sync with your Kobo Reader?"
@@ -329,29 +333,29 @@ msgstr ""
 "NextGen, чтобы принудительно выполнить полную синхронизацию с вашим "
 "устройством Kobo Reader?"
 
-#: cps/admin.py:1286 cps/admin.py:1292 cps/admin.py:1302 cps/admin.py:1312
+#: cps/admin.py:1311 cps/admin.py:1317 cps/admin.py:1327 cps/admin.py:1337
 #: cps/templates/modal_dialogs.html:29 cps/templates/user_table.html:41
 #: cps/templates/user_table.html:58
 msgid "Deny"
 msgstr "Запретить"
 
-#: cps/admin.py:1288 cps/admin.py:1294 cps/admin.py:1304 cps/admin.py:1314
+#: cps/admin.py:1313 cps/admin.py:1319 cps/admin.py:1329 cps/admin.py:1339
 #: cps/templates/modal_dialogs.html:28 cps/templates/user_table.html:44
 #: cps/templates/user_table.html:61
 msgid "Allow"
 msgstr "Разрешить"
 
-#: cps/admin.py:1347
+#: cps/admin.py:1372
 #, python-brace-format
 msgid "{} sync entries deleted"
 msgstr "Удалено записей синхронизации: {}"
 
-#: cps/admin.py:1367
+#: cps/admin.py:1392
 #, python-brace-format
 msgid "Book {} not found"
 msgstr "Книга {} не найдена"
 
-#: cps/admin.py:1377
+#: cps/admin.py:1402
 #, python-brace-format
 msgid ""
 "Cleared sync state for book {0} (user {1}); the device will re-receive the "
@@ -360,7 +364,7 @@ msgstr ""
 "Состояние синхронизации для книги {0} (пользователь {1}) очищено; устройство "
 "получит книгу повторно при следующей синхронизации"
 
-#: cps/admin.py:1380
+#: cps/admin.py:1405
 #, python-brace-format
 msgid ""
 "Book {0} was not in the sync record for user {1}; last_modified bumped so "
@@ -370,73 +374,73 @@ msgstr ""
 "значение last_modified было увеличено, поэтому устройство получит её при "
 "следующей синхронизации"
 
-#: cps/admin.py:1424 cps/api/browse.py:79 cps/spa_strings.py:84
+#: cps/admin.py:1449 cps/api/browse.py:79 cps/spa_strings.py:84
 msgid "Tag not found"
 msgstr "Тег не найден"
 
-#: cps/admin.py:1442
+#: cps/admin.py:1467
 msgid "Invalid Action"
 msgstr "Неверное действие"
 
-#: cps/admin.py:1569
+#: cps/admin.py:1594
 msgid "client_secrets.json Is Not Configured For Web Application"
 msgstr "client_secrets.json не настроен для веб-приложения"
 
-#: cps/admin.py:1726
+#: cps/admin.py:1751
 msgid "Logfile Location is not Valid, Please Enter Correct Path"
 msgstr "Неверное расположение файла журнала, укажите правильный путь"
 
-#: cps/admin.py:1732
+#: cps/admin.py:1757
 msgid "Access Logfile Location is not Valid, Please Enter Correct Path"
 msgstr "Неверное расположение файла журнала доступа, укажите правильный путь"
 
-#: cps/admin.py:1767
+#: cps/admin.py:1792
 msgid "Please Enter a LDAP Provider, Port, DN and User Object Identifier"
 msgstr ""
 "Пожалуйста, укажите поставщика LDAP, порт, DN и идентификатор пользователя"
 
-#: cps/admin.py:1773
+#: cps/admin.py:1798
 msgid "Please Enter a LDAP Service Account and Password"
 msgstr "Пожалуйста, укажите учётную запись и пароль службы LDAP"
 
-#: cps/admin.py:1776
+#: cps/admin.py:1801
 msgid "Please Enter a LDAP Service Account"
 msgstr "Пожалуйста, укажите учётную запись службы LDAP"
 
-#: cps/admin.py:1781
+#: cps/admin.py:1806
 #, python-format
 msgid "LDAP Group Object Filter Needs to Have One \"%s\" Format Identifier"
 msgstr ""
 "Фильтр объектов группы LDAP должен содержать один идентификатор формата "
 "\"%s\""
 
-#: cps/admin.py:1783
+#: cps/admin.py:1808
 msgid "LDAP Group Object Filter Has Unmatched Parenthesis"
 msgstr "Фильтр объектов группы LDAP имеет несогласованные скобки"
 
-#: cps/admin.py:1787
+#: cps/admin.py:1812
 #, python-format
 msgid "LDAP User Object Filter needs to Have One \"%s\" Format Identifier"
 msgstr ""
 "Фильтр объектов пользователей LDAP должен содержать один идентификатор "
 "формата \"%s\""
 
-#: cps/admin.py:1789
+#: cps/admin.py:1814
 msgid "LDAP User Object Filter Has Unmatched Parenthesis"
 msgstr "Фильтр объектов пользователей LDAP имеет несогласованные скобки"
 
-#: cps/admin.py:1796
+#: cps/admin.py:1821
 #, python-format
 msgid "LDAP Member User Filter needs to Have One \"%s\" Format Identifier"
 msgstr ""
 "Фильтр пользователей-участников LDAP должен содержать один идентификатор "
 "формата \"%s\""
 
-#: cps/admin.py:1798
+#: cps/admin.py:1823
 msgid "LDAP Member User Filter Has Unmatched Parenthesis"
 msgstr "Фильтр пользователей-участников LDAP имеет несогласованные скобки"
 
-#: cps/admin.py:1805
+#: cps/admin.py:1830
 msgid ""
 "LDAP CACertificate, Certificate or Key Location is not Valid, Please Enter "
 "Correct Path"
@@ -444,21 +448,21 @@ msgstr ""
 "Неверное расположение CA-сертификата, сертификата или ключа LDAP, укажите "
 "правильный путь"
 
-#: cps/admin.py:1838 cps/templates/admin.html:57
+#: cps/admin.py:1863 cps/templates/admin.html:57
 msgid "Add New User"
 msgstr "Добавить нового пользователя"
 
-#: cps/admin.py:1853 cps/templates/admin.html:105
+#: cps/admin.py:1878 cps/templates/admin.html:105
 #: cps/templates/broadcast_email.html:9
 msgid "Edit Email Server Settings"
 msgstr "Редактировать настройки почтового сервера"
 
-#: cps/admin.py:1872
+#: cps/admin.py:1897
 msgid "Success! Gmail Account Verified."
 msgstr "Успех! Учётная запись Gmail подтверждена."
 
-#: cps/admin.py:1896 cps/admin.py:1899 cps/admin.py:2508 cps/admin.py:2744
-#: cps/admin.py:2869 cps/admin.py:3131 cps/editbooks.py:1157
+#: cps/admin.py:1921 cps/admin.py:1924 cps/admin.py:2533 cps/admin.py:2769
+#: cps/admin.py:2894 cps/admin.py:3155 cps/editbooks.py:1157
 #: cps/editbooks.py:2040 cps/shelf.py:148 cps/shelf.py:226 cps/shelf.py:297
 #: cps/shelf.py:332 cps/shelf.py:389 cps/shelf.py:464 cps/shelf.py:547
 #: cps/shelf.py:672 cps/tasks/convert.py:145 cps/web.py:3090
@@ -466,7 +470,7 @@ msgstr "Успех! Учётная запись Gmail подтверждена."
 msgid "Oops! Database Error: %(error)s."
 msgstr "Ошибка базы данных: %(error)s."
 
-#: cps/admin.py:1906
+#: cps/admin.py:1931
 #, python-format
 msgid ""
 "Test e-mail queued for sending to %(email)s, please check Tasks for result"
@@ -474,52 +478,52 @@ msgstr ""
 "Тестовое письмо поставлено в очередь отправки на %(email)s, проверьте "
 "результат в Заданиях"
 
-#: cps/admin.py:1909
+#: cps/admin.py:1934
 #, python-format
 msgid "There was an error sending the Test e-mail: %(res)s"
 msgstr "Произошла ошибка при отправке тестового письма: %(res)s"
 
-#: cps/admin.py:1911
+#: cps/admin.py:1936
 msgid "Please configure your e-mail address first..."
 msgstr "Пожалуйста, сначала настройте адрес электронной почты..."
 
-#: cps/admin.py:1913
+#: cps/admin.py:1938
 msgid "Email Server Settings updated"
 msgstr "Настройки почтового сервера обновлены"
 
-#: cps/admin.py:1953 cps/templates/admin.html:106
+#: cps/admin.py:1978 cps/templates/admin.html:106
 msgid "Email Your Users"
 msgstr "Отправить email пользователям"
 
-#: cps/admin.py:1979
+#: cps/admin.py:2004
 msgid ""
 "Please configure the email server under Edit Email Server Settings first."
 msgstr ""
 "Пожалуйста, сначала настройте почтовый сервер в разделе «Редактирование "
 "настроек почтового сервера»."
 
-#: cps/admin.py:1984
+#: cps/admin.py:2009
 msgid "Please enter a subject for the announcement email."
 msgstr "Пожалуйста, введите тему для email-рассылки."
 
-#: cps/admin.py:1987
+#: cps/admin.py:2012
 msgid "Please enter a message body for the announcement email."
 msgstr "Пожалуйста, введите текст сообщения для email-рассылки."
 
-#: cps/admin.py:1993
+#: cps/admin.py:2018
 msgid "Please set an email address on your own account first..."
 msgstr ""
 "Пожалуйста, сначала укажите email-адрес в вашем собственном аккаунте..."
 
-#: cps/admin.py:2006
+#: cps/admin.py:2031
 msgid "Please select at least one recipient."
 msgstr "Пожалуйста, выберите хотя бы одного получателя."
 
-#: cps/admin.py:2012
+#: cps/admin.py:2037
 msgid "No valid recipients — nothing was sent."
 msgstr "Нет действительных получателей - ничего не было отправлено."
 
-#: cps/admin.py:2016
+#: cps/admin.py:2041
 #, python-format
 msgid ""
 "Test announcement email queued to %(email)s — check Tasks for the result."
@@ -527,7 +531,7 @@ msgstr ""
 "Тестовое письмо с объявлением поставлено в очередь на отправку на %(email)s, "
 "проверьте результат в Заданиях."
 
-#: cps/admin.py:2020
+#: cps/admin.py:2045
 #, python-format
 msgid ""
 "Announcement email queued for %(num)s recipient(s) — check Tasks for "
@@ -536,163 +540,159 @@ msgstr ""
 "Информационное письмо добавлено в очередь для %(num)s получателей - "
 "проверьте Задания для контроля доставки."
 
-#: cps/admin.py:2022
+#: cps/admin.py:2047
 #, python-format
 msgid "%(num)s address(es) were skipped as invalid or duplicate."
 msgstr ""
 "%(num)s адресов пропущено, так как они недействительны или дублируются."
 
-#: cps/admin.py:2045 cps/templates/admin.html:202
+#: cps/admin.py:2070 cps/templates/admin.html:202
 msgid "Edit Scheduled Tasks Settings"
 msgstr "Редактировать настройки запланированных заданий"
 
-#: cps/admin.py:2057
+#: cps/admin.py:2082
 msgid "Invalid start time for task specified"
 msgstr "Указано неверное время начала задания"
 
-#: cps/admin.py:2062
+#: cps/admin.py:2087
 msgid "Invalid duration for task specified"
 msgstr "Указана неверная продолжительность задания"
 
-#: cps/admin.py:2072
+#: cps/admin.py:2097
 msgid "Scheduled tasks settings updated"
 msgstr "Настройки запланированных заданий обновлены"
 
-#: cps/admin.py:2082 cps/admin.py:2226 cps/admin.py:3127 cps/web.py:2520
+#: cps/admin.py:2107 cps/admin.py:2251 cps/admin.py:3151 cps/web.py:2520
 msgid "Oops! An unknown error occurred. Please try again later."
 msgstr "Неизвестная ошибка. Пожалуйста, попробуйте позже."
 
-#: cps/admin.py:2086
-msgid "Settings DB is not Writeable"
-msgstr "База данных настроек недоступна для записи"
-
-#: cps/admin.py:2105 cps/opds.py:316 cps/opds.py:354 cps/opds.py:357
+#: cps/admin.py:2130 cps/opds.py:316 cps/opds.py:354 cps/opds.py:357
 #: cps/web.py:3006 cps/web.py:3141
 msgid "title"
 msgstr "название"
 
-#: cps/admin.py:2211 cps/admin.py:3119
+#: cps/admin.py:2236 cps/admin.py:3143
 #, python-format
 msgid "Edit User %(nick)s"
 msgstr "Редактировать пользователя %(nick)s"
 
-#: cps/admin.py:2223
+#: cps/admin.py:2248
 #, python-format
 msgid "Success! Password for user %(user)s reset"
 msgstr "Успех! Пароль пользователя %(user)s сброшен"
 
-#: cps/admin.py:2229
+#: cps/admin.py:2254
 msgid "Oops! Please configure the SMTP mail settings."
 msgstr "Пожалуйста, настройте параметры SMTP."
 
-#: cps/admin.py:2240
+#: cps/admin.py:2265
 msgid "Logfile viewer"
 msgstr "Просмотр журнала"
 
-#: cps/admin.py:2316
+#: cps/admin.py:2341
 msgid "Requesting update package"
 msgstr "Запрос пакета обновления"
 
-#: cps/admin.py:2317
+#: cps/admin.py:2342
 msgid "Downloading update package"
 msgstr "Скачивание пакета обновления"
 
-#: cps/admin.py:2318
+#: cps/admin.py:2343
 msgid "Unzipping update package"
 msgstr "Распаковка пакета обновления"
 
-#: cps/admin.py:2319
+#: cps/admin.py:2344
 msgid "Replacing files"
 msgstr "Замена файлов"
 
-#: cps/admin.py:2320
+#: cps/admin.py:2345
 msgid "Database connections are closed"
 msgstr "Подключения к базе данных закрыты"
 
-#: cps/admin.py:2321
+#: cps/admin.py:2346
 msgid "Stopping server"
 msgstr "Остановка сервера"
 
-#: cps/admin.py:2322
+#: cps/admin.py:2347
 msgid "Update finished, please press okay and reload page"
 msgstr "Обновление завершено, нажмите OK и перезагрузите страницу"
 
-#: cps/admin.py:2323 cps/admin.py:2324 cps/admin.py:2325 cps/admin.py:2326
-#: cps/admin.py:2327 cps/admin.py:2328
+#: cps/admin.py:2348 cps/admin.py:2349 cps/admin.py:2350 cps/admin.py:2351
+#: cps/admin.py:2352 cps/admin.py:2353
 msgid "Update failed:"
 msgstr "Сбой обновления:"
 
-#: cps/admin.py:2323 cps/updater.py:446 cps/updater.py:685 cps/updater.py:687
+#: cps/admin.py:2348 cps/updater.py:446 cps/updater.py:685 cps/updater.py:687
 msgid "HTTP Error"
 msgstr "Ошибка HTTP"
 
-#: cps/admin.py:2324 cps/updater.py:448 cps/updater.py:689
+#: cps/admin.py:2349 cps/updater.py:448 cps/updater.py:689
 msgid "Connection error"
 msgstr "Ошибка подключения"
 
-#: cps/admin.py:2325 cps/updater.py:450 cps/updater.py:691
+#: cps/admin.py:2350 cps/updater.py:450 cps/updater.py:691
 msgid "Timeout while establishing connection"
 msgstr "Тайм-аут при установлении соединения"
 
-#: cps/admin.py:2326 cps/updater.py:452 cps/updater.py:693
+#: cps/admin.py:2351 cps/updater.py:452 cps/updater.py:693
 msgid "General error"
 msgstr "Общая ошибка"
 
-#: cps/admin.py:2327
+#: cps/admin.py:2352
 msgid "Update file could not be saved in temp dir"
 msgstr "Не удалось сохранить файл обновления во временной директории"
 
-#: cps/admin.py:2328
+#: cps/admin.py:2353
 msgid "Files could not be replaced during update"
 msgstr "Не удалось заменить файлы во время обновления"
 
-#: cps/admin.py:2352
+#: cps/admin.py:2377
 msgid "Failed to extract at least One LDAP User"
 msgstr "Не удалось извлечь хотя бы одного пользователя LDAP"
 
-#: cps/admin.py:2401
+#: cps/admin.py:2426
 msgid "Failed to Create at Least One LDAP User"
 msgstr "Не удалось создать хотя бы одного пользователя LDAP"
 
-#: cps/admin.py:2414
+#: cps/admin.py:2439
 #, python-format
 msgid "Error: %(ldaperror)s"
 msgstr "Ошибка: %(ldaperror)s"
 
-#: cps/admin.py:2418
+#: cps/admin.py:2443
 msgid "Error: No user returned in response of LDAP server"
 msgstr "Ошибка: LDAP-сервер не вернул пользователей"
 
-#: cps/admin.py:2454
+#: cps/admin.py:2479
 msgid "At Least One LDAP User Not Found in Database"
 msgstr "По крайней мере один пользователь LDAP не найден в базе данных"
 
-#: cps/admin.py:2456
+#: cps/admin.py:2481
 #, python-brace-format
 msgid "{} User Successfully Imported"
 msgstr "Пользователь {} успешно импортирован"
 
-#: cps/admin.py:2520
+#: cps/admin.py:2545
 msgid "Books path not valid"
 msgstr "Неверный путь к книгам"
 
-#: cps/admin.py:2527
+#: cps/admin.py:2552
 msgid "DB Location is not Valid, Please Enter Correct Path"
 msgstr "Неверное расположение базы данных, укажите правильный путь"
 
-#: cps/admin.py:2552
+#: cps/admin.py:2577
 msgid "DB is not Writeable"
 msgstr "База данных недоступна для записи"
 
-#: cps/admin.py:2567
+#: cps/admin.py:2592
 msgid "Keyfile Location is not Valid, Please Enter Correct Path"
 msgstr "Неверное расположение файла ключа, укажите правильный путь"
 
-#: cps/admin.py:2571
+#: cps/admin.py:2596
 msgid "Certfile Location is not Valid, Please Enter Correct Path"
 msgstr "Неверное расположение файла сертификата, укажите правильный путь"
 
-#: cps/admin.py:2665
+#: cps/admin.py:2690
 msgid ""
 "Auto-create users cannot be enabled without enabling reverse proxy "
 "authentication"
@@ -700,13 +700,13 @@ msgstr ""
 "Автоматическое создание пользователей невозможно включить без активации "
 "аутентификации через обратный прокси-сервер"
 
-#: cps/admin.py:2668
+#: cps/admin.py:2693
 msgid "Auto-create users requires a valid reverse proxy header name"
 msgstr ""
 "Для автоматического создания пользователей требуется допустимое имя "
 "заголовка обратного прокси-сервера"
 
-#: cps/admin.py:2687 cps/admin.py:2694
+#: cps/admin.py:2712 cps/admin.py:2719
 msgid ""
 "Invalid OAuth Redirect Host format. Please include the full URL with "
 "protocol (e.g., https://your-domain.com)"
@@ -714,7 +714,7 @@ msgstr ""
 "Неверный формат хоста переадресации OAuth. Пожалуйста, укажите полный URL-"
 "адрес с протоколом (например, https://your-domain.com)."
 
-#: cps/admin.py:2691
+#: cps/admin.py:2716
 msgid ""
 "OAuth Redirect Host should not include a path. Use only the base URL (e.g., "
 "https://your-domain.com)"
@@ -723,62 +723,62 @@ msgstr ""
 "только базовый URL (например, [https://your-domain.com](https://your-domain."
 "com))"
 
-#: cps/admin.py:2727
+#: cps/admin.py:2752
 msgid "Password length has to be between 1 and 40"
 msgstr "Длина пароля должна быть от 1 до 40 символов"
 
-#: cps/admin.py:2795
+#: cps/admin.py:2820
 msgid "Database Settings updated"
 msgstr "Настройки базы данных обновлены"
 
-#: cps/admin.py:2803
+#: cps/admin.py:2828
 msgid "Database Configuration"
 msgstr "Конфигурация базы данных"
 
-#: cps/admin.py:2824 cps/web.py:2485
+#: cps/admin.py:2849 cps/web.py:2485
 msgid "Oops! Please complete all fields."
 msgstr "Пожалуйста, заполните все поля."
 
-#: cps/admin.py:2833
+#: cps/admin.py:2858
 msgid "E-mail is not from valid domain"
 msgstr "Электронная почта не из разрешённого домена"
 
-#: cps/admin.py:2841
+#: cps/admin.py:2866
 msgid "Add new user"
 msgstr "Добавить нового пользователя"
 
-#: cps/admin.py:2859
+#: cps/admin.py:2884
 #, python-format
 msgid "User '%(user)s' created"
 msgstr "Пользователь '%(user)s' создан"
 
-#: cps/admin.py:2865
+#: cps/admin.py:2890
 msgid "Oops! An account already exists for this Email. or name."
 msgstr "Учётная запись с таким email или именем уже существует."
 
-#: cps/admin.py:2891
+#: cps/admin.py:2916
 #, python-format
 msgid "User '%(nick)s' deleted"
 msgstr "Пользователь '%(nick)s' удалён"
 
-#: cps/admin.py:2894
+#: cps/admin.py:2919
 msgid "Can't delete Guest User"
 msgstr "Нельзя удалить гостевого пользователя"
 
-#: cps/admin.py:2897
+#: cps/admin.py:2922
 msgid "No admin user remaining, can't delete user"
 msgstr "Не осталось администраторов, невозможно удалить пользователя"
 
-#: cps/admin.py:3082 cps/web.py:2821
+#: cps/admin.py:3106 cps/web.py:2821
 msgid "Email can't be empty and has to be a valid Email"
 msgstr "Email не может быть пустым и должен быть действительным адресом"
 
-#: cps/admin.py:3123
+#: cps/admin.py:3147
 #, python-format
 msgid "User '%(nick)s' updated"
 msgstr "Пользователь '%(nick)s' обновлён"
 
-#: cps/admin.py:3188
+#: cps/admin.py:3212
 #, python-format
 msgid ""
 "Connection successful! OIDC discovery endpoint is accessible.%(endpoints)s"
@@ -786,7 +786,7 @@ msgstr ""
 "Соединение установлено успешно! Endpoint обнаружения OIDC доступен."
 "%(endpoints)s"
 
-#: cps/admin.py:3193
+#: cps/admin.py:3217
 msgid ""
 "Connection failed: OIDC discovery endpoint not found (404). Check if the "
 "base URL is correct."
@@ -794,12 +794,12 @@ msgstr ""
 "Ошибка подключения: endpoint обнаружения OIDC не найден (404). Проверьте "
 "правильность базового URL-адреса."
 
-#: cps/admin.py:3195 cps/admin.py:3252
+#: cps/admin.py:3219 cps/admin.py:3276
 #, python-format
 msgid "Connection failed: Server returned status code %(code)s"
 msgstr "Ошибка подключения: сервер вернул код состояния %(code)s"
 
-#: cps/admin.py:3197
+#: cps/admin.py:3221
 msgid ""
 "Connection failed: Could not connect to server. Check the URL and network "
 "connectivity."
@@ -807,14 +807,14 @@ msgstr ""
 "Ошибка подключения: не удалось подключиться к серверу. Проверьте URL-адрес и "
 "сетевое соединение."
 
-#: cps/admin.py:3199
+#: cps/admin.py:3223
 msgid ""
 "Connection failed: Request timed out. The server may be slow or unreachable."
 msgstr ""
 "Ошибка подключения: время ожидания запроса истекло. Сервер может работать "
 "медленно или быть недоступен."
 
-#: cps/admin.py:3201
+#: cps/admin.py:3225
 msgid ""
 "Connection failed: Server returned invalid JSON. This may not be an OIDC "
 "endpoint."
@@ -822,12 +822,12 @@ msgstr ""
 "Ошибка подключения: сервер вернул неверный JSON. Возможно, это не endpoint "
 "OIDC."
 
-#: cps/admin.py:3204
+#: cps/admin.py:3228
 #, python-format
 msgid "Connection failed: %(error)s"
 msgstr "Ошибка подключения: %(error)s"
 
-#: cps/admin.py:3230
+#: cps/admin.py:3254
 #, python-format
 msgid ""
 "Metadata is missing required OIDC fields: %(fields)s. This may not be a "
@@ -836,29 +836,29 @@ msgstr ""
 "В метаданных отсутствуют обязательные поля OIDC: %(fields)s. Возможно, это "
 "недействительный эндпоинт метаданных OIDC."
 
-#: cps/admin.py:3241
+#: cps/admin.py:3265
 #, python-format
 msgid "Metadata URL is valid! Found %(count)s OAuth endpoints."
 msgstr "URL метаданных действителен! Найдено %(count)s эндпоинтов OAuth."
 
-#: cps/admin.py:3243
+#: cps/admin.py:3267
 msgid " User info endpoint is available."
 msgstr " Endpoint с информацией о пользователе доступен."
 
-#: cps/admin.py:3245
+#: cps/admin.py:3269
 msgid ""
 " Note: User info endpoint not found - this may cause authentication issues."
 msgstr ""
 " Примечание: Endpoint с информацией о пользователе не найден - это может "
 "вызвать проблемы с аутентификацией."
 
-#: cps/admin.py:3250
+#: cps/admin.py:3274
 msgid "Metadata URL not found (404). Please check the URL is correct."
 msgstr ""
 "URL метаданных не найден (ошибка 404). Пожалуйста, проверьте правильность "
 "URL."
 
-#: cps/admin.py:3254
+#: cps/admin.py:3278
 msgid ""
 "Connection failed: Could not connect to metadata URL. Check the URL and "
 "network connectivity."
@@ -866,48 +866,48 @@ msgstr ""
 "Ошибка подключения: не удалось подключиться к URL-адресу метаданных. "
 "Проверьте URL-адрес и сетевое соединение."
 
-#: cps/admin.py:3256
+#: cps/admin.py:3280
 msgid "Connection failed: Request timed out."
 msgstr "Ошибка подключения: время ожидания запроса истекло."
 
-#: cps/admin.py:3258
+#: cps/admin.py:3282
 msgid "Connection failed: Invalid JSON in response."
 msgstr "Ошибка подключения: неверный JSON в ответе."
 
-#: cps/admin.py:3261
+#: cps/admin.py:3285
 msgid "An unknown error occurred."
 msgstr "Произошла неизвестная ошибка."
 
-#: cps/admin.py:3273
+#: cps/admin.py:3297
 msgid "Restore already in progress."
 msgstr "Восстановление уже выполняется."
 
-#: cps/admin.py:3277
+#: cps/admin.py:3301
 msgid "Restore failed: Calibre library path is not configured."
 msgstr "Ошибка восстановления: путь библитеки Calibre не сконфигурирован."
 
-#: cps/admin.py:3282
+#: cps/admin.py:3306
 #, python-format
 msgid "Restore failed: metadata.db not found at %(path)s"
 msgstr "Ошибка восстановления: metadata.db не найдена в %(path)s"
 
-#: cps/admin.py:3287
+#: cps/admin.py:3311
 #, python-format
 msgid "Restore failed: app.db not found at %(path)s"
 msgstr "Ошибка восстановления: app.db не найден в %(path)s"
 
-#: cps/admin.py:3359 cps/admin.py:3402
+#: cps/admin.py:3383 cps/admin.py:3426
 #, python-format
 msgid "Restore failed: %(err)s"
 msgstr "Ошибка восстановления: %(err)s"
 
-#: cps/admin.py:3379
+#: cps/admin.py:3403
 msgid "Restore completed but app.db cleanup failed. See logs for details."
 msgstr ""
 "Восстановление выполнено успешно, за исключением очистки app.db. Смотрите "
 "подробнее в логах."
 
-#: cps/admin.py:3398
+#: cps/admin.py:3422
 #, python-format
 msgid ""
 "Restore complete. Backups and restore log saved to %(dir)s. All book-linked "

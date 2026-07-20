@@ -161,7 +161,7 @@ msgstr "Benutzer nicht gefunden"
 msgid "{} users deleted successfully"
 msgstr "{} Benutzer erfolgreich gelöscht"
 
-#: cps/admin.py:812 cps/api/account.py:67
+#: cps/admin.py:812 cps/api/account.py:70
 #: cps/templates/config_view_edit.html:186 cps/templates/user_edit.html:270
 #: cps/templates/user_edit.html:292 cps/templates/user_table.html:81
 msgid "Show All"
@@ -3292,7 +3292,8 @@ msgstr ""
 msgid "Saved."
 msgstr ""
 
-#: cps/spa_strings.py:263 cps/templates/shelf_order.html:33
+#: cps/spa_strings.py:263 cps/spa_strings.py:933
+#: cps/templates/shelf_order.html:33
 msgid "Saving…"
 msgstr "Wird gespeichert…"
 
@@ -5879,6 +5880,31 @@ msgstr ""
 
 #: cps/spa_strings.py:927
 msgid "≥"
+msgstr ""
+
+#: cps/spa_strings.py:930
+msgid "Account settings"
+msgstr ""
+
+#: cps/spa_strings.py:931
+msgid ""
+"Books that are not on a Kobo-sync shelf are then removed from the device on "
+"its next sync. They stay in your library here."
+msgstr ""
+
+#: cps/spa_strings.py:932
+msgid "Could not update your account setting."
+msgstr ""
+
+#: cps/spa_strings.py:934
+msgid "Sync only my selected shelves"
+msgstr ""
+
+#: cps/spa_strings.py:935
+msgid ""
+"Your Kobo is still set to sync your whole library, so marking this shelf "
+"does nothing on its own. Switch your account to shelf-only syncing to make "
+"it take effect."
 msgstr ""
 
 #: cps/tasks_status.py:54

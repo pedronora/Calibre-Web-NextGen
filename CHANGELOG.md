@@ -18,6 +18,8 @@ is for things you can see or feel when running the app.
 
 ### Changed
 
+- **The new UI now reads in Brazilian Portuguese.** Around 120 strings added in recent releases had no pt-BR translation yet, so Brazilian Portuguese users saw them in English — reading progress, the cover picker, the account and profile actions, and most of the task and error messages. All of them are now translated, along with a handful of corrections to existing wording. Contributed by [@pedronora](https://github.com/pedronora) ([#1021](https://github.com/new-usemame/Calibre-Web-NextGen/pull/1021)).
+
 - **The container no longer re-installs Calibre on every start.** Each boot ran a Calibre installation step, on a container that already had Calibre in it — about 12 seconds of a one-minute startup on the hardware where this was reported, roughly two on a fast machine. The binaries did ship in the image; what was missing were the shortcuts that let the startup check find them, so the check failed and the install ran again. Those shortcuts are now built into the image, the check passes, and the step finishes in well under a second. Nothing about how Calibre itself works changes, and the step still repairs an image that turns up without them. Reported and originally patched by [@chloeroform](https://github.com/chloeroform) ([#875](https://github.com/new-usemame/Calibre-Web-NextGen/issues/875), [#1014](https://github.com/new-usemame/Calibre-Web-NextGen/pull/1014)).
 
 ### Fixed

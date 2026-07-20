@@ -6,10 +6,12 @@
 # See CONTRIBUTORS for full list of authors.
 
 from .cw_login import current_user
-from . import ub
+from . import logger, ub
 from datetime import datetime, timezone
 from sqlalchemy.sql.expression import or_, and_, true
 # from sqlalchemy import exc
+
+log = logger.create()
 
 
 # Add the current book id to kobo_synced_books table for current user, if entry is already present,
@@ -114,24 +116,44 @@ def change_archived_books(book_id, state=None, message=None):
     return archived_book.is_archived
 
 
-# select all books which are synced by the current user and do not belong to a synced shelf and set them to archive
-# select all shelves from current user which are synced and do not belong to the "only sync" shelves
 def update_on_sync_shelfs(user_id):
-    books_to_archive = (ub.session.query(ub.KoboSyncedBooks)
-                        .join(ub.BookShelf, ub.KoboSyncedBooks.book_id == ub.BookShelf.book_id, isouter=True)
-                        .join(ub.Shelf, ub.Shelf.user_id == user_id, isouter=True)
-                        .filter(or_(ub.Shelf.kobo_sync == 0, ub.Shelf.kobo_sync==None))
-                        .filter(ub.KoboSyncedBooks.user_id == user_id).all())
-    for b in books_to_archive:
-        change_archived_books(b.book_id, True)
-        ub.session.query(ub.KoboSyncedBooks) \
-            .filter(ub.KoboSyncedBooks.book_id == b.book_id) \
-            .filter(ub.KoboSyncedBooks.user_id == user_id).delete()
-        ub.session_commit()
+    """Record the user's non-Kobo-sync shelves as archived, so their device
+    drops those collections. Runs when "sync only selected shelves to Kobo"
+    goes off -> on (classic ``/me`` form and ``POST /api/v1/account/profile``).
 
-    # Search all shelf which are currently not synced
+    Book-level reconciliation is deliberately NOT done here. ``HandleSyncRequest``
+    (cps/kobo.py) already computes exactly this difference — synced books minus
+    the books the user's kobo_sync manual and magic shelves make eligible, with
+    the #468 fail-safe for unreliable magic membership — and it does the part
+    that matters: it emits a ``ChangedEntitlement`` with ``archived=True`` so
+    the DEVICE removes the book, and only then drops the tracking row.
+
+    Fork #866/#1008: doing it here as well was worse than redundant.
+
+    * The old query joined ``Shelf`` on ``user_id`` alone, never on
+      ``Shelf.id == BookShelf.shelf``, so any one ordinary shelf in the account
+      paired with every synced book and matched ``kobo_sync == 0``. Books that
+      WERE on the Kobo-sync shelf got swept. Reproduced live.
+    * It deleted each book's ``KoboSyncedBooks`` row before any sync had run.
+      That row is the sync handler's only input for the removal command, and a
+      swept book is by definition outside the eligible set the handler queries,
+      so the device was never told to drop it — the books stayed on the reader
+      forever, which is the symptom @auspex reported.
+    * It also wrote ``ArchivedBook`` rows, hiding those books from the user's
+      own library in the web UI. Turning on a Kobo sync preference should not
+      archive most of someone's library.
+
+    Leaving the tracking rows intact is what makes "the extras get archived off
+    on the next sync" actually true.
+    """
     shelves_to_archive = ub.session.query(ub.Shelf).filter(ub.Shelf.user_id == user_id).filter(
         ub.Shelf.kobo_sync == 0).all()
+    # Toggling the setting off and on again used to append a duplicate archive
+    # row per shelf every time (47 rows for 2 shelves on a test account).
+    already = {row[0] for row in ub.session.query(ub.ShelfArchive.uuid)
+               .filter(ub.ShelfArchive.user_id == user_id).all()}
     for a in shelves_to_archive:
+        if a.uuid in already:
+            continue
         ub.session.add(ub.ShelfArchive(uuid=a.uuid, user_id=user_id))
         ub.session_commit()

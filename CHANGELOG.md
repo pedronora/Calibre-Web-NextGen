@@ -22,6 +22,8 @@ is for things you can see or feel when running the app.
 
 ### Changed
 
+- **The new UI is fully translated into Russian again.** A dozen strings added in recent releases had no Russian yet, so Russian users saw them in English — among them the account and Kobo shelf-sync settings, the format picker and converter, and the "Something went wrong" error screen. All of them now read in Russian. Contributed by [@standhaftsohnsergius](https://github.com/standhaftsohnsergius) ([#1012](https://github.com/new-usemame/Calibre-Web-NextGen/pull/1012)).
+
 - **Startup logs now show where the time goes.** If your container takes a long time to come up, `docker logs --timestamps <container>` used to show long unexplained gaps, because two of the startup steps never said when they began — you couldn't tell whether a step was running slowly or hadn't started yet. The library-mount step and the web server now both announce themselves as they start, so every second of boot is attributable to a named step. Reported and originally patched by [@chloeroform](https://github.com/chloeroform) ([#1002](https://github.com/new-usemame/Calibre-Web-NextGen/pull/1002)), while investigating slow startup for [#868](https://github.com/new-usemame/Calibre-Web-NextGen/issues/868).
 
 ### Fixed

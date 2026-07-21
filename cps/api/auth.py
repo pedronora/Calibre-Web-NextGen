@@ -122,6 +122,12 @@ def _server_features():
         "public_registration": bool(getattr(config, "config_public_reg", False)),
         "anon_browse": bool(getattr(config, "config_anonbrowse", False)),
         "kobo_sync": bool(getattr(config, "config_kobo_sync", False)),
+        # Smart shelves only reach a Kobo when the admin has turned the
+        # magic-shelf half of Kobo sync on (cps/kobo.py gates the whole
+        # collection materialisation on it). Surfaced so the SPA can hide a
+        # per-shelf toggle that would otherwise store inert intent (#870).
+        "kobo_sync_magic_shelves": bool(
+            getattr(config, "config_kobo_sync_magic_shelves", False)),
     }
 
 

@@ -6,8 +6,12 @@ List the user's smart shelves and serve a shelf's matching books — reusing
 cps/magic_shelf.build_query_from_rules (the same rule→SQL engine the legacy view
 uses). Create/edit/duplicate/delete reuse the existing /magicshelf routes.
 """
+from datetime import datetime, timezone
+
 from flask import jsonify, request
 from flask_babel import get_locale
+from flask_babel import gettext as _
+from sqlalchemy.exc import SQLAlchemyError
 
 from . import api_v1
 from .books import _row_to_item
@@ -41,6 +45,7 @@ def _shelf_item(shelf, uid):
         "is_public": bool(shelf.is_public),
         "is_owner": shelf.user_id == uid,
         "is_system": bool(getattr(shelf, "is_system", False)),
+        "kobo_sync": bool(getattr(shelf, "kobo_sync", False)),
     }
 
 
@@ -97,6 +102,7 @@ def magic_shelf_books(shelf_id):
         return jsonify({"id": shelf.id, "name": display_name, "icon": shelf.icon or "🪄",
                         "is_system": bool(getattr(shelf, "is_system", False)),
                         "is_owner": (shelf.user_id == uid),
+                        "kobo_sync": bool(getattr(shelf, "kobo_sync", False)),
                         "items": [], "page": 1, "per_page": per_page, "total": 0})
 
     series_join = (db.books_series_link, db.Books.id == db.books_series_link.c.book, db.Series)
@@ -107,8 +113,69 @@ def magic_shelf_books(shelf_id):
         "id": shelf.id, "name": display_name, "icon": shelf.icon or "🪄",
         "is_system": bool(getattr(shelf, "is_system", False)),
         "is_owner": (shelf.user_id == uid),
+        "kobo_sync": bool(getattr(shelf, "kobo_sync", False)),
         # rules included so the builder can load this shelf for editing
         "rules": shelf.rules or {"condition": "AND", "rules": []},
         "items": [_row_to_item(e) for e in entries],
         "page": pagination.page, "per_page": pagination.per_page, "total": pagination.total_count,
     })
+
+
+@api_v1.route("/magicshelf/<int:shelf_id>/kobo-sync", methods=["POST"])
+@user_login_required
+def set_magic_shelf_kobo_sync(shelf_id):
+    """Flip a smart shelf's Kobo-sync mark (#870).
+
+    The classic /magicshelf/<id>/edit route only accepts a whole-shelf save
+    (name + icon + rules + flags), so the SPA's shelf view had no way to toggle
+    this one flag without round-tripping the rule set. This is that narrow
+    write; everything downstream (collection materialisation, DeletedTag
+    tombstones) is already wired in cps/kobo.py.
+
+    Owner-only: cps/kobo.py selects magic shelves by ``user_id == current_user``,
+    so marking someone else's public shelf could never sync to your device.
+    ``last_modified`` is bumped on every flip because the Kobo tag/tombstone
+    payloads carry it as the change timestamp — without it a device that
+    already synced would ignore the change.
+    """
+    shelf = ub.session.query(ub.MagicShelf).get(shelf_id)
+    if shelf is None:
+        return _err("not_found", "Smart shelf not found", 404)
+    if shelf.user_id != _uid():
+        return _err("forbidden", "You are not allowed to edit this shelf", 403)
+    if not config.config_kobo_sync:
+        return _err("forbidden", "Kobo sync is not enabled on this server", 403)
+
+    data = request.get_json(silent=True)
+    # A JSON boolean, not Python truthiness: bool("false") is True, so coercing
+    # would let {"kobo_sync": "false"} perform the opposite write. A top-level
+    # scalar body (`42`) would also raise on the membership test, so require a
+    # mapping before looking inside it.
+    if not isinstance(data, dict) or "kobo_sync" not in data:
+        return _err("invalid_request", "kobo_sync is required", 400)
+    if not isinstance(data["kobo_sync"], bool):
+        return _err("invalid_request", "kobo_sync must be a boolean", 400)
+    enabled = data["kobo_sync"]
+
+    shelf.kobo_sync = enabled
+    shelf.last_modified = datetime.now(timezone.utc)
+    try:
+        ub.session.commit()
+    except SQLAlchemyError:
+        # ub.session is a long-lived global session, so a commit that fails
+        # without a rollback leaves it in a pending-rollback state that breaks
+        # unrelated later requests. Catch the whole family, never just the two
+        # we happened to think of. The driver error is logged, not returned —
+        # it can carry schema and environment detail.
+        ub.session.rollback()
+        log.exception("magic shelf %s: kobo_sync commit failed", shelf_id)
+        return _err("db_error", "Could not update shelf", 500)
+
+    body = {"id": shelf.id, "kobo_sync": enabled}
+    # Mirror of the classic edit route: intent is stored, but it stays inert
+    # until an admin enables the magic-shelf half of Kobo sync (#359).
+    if enabled and not config.config_kobo_sync_magic_shelves:
+        body["warning"] = _("Kobo sync for Magic Shelves is disabled globally — "
+                            "this shelf won't reach your Kobo until 'Sync Magic "
+                            "Shelves to Kobo' is enabled in CWA Settings.")
+    return jsonify(body)

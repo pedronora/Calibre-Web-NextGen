@@ -976,7 +976,29 @@ export function useEditMagicShelf(id: string | number) {
   });
 }
 
-export interface MagicShelfItem { id: number; name: string; icon: string; is_public: boolean; is_owner: boolean; is_system: boolean }
+/** #870 — flip only the Kobo-sync mark on a smart shelf. The classic
+ *  /magicshelf/<id>/edit route is a whole-shelf save (name + icon + rules), so
+ *  a toggle that reused it would have to round-trip the rule set and could
+ *  clobber a concurrent edit. This hits the narrow /api/v1 write instead. */
+export function useToggleMagicShelfKoboSync(id: string | number) {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (kobo_sync: boolean) =>
+      apiPost<{ id: number; kobo_sync: boolean; warning?: string }>(
+        `/api/v1/magicshelf/${id}/kobo-sync`, { kobo_sync }),
+    // Awaited, not fire-and-forget: the button's disabled state tracks
+    // isPending, and its label reads the *query* cache. Returning the promise
+    // keeps the mutation pending until the refetch lands, so a second click
+    // can't compute `!data.kobo_sync` from the pre-toggle value and re-send
+    // the write it just made.
+    onSuccess: () => Promise.all([
+      qc.invalidateQueries({ queryKey: ['magicshelves'] }),
+      qc.invalidateQueries({ queryKey: ['magicshelf', String(id)] }),
+    ]),
+  });
+}
+
+export interface MagicShelfItem { id: number; name: string; icon: string; is_public: boolean; is_owner: boolean; is_system: boolean; kobo_sync?: boolean }
 
 export function useMagicShelves() {
   return useQuery<{ items: MagicShelfItem[] }>({
@@ -987,7 +1009,8 @@ export function useMagicShelves() {
 }
 
 export function useMagicShelfBooks(id: string | number, page = 1) {
-  return useQuery<{ id: number; name: string; icon: string; is_owner: boolean; is_system: boolean } & BooksPage>({
+  return useQuery<{ id: number; name: string; icon: string; is_owner: boolean; is_system: boolean;
+    kobo_sync?: boolean } & BooksPage>({
     queryKey: ['magicshelf', String(id), page],
     queryFn: () => apiGet(`/api/v1/magicshelf/${id}?page=${page}`),
     enabled: String(id).length > 0,

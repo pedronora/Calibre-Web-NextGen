@@ -5892,7 +5892,7 @@ msgstr ""
 msgid "Shelf name too long (max 100 characters)"
 msgstr ""
 
-#: cps/web.py:1484 cps/web.py:1610
+#: cps/api/magicshelves.py:178 cps/web.py:1484 cps/web.py:1610
 msgid ""
 "Kobo sync for Magic Shelves is disabled globally — this shelf won't reach"
 " your Kobo until 'Sync Magic Shelves to Kobo' is enabled in CWA Settings."

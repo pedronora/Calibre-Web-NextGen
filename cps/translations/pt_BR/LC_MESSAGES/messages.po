@@ -4911,7 +4911,8 @@ msgstr "Nenhum livro corresponde a esses critérios."
 
 #: cps/spa_strings.py:690 cps/templates/cover_picker.html:223
 msgid "No candidates found yet. Try a different search or refresh."
-msgstr "Nenhum candidato encontrado ainda. Tente uma pesquisa diferente ou atualize."
+msgstr ""
+"Nenhum candidato encontrado ainda. Tente uma pesquisa diferente ou atualize."
 
 #: cps/spa_strings.py:691
 msgid "No contents found."
@@ -4928,7 +4929,9 @@ msgstr "Nenhuma tag excluída"
 #: cps/spa_strings.py:694
 msgid ""
 "No highlights yet. Highlight while reading, or import from a Kobo device."
-msgstr "Nenhum destaque ainda. Destaque enquanto lê ou importe de um dispositivo Kobo."
+msgstr ""
+"Nenhum destaque ainda. Destaque enquanto lê ou importe de um dispositivo "
+"Kobo."
 
 #: cps/spa_strings.py:695
 #, python-brace-format
@@ -5197,7 +5200,9 @@ msgstr "Redefinir senha para {name}"
 msgid ""
 "Reset password for {name}? Their current password will stop working and a "
 "replacement will be emailed."
-msgstr "Redefinir senha para {name}? Sua senha atual deixará de funcionar e uma substituta será enviada por e-mail."
+msgstr ""
+"Redefinir senha para {name}? Sua senha atual deixará de funcionar e uma "
+"substituta será enviada por e-mail."
 
 #: cps/spa_strings.py:761
 msgid "Reverse-proxy header login"
@@ -5250,7 +5255,8 @@ msgstr "Salvar configurações"
 
 #: cps/spa_strings.py:772
 msgid "Saved. Restart the server for the login changes to take effect."
-msgstr "Salvo. Reinicie o servidor para que as alterações de login tenham efeito."
+msgstr ""
+"Salvo. Reinicie o servidor para que as alterações de login tenham efeito."
 
 #: cps/spa_strings.py:773
 msgid "Scheduled tasks"
@@ -5689,7 +5695,8 @@ msgstr "Sua biblioteca digital pessoal"
 
 #: cps/spa_strings.py:887
 msgid "Your saved e-reader address is shown — change it for this send only."
-msgstr "Seu endereço de e-reader salvo é exibido — mude-o apenas para este envio."
+msgstr ""
+"Seu endereço de e-reader salvo é exibido — mude-o apenas para este envio."
 
 #: cps/spa_strings.py:888
 msgid "all rules"
@@ -6051,7 +6058,7 @@ msgstr "Os dados do usuário e da imagem são obrigatórios."
 msgid "Shelf name too long (max 100 characters)"
 msgstr ""
 
-#: cps/web.py:1484 cps/web.py:1610
+#: cps/api/magicshelves.py:178 cps/web.py:1484 cps/web.py:1610
 msgid ""
 "Kobo sync for Magic Shelves is disabled globally — this shelf won't reach "
 "your Kobo until 'Sync Magic Shelves to Kobo' is enabled in CWA Settings."
@@ -6648,7 +6655,6 @@ msgstr "Autor Z → A"
 #: cps/templates/_book_organizer.html:236
 #: cps/templates/_book_organizer.html:277
 #: cps/templates/_book_organizer.html:310
-
 msgid "Published, newest first"
 msgstr "Publicado, mais novos primeiro"
 

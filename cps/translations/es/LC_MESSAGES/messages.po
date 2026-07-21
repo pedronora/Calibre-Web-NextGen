@@ -6091,7 +6091,7 @@ msgstr "El nombre y las reglas son obligatorios"
 msgid "Shelf name too long (max 100 characters)"
 msgstr "El nombre de la estantería es demasiado largo (máximo 100 caracteres)."
 
-#: cps/web.py:1484 cps/web.py:1610
+#: cps/api/magicshelves.py:178 cps/web.py:1484 cps/web.py:1610
 msgid ""
 "Kobo sync for Magic Shelves is disabled globally — this shelf won't reach "
 "your Kobo until 'Sync Magic Shelves to Kobo' is enabled in CWA Settings."

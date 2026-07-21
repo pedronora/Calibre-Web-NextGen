@@ -398,6 +398,87 @@ function isProtected(options?: ApiRequestOptions): boolean {
   return options?.auth !== 'public';
 }
 
+let _sessionProbeInFlight: Promise<boolean> | null = null;
+
+/** Ask the one endpoint that can answer "is this browser still signed in?"
+ * authoritatively, and treat anything less than a positive answer as "still
+ * signed in".
+ *
+ * Every other signal we have is circumstantial: a 401 can come from a route's
+ * own permission check, and a redirect-to-HTML can come from an intermediary
+ * having a bad minute. Acting on circumstantial evidence is expensive here,
+ * because the remedy (navigating to /logout) DESTROYS the session server-side —
+ * cps/logout.py::cleanup_local_logout deletes the User_Sessions row and clears
+ * the remember-me cookie. A false positive therefore does not merely show a
+ * login screen, it signs the user out for real and no retry can recover it.
+ *
+ * Single-flight: a server that just dropped one request is usually dropping the
+ * several others the page had in flight, and answering each of them with its own
+ * probe would aim a burst at the exact server that is already struggling. Only
+ * the in-flight promise is shared, never a settled result — the session's state
+ * is not ours to cache. */
+function sessionIsGone(): Promise<boolean> {
+  if (!_sessionProbeInFlight) {
+    _sessionProbeInFlight = probeSession().finally(() => {
+      _sessionProbeInFlight = null;
+    });
+  }
+  return _sessionProbeInFlight;
+}
+
+/** `redirect: 'manual'` is load-bearing. An expired external-auth session (#824,
+ * Authelia) answers with a cross-origin redirect to the IdP; following it would
+ * trip CORS and reject this probe with a TypeError, which is indistinguishable
+ * from "the server is unreachable". Not following it turns that same case into
+ * an inspectable opaqueredirect, so #824 stays detected while a genuine
+ * transport fault stays a transport fault. */
+/** Long enough that a merely slow server still gets to answer, short enough that
+ * a hung one doesn't hold the caller's promise open. A degraded server is the
+ * condition this code runs in, so an unbounded probe would leave the request that
+ * triggered it never settling — the UI would spin instead of reporting an error,
+ * which is a worse version of the symptom being fixed. */
+const SESSION_PROBE_TIMEOUT_MS = 5000;
+
+async function probeSession(): Promise<boolean> {
+  let probe: Response;
+  // AbortController rather than AbortSignal.timeout(): this ships to whatever
+  // browser the reader already has, and Safari only grew the latter in 16.
+  const abort = new AbortController();
+  const timer = setTimeout(() => abort.abort(), SESSION_PROBE_TIMEOUT_MS);
+  try {
+    probe = await fetch(apiUrl('/api/v1/auth/me'), {
+      credentials: 'include',
+      redirect: 'manual',
+      signal: abort.signal,
+    });
+  } catch {
+    // The probe could not reach the server, or ran out of time. That is evidence
+    // about the network, not about the session — fail safe and keep the session.
+    return false;
+  } finally {
+    // Must clear on the success path too: the signal stays live until it fires,
+    // and aborting after the headers arrive would tear down the body read below.
+    clearTimeout(timer);
+  }
+  // An intermediary is intercepting authenticated requests, or the app says
+  // outright that nobody is signed in.
+  if (probe.type === 'opaqueredirect' || probe.status === 401) return true;
+  // Any other status is an intermediary talking, not this endpoint — its own
+  // contract is 200 or 401. A proxy answering 403 or 5xx for a moment is exactly
+  // the ambiguous evidence this function exists to stop acting on, so it is not
+  // treated as proof. The user is not stranded by that: a reload re-runs the
+  // public useMe(), which renders the login tree when the session really is gone.
+  if (!probe.ok) return false;
+  try {
+    // With anonymous browsing on, a lost session doesn't 401 — /me answers for
+    // the Guest row instead (#1023), so `role.anonymous` is the discriminator.
+    const me = await probe.json() as { role?: { anonymous?: boolean } };
+    return !!me.role?.anonymous;
+  } catch {
+    return false;
+  }
+}
+
 async function classifiedFetch(
   path: string,
   init: RequestInit,
@@ -407,7 +488,14 @@ async function classifiedFetch(
   try {
     response = await fetch(apiUrl(path), init);
   } catch (error) {
-    if (isProtected(options) && error instanceof TypeError) {
+    // A rejected fetch is a TRANSPORT failure — connection reset, read timeout,
+    // DNS, offline, or a CORS-blocked redirect. None of those are proof that the
+    // session ended, so confirm before spending the destructive remedy. This is
+    // #1067: on a NAS that occasionally drops a request, treating every dropped
+    // request as an expired session signed people out mid-browse, and because
+    // /logout deletes the session server-side, "remember me" could not bring
+    // them back.
+    if (isProtected(options) && error instanceof TypeError && await sessionIsGone()) {
       navigateToLogout();
       throw new AuthTransitionError();
     }
@@ -422,7 +510,8 @@ async function classifiedFetch(
       && (response.type === 'opaqueredirect'
         || response.status === 302
         || response.status === 401
-        || redirectedToHtml)) {
+        || redirectedToHtml)
+      && await sessionIsGone()) {
     navigateToLogout();
     throw new AuthTransitionError();
   }

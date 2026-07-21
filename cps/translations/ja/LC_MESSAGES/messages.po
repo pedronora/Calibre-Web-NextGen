@@ -1309,16 +1309,16 @@ msgstr "本を削除"
 msgid "Duplicate group was not dismissed"
 msgstr "重複グループは解除されませんでした"
 
-#: cps/duplicates.py:1491
+#: cps/duplicates.py:1499
 #, fuzzy
 msgid "Duplicate scan queued"
 msgstr "結果が見つかりません"
 
-#: cps/duplicates.py:1560
+#: cps/duplicates.py:1577
 msgid "Duplicate scan completed (fallback)"
 msgstr "重複スキャンが完了しました（フォールバック）"
 
-#: cps/duplicates.py:1635
+#: cps/duplicates.py:1652
 #, fuzzy
 msgid "Invalid resolution strategy"
 msgstr "無効なロール"
@@ -2065,7 +2065,7 @@ msgstr "カテゴリ順"
 #: cps/opds.py:230 cps/render_template.py:106 cps/spa_strings.py:279
 #: cps/templates/book_edit.html:143 cps/templates/book_table.html:111
 #: cps/templates/cwa_settings.html:362 cps/templates/cwa_settings.html:364
-#: cps/templates/cwa_settings.html:1133
+#: cps/templates/cwa_settings.html:1134
 #: cps/templates/hardcover_review_matches.html:140
 #: cps/templates/search_form.html:70 cps/web.py:2023 cps/web.py:2035
 msgid "Series"
@@ -2844,7 +2844,7 @@ msgid "App passwords"
 msgstr ""
 
 #: cps/spa_strings.py:162 cps/templates/book_edit.html:135
-#: cps/templates/book_edit.html:459 cps/templates/cwa_settings.html:1121
+#: cps/templates/book_edit.html:459 cps/templates/cwa_settings.html:1122
 #: cps/templates/search_form.html:12
 msgid "Author"
 msgstr "著者"
@@ -3189,7 +3189,7 @@ msgstr ""
 
 #: cps/spa_strings.py:248 cps/templates/book_edit.html:159
 #: cps/templates/book_edit.html:460 cps/templates/cwa_settings.html:348
-#: cps/templates/cwa_settings.html:350 cps/templates/cwa_settings.html:1139
+#: cps/templates/cwa_settings.html:350 cps/templates/cwa_settings.html:1140
 #: cps/templates/detail.html:1005
 #: cps/templates/hardcover_review_matches.html:148
 #: cps/templates/listenmp3.html:102 cps/templates/search_form.html:16
@@ -3350,7 +3350,7 @@ msgstr ""
 
 #: cps/spa_strings.py:289 cps/templates/book_table.html:106
 #: cps/templates/config_view_edit.html:39 cps/templates/cwa_settings.html:327
-#: cps/templates/cwa_settings.html:329 cps/templates/cwa_settings.html:1115
+#: cps/templates/cwa_settings.html:329 cps/templates/cwa_settings.html:1116
 #: cps/templates/shelf_edit.html:8 cps/templates/tasks.html:41
 #: cps/templates/tasks.html:64
 msgid "Title"
@@ -3597,7 +3597,7 @@ msgstr ""
 msgid "Published"
 msgstr "発売日"
 
-#: cps/spa_strings.py:356 cps/templates/cwa_settings.html:1145
+#: cps/spa_strings.py:356 cps/templates/cwa_settings.html:1146
 msgid "Format"
 msgstr ""
 
@@ -4634,7 +4634,7 @@ msgid "Kobo sync on"
 msgstr ""
 
 #: cps/spa_strings.py:626 cps/templates/book_edit.html:163
-#: cps/templates/cwa_settings.html:1127 cps/templates/listenmp3.html:69
+#: cps/templates/cwa_settings.html:1128 cps/templates/listenmp3.html:69
 msgid "Language"
 msgstr "言語"
 
@@ -5867,6 +5867,39 @@ msgid ""
 "it take effect."
 msgstr ""
 
+#: cps/spa_strings.py:939
+msgid ""
+"A duplicate scan is already running. This list updates when it finishes."
+msgstr ""
+
+#: cps/spa_strings.py:940
+msgid ""
+"A one-time full duplicate scan is needed. Use “Scan for duplicates” above to "
+"run it."
+msgstr ""
+
+#: cps/spa_strings.py:941
+msgid "Could not start the duplicate scan."
+msgstr ""
+
+#: cps/spa_strings.py:942
+msgid "Duplicate detection settings"
+msgstr ""
+
+#: cps/spa_strings.py:943
+msgid ""
+"Duplicate scan started. It runs in the background — this list updates when "
+"it finishes."
+msgstr ""
+
+#: cps/spa_strings.py:944
+msgid "Scan for duplicates"
+msgstr ""
+
+#: cps/spa_strings.py:945
+msgid "Starting scan…"
+msgstr ""
+
 #: cps/tasks_status.py:54
 msgid "Waiting"
 msgstr "待機中"
@@ -7015,8 +7048,8 @@ msgstr ""
 msgid "%(count)d highlights"
 msgstr ""
 
-#: cps/templates/annotations_view.html:23 cps/templates/cwa_settings.html:1152
-#: cps/templates/cwa_settings.html:1238
+#: cps/templates/annotations_view.html:23 cps/templates/cwa_settings.html:1153
+#: cps/templates/cwa_settings.html:1239
 msgid "Note:"
 msgstr "メモ："
 
@@ -9470,11 +9503,11 @@ msgid ""
 "during the ingest process"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1000
+#: cps/templates/cwa_settings.html:1001
 msgid "NextGen Duplicate Detection System"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1003
+#: cps/templates/cwa_settings.html:1004
 msgid ""
 "Enable or disable the duplicate detection system. When disabled, duplicate "
 "scanning will not run and no notifications will be shown."
@@ -9482,31 +9515,31 @@ msgstr ""
 "重複検出システムを有効化または無効化します。無効化すると重複スキャンは実行さ"
 "れず、通知も表示されません。"
 
-#: cps/templates/cwa_settings.html:1008
+#: cps/templates/cwa_settings.html:1009
 msgid "Enable Duplicate Detection"
 msgstr "重複検出を有効化"
 
-#: cps/templates/cwa_settings.html:1012
+#: cps/templates/cwa_settings.html:1013
 msgid "When enabled, NextGen will scan for duplicate books after each import"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1020
+#: cps/templates/cwa_settings.html:1021
 msgid "Duplicate Detection Method"
 msgstr "重複検出方式"
 
-#: cps/templates/cwa_settings.html:1023
+#: cps/templates/cwa_settings.html:1024
 msgid "Hybrid (SQL prefilter + Python validation)"
 msgstr "ハイブリッド（SQL事前フィルタ + Python検証）"
 
-#: cps/templates/cwa_settings.html:1026
+#: cps/templates/cwa_settings.html:1027
 msgid "Python only (slowest, most robust)"
 msgstr "Pythonのみ（最も低速、最も堅牢）"
 
-#: cps/templates/cwa_settings.html:1029
+#: cps/templates/cwa_settings.html:1030
 msgid "Legacy SQL only (experimental)"
 msgstr "レガシーSQLのみ（実験的）"
 
-#: cps/templates/cwa_settings.html:1035
+#: cps/templates/cwa_settings.html:1036
 msgid ""
 "Hybrid mode uses a fast SQL pre-filter to narrow candidates, then applies "
 "the robust Python logic for final results."
@@ -9514,11 +9547,11 @@ msgstr ""
 "ハイブリッドモードは高速なSQL事前フィルタで候補を絞り込み、最終結果に堅牢な"
 "Pythonロジックを適用します。"
 
-#: cps/templates/cwa_settings.html:1044
+#: cps/templates/cwa_settings.html:1045
 msgid "Automatic Duplicate Scanning"
 msgstr "自動重複スキャン"
 
-#: cps/templates/cwa_settings.html:1047
+#: cps/templates/cwa_settings.html:1048
 msgid ""
 "Configure background duplicate scans. These run automatically without "
 "blocking the UI."
@@ -9526,27 +9559,27 @@ msgstr ""
 "バックグラウンドの重複スキャンを設定します。UIをブロックせずに自動実行されま"
 "す。"
 
-#: cps/templates/cwa_settings.html:1052
+#: cps/templates/cwa_settings.html:1053
 msgid "Enable automatic duplicate scans"
 msgstr "自動重複スキャンを有効化"
 
-#: cps/templates/cwa_settings.html:1056
+#: cps/templates/cwa_settings.html:1057
 msgid "After import scans"
 msgstr "インポート後のスキャン"
 
-#: cps/templates/cwa_settings.html:1059
+#: cps/templates/cwa_settings.html:1060
 msgid "Run after each import (debounced)"
 msgstr "各インポート後に実行（デバウンス付き）"
 
-#: cps/templates/cwa_settings.html:1062
+#: cps/templates/cwa_settings.html:1063
 msgid "Manual only"
 msgstr "手動のみ"
 
-#: cps/templates/cwa_settings.html:1068
+#: cps/templates/cwa_settings.html:1069
 msgid "After import debounce (seconds)"
 msgstr "インポート後の待機時間（秒）"
 
-#: cps/templates/cwa_settings.html:1076
+#: cps/templates/cwa_settings.html:1077
 msgid ""
 "Wait this many seconds after the last import before starting a background "
 "scan."
@@ -9554,15 +9587,15 @@ msgstr ""
 "最後のインポートから何秒待機してからバックグラウンドスキャンを開始するかを設"
 "定します。"
 
-#: cps/templates/cwa_settings.html:1081
+#: cps/templates/cwa_settings.html:1082
 msgid "Scheduled scans (cron expression)"
 msgstr "スケジュールスキャン（cron式）"
 
-#: cps/templates/cwa_settings.html:1087
+#: cps/templates/cwa_settings.html:1088
 msgid "Leave blank to disable scheduled scans. Example:"
 msgstr "空欄にするとスケジュールスキャンが無効化されます。例："
 
-#: cps/templates/cwa_settings.html:1092
+#: cps/templates/cwa_settings.html:1093
 msgid ""
 "If enabled, after-import scans and cron scans can both run. Use “Manual "
 "only” to disable after-import scans while keeping cron schedules."
@@ -9571,15 +9604,15 @@ msgstr ""
 "ケジュールを残しつつインポート後スキャンを無効化するには「手動のみ」を使用し"
 "てください。"
 
-#: cps/templates/cwa_settings.html:1099 cps/templates/duplicates.html:522
+#: cps/templates/cwa_settings.html:1100 cps/templates/duplicates.html:522
 msgid "Next scheduled scan:"
 msgstr "次回スケジュールスキャン："
 
-#: cps/templates/cwa_settings.html:1106
+#: cps/templates/cwa_settings.html:1107
 msgid "NextGen Duplicate Detection Criteria"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1109
+#: cps/templates/cwa_settings.html:1110
 msgid ""
 "Configure which metadata fields are used to determine if books are "
 "duplicates. Books must match ALL selected criteria to be considered "
@@ -9588,31 +9621,31 @@ msgstr ""
 "書籍が重複かを判定するメタデータフィールドを設定します。重複と見なされるに"
 "は、選択したすべての基準に一致する必要があります。"
 
-#: cps/templates/cwa_settings.html:1116
+#: cps/templates/cwa_settings.html:1117
 msgid "Consider book titles when detecting duplicates"
 msgstr "重複検出時に書籍タイトルを考慮"
 
-#: cps/templates/cwa_settings.html:1122
+#: cps/templates/cwa_settings.html:1123
 msgid "Consider book authors when detecting duplicates"
 msgstr "重複検出時に著者を考慮"
 
-#: cps/templates/cwa_settings.html:1128
+#: cps/templates/cwa_settings.html:1129
 msgid "Consider book language when detecting duplicates"
 msgstr "重複検出時に言語を考慮"
 
-#: cps/templates/cwa_settings.html:1134
+#: cps/templates/cwa_settings.html:1135
 msgid "Consider book series when detecting duplicates"
 msgstr "重複検出時にシリーズを考慮"
 
-#: cps/templates/cwa_settings.html:1140
+#: cps/templates/cwa_settings.html:1141
 msgid "Consider book publisher when detecting duplicates"
 msgstr "重複検出時に出版社を考慮"
 
-#: cps/templates/cwa_settings.html:1146
+#: cps/templates/cwa_settings.html:1147
 msgid "Consider file format when detecting duplicates"
 msgstr "重複検出時にファイル形式を考慮"
 
-#: cps/templates/cwa_settings.html:1152
+#: cps/templates/cwa_settings.html:1153
 msgid ""
 "At least one criterion must be selected. Title and Author are recommended as "
 "core criteria."
@@ -9620,11 +9653,11 @@ msgstr ""
 "少なくとも1つの基準を選択する必要があります。タイトルと著者を主要な基準として"
 "推奨します。"
 
-#: cps/templates/cwa_settings.html:1158
+#: cps/templates/cwa_settings.html:1159
 msgid "Duplicate Format Priority Ranking"
 msgstr "重複フォーマットの優先順位"
 
-#: cps/templates/cwa_settings.html:1161
+#: cps/templates/cwa_settings.html:1162
 msgid ""
 "Configure which file formats are preferred when using the \"Highest Quality "
 "Format\" auto-resolution strategy. Drag and drop to reorder formats by "
@@ -9633,11 +9666,11 @@ msgstr ""
 "\"最高品質フォーマット\"の自動解決戦略を使用する際に優先するファイル形式を設"
 "定します。ドラッグ＆ドロップで優先順位を並び替えてください（上＝優先）。"
 
-#: cps/templates/cwa_settings.html:1174
+#: cps/templates/cwa_settings.html:1175
 msgid "Tip:"
 msgstr "TIP："
 
-#: cps/templates/cwa_settings.html:1174
+#: cps/templates/cwa_settings.html:1175
 msgid ""
 "When resolving duplicates with \"Highest Quality Format\" strategy, books "
 "with higher-ranked formats will be kept. Lower priority formats will be "
@@ -9646,22 +9679,22 @@ msgstr ""
 "\"最高品質フォーマット\"戦略で重複を解決する際、より上位のフォーマットを持つ"
 "書籍が保持されます。優先順位が低いフォーマットは削除されます。"
 
-#: cps/templates/cwa_settings.html:1182
+#: cps/templates/cwa_settings.html:1183
 msgid "Duplicate Notifications & Auto-Resolution"
 msgstr "重複の通知と自動解決"
 
-#: cps/templates/cwa_settings.html:1185
+#: cps/templates/cwa_settings.html:1186
 msgid ""
 "Configure how you are notified about duplicate books and optionally enable "
 "automatic resolution."
 msgstr "重複書籍に関する通知方法を設定し、必要に応じて自動解決を有効化します。"
 
-#: cps/templates/cwa_settings.html:1190
+#: cps/templates/cwa_settings.html:1191
 #, fuzzy
 msgid "Enable Duplicate Notifications"
 msgstr "誰でも登録可能にする"
 
-#: cps/templates/cwa_settings.html:1192
+#: cps/templates/cwa_settings.html:1193
 msgid ""
 "Show popup notifications when unresolved duplicates are detected. Admins and "
 "users with edit rights will see a badge on the Duplicates sidebar button and "
@@ -9671,16 +9704,16 @@ msgstr ""
 "持つユーザーには重複サイドバーボタンにバッジが表示され、ログイン時に通知ポッ"
 "プアップが表示されます。"
 
-#: cps/templates/cwa_settings.html:1196
+#: cps/templates/cwa_settings.html:1197
 #, fuzzy
 msgid "Enable Automatic Duplicate Resolution"
 msgstr "誰でも登録可能にする"
 
-#: cps/templates/cwa_settings.html:1199 cps/templates/duplicates.html:593
+#: cps/templates/cwa_settings.html:1200 cps/templates/duplicates.html:593
 msgid "Warning:"
 msgstr "警告："
 
-#: cps/templates/cwa_settings.html:1199
+#: cps/templates/cwa_settings.html:1200
 msgid ""
 "This will automatically delete books based on the strategy below. Original "
 "files will be backed up to"
@@ -9688,81 +9721,81 @@ msgstr ""
 "下記の戦略に基づいて書籍を自動削除します。元のファイルは次の場所にバックアッ"
 "プされます："
 
-#: cps/templates/cwa_settings.html:1203
+#: cps/templates/cwa_settings.html:1204
 msgid "Auto-Resolution Strategy"
 msgstr "自動解決戦略"
 
-#: cps/templates/cwa_settings.html:1206
+#: cps/templates/cwa_settings.html:1207
 msgid "Keep Newest"
 msgstr "最新を保持"
 
-#: cps/templates/cwa_settings.html:1206
+#: cps/templates/cwa_settings.html:1207
 msgid "Delete older copies, keep the most recently added book"
 msgstr "古いコピーを削除し、最近追加された書籍を保持"
 
-#: cps/templates/cwa_settings.html:1209
+#: cps/templates/cwa_settings.html:1210
 msgid "Keep Oldest"
 msgstr "最古を保持"
 
-#: cps/templates/cwa_settings.html:1209
+#: cps/templates/cwa_settings.html:1210
 msgid "Delete newer copies, keep the earliest added"
 msgstr "新しいコピーを削除し、最初に追加されたものを保持"
 
-#: cps/templates/cwa_settings.html:1212
+#: cps/templates/cwa_settings.html:1213
 #, fuzzy
 msgid "Merge Formats"
 msgstr "削除する形式:"
 
-#: cps/templates/cwa_settings.html:1212
+#: cps/templates/cwa_settings.html:1213
 msgid "Merge formats into the newest book, delete the rest"
 msgstr "フォーマットを最新の書籍にマージし、残りを削除"
 
-#: cps/templates/cwa_settings.html:1215
+#: cps/templates/cwa_settings.html:1216
 msgid "Keep Highest Quality Format"
 msgstr "最高品質フォーマットを保持"
 
-#: cps/templates/cwa_settings.html:1215
+#: cps/templates/cwa_settings.html:1216
 msgid "Prefer formats based on your Duplicate Format Priority Ranking"
 msgstr "重複フォーマットの優先順位に基づいてフォーマットを優先"
 
-#: cps/templates/cwa_settings.html:1218
+#: cps/templates/cwa_settings.html:1219
 #, fuzzy
 msgid "Keep Most Metadata"
 msgstr "メタデータを取得"
 
-#: cps/templates/cwa_settings.html:1218
+#: cps/templates/cwa_settings.html:1219
 msgid "Keep book with most complete information"
 msgstr "最も情報が揃っている書籍を保持"
 
-#: cps/templates/cwa_settings.html:1221
+#: cps/templates/cwa_settings.html:1222
 msgid "Keep Largest File Size"
 msgstr "最大ファイルサイズを保持"
 
-#: cps/templates/cwa_settings.html:1221
+#: cps/templates/cwa_settings.html:1222
 msgid "Keep book with largest total file size"
 msgstr "総ファイルサイズが最大の書籍を保持"
 
-#: cps/templates/cwa_settings.html:1224
+#: cps/templates/cwa_settings.html:1225
 msgid "Choose which book to keep when duplicates are automatically resolved."
 msgstr "重複が自動解決される際に保持する書籍を選択してください。"
 
-#: cps/templates/cwa_settings.html:1228
+#: cps/templates/cwa_settings.html:1229
 #, fuzzy
 msgid "Rate Limiting"
 msgstr "評価"
 
-#: cps/templates/cwa_settings.html:1229
+#: cps/templates/cwa_settings.html:1230
 msgid "Cooldown Period (minutes)"
 msgstr "クールダウン期間（分）"
 
-#: cps/templates/cwa_settings.html:1233
+#: cps/templates/cwa_settings.html:1234
 msgid ""
 "Minimum time between automatic resolutions (0 to disable). Prevents rapid-"
 "fire deletions during batch imports."
 msgstr ""
 "自動解決間の最小時間（0で無効化）。バッチインポート中の連続削除を防ぎます。"
 
-#: cps/templates/cwa_settings.html:1238
+#: cps/templates/cwa_settings.html:1239
 msgid ""
 "Auto-resolution runs after duplicate scans detect new duplicates. Dismissed "
 "duplicate groups are never auto-resolved."

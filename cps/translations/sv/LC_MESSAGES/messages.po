@@ -1310,16 +1310,16 @@ msgstr "Ta bort boken"
 msgid "Duplicate group was not dismissed"
 msgstr ""
 
-#: cps/duplicates.py:1491
+#: cps/duplicates.py:1499
 #, fuzzy
 msgid "Duplicate scan queued"
 msgstr "Inga resultat hittades"
 
-#: cps/duplicates.py:1560
+#: cps/duplicates.py:1577
 msgid "Duplicate scan completed (fallback)"
 msgstr ""
 
-#: cps/duplicates.py:1635
+#: cps/duplicates.py:1652
 #, fuzzy
 msgid "Invalid resolution strategy"
 msgstr "Ogiltig roll"
@@ -2045,7 +2045,7 @@ msgstr "Böcker ordnade efter kategori"
 #: cps/opds.py:230 cps/render_template.py:106 cps/spa_strings.py:279
 #: cps/templates/book_edit.html:143 cps/templates/book_table.html:111
 #: cps/templates/cwa_settings.html:362 cps/templates/cwa_settings.html:364
-#: cps/templates/cwa_settings.html:1133
+#: cps/templates/cwa_settings.html:1134
 #: cps/templates/hardcover_review_matches.html:140
 #: cps/templates/search_form.html:70 cps/web.py:2023 cps/web.py:2035
 msgid "Series"
@@ -2827,7 +2827,7 @@ msgid "App passwords"
 msgstr ""
 
 #: cps/spa_strings.py:162 cps/templates/book_edit.html:135
-#: cps/templates/book_edit.html:459 cps/templates/cwa_settings.html:1121
+#: cps/templates/book_edit.html:459 cps/templates/cwa_settings.html:1122
 #: cps/templates/search_form.html:12
 msgid "Author"
 msgstr "Författare"
@@ -3172,7 +3172,7 @@ msgstr ""
 
 #: cps/spa_strings.py:248 cps/templates/book_edit.html:159
 #: cps/templates/book_edit.html:460 cps/templates/cwa_settings.html:348
-#: cps/templates/cwa_settings.html:350 cps/templates/cwa_settings.html:1139
+#: cps/templates/cwa_settings.html:350 cps/templates/cwa_settings.html:1140
 #: cps/templates/detail.html:1005
 #: cps/templates/hardcover_review_matches.html:148
 #: cps/templates/listenmp3.html:102 cps/templates/search_form.html:16
@@ -3333,7 +3333,7 @@ msgstr ""
 
 #: cps/spa_strings.py:289 cps/templates/book_table.html:106
 #: cps/templates/config_view_edit.html:39 cps/templates/cwa_settings.html:327
-#: cps/templates/cwa_settings.html:329 cps/templates/cwa_settings.html:1115
+#: cps/templates/cwa_settings.html:329 cps/templates/cwa_settings.html:1116
 #: cps/templates/shelf_edit.html:8 cps/templates/tasks.html:41
 #: cps/templates/tasks.html:64
 msgid "Title"
@@ -3580,7 +3580,7 @@ msgstr ""
 msgid "Published"
 msgstr "Publicerad"
 
-#: cps/spa_strings.py:356 cps/templates/cwa_settings.html:1145
+#: cps/spa_strings.py:356 cps/templates/cwa_settings.html:1146
 msgid "Format"
 msgstr ""
 
@@ -4617,7 +4617,7 @@ msgid "Kobo sync on"
 msgstr ""
 
 #: cps/spa_strings.py:626 cps/templates/book_edit.html:163
-#: cps/templates/cwa_settings.html:1127 cps/templates/listenmp3.html:69
+#: cps/templates/cwa_settings.html:1128 cps/templates/listenmp3.html:69
 msgid "Language"
 msgstr "Språk"
 
@@ -5850,6 +5850,39 @@ msgid ""
 "it take effect."
 msgstr ""
 
+#: cps/spa_strings.py:939
+msgid ""
+"A duplicate scan is already running. This list updates when it finishes."
+msgstr ""
+
+#: cps/spa_strings.py:940
+msgid ""
+"A one-time full duplicate scan is needed. Use “Scan for duplicates” above to "
+"run it."
+msgstr ""
+
+#: cps/spa_strings.py:941
+msgid "Could not start the duplicate scan."
+msgstr ""
+
+#: cps/spa_strings.py:942
+msgid "Duplicate detection settings"
+msgstr ""
+
+#: cps/spa_strings.py:943
+msgid ""
+"Duplicate scan started. It runs in the background — this list updates when "
+"it finishes."
+msgstr ""
+
+#: cps/spa_strings.py:944
+msgid "Scan for duplicates"
+msgstr ""
+
+#: cps/spa_strings.py:945
+msgid "Starting scan…"
+msgstr ""
+
 #: cps/tasks_status.py:54
 msgid "Waiting"
 msgstr "Väntar"
@@ -7005,8 +7038,8 @@ msgstr ""
 msgid "%(count)d highlights"
 msgstr ""
 
-#: cps/templates/annotations_view.html:23 cps/templates/cwa_settings.html:1152
-#: cps/templates/cwa_settings.html:1238
+#: cps/templates/annotations_view.html:23 cps/templates/cwa_settings.html:1153
+#: cps/templates/cwa_settings.html:1239
 msgid "Note:"
 msgstr ""
 
@@ -9381,276 +9414,276 @@ msgid ""
 "during the ingest process"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1000
+#: cps/templates/cwa_settings.html:1001
 msgid "NextGen Duplicate Detection System"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1003
+#: cps/templates/cwa_settings.html:1004
 msgid ""
 "Enable or disable the duplicate detection system. When disabled, duplicate "
 "scanning will not run and no notifications will be shown."
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1008
+#: cps/templates/cwa_settings.html:1009
 #, fuzzy
 msgid "Enable Duplicate Detection"
 msgstr "Aktivera offentlig registrering"
 
-#: cps/templates/cwa_settings.html:1012
+#: cps/templates/cwa_settings.html:1013
 msgid "When enabled, NextGen will scan for duplicate books after each import"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1020
+#: cps/templates/cwa_settings.html:1021
 msgid "Duplicate Detection Method"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1023
+#: cps/templates/cwa_settings.html:1024
 msgid "Hybrid (SQL prefilter + Python validation)"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1026
+#: cps/templates/cwa_settings.html:1027
 msgid "Python only (slowest, most robust)"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1029
+#: cps/templates/cwa_settings.html:1030
 msgid "Legacy SQL only (experimental)"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1035
+#: cps/templates/cwa_settings.html:1036
 msgid ""
 "Hybrid mode uses a fast SQL pre-filter to narrow candidates, then applies "
 "the robust Python logic for final results."
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1044
+#: cps/templates/cwa_settings.html:1045
 #, fuzzy
 msgid "Automatic Duplicate Scanning"
 msgstr "OAuth-inställningar"
 
-#: cps/templates/cwa_settings.html:1047
+#: cps/templates/cwa_settings.html:1048
 msgid ""
 "Configure background duplicate scans. These run automatically without "
 "blocking the UI."
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1052
+#: cps/templates/cwa_settings.html:1053
 msgid "Enable automatic duplicate scans"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1056
+#: cps/templates/cwa_settings.html:1057
 msgid "After import scans"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1059
+#: cps/templates/cwa_settings.html:1060
 msgid "Run after each import (debounced)"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1062
+#: cps/templates/cwa_settings.html:1063
 msgid "Manual only"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1068
+#: cps/templates/cwa_settings.html:1069
 msgid "After import debounce (seconds)"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1076
+#: cps/templates/cwa_settings.html:1077
 msgid ""
 "Wait this many seconds after the last import before starting a background "
 "scan."
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1081
+#: cps/templates/cwa_settings.html:1082
 msgid "Scheduled scans (cron expression)"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1087
+#: cps/templates/cwa_settings.html:1088
 msgid "Leave blank to disable scheduled scans. Example:"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1092
+#: cps/templates/cwa_settings.html:1093
 msgid ""
 "If enabled, after-import scans and cron scans can both run. Use “Manual "
 "only” to disable after-import scans while keeping cron schedules."
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1099 cps/templates/duplicates.html:522
+#: cps/templates/cwa_settings.html:1100 cps/templates/duplicates.html:522
 msgid "Next scheduled scan:"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1106
+#: cps/templates/cwa_settings.html:1107
 msgid "NextGen Duplicate Detection Criteria"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1109
+#: cps/templates/cwa_settings.html:1110
 msgid ""
 "Configure which metadata fields are used to determine if books are "
 "duplicates. Books must match ALL selected criteria to be considered "
 "duplicates."
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1116
+#: cps/templates/cwa_settings.html:1117
 msgid "Consider book titles when detecting duplicates"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1122
+#: cps/templates/cwa_settings.html:1123
 msgid "Consider book authors when detecting duplicates"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1128
+#: cps/templates/cwa_settings.html:1129
 msgid "Consider book language when detecting duplicates"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1134
+#: cps/templates/cwa_settings.html:1135
 msgid "Consider book series when detecting duplicates"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1140
+#: cps/templates/cwa_settings.html:1141
 msgid "Consider book publisher when detecting duplicates"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1146
+#: cps/templates/cwa_settings.html:1147
 msgid "Consider file format when detecting duplicates"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1152
+#: cps/templates/cwa_settings.html:1153
 msgid ""
 "At least one criterion must be selected. Title and Author are recommended as "
 "core criteria."
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1158
+#: cps/templates/cwa_settings.html:1159
 msgid "Duplicate Format Priority Ranking"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1161
+#: cps/templates/cwa_settings.html:1162
 msgid ""
 "Configure which file formats are preferred when using the \"Highest Quality "
 "Format\" auto-resolution strategy. Drag and drop to reorder formats by "
 "priority (higher = better)."
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1174
+#: cps/templates/cwa_settings.html:1175
 msgid "Tip:"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1174
+#: cps/templates/cwa_settings.html:1175
 msgid ""
 "When resolving duplicates with \"Highest Quality Format\" strategy, books "
 "with higher-ranked formats will be kept. Lower priority formats will be "
 "deleted."
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1182
+#: cps/templates/cwa_settings.html:1183
 msgid "Duplicate Notifications & Auto-Resolution"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1185
+#: cps/templates/cwa_settings.html:1186
 msgid ""
 "Configure how you are notified about duplicate books and optionally enable "
 "automatic resolution."
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1190
+#: cps/templates/cwa_settings.html:1191
 #, fuzzy
 msgid "Enable Duplicate Notifications"
 msgstr "Aktivera offentlig registrering"
 
-#: cps/templates/cwa_settings.html:1192
+#: cps/templates/cwa_settings.html:1193
 msgid ""
 "Show popup notifications when unresolved duplicates are detected. Admins and "
 "users with edit rights will see a badge on the Duplicates sidebar button and "
 "a notification popup when they login."
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1196
+#: cps/templates/cwa_settings.html:1197
 #, fuzzy
 msgid "Enable Automatic Duplicate Resolution"
 msgstr "Aktivera offentlig registrering"
 
-#: cps/templates/cwa_settings.html:1199 cps/templates/duplicates.html:593
+#: cps/templates/cwa_settings.html:1200 cps/templates/duplicates.html:593
 msgid "Warning:"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1199
+#: cps/templates/cwa_settings.html:1200
 msgid ""
 "This will automatically delete books based on the strategy below. Original "
 "files will be backed up to"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1203
+#: cps/templates/cwa_settings.html:1204
 msgid "Auto-Resolution Strategy"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1206
+#: cps/templates/cwa_settings.html:1207
 msgid "Keep Newest"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1206
+#: cps/templates/cwa_settings.html:1207
 msgid "Delete older copies, keep the most recently added book"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1209
+#: cps/templates/cwa_settings.html:1210
 msgid "Keep Oldest"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1209
+#: cps/templates/cwa_settings.html:1210
 msgid "Delete newer copies, keep the earliest added"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1212
+#: cps/templates/cwa_settings.html:1213
 #, fuzzy
 msgid "Merge Formats"
 msgstr "Ta bort format:"
 
-#: cps/templates/cwa_settings.html:1212
+#: cps/templates/cwa_settings.html:1213
 msgid "Merge formats into the newest book, delete the rest"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1215
+#: cps/templates/cwa_settings.html:1216
 msgid "Keep Highest Quality Format"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1215
+#: cps/templates/cwa_settings.html:1216
 msgid "Prefer formats based on your Duplicate Format Priority Ranking"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1218
+#: cps/templates/cwa_settings.html:1219
 #, fuzzy
 msgid "Keep Most Metadata"
 msgstr "Hämta metadata"
 
-#: cps/templates/cwa_settings.html:1218
+#: cps/templates/cwa_settings.html:1219
 msgid "Keep book with most complete information"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1221
+#: cps/templates/cwa_settings.html:1222
 msgid "Keep Largest File Size"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1221
+#: cps/templates/cwa_settings.html:1222
 msgid "Keep book with largest total file size"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1224
+#: cps/templates/cwa_settings.html:1225
 msgid "Choose which book to keep when duplicates are automatically resolved."
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1228
+#: cps/templates/cwa_settings.html:1229
 #, fuzzy
 msgid "Rate Limiting"
 msgstr "Betyg"
 
-#: cps/templates/cwa_settings.html:1229
+#: cps/templates/cwa_settings.html:1230
 msgid "Cooldown Period (minutes)"
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1233
+#: cps/templates/cwa_settings.html:1234
 msgid ""
 "Minimum time between automatic resolutions (0 to disable). Prevents rapid-"
 "fire deletions during batch imports."
 msgstr ""
 
-#: cps/templates/cwa_settings.html:1238
+#: cps/templates/cwa_settings.html:1239
 msgid ""
 "Auto-resolution runs after duplicate scans detect new duplicates. Dismissed "
 "duplicate groups are never auto-resolved."
